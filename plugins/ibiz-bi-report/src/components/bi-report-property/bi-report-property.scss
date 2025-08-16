@@ -1,0 +1,204 @@
+/* stylelint-disable value-no-vendor-prefix */
+/* stylelint-disable selector-class-pattern */
+@include b('property') {
+  @include e('caption') {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    min-height: 46px;
+    padding-left: 20px;
+    border-bottom: 1px solid getCssVar(color, border);
+  }
+  @include e('no-support') {
+    height: 40px;
+    padding-left: getCssVar('spacing', 'tight');
+    margin-top: getCssVar('spacing', 'tight');
+    line-height: 40px;
+    color: getCssVar(color, disabled, text);
+    cursor: no-drop;
+    background: getCssVar(color, disabled, bg);
+    border-radius: getCssVar(border, radius, small);
+  }
+  @include e('chart-types') {
+    margin: getCssVar('spacing', 'base-loose')
+      getCssVar('spacing', 'base-loose') 0;
+    border-bottom: 1px solid getCssVar(color, border);
+  }
+  @include e('style-select') {
+    flex: 1;
+    padding: 0;
+    overflow: auto;
+
+    .el-tabs {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .el-tabs__header {
+      position: relative;
+      margin: getCssVar('spacing', 'base-loose');
+      border: none;
+
+      &::after {
+        position: absolute;
+        bottom: -21px;
+        z-index: 10;
+        width: 100%;
+        height: 1px;
+        content: '';
+        background-color: getCssVar(color, border);
+      }
+    }
+
+    .el-tabs__content {
+      flex: 1;
+      padding: 0 getCssVar('spacing', 'base');
+      overflow: auto;
+    }
+
+    .el-tabs__nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background-color: getCssVar(color, fill, 0);
+      border: none !important;
+
+      &::after {
+        position: absolute;
+        left: 4px;
+        z-index: -1;
+        width: calc(50% - 8px);
+        height: calc(100% - 8px);
+        content: '';
+        background-color: getCssVar(color, bg, 1);
+        border-radius: getCssVar(border, radius, small);
+        transition: all 0.5s ease;
+      }
+    }
+    @include when('style') {
+      .el-tabs__nav {
+        &::after {
+          right: 2px;
+          left: calc(50% + 4px);
+        }
+      }
+    }
+
+    .el-tabs__item {
+      width: 50%;
+      border: none !important;
+    }
+  }
+  @include e('chart-setting') {
+    @include m('item') {
+      margin-bottom: getCssVar('spacing', 'tight');
+
+      &:first-child {
+        .#{bem('property', 'chart-setting', 'label')} {
+          margin-top: getCssVar('spacing', 'none');
+        }
+      }
+    }
+    @include m('label') {
+      margin: getCssVar('spacing', 'base') 0 getCssVar('spacing', 'tight');
+    }
+
+    @include m('endpoint') {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .#{bem('property', 'chart-setting', 'label')} {
+        margin: getCssVar('spacing', 'none');
+      }
+
+      .el-input-number {
+        margin: getCssVar('spacing', 'super-tight')
+          getCssVar('spacing', 'super-tight') getCssVar('spacing', 'none')
+          getCssVar('spacing', 'none');
+
+        .el-input-number__decrease,
+        .el-input-number__increase {
+          --el-input-number-controls-height: calc(
+            (
+                #{getCssVar('spacing', 'extra-loose')} + #{getCssVar(
+                    'spacing',
+                    'super-tight'
+                  )}
+              ) / 2
+          );
+        }
+
+        .el-input__inner {
+          --el-input-inner-height: calc(
+            #{getCssVar('spacing', 'extra-loose')} + #{getCssVar(
+                'spacing',
+                'super-tight'
+              )}
+          );
+        }
+      }
+    }
+    @include m('label-interval'){
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding-left: getCssVar(spacing,base-tight);
+      .#{bem(property,chart-setting,label)}{
+        margin: 0;
+      }
+    }
+  }
+  @include e('chart-pagination') {
+    height: 42px;
+    font-size: getCssVar('font-size', 'regular');
+    line-height: 42px;
+    color: getCssVar(color, text, 3);
+    text-align: center;
+    border-top: 1px solid getCssVar(color, border);
+    @include m('size') {
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, primary, hover);
+      }
+    }
+    @include m('pagination-number') {
+      margin: 0 8px;
+    }
+    @include m('list') {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+    @include m('pagination-item') {
+      height: 32px;
+      padding: 0 12px;
+      line-height: 32px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: getCssVar(color, fill, 0);
+      }
+      @include when('selected') {
+        background-color: getCssVar(color, fill, 1);
+      }
+    }
+  }
+}
+@include b('property-editor-collapse') {
+  border: none;
+}
+@include b('property-container') {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100%;
+  border-top: 1px solid getCssVar(color, border);
+  border-right: 1px solid getCssVar(color, border);
+  border-bottom: 1px solid getCssVar(color, border);
+  border-left: none;
+}

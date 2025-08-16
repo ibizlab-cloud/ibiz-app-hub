@@ -1,0 +1,50 @@
+@include b('emoji-categories') {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: getCssVar('height-control', 'large');
+  padding: 0 getCssVar('spacing', 'base-loose');
+  margin-bottom: getCssVar('spacing', 'tight');
+  overflow-x: auto;
+
+  @include e('category') {
+    display: flex;
+    align-items: center;
+    min-width: getCssVar('font-size', 'header-4');
+    height: 100%;
+    font-size: getCssVar('font-size', 'header-4');
+    cursor: pointer;
+
+    @include m('svg') {
+      line-height: getCssVar('font-size', 'header-6');
+
+      svg {
+        fill: getCssVar('color', 'text', 3);
+      }
+    }
+
+    &:hover,
+    &.is-active {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        content: '';
+        border-top: getCssVar('spacing', 'super-tight') solid getCssVar('color', 'primary');
+      }
+    }
+
+    &:hover {
+      color: getCssVar('color', 'primary');
+
+      svg {
+        fill: getCssVar('color', 'primary');
+      }
+    }
+  }
+}

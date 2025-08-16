@@ -1,0 +1,54 @@
+@include b(picker-select-view) {
+  width: 100%;
+
+  .van-field {
+    font-size: getCssVar('form-item', 'font-size');
+  }
+
+  @include e('pickup-search-icon'){
+    font-size: getCssVar(font-size,header,4);
+    display: flex;
+  }
+
+  @include b(picker-select-view-view) {
+    height: 100%;
+  }
+
+  .van-field__button {
+    height: getCssVar(form-item, line-height);
+    display: flex;
+    align-items: center;
+    button {
+      color: var(--van-field-right-icon-color);
+      border: none;
+      height: getCssVar(form-item, line-height);
+      border-radius: 0;
+      --van-button-default-line-height: 1;
+    }
+    .van-button__text {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  @include m(disabled) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'disabled-color')};
+
+    color: getCssVar('form-item', 'disabled-color');
+    pointer-events: none;
+  }
+
+  @include m(readonly) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'readonly-color')};
+
+    color: getCssVar('form-item', 'readonly-color');
+  }
+
+  input {
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+  &.#{bem('picker-select-view','','readonly')} {
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+}

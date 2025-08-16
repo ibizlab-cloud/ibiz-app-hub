@@ -1,0 +1,36 @@
+@include b(color-picker) {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: getCssVar(form-item-container, editor-align);
+  height: 100%;
+  padding-right: rem(40px);
+  
+  @include e('picker') {
+    &.van-field {
+      position: absolute;
+      right: 0;
+      width: getCssVar(spacing, loose);
+      height: getCssVar(spacing, loose);
+      padding: 0;
+      margin-right: getCssVar(spacing, tight)
+    }
+  }
+
+  @include e(item) {
+    display: inline-block;
+    width: auto;
+    padding-right: getCssVar(spacing, extra-loose);
+    color: inherit;
+
+    .van-field__value {
+      height: 100%;
+      color: inherit;
+
+      .van-field__control {
+        color: inherit;
+        text-align: center;
+      }
+    }
+  }
+}

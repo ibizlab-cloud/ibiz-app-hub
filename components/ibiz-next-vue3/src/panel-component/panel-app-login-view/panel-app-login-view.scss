@@ -1,0 +1,102 @@
+$panel-app-login-view: (
+  header-url: url('/assets/images/login-header.png'),
+  avatar-url: url('/assets/images/login-avatar.png'),
+);
+
+@include b(panel-app-login-view){
+  @include set-component-css-var(panel-app-login-view, $panel-app-login-view);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(120deg, getCssVar(color, primary, light, active) 0%, getCssVar(color, primary, light, default) 100%);
+
+  // 整体
+  .#{bem(panel-container,'',container1)} {
+    width: 430px;
+    margin-bottom: 80px;
+  }
+
+  // 头部
+  .#{bem(panel-container,'',container4)} {
+    position: relative;
+    height: 150px;
+    background:  getCssVar(panel-app-login-view, header-url);
+    background-size: 100% 100%;
+
+    .#{bem(rawitem)} {
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 80%;
+      font-size: getCssVar(font-size, header-2);
+      font-weight: getCssVar(font-weight, bold);
+      color: getCssVar(color, primary, text);
+      text-shadow: getCssVar(color, shadow);
+    }
+  }
+
+  // 内容区
+  .#{bem(panel-container,'',container5)} {   
+    position: relative;
+    height: 380px;
+    padding: 100px 40px 40px;
+    background: getCssVar(color, bg, 1);
+
+    // 浏览器自动填写之后的输入框的背景色和文字颜色
+    .el-input__inner:-webkit-autofill{
+      box-shadow:0 0 0 1000px getCssVar(color, bg, 1) inset;
+      -webkit-text-fill-color: getCssVar(editor, default, text-color);
+    }
+  
+    ion-icon {
+      font-size: getCssVar(width-icon, medium);
+    }    
+  }
+
+  // 头像
+  .#{bem(panel-container,'',container6)} {
+    position: absolute;
+    top: -50px;
+    right: calc(50% - 50px);
+    z-index: 2;
+    display: block;
+    width: 100px;
+    height: 100px;
+    user-select: none;
+    background: getCssVar(panel-app-login-view, avatar-url);
+    background-size: 100% 100%;
+    border: 4px solid getCssVar(color, bg, 1);
+    border-radius: getCssVar(border, radius, circle);  
+  }  
+
+  // 按钮
+  .#{bem(panel-container,'',container3)}{
+    >.#{bem(row)}{
+      & > * + *{
+        margin-left: 10px;
+      }
+
+
+      >.#{bem(col)}{
+        flex: 1;
+      }
+    }
+
+    .#{bem(panel-button)}{
+      width: 100%;
+      padding: 0;
+
+      .el-button {
+        width:100%;
+        letter-spacing: getCssVar(spacing, super-tight);
+      }
+    }
+  }
+
+}

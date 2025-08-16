@@ -1,0 +1,49 @@
+$control-appmenu-portlet: (
+  'margin': getCssVar(spacing, base-tight),
+  'border-color': getCssVar(color, primary),
+  'bg-color': getCssVar('color', 'bg', 0),
+  'padding': getCssVar(spacing, base-tight),
+);
+
+@include b(control-appmenu-portlet) {
+  @include set-component-css-var('control-appmenu-portlet', $control-appmenu-portlet);
+
+  @include e(content) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+@include b(control-appmenu-portlet-item) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: center;
+  width: calc(25% - getCssVar('control-appmenu-portlet', 'margin') * 2);
+  padding: getCssVar('control-appmenu-portlet', 'padding');
+  margin: getCssVar('control-appmenu-portlet', 'margin');
+  cursor: pointer;
+  background-color: getCssVar('control-appmenu-portlet', 'bg-color');
+
+  &::before {
+    position: absolute;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    content: '';
+    background-color: getCssVar('control-appmenu-portlet', 'border-color');
+  }
+
+}
+
+@include b(control-appmenu-portlet-group) {
+  width: 100%;
+
+  .el-collapse-item__content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+es
+lib
+out
+dist
+.idea
+.vscode

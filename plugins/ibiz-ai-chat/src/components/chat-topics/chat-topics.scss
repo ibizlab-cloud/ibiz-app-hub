@@ -1,0 +1,52 @@
+@include b(chat-topics) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 8px 0;
+
+  @include e(header) {
+    flex-shrink: 0;
+    padding: 0 8px;
+  }
+
+  @include e(main) {
+    flex-grow: 1;
+    padding: 0 8px;
+    overflow-y: auto;
+  }
+
+  @include e(empty){
+    font-size: getCssVar(font-size, regular);
+    text-align: center;
+  }
+
+  @include e(footer) {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+  }
+
+  @include e(action) {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #{getCssVar('ai-chat', 'border-color')};
+    border-radius: 2px;
+
+    &:hover {
+      color: #{getCssVar('ai-chat', 'hover-color')};
+      background-color: #{getCssVar('ai-chat', 'hover-background-color')};
+    }
+
+    > svg {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+}

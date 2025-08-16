@@ -1,0 +1,16 @@
+@include b(portlet-filter){
+    @include e('left') {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+    @include e('right') {
+        display: flex;
+        align-items: flex-end;
+        padding: getCssVar(spacing, base, tight);
+    }
+    .#{bem(portlet-layout-content)} {
+        display: flex;
+        justify-content: space-between;
+    }
+}

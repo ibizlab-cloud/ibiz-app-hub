@@ -1,0 +1,10 @@
+@include b(rate) {
+  display: flex;
+  flex-direction: row;
+  justify-content: getCssVar(form-item-container, editor-align);
+  .van-rate {
+    .van-rate__icon--full {
+      color: getCssVar(color, primary);
+    }
+  }
+}

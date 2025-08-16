@@ -1,0 +1,4 @@
+@include b(checkbox) {
+  display: flex;
+  justify-content: getCssVar(form-item-container, editor-align);
+}

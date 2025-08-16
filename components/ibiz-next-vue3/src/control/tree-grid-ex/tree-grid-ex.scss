@@ -1,0 +1,213 @@
+$control-treegridex: (
+  text-color: getCssVar(color, text, 0),
+  bg-color: transparent,
+  padding: getCssVar('spacing','none'),
+  cell-padding: getCssVar(spacing, tight),
+  selection-padding: getCssVar(spacing, base-loose),
+  row-edit-bg-color: getCssVar(color, fill, 2),
+  row-bg-color: getCssVar(color, bg, 1),
+  row-bg-color-2: getCssVar(color, bg, 0),
+  row-expand-icon-margin: getCssVar('spacing','none') getCssVar('spacing','none') getCssVar('spacing','none') getCssVar(spacing, tight),  
+);
+
+$control-treegridex-header: (
+  text-color: getCssVar(color, text, 2),
+  cell-padding: getCssVar(control-treegridex, cell-padding),
+  height: auto,
+  bg-color: rgba(#{getCssVar(grey, 1)}, 1),
+  font-size: getCssVar(font-size, regular),
+  font-weight: getCssVar(font-weight, regular),
+);
+
+$control-treegridex-content: (
+  text-color: getCssVar(control-treegridex, text-color),
+  row-height: 48px,
+);
+
+$control-treegridex-footer: (
+  text-color: getCssVar(color, text, 2),
+  bg-color: rgba(#{getCssVar(grey, 1)}, 1),
+  font-size: getCssVar(font-size, regular),
+  font-weight: getCssVar(font-weight, bold),
+);
+
+
+
+@include b(control-treegridex) {
+  @include set-component-css-var(control-treegridex, $control-treegridex);
+  @include set-component-css-var(control-treegridex-header, $control-treegridex-header);
+  @include set-component-css-var(control-treegridex-content, $control-treegridex-content);
+  @include set-component-css-var(control-treegridex-footer, $control-treegridex-footer);
+
+  #{getCssVarName("control-grid","row-edit-bg-color")}: getCssVar("control-treegridex","row-edit-bg-color");
+
+  // element表格样式压制
+  .el-table {
+    --el-table-header-bg-color: #{getCssVar(control-treegridex, header, bg-color)};
+    --el-table-border-color: transparent;
+  }
+
+  .el-table--border {
+    .el-table__cell {
+      border-right: none;
+    }
+  }
+
+  .el-table-fixed-column--right,
+  .el-table-fixed-column--left {
+    --el-bg-color: transparent;
+  }
+
+  // 去除底部border
+  .el-table td.el-table__cell,
+  .el-table th.el-table__cell.is-leaf {
+    border-bottom: none;
+  }
+
+  @include e(table) {
+    width: 100%;
+    height: 100%;
+
+    // 排序图标居中
+    .caret-wrapper {
+      justify-content: center;
+
+      & > * + *{
+        margin-top: getCssVar('spacing','super-tight')
+      }
+    }
+
+    .sort-caret {
+      position: initial;
+    }
+
+    // 清除element单元格的padding
+    &.el-table .el-table__cell {
+      padding: getCssVar('spacing','none');
+    }
+
+    // 行和列的背景色
+    &.el-table .el-table__body-wrapper tr {
+      // 普通行列背景色
+      td {
+        background: getCssVar(control-treegridex, row-bg-color);
+      }
+
+      // 偶数行列的背景色
+      &:nth-child(2n) {
+        td {
+          background-color: getCssVar(control-treegridex, row-bg-color-2);
+        }
+      }
+
+      // 悬浮行列激活色
+      &:hover td {
+        background-color: var(--el-table-row-hover-bg-color);
+      }
+
+      // 激活行列背景色
+      &.current-row td {
+        background-color: var(--el-table-current-row-bg-color);
+      }
+    }
+
+    // 表格列头样式
+    .el-table__header-wrapper {
+      .cell {
+        height: getCssVar(control-treegridex, header, height);
+        padding: getCssVar(control-treegridex, header, cell-padding);
+        font-size: getCssVar(control-treegridex, header, font-size);
+        font-weight: getCssVar(control-treegridex, header, font-weight);
+        color: getCssVar(control-treegridex, header, text-color);
+        @include overflow-wrap;
+      }
+
+      .el-table-column--selection .cell {
+        padding: getCssVar(control-treegridex, selection-padding);
+      }
+
+      // 修复表头换行排序图标错位问题
+      .is-sortable.el-table__cell {
+        .cell {
+          display: flex;
+          align-items: center;
+          justify-content: getCssVar('grid-column', 'justify-content');
+        }
+
+      }
+    }
+
+    // 表格body样式
+    .el-table__body-wrapper {
+      color: getCssVar(control-treegridex, content, text-color);
+      border-bottom: .1px solid getCssVar(color, border);
+
+      // 设置最小行高，内容多了换行要把行高撑开。
+      // 谷歌行高样式
+      .el-table__row {
+        height: getCssVar(control-treegridex, content, row-height);
+        cursor: pointer;
+
+        >td {
+          height: 0;
+          padding: getCssVar('spacing','none');
+        }
+
+        .el-table__expand-icon{
+          margin: getCssVar(control-treegridex, row-expand-icon-margin);
+        }
+      }
+
+      // 火狐行高兼容性处理
+      @-moz-document url-prefix() {
+        .el-table__row>td {
+          height: 100%;
+        }
+      }
+
+      // 单元格通用样式
+      .cell {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: getCssVar('spacing','none');
+      }
+
+      .el-table-column--selection .cell {
+        padding: getCssVar(control-treegridex, selection-padding);
+      }
+    }
+
+    // 表格列对齐样式
+    .el-table__cell.is-center {
+      #{getCssVarName('grid-column', 'text-align')}: center;
+      #{getCssVarName('grid-column', 'justify-content')}: center;
+    }
+
+    .el-table__cell.is-left {
+      #{getCssVarName('grid-column', 'text-align')}: left;
+      #{getCssVarName('grid-column', 'justify-content')}: flex-start;
+    }
+
+    .el-table__cell.is-right {
+      #{getCssVarName('grid-column', 'text-align')}: right;
+      #{getCssVarName('grid-column', 'justify-content')}: flex-end;
+    }
+
+    // 行编辑popover定位需要
+    .el-scrollbar__wrap {
+      position: relative;
+    }
+
+  }
+
+
+
+
+  // 组件自身样式
+
+  width: 100%;
+  height: 100%;
+  padding: getCssVar(control-treegridex, padding);
+  background-color: getCssVar(control-treegridex, bg-color);
+}

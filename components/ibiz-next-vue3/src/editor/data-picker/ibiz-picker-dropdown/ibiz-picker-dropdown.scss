@@ -1,0 +1,120 @@
+$picker-dropdown: (
+  'height': getCssVar(editor, default, line-height),
+  'empty-bg-color': getCssVar(color, bg, 3),
+  'transfer-zindex': 1000,
+);
+
+@include b('picker-dropdown') {
+  @include set-component-css-var('picker-dropdown', $picker-dropdown);
+
+  .el-select {
+    width: 100%;
+  }
+
+  .el-input .el-input__inner {
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+    border-color: getCssVar('form-item', 'border-color');
+  }
+
+  .el-input .el-input__inner::placeholder {
+    color: getCssVar('form-item', 'placeholder-color');
+  }
+
+  .el-input.is-disabled .el-input__inner {
+    color: getCssVar('form-item', 'disabled-color');
+    border-color: getCssVar('form-item', 'disabled-border-color');
+  }
+
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar(form-item, readonly-color);
+  }
+
+  @include e(action-item) {
+    color: getCssVar(color, link);
+    text-align: center;
+  }
+
+  @include e(empty) {
+    padding: 0;
+    #{getCssVarName(no-data, min-height)}: 100px;
+
+    --el-empty-image-width: 100px;
+  }
+
+  @include e(transfer) {
+    @include set-component-css-var('picker-dropdown', $picker-dropdown);
+
+    z-index: getCssVar(picker-dropdown, transfer-zindex)!important;
+    @include when(empty) {
+      .el-select-dropdown__item {
+        height: auto;
+        padding: 0;
+      }
+      .#{bem(no-data)} {
+        background-color: getCssVar(picker-dropdown, empty-bg-color);
+      }
+    }
+  }
+
+  @include e(hidden-input){
+    position: relative;
+    z-index: -9999; 
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    opacity: 0;
+  }
+}
+
+// 表单下的编辑器默认显示，悬浮上去显示编辑器
+@include b(picker-dropdown-form-default-content){
+  display: none;
+}
+
+@include b(form-item){
+
+  @include b(picker-dropdown) {
+    @include when(show-default){
+      // 悬浮显示编辑器
+      &:hover{
+        @include b(picker-dropdown-form-default-content){
+          display: none;
+        }     
+        @include b(picker-dropdown-select){
+          display: block;    
+        }       
+      }    
+      
+      // 不悬浮时显示信息态
+      @include b(picker-dropdown-form-default-content){      
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);        
+        font-family: Arial, sans-serif;;      
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);            
+      }
+      @include b(picker-dropdown-select){
+        display: none;  
+      }
+      
+      // 输入态
+      @include when(editable){
+        @include b(picker-dropdown-form-default-content){
+          display: none;
+        }     
+        @include b(picker-dropdown-select){
+          display: block;    
+        }  
+      }
+    }
+
+  }
+}

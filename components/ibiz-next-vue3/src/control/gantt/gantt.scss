@@ -1,0 +1,181 @@
+@include b(control-gantt) {
+  width: 100%;
+  height: 100%;
+
+  .xg-root {
+    // 背景
+    --gantt-bg: var(--ibiz-color-bg-1);
+    --gantt-bg-hover: var(--ibiz-color-disabled-border);
+    --gantt-bg-active: var(--ibiz-color-disabled-border);
+    --gantt-bg-checkmark: transparent;
+    --gantt-bg-toolbar-item-hover: var(--ibiz-color-primary-light-default);
+
+    // 阴影
+    --gantt-shadow: var(--ibiz-color-shadow);
+    --gantt-shadow-toolbar-item: var(--ibiz-color-shadow);
+
+    // 边框
+    --gantt-border: var(--ibiz-color-tertiary-light-active);
+    --gantt-border-hover: var(--ibiz-color-tertiary-light-active);
+    --gantt-border-dashed: var(--ibiz-color-disabled-border);
+    --gantt-border-toolbar-item: var(--ibiz-color-border);
+    --gantt-border-separate-line: var(--ibiz-color-border);
+
+    // 文本
+    --gantt-text-0: var(--ibiz-color-text-0);
+    --gantt-text-3: var(--ibiz-color-text-3);
+
+    // 主要颜色
+    --gantt-white: var(--ibiz-color-white);
+    --gantt-black: var(--ibiz-color-black);
+    --gantt-color-primary: #{getCssVar(color, primary)};
+
+    // 警示色
+    --gantt-warning: var(--ibiz-color-warning);
+
+    .xg-table-body .xg-table-row {
+      cursor: pointer;
+
+      .xg-table-cell:not(:first-child) {
+        > div {
+          padding: getCssVar(spacing,none);
+        }
+      }
+    }
+
+    .xg-table-cell > div {
+      width: 100%;
+
+      .cell {
+        height: 100%;
+      }
+    }
+
+    // 适配滑块粘性布局
+    .xg-row.xg-gantt-row {
+      overflow: visible;
+
+      .xg-slider{
+        &.xg-slider-drag.xg-slider-level0 {
+          overflow: visible;
+        }
+
+        .xg-slider-block {
+          overflow: visible;
+        }
+
+        // 任务滑块宽度为0时不显示
+        &.is-no-width {
+          display: none;
+        }
+      }
+    }
+    .#{bem('control-gantt__slider--caption')} {
+      position: sticky;
+      left: 8px;
+    }
+
+    // 滑块超出结束时间的总范围时
+    .is-exceeds-range {
+      .#{bem('control-gantt__slider')} {
+        &::after {
+          position: absolute;
+          right: 0;
+          z-index: 99;
+          display: block;
+          width: 16px;
+          height: 100%;
+          content: '';
+          background-color: var(--ibiz-color-primary);
+        }
+      }
+    }
+  }
+  @include m(empty) {
+    .xg-table-body {
+      height: calc(100% - 86px) !important;
+    }
+  }
+  @include e(slider) {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: getCssVar(spacing,none) getCssVar(spacing,base-tight);
+    cursor: pointer;
+    background-color: getCssVar('color', 'primary');
+    border-radius: getCssVar(border,radius,small);
+    @include m(container-title) {
+      .icon {
+        margin-right: getCssVar('spacing','extra-tight');
+      }
+
+      .number {
+        display: flex;
+        align-items: center;
+      }
+
+      .caption {
+        margin: getCssVar('spacing','tight');
+        font-size: getCssVar('font-size','header-6');
+        font-weight: getCssVar('font-weight','regular');
+      }
+    }
+    @include m(container-content) {
+      display: flex;
+      justify-content: space-between;
+
+      .caption {
+        margin: getCssVar('spacing','extra-tight');
+        color: getCssVar(color, disabled, text);
+      }
+
+      .detail {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        align-items: center;
+      }
+    }
+
+    @include m(caption) {
+      overflow: hidden;
+      color: getCssVar(color, 'primary', 'text');
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  @include e('setting') {
+    display: flex;
+    align-items: center;
+    @include m('icon') {
+      cursor: pointer;
+      fill: getCssVar('color','primary');
+    }
+  }
+
+  @include e('slider-popover') {
+    z-index: 300 !important;
+    width: auto;
+    min-width: 300px;
+    padding: 12px;
+    border: none;
+    box-shadow: getCssVar('shadow', 'elevated');
+  }
+  .#{bem('tree-grid-ex-field-column','','ellipsis')} {
+    .#{bem('tree-grid-ex-field-column-text-container')} {
+      min-width: 0;
+    }
+  }
+  .#{bem('tree-grid-ex-field-column-toolbar-container')} {
+    flex-shrink: 0;
+  }
+  .#{bem('tree-grid-ex-edit-column', 'editor')} {
+    min-height: 32px;
+  }
+}
+
+.xg-view-toolbar-switch-action {
+  // 文本
+  --gantt-text-switch-item: var(--ibiz-color-text-3);
+  --gantt-bg-hover-switch-item: var(--ibiz-color-bg-0);;
+}

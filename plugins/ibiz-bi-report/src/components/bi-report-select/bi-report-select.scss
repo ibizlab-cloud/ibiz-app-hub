@@ -1,0 +1,113 @@
+/* stylelint-disable selector-class-pattern */
+
+@include b(select) {
+  @include e('header') {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 46px;
+    min-height: 46px;
+    padding: 0 getCssVar(spacing,base-loose);
+    border-bottom: 1px solid getCssVar(color,border);
+    @include m('search') {
+      cursor: pointer;
+
+      &:hover{
+        color: getCssVar(color,link,hover);
+      }
+    }
+    @include m('switch-data'){
+      cursor: pointer;
+
+      &:hover{
+        color: getCssVar(color,link,hover);
+      }
+    }
+    @include m('select') {
+      cursor: pointer;
+    }
+
+    @include m('caption') {
+      flex: 1;
+    }
+    @include m('select-icon') {
+      display: flex;
+      flex: 0;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 50px;
+    }
+    @include m('search-input') {
+      flex: 1;
+      border: none;
+
+      .el-input__wrapper {
+        box-shadow: none;
+      }
+    }
+    @include m('close') {
+      flex: 0;
+      cursor: pointer;
+
+      &:hover{
+        color: getCssVar(color,link,hover);
+      }
+    }
+    @include m('cascader-list') {
+      &.el-popper {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  }
+  @include e('select-item') {
+    display: flex;
+    justify-content: space-between;
+    padding: getCssVar(spacing,base-tight);
+    cursor: pointer;
+
+    &:hover {
+      background-color: getCssVar(color,fill,0);
+    }
+    @include when('selected'){
+      color: getCssVar(color, primary, active, text);
+      background-color: getCssVar(color, primary, light, active);
+    }
+  }
+  @include e('content') {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0 getCssVar(spacing, base-tight);
+    @include m('index'){
+      flex: 1;
+      @include when('collapse'){
+        flex: 0;        
+      }
+    }
+    @include m('lat'){
+      flex: 1;
+      @include when('collapse'){
+        flex: 0;        
+      }
+    }
+    @include when('collapse'){
+      .#{bem('select','content','index')}{
+        border-bottom: 1px solid getCssVar(color,border);
+      }
+      .#{bem('select','content','lat')}{
+        @include when('show-bottom'){
+          border-bottom: 1px solid getCssVar(color,border);
+        }
+      }
+    }
+  }
+}
+@include b(select-container) {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100%;
+  border: 1px solid getCssVar(color,border);
+}

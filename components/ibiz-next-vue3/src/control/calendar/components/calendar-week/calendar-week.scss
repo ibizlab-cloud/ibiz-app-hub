@@ -1,0 +1,349 @@
+@include b(calendar-week) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  @include e(header) {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
+    min-height: 150px;
+    @include m(date-cell-first) {
+      width: 90px;
+      max-width: 90px;
+      height: 100%;
+      border-right: 1px solid getCssVar(color, border);
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+    @include m(event-cell-first) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      max-width: 90px;
+      height: 100%;
+      padding-left: 40px;
+      border-right: 1px solid getCssVar(color, border);
+    }
+    @include m(dates) {
+      display: flex;
+      justify-content: space-between;
+      width: calc(100% - 7px);
+      height: 96px;
+    }
+    @include m(date-cell) {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid getCssVar(color, border);
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+    @include m(date-week) {
+      width: 100%;
+      height: 26px;
+      margin-top: 6px;
+      text-align: center;
+    }
+    @include m(date-day) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      margin-top: 6px;
+      font-weight: 600;
+      border: none;
+      border-radius: 50%;
+
+      &.is-today {
+        color: getCssVar(color, primary, text);
+        background: getCssVar(color, primary);
+      }
+    }
+    @include m(events) {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      height: 30px;
+      overflow: hidden;
+      position: relative;
+    }
+    @include m('event-container') {
+      width: calc(100% - 97px);
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    @include m('container-scroll') {
+      display: flex;
+      height: auto;
+    }
+    @include m(event-cell) {
+      position: relative;
+      top: 0;
+      left: 0;
+      flex: 1;
+      width: 100%;
+      height: auto;
+      
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: getCssVar(calendar-week-header-event-scroll,real-height);
+        border-right: 1px solid getCssVar(color, border);
+      }
+    }
+    @include m(event-box) {
+      position: absolute;
+      display: flex;
+      min-width: 32px;
+      &:has(.#{bem('calendar-week__header--check')}) {
+        min-width: 50px;
+      }
+    }
+    @include m(event-content) {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      min-height: 22px;
+      padding-left: 4px;
+      cursor: pointer;
+      background-color: getCssVar(color, primary);
+      border: none;
+      outline: none;
+      &.is-selected-event {
+        padding-right: 20px;
+      }
+    }
+    @include m(event-summary) {
+      width: 100%;
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    @include m(resizable-handle) {
+      position: absolute;
+      bottom: -6px;
+      display: flex;
+      align-items: center;
+      width: calc(100% - 7px);
+      height: 10px;
+      cursor: row-resize;
+    }
+    @include m(resize-line) {
+      width: 100%;
+      height: 1px;
+      background-color: getCssVar(color, border);
+    }
+    @include m(check) {
+      position: absolute;
+      top: 50%;
+      right: 6px;
+      color: getCssVar(color, primary);
+      transform: translate(0, -50%);
+    }
+  }
+
+  @include e(scroll-area) {
+    flex: 1;
+    overflow: hidden scroll;
+  }
+  @include e(time-pane) {
+    position: relative;
+    display: flex;
+    flex: 1 1 0%;
+    width: calc(100% - 3px);
+    height: auto;
+    @include m(time-labels) {
+      position: sticky;
+      left: 0;
+      width: 90px;
+      min-width: 90px;
+      padding: 27px 0 27px 40px;
+      border-right: 1px solid getCssVar(color, border);
+    }
+    @include m(time-label) {
+      height: 22px;
+      margin-top: 38px;
+      line-height: 22px;
+      text-align: left;
+
+      &:nth-child(1){
+        height: 22px;
+        margin-top: 22px;
+      }
+    }
+    @include m(time-columns) {
+      position: relative;
+      flex: 1;
+      padding-bottom: 60px;
+      border-right: 1px solid getCssVar(color, border);
+    }
+    @include m(time-column) {
+      height: 60px;
+      border-top: 1px solid getCssVar(color, border);
+
+      &:nth-child(1){
+        border-top: none;
+      }
+    }
+    @include m(time-column-last) {
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+    @include m(event-timed-container) {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    @include m(container-scroll) {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      overflow: hidden;
+    }
+    @include m(event-box) {
+      position: absolute;
+      width: auto;
+      height: auto;
+      padding: 0 2px;
+    }
+    @include m(event-content) {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      overflow: hidden;
+      line-height: 100%;
+      text-align: left;
+      cursor: pointer;
+      border: none;
+      outline: none;
+
+      &.is-selected-event {
+        border: 1px solid getCssVar(color, primary);
+      }
+    }
+    @include m(event-summary) {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &>span {
+        margin-right: 4px;
+      }
+    }
+
+  }
+
+  // 面板项popper
+  @include e(event-popover) {
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 0;
+
+    &.el-popover.el-popper {
+      padding: 8px;
+    }
+
+    // 当配置了 showdetail 参数，只有配置了布局面板时才会显示气泡
+    &:has(.#{bem('control-calendar-item-default')}) {
+      display: none !important;
+    }
+
+    @include m(body) {
+      width: auto;
+      height: auto;
+      overflow: hidden;
+    }
+    @include m(scroll) {
+      width: auto;
+      min-width: 200px;
+      height: auto;
+      max-height: 80%;
+      overflow: auto;
+      pointer-events: none;
+      
+      .#{bem('control-calendar-item')} {
+        &:last-child {
+          margin-bottom: 0;
+        }
+        @include when(active) {
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+    }
+    @include m(close) {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: none;
+      cursor: pointer;
+
+      &:hover {
+        .el-icon {
+          background: getCssVar(color, primary);
+          border-radius: 50%;
+
+          svg {
+            fill: getCssVar(color, white);
+          }
+        }
+      }
+    }
+
+    .el-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      min-height: 24px;
+      font-size: 20px;
+
+      svg {
+        fill: var(--el-text-color-secondary);
+      }
+    }
+  }
+}
+
+@include b('calendar-week-scroll-bar'){
+    position: absolute;
+    top: getCssVar(calendar-week-header-event-scroll-bar,thumb-top);
+    right: 0;
+    z-index: 10;
+    width: 4px;
+    height: 100%;
+    border-radius: getCssVar(border-radius,extra-small);
+    @include e('thumb'){
+        width: 4px;
+        height: getCssVar(calendar-week-header-event-scroll-bar,thumb-height);
+        cursor: pointer;
+        background-color: getCssVar(color, fill, 2);
+        border-radius: getCssVar(border-radius,extra-small);
+    }
+}

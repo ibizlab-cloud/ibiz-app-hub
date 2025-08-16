@@ -1,0 +1,27 @@
+/* 搜索表单 start */
+$control-searchform: (
+  'bg-color': transparent,
+  'padding': getCssVar('spacing', 'tight') getCssVar('spacing', 'base'),
+);
+
+@include b(control-searchform-buttons) {
+  @include flex(row, flex-end, center);
+
+  flex-shrink: 0;
+  height: 100%;
+  margin-top: getCssVar(spacing, tight);
+  margin-left: getCssVar(spacing, tight);
+  text-align: right;
+}
+
+@include b(control-searchform) {
+  @include set-component-css-var('control-searchform', $control-searchform);
+
+  display: flex;
+  padding: getCssVar('control-searchform', 'padding');
+  background-color: getCssVar('control-searchform', 'bg-color');
+
+  >.#{bem(form-page)} {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,11 @@
+dist
+loader
+node_modules
+scripts
+src/assets
+www
+.prettierrc.js
+package.json
+stencil.config.ts
+tsconfig.json
+yarn.lock

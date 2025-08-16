@@ -1,0 +1,27 @@
+$style-9: (
+    'offsetY': 0,
+);
+
+@include b(custom-border) {
+  @include set-component-css-var(style-9, $style-9);
+
+  @include when(style-9) {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    @include e(border-svg) {
+      @include m(container) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - getCssVar(style-9,'offsetY'));
+      }
+    }
+    @include e(content) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

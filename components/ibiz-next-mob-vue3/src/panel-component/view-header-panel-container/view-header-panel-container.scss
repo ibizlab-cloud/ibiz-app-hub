@@ -1,0 +1,18 @@
+$panel-component-view-header: ('bg-color': getCssVar(color, bg, 1),
+    'back-font-size': getCssVar('font-size', 'header', 3),
+    'back-padding': 0 getCssVar('spacing', 'tight'),
+    'back-width' : rem(40px), 'back-height' : 100%,
+    'color':getCssVar('color', 'text', 0),
+);
+
+@include b('view-header') {
+    @include set-component-css-var('panel-component-view-header', $panel-component-view-header);
+
+    position: relative;
+    color: getCssVar('panel-component-view-header', 'color');
+    background-color: getCssVar('panel-component-view-header', 'bg-color');
+
+    @include m(precut-back) {
+        padding-left: getCssVar('panel-component-view-header', 'back-width');
+    }
+}

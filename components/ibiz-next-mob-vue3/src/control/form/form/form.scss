@@ -1,0 +1,12 @@
+$control-form: (
+  'bg-color': getCssVar(color, bg, 1)
+);
+
+@include b(control-form) {
+  @include set-component-css-var('control-form', $control-form);
+}
+
+@include b(control-form) {
+  width: 100%;
+  background-color: #{getCssVar('control-form', 'bg-color')};
+}

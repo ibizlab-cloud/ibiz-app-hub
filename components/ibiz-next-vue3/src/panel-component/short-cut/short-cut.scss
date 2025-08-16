@@ -1,0 +1,153 @@
+@include b('short-cut') {
+  position: fixed;
+  right: getCssVar(spacing, base, loose);
+  bottom: getCssVar(spacing, base, loose);
+  z-index: 2;
+  display: flex;
+  padding: getCssVar(spacing, extra, tight);
+  background: getCssVar(color, bg, 1);
+  border: 1px solid getCssVar(color, border);
+  border-radius: getCssVar(border, radius, small);
+  box-shadow: 0 0 getCssVar(spacing, base) #00000014;
+
+  @include when('conceal') {
+    visibility: hidden;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    font-size: getCssVar(width, icon, medium);
+  }
+
+  @include e('operate') {
+    cursor: pointer;
+
+    .el-tooltip__trigger {
+      padding: getCssVar(spacing, tight);
+      line-height: 20px;
+
+      &:hover {
+        color: getCssVar(color, primary);
+        background-color: getCssVar(color, primary, light, default);
+        border-radius: getCssVar(border, radius, extra, small);
+      }
+    }
+  }
+
+  @include e('more') {
+    .more-icon {
+      margin-left: getCssVar(spacing, tight);
+    }
+  }
+
+  @include e('recover') {
+    margin-left: getCssVar(spacing, extra-tight);
+
+    .recover-icon {
+      transform: translate(0, 3px);
+    }
+  }
+
+  @include e('item') {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center flex-start;
+    align-items: center;
+    cursor: pointer;
+
+    .drag-icon {
+      display: none;
+    }
+
+    .drag-icon,
+    .caption-icon,
+    .expand-icon {
+      margin-right: getCssVar(spacing, tight);
+    }
+
+    .close-icon {
+      visibility: hidden;
+
+      &:hover {
+        color: getCssVar(color, danger, hover);
+      }
+    }
+    @include m('caption') {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      .drag-icon {
+        display: block;
+      }
+
+      .caption-icon {
+        display: none;
+      }
+
+      .close-icon {
+        visibility: visible;
+      }
+    }
+    @include when('hidden') {
+      display: none;
+    }
+  }
+
+  @include e('draggable') {
+    @include when('horizontal') {
+      display: flex;
+      @include e('item') {
+        min-width: 90px;
+        max-width: 150px;
+        padding: 0 getCssVar(spacing, base, tight);
+        border-right: 1px solid getCssVar(color, border);
+
+        .close-icon {
+          position: absolute;
+          right: 0;
+          padding-right: getCssVar(spacing, tight);
+          background-color: getCssVar(color, bg, 1);
+          box-shadow: -10px 0 20px 8px getCssVar(color, bg, 1);
+        }
+      }
+    }
+    @include when('vertical') {
+      max-height: 400px;
+      overflow-y: auto;
+      @include e('item') {
+        width: 225px;
+        height: 44px;
+        padding: getCssVar(spacing, tight) getCssVar(spacing, base, loose);
+
+        &:hover {
+          background-color: getCssVar(color, fill, 1);
+        }
+      }
+    }
+    + .#{bem('short-cut', 'more')} {
+      margin-left: getCssVar(spacing, extra-tight);
+    }
+  }
+
+  // popover垂直样式
+  @include e('popover') {
+    .icon {
+      flex-shrink: 0;
+      font-size: getCssVar(width, icon, medium);
+    }
+
+    &.el-popover.el-popper {
+      padding: getCssVar(spacing, base, tight) 0;
+    }
+    @include e('action-item') {
+      width: 225px;
+      height: 44px;
+      padding: getCssVar(spacing, tight) getCssVar(spacing, base, loose);
+    }
+  }
+}

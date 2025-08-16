@@ -1,0 +1,215 @@
+@include b('bi-quarter-range-select') {
+    @include e('date-panel') {
+      display: flex;
+      height: 80px;
+
+      @include m('left') {
+        flex: 1;
+      }
+
+      @include m('left-header') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        padding: 0 getCssVar(spacing, base-loose);
+        color: getCssVar(color, primary, light, active);
+        border-bottom: 1px solid getCssVar(color, border);
+
+        svg {
+          color: getCssVar(color, black);
+          cursor: pointer;
+
+          &:hover {
+            color: getCssVar(color, primary);
+          }
+        }
+      }
+
+      @include m('left-content') {
+        padding: getCssVar(spacing, tight) getCssVar(spacing, base-loose);
+      }
+
+      @include m('left-item') {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: getCssVar('height-control', 'default');
+        height: getCssVar('height-control', 'default');
+        margin-left: 0;
+        margin-left: getCssVar(spacing, loose);
+        cursor: pointer;
+        border-radius: getCssVar(border-radius, small);
+
+        &::before {
+          position: absolute;
+          right: var(--ibiz-height-control-default);;
+          display: inline-block;
+          width: getCssVar(spacing, loose);
+          height: 100%;
+          content: '';
+        }
+
+        @include when('include') {
+          background: getCssVar(color, secondary, light-default);
+        }
+
+        @include when('selected') {
+          color: getCssVar(color, primary, text);
+          background-color: getCssVar(color, primary);
+
+          @include when('curquarter') {
+            color: getCssVar(color, primary, text);
+          }
+        }
+
+        @include when('hoverinclude') {
+          background: getCssVar(color, secondary, light-default);
+
+          @include when('include') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+
+          @include when('selected') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+
+          @include when('hover') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+
+          @include when('selected') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+        }
+
+        @include when('hover') {
+          color: getCssVar(color, primary);
+
+          @include when('selected') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+        }
+
+        @include when('curquarter') {
+          font-weight: bold;
+          color: getCssVar(color, primary);
+        }
+
+        @include when('curquarter') {
+          font-weight: bold;
+          color: getCssVar(color, primary);
+        }
+      }
+
+      @include m('right') {
+        flex: 1;
+      }
+
+      @include m('right-header') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        padding: 0 getCssVar(spacing, base-loose);
+        color: getCssVar(color, primary, light, active);
+        border-bottom: 1px solid getCssVar(color, border);
+
+        svg {
+          color: getCssVar(color, black);
+          cursor: pointer;
+
+          &:hover {
+            color: getCssVar(color, primary);
+          }
+        }
+      }
+
+      @include m('right-content') {
+        padding: getCssVar(spacing, tight) getCssVar(spacing, base-loose);
+      }
+
+      @include m('right-item') {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: getCssVar('height-control', 'default');
+        height: getCssVar('height-control', 'default');
+        margin-left: getCssVar(spacing, loose);
+        cursor: pointer;
+        border-radius: getCssVar(border-radius, small);
+
+        &::before {
+          position: absolute;
+          right: var(--ibiz-height-control-default);
+          display: inline-block;
+          width: getCssVar(spacing, loose);
+          height: 100%;
+          content: '';
+        }
+
+        @include when('include') {
+          background: getCssVar(color, secondary, light-default);
+        }
+
+        @include when('selected') {
+          color: getCssVar(color, primary, text);
+          background-color: getCssVar(color, primary);
+
+          @include when('curquarter') {
+            color: getCssVar(color, primary, text);
+          }
+        }
+
+        @include when('hoverinclude') {
+          background: getCssVar(color, secondary, light-default);
+
+          @include when('include') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+
+          @include when('selected') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+
+          @include when('hover') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+
+          @include when('selected') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+        }
+
+        @include when('hover') {
+          color: getCssVar(color, primary);
+
+          @include when('selected') {
+            color: getCssVar(color, primary, text);
+            background-color: getCssVar(color, primary);
+          }
+        }
+
+        @include when('curquarter') {
+          font-weight: bold;
+          color: getCssVar(color, primary);
+        }
+
+        @include when('curquarter') {
+          font-weight: bold;
+          color: getCssVar(color, primary);
+        }
+      }
+    }
+}

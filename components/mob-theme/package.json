@@ -1,0 +1,68 @@
+{
+  "name": "@ibiz-template/mob-theme",
+  "version": "3.0.0",
+  "description": "移动端主题样式库",
+  "type": "module",
+  "main": "lib/index.cjs",
+  "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./es/index.mjs",
+      "require": "./lib/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "watch": "ibiz-temp build -w",
+    "build": "ibiz-temp build -c && vue-tsc --declaration --emitDeclarationOnly",
+    "pub": "ibizlab pub -m /root/workspace/template/FrontPresetModel/frontmodelbackend-core/src/main/resources/model/front/model/ibiz -t ./template -o ./src/publish --app MobFrontModel --clean",
+    "publish:next": "npm run build && npm publish --access public --tag=next",
+    "publish:dev": "npm run build && npm publish --access public --tag=dev",
+    "publish:beta": "npm run build && npm publish --access public --tag=beta",
+    "publish:npm": "npm run build && npm publish --access public --registry=https://registry.npmjs.org/"
+  },
+  "author": "iBiz",
+  "license": "MIT",
+  "devDependencies": {
+    "@ibiz-template/theme": "workspace:*",
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@ibiz-template/cli": "0.3.0",
+    "@ibizlab/cli": "^0.2.18",
+    "@types/fs-extra": "^11.0.2",
+    "@types/node": "^20.8.3",
+    "@types/qs": "^6.9.8",
+    "@types/ramda": "^0.29.6",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "fs-extra": "^11.1.1",
+    "prettier": "^3.0.3",
+    "sass": "^1.69.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-ali": "^1.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recess-order": "^4.3.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-scss": "^5.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11",
+    "vue-tsc": "^1.8.16"
+  },
+  "dependencies": {
+    "@ibiz-template/runtime": "workspace:*"
+  }
+}

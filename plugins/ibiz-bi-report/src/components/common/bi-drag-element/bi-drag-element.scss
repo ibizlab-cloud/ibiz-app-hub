@@ -1,0 +1,152 @@
+@include b('drag-element') {
+  height: auto;
+
+  @include e('content') {
+    padding: getCssVar(spacing, extra-tight);
+    border-radius: getCssVar(border-radius, small);
+    @include when('draging') {
+      border: 1px dashed getCssVar(color, danger);
+      @include when('success') {
+        border-color: getCssVar(color, success);
+      }
+    }
+  }
+  @include e('item') {
+    cursor: move;
+  }
+  @include e('error-tip') {
+    display: none;
+    font-size: getCssVar(font-size, small);
+    color: getCssVar(color, danger);
+    @include when('visible') {
+      display: block;
+    }
+  }
+
+  @include e('no-select') {
+    width: 100%;
+    height: 36px;
+    padding-left: getCssVar('spacing', 'base-tight');
+    margin: getCssVar('spacing', 'extra-tight') 0;
+    line-height: 36px;
+    color: getCssVar(color, disabled, text);
+    background-color: getCssVar(color, disabled, bg);
+    border: 1px dashed getCssVar(color, border);
+    border-radius: getCssVar(border, radius, small);
+    @include when('empty_error') {
+      font-size: getCssVar(font-size, small);
+      border: 1px dashed getCssVar(color, danger);
+    }
+  }
+  @include e('content') {
+    width: 100%;
+    height: 1000%;
+    overflow: auto;
+
+    @include m('item') {
+      display: flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 getCssVar('spacing', 'base-tight');
+      margin: getCssVar('spacing', 'tight') 0;
+      background-color: getCssVar(color, primary, light, default);
+      border-radius: getCssVar(border, radius, small);
+
+      svg {
+        margin-right: getCssVar('spacing', 'base');
+        font-size: getCssVar('font-size', 'header-6');
+        color: getCssVar(color, primary, hover);
+        vertical-align: middle;
+      }
+
+      .#{bem('drag-element','content','text')} {
+        flex: 1;
+      }
+
+      &:hover {
+        cursor: unset;
+        background-color: getCssVar(color, fill, 0);
+        .#{bem('drag-element','content','icon')} {
+          visibility: visible;
+        }
+      }
+    }
+    @include m('icon') {
+      cursor: pointer;
+      visibility: hidden;
+    }
+  }
+  @include e('empty') {
+    display: none;
+    color: getCssVar('color', danger);
+    @include when('error') {
+      display: block;
+    }
+  }
+  @include e('actions-pop') {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  @include e('actions') {
+    .#{bem('icon')} {
+      margin-right: var(--ibiz-spacing-tight);
+    }
+    @include m('expand-item') {
+      display: flex;
+      align-items: center;
+      width: 32px;
+      color: getCssVar(color, primary, hover);
+      cursor: pointer;
+
+      svg {
+        margin-right: getCssVar('spacing', 'tight');
+      }
+    }
+    @include m('group-item') {
+      display: flex;
+      align-items: center;
+      padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'base-tight');
+      cursor: pointer;
+
+      svg {
+        margin-right: getCssVar('spacing', 'tight');
+      }
+
+      &:hover {
+        background-color: getCssVar(color, fill, 0);
+      }
+
+      @include when('delete') {
+        &:hover {
+          color: getCssVar(color, danger);
+          background-color: getCssVar(color, fill, 0);
+        }
+      }
+    }
+    @include m('item-text'){
+      flex: 1;
+    }
+  }
+  @include e('editor') {
+    @include m('icon') {
+      color: getCssVar(color, primary, hover);
+    }
+  }
+  @include e('aggmode') {
+    @include m('text') {
+      opacity: 0.5;
+    }
+  }
+  @include e('cordon'){   
+    &.el-dialog {
+      max-height:660px;
+      overflow: hidden;
+    }
+  }
+}
+
+.ibiz-quick-edit{
+  .ibiz-date-range-select{
+    padding: getCssVar(spacing,tight);
+  }
+}

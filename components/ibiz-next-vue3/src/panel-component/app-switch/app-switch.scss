@@ -1,0 +1,47 @@
+$app-switch: (
+    'icon-width': 36px,
+    'icon-height': 36px,
+    'icon-padding': 0 getCssVar('spacing', 'tight'),
+    'icon-font-size': getCssVar(font-size, header-2),
+    'icon-color': getCssVar(color, text, 0),
+    'dropdown-min-width': 250px,
+    'dropdown-item-height': 40px,
+);
+
+@include b('app-switch') {
+    @include set-component-css-var('app-switch', $app-switch);
+
+    @include e('icon') {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: getCssVar('app-switch', 'icon-width');
+        height: getCssVar('app-switch', 'icon-height');
+        padding: getCssVar('app-switch', 'icon-padding');
+        font-size: getCssVar('app-switch', 'icon-font-size');
+        color: getCssVar('app-switch', 'icon-color');
+        cursor: pointer;
+    }
+
+    @include e('dropdown') {
+        @include set-component-css-var('app-switch', $app-switch);
+
+        min-width: getCssVar('app-switch', 'dropdown-min-width');
+    }
+
+    @include e('item') {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: getCssVar('app-switch', 'dropdown-item-height');
+        font-size: getCssVar(font-size, regular);
+        white-space: nowrap;
+
+        @include when('active') {
+            background-color: getCssVar(color, primary, active) !important;
+        }
+    }
+
+
+}

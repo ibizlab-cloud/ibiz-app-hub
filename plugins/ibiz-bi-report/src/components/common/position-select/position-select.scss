@@ -1,0 +1,30 @@
+@include b('position-select') {
+  display: flex;
+  flex-wrap: wrap;
+  @include e('item') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 0 12px 8px 0;
+    font-size: 16px;
+    color: #fafafa;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid #6698ff;
+    }
+    @include when('selected') {
+      background-color: #eff4ff;
+      border: 1px solid #6698ff;
+    }
+    @include when('disabled'){
+      cursor: no-drop;
+      background-color: #fafafa;
+      border: none;
+    }
+  }
+}

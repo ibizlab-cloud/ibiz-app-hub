@@ -1,0 +1,65 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable order/properties-order */
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable scss/double-slash-comment-empty-line-before */
+.xg-table-cell {
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  border-right: 1px solid var(--gantt-color-border);
+
+  &:nth-last-child(1) {
+    border-right: 0;
+  }
+
+  & > div {
+    width: calc(100% - 12px);
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    padding: 0 6px;
+
+    .prefix {
+      display: inline-block;
+      height: 100%;
+
+      .drag-icon {
+        cursor: move;
+      }
+
+      .expand-icon {
+        margin-right: 4px;
+        cursor: pointer;
+        transform: rotate(0);
+        // transform-origin: bottom;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .expand-icon__expanded {
+        transform: rotate(90deg);
+      }
+
+      .level-block {
+        display: inline-block;
+      }
+    }
+
+    .cell {
+      width: 100%;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+
+    .cell-center {
+      text-align: center;
+    }
+
+    .cell-ellipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

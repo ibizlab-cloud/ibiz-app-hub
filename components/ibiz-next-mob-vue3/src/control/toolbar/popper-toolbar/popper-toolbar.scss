@@ -1,0 +1,47 @@
+@include b(popper-toolbar) {
+    flex-direction: column;
+    @include e(item) {
+        margin: 0.25rem 0;
+    }
+    &.#{bem('control-toolbar')} {
+        position: fixed;
+        right: var(--van-back-top-right);
+        bottom: calc(50px + var(--van-back-top-bottom));
+        z-index: 99;
+        height: auto;
+    }
+
+    .van-popover {
+        --van-popup-background: transparent;
+        --van-popover-light-background: transparent;
+        --van-popover-action-width: 80px;
+
+        max-height: unset;
+
+        .van-popover__content {
+            overflow: visible;
+            box-shadow: none;
+        }
+
+        .van-popover__content--horizontal .van-popover__action {
+            padding: 0 0.25rem;
+        }
+
+        .van-popover__content--vertical {
+            .van-popover__action {
+                padding: 0;
+                margin: 0.25rem 0;
+            }
+        }
+    }
+
+    .van-button {
+        min-width: rem(44px);
+    }
+    .van-button__text {
+        display: flex;
+        align-items: center;
+        gap: getCssVar(spacing, extra, tight);
+        white-space: nowrap;
+    }
+}

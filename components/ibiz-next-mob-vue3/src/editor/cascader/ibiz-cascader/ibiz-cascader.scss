@@ -1,0 +1,34 @@
+@include b(cascader) {
+  height: 100%;
+
+  .van-field {
+    font-size: getCssVar('form-item', 'font-size');
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .van-cell--clickable:active {
+    background-color: transparent;
+  }
+
+  @include m(disabled) {
+    color: getCssVar('form-item', 'disabled-color');
+
+    --van-field-input-text-color: #{getCssVar('form-item', 'disabled-color')};
+  }
+
+  @include m(readonly) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'readonly-color')};
+
+    color: getCssVar('form-item', 'readonly-color');
+  }
+
+  input {
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+  &.#{bem('cascader','','readonly')} {
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+}

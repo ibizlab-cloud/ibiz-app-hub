@@ -1,0 +1,26 @@
+@include b(chat-back-bottom) {
+    position: absolute;
+    z-index: 5;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: getCssVar(font-size, header, 6);
+    color: getCssVar(ai-chat, color, 2);
+    cursor: pointer;
+    background-color: getCssVar(ai-chat, background, color, 2);
+    border-radius: getCssVar(border-radius, circle);
+
+    &:hover {
+        background-color: getCssVar(ai-chat, hover, background, color, 2);
+    }
+
+    @include e(icon) {
+        font-size: 20px;
+    }
+
+    @include when(visible) {
+        display: flex;
+    }
+}

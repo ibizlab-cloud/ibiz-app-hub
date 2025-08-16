@@ -1,0 +1,30 @@
+@include b('flow-drtab'){
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: getCssVar(color,bg,0);;
+    @include e('container'){
+        display: flex;
+        flex-direction: column;
+        gap: getCssVar(spacing,base);
+    }
+    @include e('tab-item'){
+        background-color: getCssVar(color,bg,1);
+        border-radius: getCssVar(border-radius,medium);
+        @include m('label'){  
+            padding: getCssVar(spacing,base);
+            font-size: getCssVar(font-size,header-5);
+            border-bottom: 1px solid getCssVar(color,fill,1);
+        }
+        @include m('tab-view'){
+            padding:getCssVar(spacing,tight) 0;
+        }
+    }
+    @include e('counter'){
+        font-size: getCssVar(font-size,regular);
+        text-align: center;
+    }
+    .#{bem('flow-drtab')}{
+        background-color: inherit;
+    }
+}

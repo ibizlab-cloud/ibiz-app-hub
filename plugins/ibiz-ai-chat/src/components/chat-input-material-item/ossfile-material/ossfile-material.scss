@@ -1,0 +1,36 @@
+@include b(ossfile-material) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+@include b(ossfile-material-left) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@include b(ossfile-material-right) {
+    width: calc(100% - 24px);
+    height: 100%;
+    padding-left: 8px;
+}
+
+@include b(ossfile-material__name) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@include b(ossfile-material__metadata) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px;
+
+    > div{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+    }
+}

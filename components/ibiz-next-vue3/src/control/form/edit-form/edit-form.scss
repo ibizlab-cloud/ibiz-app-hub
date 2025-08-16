@@ -1,0 +1,12 @@
+@include b(control-edit-form) {
+  width: 100%;
+  height: 100%;
+  padding-bottom: getCssVar(spacing, tight);
+
+  @include when(item-filter) {
+    .#{bem(control-form)} {
+      overflow-y: auto;
+      height: calc(100% - 32px);
+    }
+  }
+}

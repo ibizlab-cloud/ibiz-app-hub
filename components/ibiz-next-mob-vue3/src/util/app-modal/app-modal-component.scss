@@ -1,0 +1,49 @@
+$modal: ('z-index': getCssVar('z-index', 'modal'),
+);
+
+@include b(modal) {
+  @include set-component-css-var('modal', $modal);
+
+  top: 50%;
+  max-height: 100vh;
+
+  --van-padding-md: 0;
+  --van-dialog-radius: 0;
+
+  @include e(close) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: getCssVar('font-size', 'header-5');
+    left: getCssVar('font-size', 'header-5');
+    background-color: transparent;
+    z-index: 1;
+    color: getCssVar('color-text', '3');
+    font-size: getCssVar('font-size', 'header-3');
+    padding: 0;
+    &.van-button {
+      border: none;
+      width: getCssVar('font-size', 'header-3');
+      height: getCssVar('font-size', 'header-3');
+      &>.van-button__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &.van-dialog {
+    overflow: visible;
+  }
+  .van-dialog__header {
+    padding-top: 0;
+    position: relative;
+    min-height: 1px;
+  }
+  .van-dialog__content {
+    height: 100%;
+    overflow: hidden;
+  }
+}

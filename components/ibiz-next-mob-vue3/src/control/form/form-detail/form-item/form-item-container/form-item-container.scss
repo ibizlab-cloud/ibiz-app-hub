@@ -1,0 +1,258 @@
+$form-item-container: (
+  label-width: rem(130px),
+  line-height: getCssVar(form-item, line-height),
+  require-mark-color: getCssVar(color, danger),
+  container-padding: getCssVar(spacing, base),
+  left-container-padding: getCssVar(spacing, base),
+  error-margin-top: getCssVar(spacing, extra-tight),
+  bg-color: getCssVar(color, bg, 1),
+  label-font-size: getCssVar(font-size, header-6),
+  label-text-color: getCssVar(color, text, 0),
+  container-error-padding: 0 getCssVar(spacing, base),
+  editor-padding: getCssVar(spacing, tight) getCssVar(spacing, none)
+    getCssVar(spacing, tight) getCssVar(spacing, none),
+  border: rem(1px) getCssVar(color, border) solid,
+  border-radius: rem(4px),
+);
+
+$form-item-label: (
+  line-height: 1,
+  font-size: getCssVar(font-size, header-5),
+  text-color: getCssVar(color, text, 0),
+);
+
+// 表单项基础样式
+@include b(form-item-container) {
+  @include set-component-css-var('form-item-container', $form-item-container);
+  @include set-component-css-var('form-item-label', $form-item-label);
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: getCssVar(form-item-container, container-padding);
+
+  // margin: getCssVar(form-item-container, container-margin);
+  font-size: getCssVar(form-item, font-size);
+  background-color: getCssVar(form-item-container, bg-color);
+  border-width: calc(100% - getCssVar(spacing, base) * 2);
+  border-radius: getCssVar(border-radius, small);
+
+  @include when(show-underLine) {
+    &::after {
+      position: absolute;
+      z-index: 1;
+      width: calc(100% - getCssVar(spacing, base) * 2);
+      height: rem(1px);
+      content: '';
+      background-color: getCssVar(color, border);
+      transform: scaleY(0.5);
+    }
+  }
+
+  @include when(show-border) {
+    .#{bem(form-item-container, editor)} {
+      margin-top: rem(4px);
+      min-height: calc(
+        getCssVar(form-item, line-height) + 2 * getCssVar(spacing, tight)
+      );
+      outline: getCssVar(form-item-container, border);
+      border-radius: getCssVar(form-item-container, border-radius);
+      padding: getCssVar(spacing, tight);
+    }
+    &.#{bem(form-item-container, '', bottom)} {
+      .#{bem(form-item-container, editor)} {
+        margin-top: 0;
+        margin-bottom: rem(4px);
+      }
+    }
+  }
+
+  @include e(popover) {
+    &.van-popover {
+      font-size: getCssVar(font-size, header-6);
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      table tr td,
+      table tr th {
+        border: 1px solid getCssVar(color, border);
+        padding: getCssVar(spacing, extra-tight) getCssVar(spacing, tight);
+      }
+    }
+
+    @include m(content) {
+      overflow: auto;
+      max-height: 30vh;
+      padding: getCssVar(spacing, tight);
+
+      a {
+        color: getCssVar(color, link);
+      }
+    }
+  }
+
+  @include e(label) {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    position: relative;
+    width: getCssVar(form-item-container, label-width);
+    overflow: visible;
+    color: getCssVar(form-item-label, text-color);
+    height: getCssVar(form-item, line-height);
+    line-height: getCssVar(form-item, line-height);
+
+    @include m('icon') {
+      padding-right: getCssVar(spacing, extra-tight);
+    }
+
+    span {
+      @include utils-ellipsis;
+      display: inline-block;
+      width: 100%;
+      font-size: getCssVar(form-item-container, label-font-size);
+      text-align: getCssVar(form-item-container, label-align);
+    }
+  }
+
+  // 编辑器
+  @include e(editor) {
+    width: 100%;
+    text-align: getCssVar(form-item-container, editor-align);
+    min-height: calc(
+      getCssVar(form-item, line-height) + 2 * getCssVar(spacing, tight)
+    );
+    #{--van-cell-line-height}: getCssVar(form-item, line-height);
+    #{--van-cell-line-height}: getCssVar(form-item, line-height);
+
+    .van-cell {
+      padding-bottom: 0;
+    }
+
+    ::placeholder {
+      color: getCssVar('form-item', 'placeholder-color');
+      -webkit-text-fill-color: getCssVar('form-item', 'placeholder-color');
+    }
+  }
+
+  // 必填图标 *
+  @include when(required) {
+    @include e(label) {
+      &::before {
+        position: absolute;
+        top: rem(3px);
+        left: rem(-10px);
+        display: inline-block;
+        height: 100%;
+        font-size: rem(14px);
+        color: getCssVar(form-item, error-color);
+        content: '*';
+      }
+    }
+  }
+
+  // 错误border
+  &.is-error {
+    &::after {
+      background-color: getCssVar(form-item, error-color);
+    }
+  }
+
+  // 错误border
+  &.is-error {
+    @include b(form-item-container-content) {
+      border-color: getCssVar('form-item', 'error-color');
+    }
+  }
+}
+
+@include b(form-item-container) {
+  @include m(left) {
+    .#{bem(form-item-container, editor)} {
+      min-height: getCssVar(form-item, line-height);
+    }
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  @include m(right) {
+    .#{bem(form-item-container, editor)} {
+      min-height: getCssVar(form-item, line-height);
+    }
+    &::after {
+      bottom: 0;
+    }
+
+    // 必填图标 * 兼容右侧标题
+    @include when(required) {
+      @include e(label) {
+        &::before {
+          right: rem(-10px);
+          left: auto;
+        }
+      }
+    }
+  }
+}
+
+// label 和编辑器同一行时 编辑器宽度
+@include b(form-item-container) {
+  @include m(right) {
+    @include e(editor) {
+      position: relative;
+      width: calc(100% - getCssVar('form-item-container', 'label-width'));
+    }
+  }
+
+  @include m(left) {
+    @include e(editor) {
+      width: calc(100% - getCssVar('form-item-container', 'label-width'));
+    }
+  }
+
+  @include m(top) {
+    @include e(editor) {
+      padding: getCssVar(form-item-container, editor-padding);
+    }
+  }
+
+  @include m(bottom) {
+    @include e(editor) {
+      padding: getCssVar(form-item-container, editor-padding);
+    }
+  }
+
+  @include e(label) {
+  }
+}
+
+// border
+@include b(form-item-container-content) {
+  position: relative;
+}
+
+// 控制布局方向
+.#{bem('form-item-container', '', 'left')},
+.#{bem('form-item-container', '', 'right')} {
+  .#{bem('form-item-container-content')} {
+    height: 100%;
+
+    @include flex(row, center, center);
+  }
+}
+
+// 错误提示信息
+@include b(form-item-container-error) {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - getCssVar('spacing', 'base'));
+  padding-right: getCssVar('spacing', 'base');
+  font-size: getCssVar('form-item', 'error-font-size');
+  line-height: getCssVar('form-item', 'font-size');
+  color: getCssVar('form-item', 'error-color');
+  text-align: getCssVar('form-item-container', 'editor-align');
+}

@@ -1,0 +1,70 @@
+$control-dataview: (text-color: getCssVar(color, text, 0),
+  item-padding: rem(10px),
+  padding: getCssVar(spacing, base-tight) getCssVar(spacing, base),
+  card-margin:getCssVar(spacing, base-tight),
+  item-margin: calc( getCssVar(spacing, base, tight) / 2 ),
+  pagination-height: var(--van-pagination-height),
+);
+
+@include b(control-dataview-item) {
+  padding: getCssVar(control-dataview, item-padding);
+  // 主题缺失，后续补充
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  background-color: getCssVar(control-dataview, item-bg-color);
+  color: getCssVar(control-dataview, item-font-color);
+  &:hover {
+    background-color: getCssVar(control-dataview,
+      item-hover-color
+    );
+  }
+  @include when(active) {
+    background-color: getCssVar(control-dataview,
+      item-active-color
+    );
+  }
+}
+
+@include b(control-dataview) {
+  @include set-component-css-var(control-dataview, $control-dataview);
+
+  height: 100%;
+  --van-card-thumb-size: auto;
+  overflow: getCssVar(control, overflow);
+
+  @include e(content) {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    padding: getCssVar(control-dataview, padding);
+
+    &>*{
+      margin: getCssVar(control-dataview, item-margin);
+      flex: none;
+    }
+  }
+
+  .van-card:not(:first-child) {
+    margin-top: getCssVar(control-dataview, card-margin);
+  }
+
+  @include e(item-row) {
+    width: 100%;
+  }
+  @include e(item-col) {
+    margin: getCssVar(control-dataview, item-margin) 0;
+  }
+
+  @include when(enable-page) {
+    .#{bem(control-dataview, content)} {
+      height: calc(100% -  getCssVar(control-dataview, pagination-height));
+    }
+  }
+
+  @include e(load-more) {
+    @include flex(row, center, center);
+    height: getCssVar(control-dataview, pagination-height);
+    cursor: pointer;
+    color: getCssVar(color, link);
+  }
+}

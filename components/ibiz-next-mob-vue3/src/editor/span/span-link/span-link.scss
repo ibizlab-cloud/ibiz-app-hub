@@ -1,0 +1,12 @@
+@include b(span-link) {
+  color: getCssVar('form-item', 'hover-color');
+  cursor: pointer;
+  text-align: getCssVar(form-item-container, editor-align);
+
+  @include m(disabled) {
+    cursor: not-allowed;
+  }
+  @include m(readonly) {
+    color: getCssVar('form-item', 'readonly-color');
+  }
+}

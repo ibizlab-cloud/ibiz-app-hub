@@ -1,0 +1,225 @@
+// 取消菜单通用样式
+@mixin cancel-btn-style {
+  color: getCssVar(color, text, 3);
+  background-color: transparent;
+
+  &:hover{
+    color: getCssVar(color, primary);
+    background-color: transparent;
+  }
+}
+
+@include b(search-groups){
+  @include flex(row, flex-start, center);
+
+  height: 100%;
+
+  @include b(search-groups-quick-group-item){
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    padding:  getCssVar(spacing, tight);
+    margin-right: getCssVar(spacing, tight);
+    font-size: getCssVar(font-size, regular);
+    cursor: pointer;
+    @include when(selected){
+      &::after{
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        content: "";
+        background-color: getCssVar(color, primary);
+      }
+    }
+
+    &:hover{
+      color: getCssVar(color, primary);
+    }
+  }      
+}
+
+// 更多下拉框
+@include b(search-groups-dropdown){  
+  .el-dropdown-menu__item{
+    width: 180px;
+    @include flex(row, space-b, center);
+    
+    @include b(search-groups-item-caption){
+      display: inline-block;
+      flex: 1;
+      margin: 0 getCssVar(spacing, tight);
+
+      @include utils-ellipsis;
+    }
+  }
+}
+
+// 更多按钮
+@include b(search-groups-more){
+  @include flex(row, flex-start, center);  
+
+  padding: getCssVar(spacing, tight);
+  font-size: getCssVar(font-size, regular);
+  cursor: pointer;
+
+  &:hover{
+    color: getCssVar(color, primary);
+  }  
+
+  >ion-icon{
+    margin-left: getCssVar(spacing, extra-tight);
+  }
+
+  @include when(selected){
+    &::after{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background-color: getCssVar(color, primary);
+    }
+  }
+
+}
+
+// 管理分组
+@include b(search-groups-manage-dialog){
+  @include b(search-groups-manage-dialog-content){
+    @include b(search-groups-content-top){
+      @include flex(row, space-between, center);
+
+      @include b(search-groups-content-top-left){
+        @include flex(row, flex-start, center);
+
+        >ion-icon{
+          margin-right: getCssVar(spacing, extra-tight);
+        }
+      }
+      @include b(search-groups-content-top-right){
+        ion-icon{
+          margin-right: getCssVar(spacing, extra-tight);
+        }
+      }
+    }
+
+    @include b(search-groups-content-bottom){
+      width: 100%;
+      margin-top: getCssVar(spacing, base);
+      border: 1px solid getCssVar(color, border);      
+      @include b(search-groups-table-header){
+        @include flex(row, flex-start, center);
+
+        width: 100%;
+        background-color: getCssVar(color, tertiary, light, hover);
+
+        @include b(search-groups-name){
+          width: 40%;
+          padding: getCssVar(spacing, base-tight) getCssVar(spacing, base);
+        }
+        @include b(search-groups-show){
+          width: 30%;
+          padding: getCssVar(spacing, base-tight) getCssVar(spacing, base);          
+        }
+        @include b(search-groups-action){
+          width: 30%;
+          padding: getCssVar(spacing, base-tight) getCssVar(spacing, base);          
+        }
+      }
+
+      @include b(search-groups-table-body){
+        @include b(search-groups-table-row){
+          position: relative;
+          cursor: pointer;
+          border-bottom: 1px solid getCssVar(color, border);  
+
+          &:nth-last-child(1){
+            border-bottom: none;
+          }
+
+          @include flex(row, flex-start, center);
+
+          @include b(search-groups-name){
+            width: 40%;
+            padding: getCssVar(spacing, base-tight) getCssVar(spacing, base);
+            @include utils-ellipsis;            
+          }
+          @include b(search-groups-show){
+            width: 30%;
+            padding: getCssVar(spacing, base-tight) getCssVar(spacing, base);          
+          }
+          @include b(search-groups-action){
+            width: 30%;
+            padding: getCssVar(spacing, base-tight) getCssVar(spacing, base);    
+            
+            .el-link{
+              margin-right: getCssVar(spacing, loose);
+            }
+          }      
+          
+          &:hover{
+            background-color: getCssVar(color, primary, light, default);
+          }
+        }
+
+        @include b(search-groups-table-row-ghost){
+          background-color: getCssVar(color, primary, light, default);
+          opacity: 0.5;          
+        }
+      }
+    }
+
+  }
+}
+
+// 新建分组
+@include b(search-groups-new-dialog){
+  @include b(search-groups-new-dialog-footer){
+    @include b(search-groups-cancel-btn){
+      @include cancel-btn-style;
+    }
+  }
+}
+
+// 编辑分组
+@include b(search-groups-edit-dialog){
+  @include b(search-groups-edit-dialog-footer){
+    @include b(search-groups-cancel-btn){
+      @include cancel-btn-style;
+    }
+  }
+}
+
+// 删除分组
+@include b(search-groups-remove-dialog){
+  @include b(search-groups-remove-dialog-content){
+    margin-bottom: getCssVar(spacing, base);
+
+    > span{
+      padding: getCssVar(spacing, super-tight) getCssVar(spacing, tight);
+      margin: 0 getCssVar(spacing, tight);
+      color: getCssVar(color, danger, text);
+      background-color: getCssVar(color, danger);
+      border-radius: getCssVar(border, radius, small);
+    }
+  }
+
+  @include b(search-groups-remove-dialog-tip){
+    color: getCssVar(color, text, 3);
+  }
+}
+@include b(search-groups-remove-confirm-btn){
+  &.el-button{
+    background-color: getCssVar(color, danger);
+  }
+
+  &:hover{
+    background-color: getCssVar(color, danger, hover);
+  }
+}
+@include b(search-groups-remove-cancel-btn){
+  @include cancel-btn-style;
+}

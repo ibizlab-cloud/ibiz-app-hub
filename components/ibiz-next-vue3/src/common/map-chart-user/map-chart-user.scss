@@ -1,0 +1,27 @@
+@include b(map-chart-user){
+  position: relative;
+  min-width: 300px;
+  min-height: 300px;
+  
+  @include e(chart){
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(goback){
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    font-size: getCssVar('font-size', 'header-4');
+    color: getCssVar('color','link');
+    text-decoration:underline;
+    letter-spacing: 6px;
+    cursor: pointer;
+  }
+
+  @include e(popper) {
+    padding: getCssVar(spacing, base);
+  }
+}

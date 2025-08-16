@@ -1,0 +1,21 @@
+$form-tab-panel: (
+  'bg-color': getCssVar(color, bg, 0),
+);
+
+@include b(form-tab-panel) {
+  @include set-component-css-var('form-tab-panel', $form-tab-panel);
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: getCssVar('form-tab-panel', 'bg-color');;
+
+  @include e(caption) {
+    @include flex(row, center, center)
+  }
+  >.van-tabs__wrap {
+    margin-bottom: getCssVar(spacing, tight);
+  }
+  >.van-tabs__content {
+    padding: 0 getCssVar(spacing-extra-tight);
+  }
+}

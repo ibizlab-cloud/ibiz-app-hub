@@ -1,0 +1,25 @@
+@include b(form-mdctrl-md) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@include b(form-mdctrl-md-content) {
+  flex-grow: 1;
+  margin: 0 getCssVar('spacing', 'tight');
+}
+
+@include b(form-mdctrl-md-actions) {
+  display: flex;
+  gap: getCssVar('spacing', 'tight');
+  padding: getCssVar(spacing, tight) 0;
+  margin: 0 getCssVar('spacing', 'tight');
+
+  .van-button+.van-button {
+    margin-left: 0;
+  }
+
+  @include e(btn) {
+    width: calc(100% - getCssVar(spacing, base) * 2);
+  }
+}

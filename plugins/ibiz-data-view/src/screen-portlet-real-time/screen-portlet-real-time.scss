@@ -1,0 +1,27 @@
+$screen-portlet-real-time: (
+  'font-size': 18px,
+  'padding-left': 10%,
+  'white-space': nowrap,
+  'height': 100%,
+  'align-items': center,
+  'item-padding-right': 8px,
+);
+
+@include b(screen-portlet-real-time) {
+  @include set-component-css-var('screen-portlet-real-time', $screen-portlet-real-time);
+
+  display: flex;
+  align-items: getCssVar('screen-portlet-real-time', 'align-items');
+  height: getCssVar('screen-portlet-real-time', 'height');
+  padding-left: getCssVar('screen-portlet-real-time', 'padding-left');
+  font-size: getCssVar('screen-portlet-real-time', 'font-size');
+  color: getCssVar('screen-dashboard', 'primary-text-color');
+  white-space: getCssVar('screen-portlet-real-time', 'white-space');
+
+  @include e('left-time') {
+    padding-right: getCssVar('screen-portlet-real-time', 'item-padding-right');
+  }
+  @include e('week') {
+    padding-right: getCssVar('screen-portlet-real-time', 'item-padding-right');
+  }
+}

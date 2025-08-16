@@ -1,0 +1,12 @@
+/***    START:系统样式表    ***/
+    .large_white_bold_front{
+      color:#FFFFFFFF;font-size:28px;font-weight:bold
+    }
+    .large_white_bold_front{
+   --ibiz-font-size-regular: 28px;
+   --ibiz-editor-default-text-color:#FFFFFFFF; 
+}
+    .text-align-center{
+      text-align:center
+    }
+/***    END:系统样式表    ***/

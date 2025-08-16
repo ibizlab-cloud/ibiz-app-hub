@@ -1,0 +1,45 @@
+// 三块定义该变量的地方，要改的话一起改！ 
+// form-item, panel-field, grid-edit-item
+$form-item: (
+  'label-color': getCssVar(color, text, 1),
+  'text-color': getCssVar(color, text, 2),
+  'hover-color': getCssVar(color, text, 0),
+  'hover-bg-color': getCssVar(color, fill, 1),
+  'readonly-color': getCssVar(color, disabled, text),
+  'border-color': transparent,
+  'font-size': getCssVar(font-size, regular),
+  'placeholder-color': getCssVar(color, text, 3),
+  'disabled-color': getCssVar(color, disabled, text),
+  'disabled-bg-color': getCssVar(color, disabled, fill),
+  'disabled-border-color': getCssVar(color, disabled, border),
+  'active-bg': getCssVar(color, fill, 2),
+  'active-border': getCssVar(active, bg),
+  'focus-bg': getCssVar(color, fill, 0),
+  'focus-border': getCssVar(color, focus, border),
+  'line-height': getCssVar(editor,default,line-height),
+  'font-weight': getCssVar(font-weight, regular),
+  'hover-edit-padding': getCssVar('spacing','none') 11px,
+);
+
+$form-item-compositeItem: (
+  gap: getCssVar(spacing, tight),
+);
+
+@include b(form-item) {
+  border-color: getCssVar(color, border);
+
+  @include set-component-css-var('form-item', $form-item);
+
+
+
+  @include when(compositeItem) {
+    @include set-component-css-var('form-item-compositeItem', $form-item-compositeItem);
+    @include e('composite-separator'){
+      line-height: getCssVar(form-item-container,line-height);
+    }
+    .#{bem(form-item-container, editor)} {
+      display: flex;
+      gap: getCssVar('form-item-compositeItem', 'gap');
+    }
+  }
+}

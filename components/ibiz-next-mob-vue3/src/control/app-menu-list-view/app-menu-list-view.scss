@@ -1,0 +1,50 @@
+$control-appmenu: (list-view-icon-size: getCssVar(font-size, header-4),
+  list-view-font-size: getCssVar(font-size, regular),
+  list-view-color: getCssVar(font-size, regular),
+  list-view-padding: 0,
+  list-view-item-padding: rem(8px) rem(16px),
+  list-view-item-color: getCssVar(color, text, 1),
+);
+
+
+@include b(control-appmenu-listview) {
+  @include set-component-css-var('control-appmenu', $control-appmenu);
+
+  --van-cell-border-color: #{getCssVar(color, border)};
+  --van-divider-margin: #{rem(2px)};
+  --van-divider-border-color: transparent;
+  --van-cell-horizontal-padding: #{rem(12px)};
+  --van-cell-active-color: transparent;
+  --van-cell-right-icon-color: var(--van-gray-6);
+
+  border-radius: getCssVar(border-radius, small);
+
+  @include b(control-appmenu-item) {
+    padding: getCssVar(control-appmenu, list-view-item-padding);
+    font-size: getCssVar(control-appmenu, list-view-font-size);
+    color: getCssVar(control-appmenu, list-view-item-color);
+
+    &:last-child {
+      border-width: 0;
+    }
+  }
+
+  .van-cell::after {
+    left: 0;
+  }
+
+  @include b(control-appmenu-icon) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: getCssVar(control-appmenu, list-view-icon-size);
+    margin-right: getCssVar(spacing, tight);
+    font-size: getCssVar(control-appmenu, list-view-icon-size);
+
+    @include b(icon) {
+      display: flex;
+      align-items: center;
+    }
+
+  }
+}

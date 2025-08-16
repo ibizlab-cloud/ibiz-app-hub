@@ -1,0 +1,41 @@
+@include b(chat-search) {
+  gap: 8px;
+  width: 100%;
+  display: flex;
+  line-height: 32px;
+  border-radius: 1px;
+  padding: 1px 11px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #{getCssVar('ai-chat', 'border-color')};
+
+  &:hover {
+    border: 1px solid #{getCssVar('ai-chat', 'background-color-2')};
+  }
+
+  @include when(focus) {
+    border: 1px solid #{getCssVar('ai-chat', 'background-color-2')};
+  }
+
+  @include e(prefix) {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 14px;
+    align-items: center;
+  }
+
+  @include e(inner) {
+    padding: 0;
+    outline: 0;
+    flex-grow: 1;
+    border: none;
+    height: 28px;
+    min-width: 0;
+    color: inherit;
+    padding-top: 2px;
+    line-height: 28px;
+    background-color: initial;
+  }
+}

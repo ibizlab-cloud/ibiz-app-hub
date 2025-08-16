@@ -1,0 +1,96 @@
+@include b(control-drbar) {
+  padding: getCssVar(spacing, tight);
+  background-color: getCssVar(view, bg-color);
+
+  .van-button {
+    border: none;
+    height: 100%;
+    background-color: transparent;
+
+    .van-button__text {
+      display: flex;
+      align-items: center;
+      line-height: getCssVar(font-size, header-4);
+      font-size: getCssVar(font-size, header-4);
+      gap: getCssVar(spacing, extra-tight);
+    }
+  }
+
+  @include e(default) {
+    width: auto;
+    max-width: rem(100px);
+    .#{bem(icon)} {
+      @include flex(row, center, center);
+
+      width: getCssVar(width-icon, medium);
+      height: getCssVar(width-icon, medium);
+      font-size: getCssVar(width-icon, medium);
+    }
+    @include m(group) {
+      color: getCssVar(color, text-2);
+      padding: getCssVar(spacing, tight);
+    }
+    @include m(group-title) {
+      display: flex;
+      align-items: center;
+      gap: getCssVar(spacing, tight);
+    }
+    @include m(item-title) {
+      display: flex;
+      align-items: center;
+      gap: getCssVar(spacing, tight);
+    }
+  }
+
+  @include e(popover) {
+    @include m(group) {
+      display: flex;
+      cursor: pointer;
+      position: relative;
+      align-items: center;
+      box-sizing: border-box;
+      height: var(--van-popover-action-height);
+      padding: 0 getCssVar(spacing, base-loose);
+      font-size: getCssVar(font-size, header-5);
+      gap: getCssVar(spacing, tight);
+      color: getCssVar(color, text-2);
+    }
+    @include m(item) {
+      display: flex;
+      cursor: pointer;
+      position: relative;
+      align-items: center;
+      box-sizing: border-box;
+      height: var(--van-popover-action-height);
+      padding: 0 getCssVar(spacing, base-loose);
+      font-size: getCssVar(font-size, header-5);
+      gap: getCssVar(spacing, tight);
+
+      .#{bem(icon)} {
+        @include flex(row, center, center);
+
+        width: getCssVar(width-icon, medium);
+        height: getCssVar(width-icon, medium);
+        font-size: getCssVar(width-icon, medium);
+      }
+
+      .caption {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        gap: getCssVar(spacing, tight);
+      }
+
+      ion-icon {
+        color: getCssVar(color, primary);
+      }
+
+      @include when(disabled) {
+        cursor: not-allowed;
+        pointer-events: none;
+        color: getCssVar(color, disabled-text);
+        background-color: getCssVar(color, disabled-bg);
+      }
+    }
+  }
+}

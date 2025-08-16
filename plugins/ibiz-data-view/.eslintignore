@@ -1,0 +1,6 @@
+dist
+node_modules
+public
+vite-plugins
+vite.config.ts
+public

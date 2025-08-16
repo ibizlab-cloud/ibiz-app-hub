@@ -1,0 +1,80 @@
+$sort-bar: (
+  icon-color: getCssVar(color, disabled, text),
+  border-radius: getCssVar('border-radius', 'small')
+);
+
+@include b(sort-bar) {
+  @include set-component-css-var(sort-bar, $sort-bar);
+  @include flex(row, flex-start, center);
+
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+}
+
+@include b(sort-bar-item){
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+  margin-right: -1px;
+  font-size: getCssVar('font-size', 'regular');
+  line-height: 1;
+  color: getCssVar(color, text, 2);
+  cursor: pointer;
+  user-select: none;
+  background-color: getCssVar(color, bg, 1);
+  border: 1px solid getCssVar(color, border);
+
+
+  // 第一个和最后一个圆角
+  &:first-child{
+    border-top-left-radius: getCssVar(sort-bar, border-radius);
+    border-bottom-left-radius: getCssVar(sort-bar, border-radius);
+  }
+
+  &:last-child{
+    border-top-right-radius: getCssVar(sort-bar, border-radius);
+    border-bottom-right-radius: getCssVar(sort-bar, border-radius);
+  }
+
+  @include m(asc){
+    .#{bem('sort-bar-icon-wrapper','icon-asc')}{
+      border-bottom-color: getCssVar(color, primary);
+    }
+  }
+
+  @include m(desc){
+    .#{bem('sort-bar-icon-wrapper','icon-desc')}{
+      border-top-color: getCssVar(color, primary);
+    }
+  }
+
+}
+
+
+// 顺序图标相关样式
+@include b(sort-bar-icon-wrapper) {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 14px;
+  margin-left: getCssVar(spacing, tight);
+  vertical-align: middle;
+  
+
+  @include e(icon-asc){
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    border-bottom-color: getCssVar(sort-bar, icon-color);
+  }
+
+  @include e(icon-desc){
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    border-top-color: getCssVar(sort-bar, icon-color);
+  }
+}

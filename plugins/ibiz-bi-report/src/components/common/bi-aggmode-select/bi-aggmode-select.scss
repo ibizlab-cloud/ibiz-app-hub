@@ -1,0 +1,51 @@
+@include b('bi-aggmode-select') {
+  @include e('aggmode') {
+    display: flex;
+    justify-content: space-between;
+    @include m('text') {
+      opacity: 0.5;
+    }
+    @include m('group-item') {
+      display: flex;
+      align-items: center;
+      padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'base-tight');
+      cursor: pointer;
+
+      svg {
+        margin-right: getCssVar('spacing', 'tight');
+      }
+
+      &:hover {
+        background-color: getCssVar(color, fill, 0);
+      }
+
+      @include when('delete') {
+        &:hover {
+          color: getCssVar(color, danger);
+          background-color: getCssVar(color, fill, 0);
+        }
+      }
+    }
+  }
+  @include e('aggmode-container') {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  @include e('aggmode-list') {
+    @include m('item') {
+      display: flex;
+      align-items: center;
+      padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'base-loose');
+      cursor: pointer;
+
+      &:hover {
+        background-color: getCssVar(color, fill, 0);
+      }
+      @include when('selected') {
+        color: getCssVar(color, primary);
+        background-color: getCssVar(color, primary, light, default);
+      }
+    }
+  }
+}

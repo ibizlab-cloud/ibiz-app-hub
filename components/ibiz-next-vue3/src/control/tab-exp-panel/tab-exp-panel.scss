@@ -1,0 +1,58 @@
+$control-tabexppanel: (
+  color: getCssVar('color', 'text', 2),
+  hover-color: getCssVar('color', 'text', 0),
+  active-color: getCssVar('color', 'primary'),
+  bar-color: getCssVar('color', 'primary'),
+);
+
+@include b(control-tabexppanel) {
+  @include set-component-css-var('control-tabexppanel', $control-tabexppanel);
+
+  // 标签栏
+  .el-tabs {
+    .el-tabs__header {
+      margin: getCssVar('spacing','none');
+
+      .el-tabs__nav-wrap {
+        margin: getCssVar('spacing','none');
+
+        .el-tabs__nav {
+          .el-tabs__active-bar {
+            background-color: getCssVar(control-tabexppanel, bar-color);
+          }
+
+          .el-tabs__item {
+            font-size: getCssVar('font-size', 'regular');
+            color: getCssVar(control-tabexppanel, color);
+
+            &:hover {
+              color: getCssVar(control-tabexppanel, hover-color);
+            }
+
+            &.is-active {
+              color: getCssVar(control-tabexppanel, active-color);
+            }
+
+            &.is-top {
+              &:last-child {
+                padding-right: getCssVar('spacing','none');
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.el-tabs--top, &.el-tabs--bottom{
+      padding-left: getCssVar(spacing, base);
+    }
+  }
+
+  .el-tabs__item {
+    padding: getCssVar(spacing, base);
+  }
+
+  @include e(counter) {
+    margin-left: getCssVar(spacing, tight);
+  }
+}

@@ -1,0 +1,126 @@
+$md-ctrl-setting: (
+  'active-bg-color': getCssVar('color', 'primary', 'light', 'default'),
+  'active-color': getCssVar('color', 'primary'),
+  'popup-height': '80%',
+);
+
+@include b('md-ctrl-setting') {
+  @include set-component-css-var('md-ctrl-setting', $md-ctrl-setting);
+
+  @include e('setting') {
+    font-size: getCssVar('font-size', 'header-4');
+    cursor: pointer;
+    svg {
+      fill: var(--van-gray-6);
+    }
+  }
+
+  @include e('popup') {
+    @include set-component-css-var('md-ctrl-setting', $md-ctrl-setting);
+    height: getCssVar('md-ctrl-setting', 'popup-height');
+  }
+
+  @include e('content') {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @include m('header') {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: getCssVar('height-control', 'default');
+      padding: getCssVar('spacing', 'base');
+    }
+
+    @include m('tabs') {
+      flex: 1;
+      padding: 0 getCssVar('spacing', 'base');
+      margin-bottom: getCssVar('spacing', 'tight');
+      overflow: hidden;
+
+      .van-tabs__line {
+        display: none;
+      }
+
+      .van-tab--line {
+        min-height: var(--van-tabs-line-height);
+        border: 1px solid getCssVar('color', 'border');
+
+        &:nth-child(1) {
+          border-right: none;
+          border-radius: getCssVar('border-radius', 'small') 0 0 getCssVar('border-radius', 'small');
+
+          &.van-tab--active {
+            border: 1px solid getCssVar('md-ctrl-setting', 'active-color');
+
+            &+.van-tab--line {
+              border-left: none;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          border-radius: 0 getCssVar('border-radius', 'small') getCssVar('border-radius', 'small') 0;
+        }
+
+        &.van-tab--active {
+          font-weight: getCssVar('font-weight', 'regular');
+          color: getCssVar('md-ctrl-setting', 'active-color');
+          background-color: getCssVar('md-ctrl-setting', 'active-bg-color');
+          border-color: getCssVar('md-ctrl-setting', 'active-color');
+        }
+      }
+
+      .van-tabs__content {
+        height: 100%;
+        overflow-y: auto;
+
+        .van-cell::after {
+          right: 0;
+          left: 0;
+        }
+      }
+    }
+
+    @include m('bottom') {
+      padding: 0 getCssVar('spacing', 'tight') getCssVar('spacing', 'loose') getCssVar('spacing', 'tight');
+    }
+
+    @include m('icon') {
+      font-size: var(--van-popup-close-icon-size);
+      color: var(--van-popup-close-icon-color);
+      cursor: pointer;
+    }
+  }
+
+  @include e('list-item') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: getCssVar('height-control', 'default');
+    margin: getCssVar('spacing', 'tight') 0;
+    overflow: hidden;
+    font-size: getCssVar('font-size', 'header-6');
+
+    @include m('icon') {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    @include m('text') {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @include when('check') {
+      padding-right: getCssVar('spacing', 'extra-tight');
+      color: getCssVar('md-ctrl-setting', 'active-color');
+
+      svg {
+        fill: getCssVar('md-ctrl-setting', 'active-color');
+      }
+    }
+  }
+}

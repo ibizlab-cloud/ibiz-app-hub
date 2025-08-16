@@ -1,0 +1,17 @@
+@include b(control-appmenu) {
+  width: 100%;
+  height: 100%;
+
+  @include m(default) {
+    height: var(--van-tabbar-height);
+  }
+
+  .van-tabbar-item__icon {
+    width: var(--van-tabbar-item-icon-size);
+    font-size: getCssVar(width, icon, medium);
+  }
+}
+
+@include b(control-appmenu-nav) {
+  height: calc(100% - var(--van-tabbar-height));
+}

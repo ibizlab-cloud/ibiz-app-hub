@@ -1,0 +1,10 @@
+@include b(chat-message-item) {
+  padding: 6px 0;
+
+  .pre-wrap-container {
+    word-wrap: break-word;
+
+    /* 兼容长单词换行 */
+    white-space: pre-wrap;
+  }
+}

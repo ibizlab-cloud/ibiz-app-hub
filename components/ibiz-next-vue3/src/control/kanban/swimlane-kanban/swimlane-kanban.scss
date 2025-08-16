@@ -1,0 +1,304 @@
+$swimlane-kanban: (
+  width: 320px,
+);
+
+@include b('swimlane-kanban') {
+  @include set-component-css-var('swimlane-kanban', $swimlane-kanban);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: getCssVar('spacing', 'tight');
+
+  @include e('default') {
+    .#{bem('swimlane-kanban', 'cell')}:not(.is-collapsed) {
+      width: getCssVar('swimlane-kanban', 'width');
+    }
+  }
+
+  @include e('style2') {
+    .#{bem('swimlane-kanban', 'cell')}:not(.is-collapsed) {
+      flex: 1 0 0;
+      min-width: getCssVar('swimlane-kanban', 'width');
+    }
+  }
+
+  @include e('table') {
+    overflow: auto hidden;
+  }
+
+  @include e('header') {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: fit-content;
+    padding-right: 4px;
+    border-top: 1px solid getCssVar('color', 'border');
+    @include m('action') {
+      visibility: hidden;
+      @include when('visible') {
+        visibility: visible;
+      }
+    }
+
+    @include m('row') {
+      display: flex;
+    }
+
+    @include m('cell') {
+      .#{bem('swimlane-kanban', 'cell', 'content')} {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &:hover {
+        .#{bem('swimlane-kanban', 'header', 'action')} {
+          visibility: visible;
+        }
+      }
+      @include when('collapsed') {
+        position: relative;
+        width: 50px;
+        border-bottom: none;
+        .#{bem('swimlane-kanban', 'cell', 'content')} {
+          position: absolute;
+          top: getCssVar('spacing', 'base');
+          left: 0;
+          flex-direction: column;
+        }
+        .#{bem('swimlane-kanban', 'cell', 'left')} {
+          flex-direction: column;
+          gap: getCssVar('spacing', 'extra', 'tight');
+        }
+        .#{bem('swimlane-kanban', 'cell', 'caption')} {
+          writing-mode: tb;
+        }
+        .#{bem('swimlane-kanban', 'cell', 'separator')} {
+          margin: getCssVar('spacing', 'extra', 'tight') 0;
+        }
+      }
+    }
+
+    @include m('toolbar') {
+      .#{bem(action-toolbar)} {
+        @include flex(column);
+      }
+
+      .el-button {
+        --el-button-size: #{getCssVar(height-control, large)};
+
+        justify-content: flex-start;
+        width: 100%;
+        padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+        margin: getCssVar('spacing', 'none');
+        font-size: getCssVar('font-size', 'regular');
+        color: getCssVar(color, primary, text);
+
+        ion-icon {
+          margin-right: getCssVar(spacing, extra, tight);
+        }
+      }
+
+      .el-button.is-text:not(.is-disabled) {
+        &:hover {
+          background-color: var(--el-button-hover-bg-color);
+          border-color: var(--el-button-hover-border-color);
+        }
+      }
+    }
+
+    @include m('popper') {
+      &.el-popper {
+        &.el-dropdown__popper {
+          .el-scrollbar__view {
+            &.el-dropdown__list {
+              padding: getCssVar('spacing', 'extra', 'tight')
+                getCssVar('spacing', 'none');
+              background-color: getCssVar('color', 'white');
+            }
+          }
+
+          .el-button {
+            color: getCssVar('color', 'text', 2);
+
+            --el-button-bg-color: #{getCssVar('color', 'white')};
+            --el-button-hover-bg-color: #{getCssVar('color', 'fill', 0)};
+            --el-button-active-bg-color: #{getCssVar('color', 'fill', 0)};
+            --el-button-text-color: #{getCssVar('color', 'text', 2)};
+            --el-button-hover-text-color: #{getCssVar('color', 'primary')};
+            --el-button-active-text-color: #{getCssVar('color', 'primary')};
+
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
+  @include e('body') {
+    width: 100%;
+    min-width: fit-content;
+    height: calc(100% - 66px);
+    padding-bottom: getCssVar('spacing', 'extra', 'tight');
+    overflow: hidden scroll;
+
+    @include m('row') {
+      display: flex;
+      @include when('expand') {
+        .#{bem('swimlane-kanban', 'cell')} {
+          height: auto;
+          min-height: 200px;
+          padding: getCssVar('spacing', 'tight');
+        }
+      }
+
+      &:not(.is-expand) {
+        .#{bem('swimlane-kanban', 'cell')}:not(.is-collapsed) {
+          border-right: none;
+        }
+      }
+    }
+
+    @include m(cell) {
+      &:first-child {
+        .#{bem('swimlane-kanban', 'cell', 'content')} {
+          display: flex;
+          align-items: start;
+          justify-content: space-between;
+        }
+      }
+      @include when('collapsed') {
+        width: 50px;
+        min-width: 50px;
+        border-right: 1px solid getCssVar('color', 'border');
+        border-bottom: none;
+      }
+
+      &:has(+ .is-collapsed) {
+        border-right: 1px solid getCssVar('color', 'border') !important;
+      }
+    }
+  }
+
+  @include e('cell') {
+    padding: getCssVar('spacing', 'base') getCssVar('spacing', 'tight');
+    border-right: 1px solid getCssVar('color', 'border');
+    border-bottom: 1px solid getCssVar('color', 'border');
+
+    @include m('expand-icon') {
+      display: flex;
+      align-items: center;
+      margin-right: getCssVar('spacing', 'tight');
+      font-size: getCssVar('font-size', 'header-6');
+      color: getCssVar('color', 'text', 3);
+      cursor: pointer;
+    }
+
+    @include m('content') {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include m('left') {
+      display: flex;
+      align-items: center;
+    }
+
+    @include m('right') {
+      display: flex;
+      align-items: center;
+    }
+
+    @include m('toolbar') {
+      margin: getCssVar('spacing', 'tight');
+      visibility: hidden;
+    }
+
+    @include m('separator') {
+      margin: 0 getCssVar('spacing', 'extra', 'tight');
+    }
+
+    @include m('description') {
+      font-size: getCssVar('font-size', 'regular');
+      color: getCssVar('color', 'text', '3');
+    }
+
+    &:hover {
+      .#{bem('swimlane-kanban', 'cell', 'toolbar')} {
+        visibility: visible;
+      }
+    }
+  }
+
+  @include e('card') {
+    margin: getCssVar('spacing', 'tight');
+    cursor: pointer;
+    border-radius: getCssVar('spacing', 'super', 'tight');
+
+    @include when('disabled') {
+      cursor: no-drop;
+    }
+
+    @include when('selected') {
+      background-color: getCssVar(color, fill, 0);
+    }
+  }
+
+  @include e('default-item') {
+    @include m('footer') {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: getCssVar('spacing', 'tight');
+      margin-top: getCssVar('spacing', 'tight');
+      border-top: 1px solid getCssVar('color', 'border');
+    }
+    @include m('actions') {
+      display: flex;
+      justify-content: center;
+      .#{bem(action-toolbar, item)} {
+        margin: 0;
+      }
+      .#{bem(action-toolbar, item, label)} {
+        &.is-has-caption {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @include e('batch') {
+    padding: getCssVar(spacing, base, tight);
+    border-bottom: 1px solid getCssVar(color, border);
+    @include m('toolbar') {
+      flex-wrap: wrap;
+      row-gap: getCssVar(spacing, tight);
+    }
+    @include m('check') {
+      @include flex(row, space-between, center);
+
+      margin-top: getCssVar(spacing, base, tight);
+      font-size: getCssVar('font-size', regular);
+    }
+
+    @include m('info') {
+      span {
+        margin: getCssVar('spacing', 'none') getCssVar(spacing, extra, tight);
+        color: getCssVar(color, primary);
+      }
+    }
+  }
+
+  @include e('scrollbar') {
+    .el-scrollbar__view {
+      width: 100%;
+    }
+  }
+
+  @include e('quicktoolbar') {
+    flex-flow: column nowrap;
+    gap: getCssVar(spacing, tight);
+    align-items: center;
+    justify-content: center;
+  }
+}

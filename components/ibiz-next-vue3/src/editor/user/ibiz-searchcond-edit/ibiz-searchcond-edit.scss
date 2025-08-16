@@ -1,0 +1,13 @@
+@include b(searchcond-edit){
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: getCssVar(form-item, font-size);
+  font-weight: getCssVar(form-item, regular);  
+
+  @include b(searchcond-edit-filter){
+    position: absolute;
+    top: getCssVar(spacing, tight);
+    right: getCssVar(spacing, tight);
+  }
+}

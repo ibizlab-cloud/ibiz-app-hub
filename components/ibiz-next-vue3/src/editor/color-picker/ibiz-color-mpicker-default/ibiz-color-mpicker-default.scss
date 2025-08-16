@@ -1,0 +1,59 @@
+$color-picker: (
+  padding-20: getCssVar(spacing,base-loose),
+  padding-12: getCssVar(spacing,base-tight),
+  padding-2: getCssVar(spacing,super-tight),
+);
+@include b('color-mpicker-default-picker'){
+  width: 100%;
+}
+@include b(color-mpicker-default-template-color-picker) {
+  @include set-component-css-var(color-picker, $color-picker);
+
+  width: 100%;
+  margin-top: getCssVar(spacing, base-tight);
+
+  .el-select__prefix {
+    display: flex;
+  }
+  @include e(icon) {
+    display: block;
+    width: calc(
+      getCssVar('color-picker', 'padding-12') + getCssVar('color-picker', 'padding-2')
+    );
+    height: calc(
+      getCssVar('color-picker', 'padding-12') + getCssVar('color-picker', 'padding-2')
+    );
+    margin-right: getCssVar('spacing', 'tight');
+    border-radius: getCssVar(border, radius, extra, small);
+
+    &:last-of-type {
+      margin-right: getCssVar('spacing', 'none');
+    }
+  }
+}
+@include b(color-mpicker-default-template-color-picker-option) {
+  display: flex;
+  align-items: center;
+}
+
+.el-popper.is-light {
+  @include b(color-mpicker-default-popper) {
+    .el-select-dropdown__list {
+      margin: getCssVar('spacing', 'base-tight') getCssVar('spacing', 'none') !important;
+    }
+
+    .el-select-dropdown__item {
+      height: getCssVar('height-control', 'large');
+      padding: getCssVar('spacing', 'none') getCssVar('spacing', 'base-loose');
+      line-height: getCssVar('height-control', 'large');
+
+      &.selected {
+        background-color: getCssVar(color, primary, light, default);
+      }
+    }
+  }
+}
+
+@include b('color-mpicker-default-popper'){
+  @include set-component-css-var(color-picker, $color-picker);
+}

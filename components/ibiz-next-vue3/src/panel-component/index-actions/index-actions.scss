@@ -1,0 +1,54 @@
+$index-actions: (
+  'height': 58px,
+  'collapse-item-height': 48px,
+);
+
+// 默认样式
+@include b(index-actions) {
+  @include set-component-css-var('index-actions', $index-actions);
+
+  width: 100%;
+  height: getCssVar(index-actions, height);
+
+  >.#{bem('row')} {
+    height: 100%;
+    overflow: visible;
+
+    >.#{bem('col')} {
+      &:first-child {
+        overflow: visible;
+
+        >.#{bem(panel-container)} {
+          >.#{bem('row')} {
+            overflow: visible;
+          }
+        }
+      }
+    }
+  }
+
+  @include when(hidden) {
+    display: none;
+  }
+
+  @include when(collapse){
+    position: relative;
+    height: auto;
+    padding: 0;
+    >.#{bem('row')} {
+      flex-wrap: wrap;
+      >.#{bem('col')} {
+        height: getCssVar(index-actions, collapse-item-height) !important;
+      }
+    }
+  }
+
+  // 按钮样式
+  .el-button {
+    font-size: getCssVar('font-size', 'header-2');
+  }
+
+  .el-button:hover {
+    background-color: transparent;
+  }
+}

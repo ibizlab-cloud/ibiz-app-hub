@@ -1,0 +1,32 @@
+@include b(internal-message-json) {
+  @include flex(column);
+
+  @include e(content) {
+    flex-grow: 1;
+  }
+
+}
+
+@include b(internal-message-json-todo) {
+  width: 90%;
+  height: 100%;
+
+  @include b(internal-message-json__header) {
+    @include flex(row, space-between, center);
+
+    margin-bottom: getCssVar('spacing', 'tight');
+
+    @include b(internal-message-json__title) {
+      font-size: getCssVar('font-size', 'regular');
+      font-weight: getCssVar('font-weight', 'regular');
+      color: getCssVar(color, text, 1);
+    }
+  }
+
+  @include b(internal-message-json__content) {
+    font-size: getCssVar('font-size', 'small');
+    color: getCssVar(color, text, 3);
+  }
+
+
+}

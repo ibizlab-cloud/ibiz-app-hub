@@ -1,0 +1,28 @@
+@include b(advance-search) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: getCssVar('spacing', 'base');
+  overflow: auto;
+  @include e('header') {
+    display: flex;
+    align-items: center;
+    height: getCssVar('height-control', 'large');
+    padding: 0 0 getCssVar('spacing', 'base');
+    overflow: hidden;
+    font-size: getCssVar('font-size', 'header-4');
+    white-space: nowrap;
+    cursor: move;
+  }
+  @include e('search-form') {
+    width: 100%;
+    height: calc(100% - #{getCssVar('height-control', 'large')} * 2);
+    overflow: auto;
+  }
+  @include e('footer') {
+    display: flex;
+    justify-content: flex-end;
+    padding: getCssVar('spacing', 'base') 0 0 0;
+  }
+}

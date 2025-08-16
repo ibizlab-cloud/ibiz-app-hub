@@ -1,0 +1,69 @@
+/* control-appmenu 菜单 start */
+$control-appmenu-iconview: (
+  'icon-width': 20px,
+  'icon-height': 20px,
+  'icon-margin': 0 5px 0 0,
+  'selected-color': getCssVar('color', 'primary'),
+  'selected-bg-color': getCssVar('color', 'primary', 'light-9'),
+  'selected-border-color': getCssVar('color', 'primary'),
+  'hover-color': getCssVar('color', 'primary'),
+  'hover-bg-color': getCssVar('color', 'white'),
+  'hover-border-color': getCssVar('color', 'primary'),
+  'disabled-color': getCssVar('disabled', 'text-color'),
+  'disabled-bg-color': getCssVar('disabled', 'bg-color'),
+  'disabled-border-color': getCssVar('disabled', 'border-color'),
+  'padding': getCssVar('padding'),
+  'font-size': getCssVar('font-size', 'base'),
+  'color': getCssVar('text-color'),
+);
+
+@include b(control-appmenu-iconview) {
+  @include set-component-css-var('control-appmenu-iconview', $control-appmenu-iconview);
+  @include e(content){
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@include b(control-appmenu-iconview-item){
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 135px;
+  height: 135px;
+  margin: 15px;
+  font: getCssVar('control-appmenu-iconview','font-size');
+  color: getCssVar('control-appmenu-iconview','color');
+  cursor: pointer;
+  border: 1px solid getCssVar('border-color');
+
+  @include e(icon){
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+    font-size: 50px;
+  }
+
+  &:hover {
+    color: getCssVar('control-appmenu-iconview','hover-color');
+    background-color: getCssVar('control-appmenu-iconview','hover-bg-color');
+    border-color: getCssVar('control-appmenu-iconview','hover-border-color');
+  }
+
+  @include when(disabled) {
+    color: getCssVar('control-appmenu-iconview','disabled-color');
+    cursor: not-allowed;
+    background-color: getCssVar('control-appmenu-iconview','disabled-bg-color');
+    border-color: getCssVar('control-appmenu-iconview','disabled-border-color');
+  }
+}
+
+@include b(control-appmenu-iconview-group){
+ .el-collapse-item__content{
+  display: flex;
+  flex-wrap: wrap;
+ }
+}
+

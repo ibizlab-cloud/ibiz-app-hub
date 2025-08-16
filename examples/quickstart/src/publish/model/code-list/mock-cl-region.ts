@@ -1,0 +1,16 @@
+export default {
+  codeListTag: 'mock__cl_region',
+  codeListType: 'DYNAMIC',
+  codeName: 'mock__cl_region',
+  emptyText: '未定义',
+  minorSortDir: 'ASC',
+  minorSortAppDEFieldId: 'sort',
+  appDEDataSetId: 'fetch_default',
+  appDataEntityId: 'web.region',
+  pvalueAppDEFieldId: 'parent_id',
+  textAppDEFieldId: 'name',
+  valueAppDEFieldId: 'id',
+  enableCache: true,
+  name: '地区',
+  id: 'web.mock__cl_region',
+};

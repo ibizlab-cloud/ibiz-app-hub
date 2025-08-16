@@ -1,0 +1,172 @@
+/* stylelint-disable selector-class-pattern */
+@include b('bi-chart-cordon'){
+  display: flex;
+  flex-direction: column;
+  max-height: 560px;
+  padding: 24px;
+  overflow: hidden;
+  @include e('header'){
+    display: flex;
+    flex: 0;
+    align-items: center;
+    justify-content: space-between;    
+    font-size: 16px;
+    @include m('close') {
+      cursor: pointer;
+  
+      &:hover {
+        color: getCssVar(color, primary);
+      }
+    }
+  }
+  @include e('content'){
+    flex: 1;
+    margin: getCssVar(spacing,tight) 0 ;
+    overflow: auto; 
+  
+    @include m('item'){
+      margin-top: getCssVar(spacing,base);
+    }
+    @include m('item-header'){
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 44px;
+      padding: 4px 12px 4px 20px;
+      background-color: getCssVar(color,fill,0);
+      border:1px solid   getCssVar(color,border);
+      border-bottom: none;
+      border-top-left-radius: getCssVar(border-radius,small);
+      border-top-right-radius: getCssVar(border-radius,small);
+    }
+    @include m('item-editor'){
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: getCssVar(spacing,base);
+      border: 1px solid getCssVar(color,border);
+      border-bottom-right-radius: getCssVar(border-radius,small);
+      border-bottom-left-radius: getCssVar(border-radius,small);
+    }
+    @include m('line-set'){
+      display: flex;
+      gap: 8px;
+
+      >.el-input{
+        width: 50%;
+      }
+
+      .ibiz-font-border-select{
+        width: 50%;
+      }
+
+      .ibiz-font-border-select__bottom-content{
+        display: flex;
+        gap: 8px;
+
+        .ibiz-font-border-select__input-number{
+          flex: 1;
+        }
+      }
+    }
+    @include m('line-type'){
+      >.el-select{
+        display: inline-block;
+        width: calc(50% - 4px);
+      }
+
+      >.el-input{
+        display: inline-block;
+        width: calc(50% - 4px);
+        height: 32px;
+        margin-left: 8px;
+
+        .el-input__wrapper{
+          width: 100%;
+        }
+      }
+    }
+    @include m('add'){
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      margin-top: 16px;
+      cursor: pointer;
+      background-color: getCssVar('color',white);
+      border: 1px solid getCssVar('color',border);
+      border-radius:  getCssVar(border-radius,small);
+
+      &:hover{
+        background-color: getCssVar(color,fill,0);
+        border-color: getCssVar('color',primary);
+      }
+
+      svg{
+        &:hover{
+          color: getCssVar(color,primary,light,active);
+        }
+      }
+    }
+    @include m('item-delete'){
+      width: 32px;
+      height: 32px;
+      padding: 8px;
+      cursor: pointer;
+      border-radius: getCssVar(border-radius,small);
+      opacity: 0.7;
+
+      &:hover{
+        color: getCssVar(color,danger);
+        background-color: getCssVar(color,danger,light-hover);
+  
+      }
+    }
+  }
+  @include e(input-number-suffix) {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    place-content: center center;
+    align-items: center;
+    cursor: pointer;
+    border-left: 1px solid #eee;
+    border-radius: 0 4px 4px 0;
+  }
+  
+  @include e(input-number-suffix-add) {
+    width: 21px;
+    height: 17px;
+  
+    &.readonly {
+      cursor: not-allowed;
+    }
+  
+    > svg {
+      position: absolute;
+      right: 4px;
+    }
+  }
+  @include e(input-number-suffix-minus) {
+    width: 21px;
+    height: 17px;
+    border-top: 1px solid #eee;
+    border-bottom-right-radius: 4px;
+  
+    &.readonly {
+      cursor: not-allowed;
+    }
+  
+    > svg {
+      position: absolute;
+      right: 4px;
+    }
+  }
+  @include e('footer'){
+    display: flex;
+    flex: 0;
+    justify-content: end;
+    margin-top: getCssVar(spacing, base-tight);
+  }
+}

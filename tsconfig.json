@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2017",
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

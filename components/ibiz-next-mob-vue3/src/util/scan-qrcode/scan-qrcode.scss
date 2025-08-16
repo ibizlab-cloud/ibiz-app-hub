@@ -1,0 +1,99 @@
+$scan-qrcode: (
+  'background-image-bg': rgb(136 176 255 / 10%),
+  'bg-mask': rgb(0 0 0 / 50%),
+);
+
+@include b('scan-qrcode') {
+  
+  @include set-component-css-var('scan-qrcode', $scan-qrcode);
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background: getCssVar('scan-qrcode', 'bg-mask');
+
+  @include e('scanner') {
+    position: absolute;
+    inset: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    background-color: getCssVar('scan-qrcode', 'bg-mask');
+  }
+
+  @include e('line-box') {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 75vw;
+    max-width: 75vh;
+    height: 75vw;
+    max-height: 75vh;
+    overflow: hidden;
+    border: 1px solid getCssVar(color, primary);
+    transform: translate(-50%, -50%);
+
+    @include m('row') {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      overflow: hidden;
+      background-image: linear-gradient(0deg,
+          transparent 24%,
+          getCssVar('scan-qrcode', 'background-image-bg') 25%,
+          getCssVar('scan-qrcode', 'background-image-bg') 26%,
+          transparent 27%,
+          transparent 74%,
+          getCssVar('scan-qrcode', 'background-image-bg') 75%,
+          getCssVar('scan-qrcode', 'background-image-bg') 76%,
+          transparent 77%,
+          transparent),
+        linear-gradient(90deg,
+          transparent 24%,
+          getCssVar('scan-qrcode', 'background-image-bg') 25%,
+          getCssVar('scan-qrcode', 'background-image-bg') 26%,
+          transparent 27%,
+          transparent 74%,
+          getCssVar('scan-qrcode', 'background-image-bg') 75%,
+          getCssVar('scan-qrcode', 'background-image-bg') 76%,
+          transparent 77%,
+          transparent);
+      background-position: -1rem -1rem;
+      background-size: 3rem 3rem;
+      border-bottom: 1px solid getCssVar('scan-qrcode', 'background-image-bg');
+      animation: height-change 2s infinite;
+      animation-timing-function: cubic-bezier(0.53, 0, 0.43, 0.99);
+      animation-delay: 1.4s;
+    }
+
+    @include m('line') {
+      width: 100%;
+      height: rem(3px);
+      background: getCssVar(color, primary);
+      filter: blur(rem(4px));
+    }
+  }
+
+  @include e('close') {
+    position: absolute;
+    top: getCssVar('spacing', 'base');
+    left: getCssVar('spacing', 'base');
+    color: getCssVar(color, white);
+    font-size: getCssVar('font-size', 'header-3');
+    cursor: pointer;
+  }
+
+
+
+  @keyframes height-change {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: 100%;
+    }
+  }
+}

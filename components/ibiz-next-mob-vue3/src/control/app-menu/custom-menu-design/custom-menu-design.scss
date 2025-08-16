@@ -1,0 +1,75 @@
+@include b(menu-design) {
+  width: 100%;
+  height: 100%;
+  padding: getCssVar(spacing, base);
+  background-color: getCssVar(color, fill, 2);
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: getCssVar(font-size, header, 5);
+    @include m(close-icon) {
+      font-size: getCssVar(font-size, header, 3);
+    }
+    @include m(caption) {
+      font-weight: getCssVar(font-weight, bold);
+    }
+    @include m(save) {
+      color: getCssVar(color, primary);
+    }
+  }
+
+  @include e(group) {
+    @include m(caption) {
+      color: getCssVar(color, text, 2);
+      padding: getCssVar(spacing, base) 0;
+    }
+  }
+
+  @include e(draggable) {
+    padding: getCssVar(spacing, base, tight);
+    border-radius: getCssVar(border-radius, medium);
+    background-color: getCssVar(color, bg, 1);
+
+    @include m(icon) {
+      font-size: getCssVar(font-size, header, 3);
+      &.#{bem(menu-design, draggable, prefix-icon)} {
+        margin-right: getCssVar(spacing, tight);
+      }
+      &.#{bem(menu-design, draggable, remove-icon)} {
+        color: getCssVar(color, danger);
+      }
+      &.#{bem(menu-design, draggable, add-icon)} {
+        color: getCssVar(color, primary);
+      }
+    }
+
+    @include m(item) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: getCssVar(width, icon, medium);
+    }
+
+    @include m(item-content) {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: getCssVar(spacing, base, tight) 0;
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+
+    @include m(item-caption) {
+      display: flex;
+      align-items: center;
+    }
+
+    @include m(item-icon) {
+      display: flex;
+      align-items: center;
+      width: var(--van-tabbar-item-icon-size);
+      margin-right: getCssVar(spacing, tight);
+    }
+  }
+}

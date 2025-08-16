@@ -1,0 +1,45 @@
+@include b('bi-sort'){
+    padding: getCssVar(spacing,base) 0;
+    @include e('item'){
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 32px;
+      padding : 0 getCssVar(spacing,loose) 0 getCssVar(spacing,base);
+      cursor: pointer;
+      
+      &:hover{
+        background-color: getCssVar(color,fill,0);
+        .#{bem('bi-sort','item','icon')}{
+          display: block;
+        }
+      }
+      @include m('label'){
+        font-size: getCssVar('font-size',regular);
+      }
+      @include m('icon'){
+        font-size: getCssVar('font-size',header,5);
+
+        svg g path{
+          color: getCssVar(color,tertiary,light,active);
+        }
+        @include when('no-sort'){
+          visibility: hidden;
+        }
+        @include when('asc'){
+          visibility: visible;
+
+          svg g path:first-child{
+            color: getCssVar(color,primary,light,active);
+          }
+        }
+        @include when('desc'){
+          visibility: visible;
+
+          svg g path:last-child{
+            color: getCssVar(color,primary,light,active);
+          }
+        }
+      }
+    }
+  }

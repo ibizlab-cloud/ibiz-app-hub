@@ -1,0 +1,16 @@
+$control-dashboard: (
+    'dashboard-margin': getCssVar('spacing', 'tight'),
+    portlet-header-height: rem(40px),
+);
+
+@include b(control-dashboard) {
+    @include set-component-css-var('control-dashboard', $control-dashboard);
+
+    height: 100%;
+    margin: getCssVar('control-dashboard', 'dashboard-margin');
+    overflow: getCssVar(control, overflow);
+
+    @include b(control-dashboard-row) {
+        gap: getCssVar('control-dashboard', 'dashboard-margin');
+    }
+}

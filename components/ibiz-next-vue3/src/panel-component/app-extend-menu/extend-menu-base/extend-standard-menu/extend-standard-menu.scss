@@ -1,0 +1,447 @@
+/* extend-standard-menu 菜单 start */
+$extend-standard-menu: (
+  'collapse-item-hover-color': getCssVar(color, primary, hover, text),
+  'collapse-item-padding': getCssVar(spacing, base),
+  'icon-width': getCssVar(width-icon, large),
+  'icon-height': getCssVar(width-icon, large),
+  'icon-margin': 0 getCssVar(spacing, tight) 0 0,
+  'text-margin': 0 0 0 getCssVar(spacing, tight),
+  'icon-position': calc(getCssVar(spacing, base) - 2px),
+  'icon-size': getCssVar(width-icon,medium),
+  'collapse-height': getCssVar(spacing, super-loose),
+  'scorll-color': getCssVar(color, scroll, menu),
+  'horizontal-height': 50px,
+  'hover-color': getCssVar(color, primary, hover, text),
+  'hover-bg-color': getCssVar(color, primary, hover),
+  'active-color': getCssVar(color, primary, active, text),
+  'active-bg-color': getCssVar(color, primary, active),
+  'color': getCssVar(color, text, menu),
+);
+
+$extend-standard-menu-item: (
+  'selected-border-color': transparent,
+  'selected-color': getCssVar(color, primary, active, text),
+  'selected-bg-color': getCssVar(color, primary, active),
+  'hover-color': getCssVar(color, primary, hover, text),
+  'hover-bg-color': getCssVar(color, primary, hover),
+  'padding': getCssVar(spacing, tight),
+  'border-radius': getCssVar(border-radius, small),
+  'border': 2px solid getCssVar(color, text, 1),
+  'font-size': getCssVar(font-size, header-6),
+  'height': 42px,
+  'gap': 2px,
+  'color': getCssVar(color, text, menu),
+  'separator-color': getCssVar(color, scroll, menu),
+  'horizontal-selected-color': getCssVar(color, primary, active, text),
+  'horizontal-selected-bg-color': getCssVar(color, primary, active),
+  'horizontal-hover-color': getCssVar(color, primary, hover, text),
+  'horizontal-hover-bg-color': getCssVar(color, primary, hover),
+  'horizontal-color': getCssVar(color, text, menu),
+  'horizontal-font-size': getCssVar(font-size, header-5),
+  'horizontal-height': 100%,
+  'horizontal-border-radius': 0,
+  'horizontal-padding': 0 getCssVar(spacing, base-loose),
+  'horizontal-padding-right': calc(getCssVar(width-icon, large) + getCssVar(spacing, base-loose)),
+  'horizontal-popup-height': 40px,
+);
+
+/* extend-standard-menu 菜单 end */
+
+// 垂直菜单项样式
+@mixin menu-item-vertical-style {
+  @include flex(row, flex-start, center);
+
+  --el-menu-base-level-padding: #{getCssVar('extend-standard-menu-item', 'padding')};
+
+  width: 100%;
+  height: getCssVar('extend-standard-menu-item', 'height');
+  font-size: getCssVar('extend-standard-menu-item', 'font-size');
+  color: getCssVar('extend-standard-menu-item', 'color');
+  white-space: nowrap;
+  border-radius: getCssVar('extend-standard-menu-item', 'border-radius');
+
+  &.is-active {
+    color: getCssVar('extend-standard-menu-item', 'selected-color') !important;
+    background-color: getCssVar('extend-standard-menu-item', 'selected-bg-color');
+  }
+
+  &:hover {
+    color: getCssVar('extend-standard-menu-item', 'hover-color');
+    background-color: getCssVar('extend-standard-menu-item', 'hover-bg-color');
+  }
+}
+
+// 水平菜单项样式
+@mixin menu-item-horizontal-style {
+  height: getCssVar('extend-standard-menu-item', 'horizontal-height');
+  padding: getCssVar('extend-standard-menu-item', 'horizontal-padding');
+  font-size: getCssVar('extend-standard-menu-item', 'horizontal-font-size');
+  line-height: getCssVar('extend-standard-menu-item', 'horizontal-height');
+  color: getCssVar('extend-standard-menu-item', 'horizontal-color');
+  white-space: nowrap;
+  border-width: 0;
+  border-radius: getCssVar('extend-standard-menu-item', 'horizontal-border-radius');
+
+  &:hover {
+    color: getCssVar('extend-standard-menu-item', 'horizontal-hover-color');
+    background-color: getCssVar(
+      'extend-standard-menu-item',
+      'horizontal-hover-bg-color'
+    );
+  }
+
+  &.is-active {
+    // element-plus 给了 !important，所以这里也要加上
+    color: getCssVar('extend-standard-menu-item', 'selected-color') !important;
+    background-color: getCssVar('extend-standard-menu-item', 'horizontal-selected-bg-color');
+    border-top: getCssVar('extend-standard-menu-item', 'border');
+  }
+}
+
+// 收缩菜单项样式
+@mixin menu-collapse-item-style {
+  @include flex-center;
+
+  padding: getCssVar(spacing, none);
+  margin-bottom: getCssVar(spacing, tight);
+
+}
+
+// 菜单项选中样式
+@mixin menu-item-selected-style {
+  color: getCssVar('extend-standard-menu-item', 'selected-color');
+  background-color: getCssVar('extend-standard-menu-item', 'selected-bg-color');
+}
+
+// 直接内容菜单项样式
+@mixin raw-item-menu-style {
+  --el-menu-hover-text-color: #{getCssVar('extend-standard-menu-item', 'color')};
+  --el-menu-hover-bg-color: transparent;
+  @include set-component-css-var('extend-standard-menu-item', $extend-standard-menu-item);
+  .#{bem('extend-standard-menu', 'rawitem')} {
+    min-height: getCssVar('extend-standard-menu-item', 'height');
+    line-height: getCssVar('extend-standard-menu-item', 'height');
+    .#{bem('rawitem')} {
+      @include flex(row, flex-start, center);
+
+      font-size: getCssVar('extend-standard-menu-item', 'font-size');
+      color: getCssVar('extend-standard-menu-item', 'color');
+
+      &>.#{bem('icon')} {
+        display: flex;
+        align-items: center;
+        width: getCssVar('extend-standard-menu', 'icon-width');
+        height: getCssVar('extend-standard-menu', 'icon-height');
+        font-size: getCssVar('extend-standard-menu','icon-size');
+      }
+
+      * {
+        @include utils-ellipsis;
+      }
+    }
+  }
+}
+
+@include b(extend-standard-menu) {
+  width: 100%;
+  height: 100%;
+
+  @include e('content') {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: getCssVar(color, primary);
+
+    @include set-component-css-var('extend-standard-menu', $extend-standard-menu);
+    @include set-component-css-var('extend-standard-menu-item', $extend-standard-menu-item);
+
+    &>.el-menu {
+      height: 100%;
+      padding: getCssVar(spacing, none) getCssVar(spacing, base);
+      overflow: hidden auto;
+      border-right: 0;
+      @include raw-item-menu-style;
+    }
+
+    .el-sub-menu {
+      .el-sub-menu__icon-arrow {
+        right: 10px;
+        width: getCssVar('extend-standard-menu', 'icon-width');
+        height: getCssVar('extend-standard-menu', 'icon-height');
+        margin-top: -10px;
+        font-size: getCssVar('extend-standard-menu', 'icon-width');
+      }
+
+      .el-menu-item {
+        padding: calc(getCssVar('extend-standard-menu', 'item-padding') * 0.875)
+          calc(getCssVar('extend-standard-menu', 'item-padding') * 2.5);
+      }
+
+      .el-sub-menu__title >.#{bem('extend-standard-menu', 'counter')} {
+        right: 30px;
+      }
+    }
+
+    // 垂直
+    .el-menu--vertical {
+      width: 100%;
+
+      // 菜单项样式
+      .el-menu-item,
+      .el-sub-menu__title {
+        @include menu-item-vertical-style;
+      }
+
+      .el-menu-item + .el-menu-item {
+        margin-top: getCssVar('extend-standard-menu-item', 'gap');
+      }
+
+      .el-sub-menu + .el-menu-item {
+        margin-top: getCssVar('extend-standard-menu-item', 'gap');
+      }
+
+      .el-sub-menu + .el-sub-menu {
+        margin-top: getCssVar('extend-standard-menu-item', 'gap');
+      }
+
+      .el-menu-item + .el-sub-menu {
+        margin-top: getCssVar('extend-standard-menu-item', 'gap');
+      }
+
+      .el-sub-menu__title + .el-menu {
+        margin-top: getCssVar('extend-standard-menu-item', 'gap');
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: getCssVar('extend-standard-menu', 'scorll-color');
+      }
+    }
+
+    // 水平
+    .el-menu--horizontal {
+      align-items: center;
+      height: 100%;
+      padding: getCssVar(spacing, none) getCssVar(spacing, base-tight);
+
+      // 水平菜单默认为ellipsis模式，无需滚动条
+      overflow-x: hidden;
+      border-bottom: none;
+
+      // 菜单项样式
+      .el-menu-item,
+      .el-sub-menu__title {
+        @include menu-item-horizontal-style;
+
+        .el-sub-menu__icon-arrow {
+          right: getCssVar('extend-standard-menu', 'icon-position');
+        }
+      }
+
+      .el-sub-menu {
+        height: getCssVar('extend-standard-menu-item', 'horizontal-height');
+
+        >.el-sub-menu__title {
+          padding-right: getCssVar('extend-standard-menu-item', 'horizontal-padding-right');
+        }
+      }
+
+      // 副菜单悬浮
+      > .el-sub-menu:hover .el-sub-menu__title {
+        color: getCssVar('extend-standard-menu-item', 'horizontal-hover-color');
+        background-color: getCssVar(
+          'extend-standard-menu-item',
+          'horizontal-hover-bg-color'
+        );
+      }
+
+      // 副菜单激活
+      > .el-sub-menu.is-active .el-sub-menu__title {
+        color: getCssVar('extend-standard-menu-item', 'horizontal-selected-color');
+        background-color: getCssVar('extend-standard-menu-item', 'horizontal-selected-bg-color');
+        border-top: getCssVar('extend-standard-menu-item', 'border');
+        border-bottom: 0;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: getCssVar('extend-standard-menu', 'scorll-color');
+      }
+
+      .el-divider--vertical {
+        border-color: getCssVar(extend-standard-menu-item, separator-color);
+      }
+    }
+    @include when('horizontal') {
+      #{getCssVarName(color, text, 0)}: getCssVar(color, primary, text);
+      #{getCssVarName(color, text, 1)}: getCssVar(color, primary, text);
+      #{getCssVarName(color, text, 2)}: getCssVar(color, primary, text);
+      #{getCssVarName(color, text, 3)}: getCssVar(color, primary, text);
+      width: 100%;
+      height: getCssVar('extend-standard-menu', 'horizontal-height');
+    } 
+
+    @include when('bottom') {
+      .el-menu--horizontal {
+        .el-menu-item.is-active,
+        .el-sub-menu.is-active .el-sub-menu__title {
+          border-top: 0;
+          border-bottom: getCssVar('extend-standard-menu-item', 'border');
+        }
+      }
+    }
+
+    @include when('collapse') {
+      &>.el-menu {
+        padding: getCssVar(spacing, tight);
+      }
+    }
+
+    .el-menu {
+      #{getCssVarName(color, primary, hover)}: getCssVar(extend-standard-menu, active, bg, color);
+      #{getCssVarName(color, primary, hover, text)}: getCssVar(extend-standard-menu, active, color);
+      #{getCssVarName(color, primary, active)}: getCssVar(extend-standard-menu, hover, bg, color);
+      #{getCssVarName(color, primary, active, text)}: getCssVar(extend-standard-menu, hover, color);
+
+      --el-button-text-color: #{getCssVar(extend-standard-menu, color)};
+    }
+  }
+
+  // 图标样式
+  @include e(icon) {
+    @include flex(row, center, center);
+
+    width: getCssVar('extend-standard-menu', 'icon-width');
+    height: getCssVar('extend-standard-menu', 'icon-height');
+    font-size: getCssVar('extend-standard-menu','icon-size');
+
+    &+.#{bem('extend-standard-menu__caption')} {
+      margin: getCssVar('extend-standard-menu', 'text-margin');
+    }
+  }
+
+  // 文字样式
+  @include e('caption') {
+    @include utils-ellipsis;
+  }
+}
+
+@include b(extend-standard-menu-popup-container){
+  @include raw-item-menu-style;
+
+  // 收缩时菜单项样式
+  // 以及水平菜单悬浮出来菜单样式
+  &.el-menu--popup-container {
+    @include set-component-css-var('extend-standard-menu', $extend-standard-menu);
+    @include set-component-css-var('extend-standard-menu-item', $extend-standard-menu-item);
+
+    border: none;
+    box-shadow: getCssVar('shadow', 'elevated');
+
+    .el-menu--popup {
+      max-height: 100vh;
+      padding: getCssVar('spacing', 'extra-tight');
+      overflow: auto;
+      background-color: getCssVar('color', 'primary');
+
+      .el-menu-item,
+      .el-sub-menu__title {
+        @include flex(row, flex-start, center);
+
+        width: 100%;
+        height: getCssVar('extend-standard-menu-item', 'horizontal-popup-height');
+        font-size: getCssVar('extend-standard-menu-item', 'font-size');
+        color: getCssVar('extend-standard-menu-item', 'horizontal-color');
+        white-space: nowrap;
+        border-radius: getCssVar('extend-standard-menu-item', 'horizontal-border-radius');
+
+        &.is-active {
+          color: getCssVar('extend-standard-menu-item', 'horizontal-selected-color');
+          background-color: getCssVar('extend-standard-menu-item', 'horizontal-selected-bg-color');
+        }
+
+        &:hover {
+          color: getCssVar('extend-standard-menu-item', 'hover-color');
+          background-color: getCssVar('extend-standard-menu-item', 'hover-bg-color');
+        }
+
+        .el-icon {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // 计数器样式
+  .#{bem('extend-standard-menu', 'counter')} {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    height: 20px;
+    padding: getCssVar('spacing', 'none') getCssVar('spacing', 'tight');
+    line-height: initial;
+    color: getCssVar('color', danger, text);
+    background-color: getCssVar('color', 'danger');
+    border-radius: getCssVar('border','radius','medium');
+    transform: translateY(-50%);
+  }
+
+}
+
+// 分割线
+.#{bem('extend-standard-menu', 'separator', 'horizontal')} {
+  margin: getCssVar(spacing, tight) 0;
+  border-color: getCssVar(extend-standard-menu-item, separator-color);
+}
+
+.el-menu--horizontal.el-menu--popup-container:has(.#{bem(extend-standard-menu, item)},.#{bem(extend-standard-menu-submenu)}) {
+
+  @include raw-item-menu-style;
+
+  @include set-component-css-var('extend-standard-menu', $extend-standard-menu);
+  @include set-component-css-var('extend-standard-menu-item', $extend-standard-menu-item);
+
+  border: none;
+  box-shadow: getCssVar('shadow', 'elevated');
+
+  .el-menu--popup {
+    padding: getCssVar('spacing', 'extra-tight');
+    background-color: getCssVar('color', 'primary');
+
+    .el-menu-item,
+    .el-sub-menu__title {
+      @include flex(row, flex-start, center);
+
+      width: 100%;
+      height: getCssVar('extend-standard-menu-item', 'horizontal-popup-height');
+      font-size: getCssVar('extend-standard-menu-item', 'font-size');
+      color: getCssVar('extend-standard-menu-item', 'horizontal-color');
+      white-space: nowrap;
+      border-radius: getCssVar('extend-standard-menu-item', 'horizontal-border-radius');
+
+      &.is-active {
+        color: getCssVar('extend-standard-menu-item', 'horizontal-selected-color');
+        background-color: getCssVar('extend-standard-menu-item', 'horizontal-selected-bg-color');
+      }
+
+      &:hover {
+        color: getCssVar('extend-standard-menu-item', 'hover-color');
+        background-color: getCssVar('extend-standard-menu-item', 'hover-bg-color');
+      }
+
+      .el-icon {
+        display: none;
+      }
+    }
+  }
+
+  .el-menu .el-sub-menu.is-active>.el-sub-menu__title {
+    color: getCssVar('extend-standard-menu-item', 'horizontal-selected-color');
+  }
+
+  // 分割线
+  .#{bem('extend-standard-menu', 'separator', 'vertical')} {
+    width: 100%;
+    height: 1px;
+    margin: getCssVar(spacing, tight) 0;
+    border-top: 1px getCssVar(extend-standard-menu-item, separator-color) solid;
+  }
+}

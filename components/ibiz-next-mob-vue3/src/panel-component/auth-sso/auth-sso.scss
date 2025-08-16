@@ -1,0 +1,24 @@
+$auth-sso: (
+  icon-width: getCssVar(editor, default, line-height),
+  icon-height: getCssVar(editor, default, line-height),
+  gap: getCssVar(spacing,base),
+);
+
+@include b('auth-sso'){
+    @include set-component-css-var('auth-sso', $auth-sso);
+
+    display:flex;
+    gap: getCssVar('auth-sso', 'gap');
+    justify-content: center;
+    width: 100%;
+    @include e('sign-btn'){
+        width: getCssVar('auth-sso', 'icon-width');
+        height: getCssVar('auth-sso', 'icon-height');
+        cursor: pointer;
+
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

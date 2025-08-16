@@ -1,0 +1,94 @@
+$panel-app-title: (
+  'color': getCssVar(color, text, 0),
+  'font-size': getCssVar(font-size, header-3),
+  'font-weight': getCssVar(font-weight, bold),
+  'padding': 0 getCssVar(spacing, base, tight),
+  'collapse-padding': 0 getCssVar(spacing, tight),
+  'not-index-height': 60px,
+);
+
+@include b(panel-app-title) {
+  @include set-component-css-var('panel-app-title', $panel-app-title);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: getCssVar('panel-app-title', 'padding');
+  cursor: pointer;
+
+  @include e(title) {
+    @include utils-ellipsis;    
+
+    font-size: getCssVar('panel-app-title', 'font-size');
+    font-weight: bold;
+    color: getCssVar('panel-app-title', 'color');
+  }
+
+  @include e(logo) {
+    @include flex(row, center, center);
+
+    height: 100%;
+    padding: 0 getCssVar('spacing', 'tight');
+    font-size: calc(getCssVar('font-size', 'header-1') + 8px);
+    
+    img {
+      display: inline-block;
+      width: auto;
+      height: 100%;
+    }  
+    
+    svg {
+      fill: getCssVar('panel-app-title', 'color');
+    }
+    @include m('expand') {
+      width: 66px;
+      height: 66px;
+
+      &+svg {
+        width: calc(100% - 66px);
+      }
+    }
+  }
+
+
+  @include when(only-img){
+    @include e(logo) {
+      padding: 0;
+    }    
+  }
+
+
+  @include when(collapse){
+    max-width: 100%;
+    padding:  getCssVar(panel-app-title, collapse-padding);
+    @include e(collapse-title){
+      width: 100%;
+    }
+
+    @include e(collpase-icon){
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @include e(caption2){
+      overflow: hidden;
+      font-size: getCssVar(font-size, header-4);
+      font-weight: getCssVar(panel-app-title, font-weight);
+      text-align: center;
+      white-space: nowrap;      
+    }
+    @include e(subCaption2){
+      overflow: hidden;
+      font-size: getCssVar(font-size, header-5);
+      text-align: center;
+      white-space: nowrap;        
+    }
+  }
+
+  @include when('only-title'){
+    height: getCssVar('panel-app-title','not-index-height');
+  }
+}

@@ -1,0 +1,59 @@
+@include b(cascader) {
+  .el-cascader {
+    width: 100%;
+  }
+
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar('form-item', 'readonly-color');
+  }
+}
+
+// 表单下的时间选择器默认显示，悬浮上去显示编辑器
+@include b(cascader-form-default-content){
+  display: none;
+}
+
+@include b(form-item){
+
+  @include b(cascader) {
+    @include when(show-default){
+      // 悬浮显示编辑器
+      &:hover{
+        @include b(cascader-form-default-content){
+          display: none;
+        }     
+        @include b(cascader-input){
+          display: block;    
+        }       
+      }    
+      
+      // 不悬浮时显示信息态
+      @include b(cascader-form-default-content){      
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);        
+        font-family: Arial, sans-serif;;      
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);      
+      }
+      @include b(cascader-input){
+        display: none;  
+      }
+      
+      // 输入态
+      @include when(editable){
+        @include b(cascader-form-default-content){
+          display: none;
+        }     
+        @include b(cascader-input){
+          display: block;    
+        }  
+      }
+    }
+
+  }
+}

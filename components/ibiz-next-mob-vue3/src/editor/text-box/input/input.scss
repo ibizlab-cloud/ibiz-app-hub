@@ -1,0 +1,43 @@
+@include b('input') {
+  height: 100%;
+  text-align: getCssVar(form-item-container, editor-align);
+
+  @include b('input') {
+    font-size: getCssVar('form-item', 'font-size');
+  }
+
+  input {
+    font-size: getCssVar('form-item', 'font-size');
+    line-height: getCssVar('form-item', 'line-height');
+    color: getCssVar('form-item', 'text-color');
+    border-color: getCssVar('form-item', 'border-color');
+    -webkit-text-fill-color: getCssVar('form-item', 'text-color');
+  }
+
+  input::placeholder {
+    color: getCssVar('form-item', 'placeholder-color');
+    -webkit-text-fill-color: getCssVar('form-item', 'placeholder-color');
+  }
+
+  input:disabled {
+    color: getCssVar('form-item', 'disabled-color');
+    background-color: getCssVar('form-item', 'disabled-bg-color');
+    border-color: getCssVar('form-item', 'disabled-border-color');
+    -webkit-text-fill-color: getCssVar('form-item', 'disabled-color');
+  }
+
+  @include m(readonly) {
+    color: getCssVar('form-item', 'readonly-color');
+    -webkit-text-fill-color: getCssVar('form-item', 'readonly-color');
+  }
+
+  // 单位后缀样式
+  .#{bem('input','unit')} {
+    font-size: getCssVar('form-item', 'font-size');
+    font-style: normal;
+  }
+
+  .van-field__clear{
+    display: getCssVar(form-item-container,required-style);
+  }
+}

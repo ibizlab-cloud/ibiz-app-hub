@@ -1,0 +1,308 @@
+/***    START:系统样式表    ***/
+    .button-center {
+    align-self: center;
+}
+    .text-align-center{
+      text-align:center
+    }
+    .h1-title{
+  .editor {
+		.app-span {
+		  font-size: 32px;
+		  font-weight: bold;
+		}
+  }
+}
+    .h2-title{
+      .editor {
+        .ivu-form-item {
+          margin-bottom: 0;
+          .app-span {
+            font-size: 24px;
+            font-weight: bold;
+            }
+        }
+      }
+    }
+    .mdctrl-red-label .ibiz-span {
+  color: red;
+}
+.mdctrl-red-label .ibiz-rawitem__image {
+  height: 60px;
+  overflow: hidden;
+}
+.mdctrl-red-label .ibiz-rawitem__image svg {
+  height: 100%;
+}
+
+    .toolbar {
+    background-color: cadetblue;
+}
+    .app_market_style .ibiz-panel-field--title span {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.app_market_style .ibiz-panel-field--version {
+    background-color: lightgrey;
+    padding: 5px 15px 5px 15px;
+    border-radius: 10px;
+}
+
+.app_market_style .ibiz-panel-field--version span {
+    color: white;
+    font-weight: bold;
+}
+
+.app_market_style .ibiz-panel-field--memo span {
+    font-size: medium;
+    color: grey;
+}
+
+.app_market_style .ibiz-control-dataview-group-content__item-content>* {
+    margin-right: 32px;
+}
+
+.app_market_style .el-card__body {
+    padding: 0px;
+}
+
+.app_market_style .ibiz-panel-button , .ibiz-panel-button-list {
+    padding: 8px 8px 8px 0px;
+}
+
+/* .app_market_style .ibiz-control-dataview-item {
+    height: 100%;
+} */
+
+.app_market_style .ibiz-control-dataview-item.is-active {
+    background-color: unset !important;
+}
+    .app_market_style img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.app_market_style button.el-button.ibiz-button-list__more-button::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 70%;
+    top: 15%;
+    left: 0.5px;
+    background-color: #f0f0f0;
+    z-index: 1;
+}
+
+.app_market_style .ibiz-sort-bar {
+    display: none !important;
+}
+
+.app_market_style .ibiz-panel-rawitem--using > div {
+    background-color: #e2efe2;
+    padding: 0px 20px;
+    border-radius: 4px;
+}
+
+.app_market_style .ibiz-panel-rawitem--using span {
+    font-size: small;
+    height: 25px;
+    line-height: 25px;
+    color: #8CC537;
+}
+    .tree-node-red .ibiz-control-treeview-node__label {
+    color: red;
+}
+    .orange-span{
+    width: 58px;
+    height: 24px;
+    font-size: 12px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #ffdcaf;
+}
+    .transition-time .ibiz-span{
+  font-size: var(--ibiz-font-size-small);
+  color: var(--ibiz-color-disabled-text);
+}
+    .grey-span{
+width: 58px; 
+    font-size: 12px; 
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #e1e1e1;
+    height: 31px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+    .rawitem .ibiz-rawitem .ibiz-rawitem__text {
+    color: red;
+}
+    .purple-span{
+width: 58px;
+    height: 24px;
+    font-size: 12px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #d2d8ed;
+}
+    .red-span{
+   width: 58px;
+    height: 24px;
+    font-size: 12px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #fcd0cb;
+}
+
+ 
+
+    .green-span{
+width: 58px;
+    height: 24px;
+    font-size: 12px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #ccf2cc;
+}
+    .editor-css-noborder{
+      background-color:rgba(162, 208, 245, 1);border-style:none
+    }
+    .blue-span{
+width: 58px;
+    height: 24px;
+    font-size: 12px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #c8e8fa;
+}
+    .formitem-full-height {
+  > .ivu-row > .ivu-row {
+  	height: 100%;
+	.form-layout-container {
+	  .ivu-form-item {
+		height: 100%;
+	  }
+	}
+  }
+}
+    .formgroup-bold-center{
+      font-weight:bold;text-align:center
+    }
+    .formgroup-bold-center {
+    font-weight: 900 !important;
+    text-align: center;
+}
+    .form-red-border{
+      background-color:rgba(186, 197, 231, 1);border-color:rgba(255, 0, 0, 1);border-style:double;border-width:1px 1px 1px 1px;font-style:italic;text-decoration:underline
+    }
+    .form-red-border{
+  >.ivu-card{
+	background-color: rgba(186, 197, 231, 1);
+  }
+}
+    .baseline-message >div {
+	padding-top: 16px;
+}
+    .baseline-warning >div {
+	padding-top: 10px;
+}
+    .formitem-left{
+      background-color:rgba(245, 9, 9, 1);text-align:left
+    }
+    .formitem-left {
+    background-color: rgba(245, 9, 9, 1);
+    text-align: left !important;
+}
+    .form-noborder{
+      border-style:none
+    }
+    .form-noborder {
+		.app-form-item {
+        .editor {
+          input {
+            border-style:none
+          }
+        }
+      }
+}
+    .gird-cell-brack{
+      background-color:rgba(2, 47, 248, 1);font-style:italic;font-weight:bold
+    }
+    .gird-red-border{
+      background-color:rgba(6, 239, 41, 1);border-color:rgba(251, 3, 3, 1);border-style:solid;border-width:1px 1px 1px 1px;font-style:italic;font-weight:bold;text-decoration:underline
+    }
+    .gird-red-border{
+	background-color: rgba(6, 239, 41, 1) !important;
+	border-right: 1px solid rgba(251, 3, 3, 1) !important;
+	border-bottom: 1px solid rgba(251, 3, 3, 1) !important;
+  >.gird-red-border{
+	border: none !important;
+  }
+}
+    .comment-list-height-auto .ibiz-no-data {
+  padding: 0;
+  --el-empty-image-width: 64px;
+  --el-empty-description-margin-top: 6px;
+}
+.comment-list-height-auto img {
+  max-width: 100%;
+}
+/* 流转空数据 */
+.comment-list-height-auto .ibiz-transition-time-line-timeline-content .ibiz-no-data {
+  margin-top: -8px;
+}
+    .comment-replay {
+	padding: 0 12px;
+	background-color: var(--ibiz-color-bg-0);
+}
+.comment-replay .ibiz-rawitem,
+.comment-replay .ibiz-code-list__item,
+.comment-replay .ibiz-panel-item-render--pcontent {
+    color: #999;
+}
+.comment-replay .ibiz-panel-item-render--pcontent {
+    display: flex;
+}
+.comment-replay .ibiz-panel-item-render--pcontent p {
+	margin: 8px 0;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.comment-replay .ibiz-raw__script .comment-tag {
+    pointer-events: none;
+}
+    .comment_icon .ibiz-rawitem{
+    font-size:24px;
+    opacity:0.5;
+    padding:8px 0;
+}
+/***    END:系统样式表    ***/

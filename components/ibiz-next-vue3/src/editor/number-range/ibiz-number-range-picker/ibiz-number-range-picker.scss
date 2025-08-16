@@ -1,0 +1,82 @@
+@include b(number-range-picker) {
+  width: 100%;
+  font-size: getCssVar(form-item, font-size);
+  line-height: getCssVar(editor, default, line-height);
+  color: getCssVar(form-item, text-color);
+
+  @include b(number-range-picker-input){
+    @include flex(row, space-between, center);
+  }
+
+  @include b(number-range-picker-separator){
+    width: 10%;
+    margin: 0 getCssVar(spacing, tight);
+    text-align: center;
+  }
+
+  .el-input-number {
+    width: 45%;
+  }
+}
+
+// 表单下的时间选择器默认显示，悬浮上去显示编辑器
+@include b(number-range-picker-form-default-content){
+  display: none;
+}
+
+@include b(form-item){
+
+  @include b(number-range-picker) {
+    @include when(show-default){
+      // 悬浮显示编辑器
+      &:hover{
+        @include b(number-range-picker-form-default-content){
+          display: none;
+        }     
+        @include b(number-range-picker-input){
+          display: flex;    
+        }       
+      }    
+      
+      // 不悬浮时显示信息态
+      @include b(number-range-picker-form-default-content){      
+        @include flex(row, space-between, center);
+
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);        
+        font-family: Arial, sans-serif;;      
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);   
+        
+        @include b(number-range-picker-default-min){
+          width: 45%;
+          text-align: center;          
+        }
+        @include b(number-range-picker-default-max){
+          width: 45%;
+          text-align: center;          
+        }
+        @include b(number-range-picker-default-separator){
+          width: 10%;
+          margin: 0 getCssVar(spacing, tight);
+          text-align: center;        
+        }
+      }
+      @include b(number-range-picker-input){
+        display: none;  
+      }
+      
+      // 输入态
+      @include when(editable){
+        @include b(number-range-picker-form-default-content){
+          display: none;
+        }     
+        @include b(number-range-picker-input){
+          display: flex;    
+        }  
+      }
+    }
+
+  }
+}

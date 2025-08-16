@@ -1,0 +1,18 @@
+@include b('bi-axis') {  
+    padding: getCssVar(spacing,base) 0; 
+    @include e('item'){
+      display: flex; 
+      align-items: center;
+      justify-content: space-between;
+      height: 32px;
+      padding: 0 getCssVar(spacing,base);
+
+      svg{
+        color: getCssVar(color,primary,light,active);
+      }
+
+      &:hover{
+        background-color: getCssVar(color,fill,1);
+      }
+    }
+  }

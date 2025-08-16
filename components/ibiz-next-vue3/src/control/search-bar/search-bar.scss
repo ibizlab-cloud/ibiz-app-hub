@@ -1,0 +1,80 @@
+/* 搜索栏 start */
+$control-searchbar: (
+  'quick-search-width': 220px,
+  'quick-search-bg': getCssVar(color, bg, 1),
+  'quick-group-item-padding': getCssVar(spacing, base, tight),
+);
+
+/* 搜索栏 end */
+
+@include b(control-searchbar) {
+  @include set-component-css-var('control-searchbar', $control-searchbar);
+
+  @include flex(row, flex-start, center);
+
+  height: 100%;
+
+  @include b(control-searchbar-quick-search) {
+    width: getCssVar('control-searchbar', 'quick-search-width');
+    margin-left: getCssVar(spacing, base-tight);
+    font-size: getCssVar(font-size,regular);
+    color: getCssVar('text-color');
+    background: getCssVar('control-searchbar', 'quick-search-bg');
+    border: 1px solid getCssVar('border-color');
+    border-radius: getCssVar('border','radius','small');
+
+    // 前缀不要padding
+    &.el-input-group__append, .el-input-group__prepend {
+      padding: getCssVar('spacing','none');
+    }
+    
+    @include when(advanced-quick-search) {
+      .el-input-group__prepend+.el-input__wrapper {
+        border-radius: 0 getCssVar('border-radius','small') getCssVar('border-radius','small') 0;
+      }
+    }
+  }
+
+  @include b(control-searchbar-quick-group) {
+    height: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    @include b(control-searchbar-quick-group-item){
+      position: relative;
+      display: inline-block;
+      height: 100%;
+      padding: getCssVar('control-searchbar', 'quick-group-item-padding');
+      font-size: getCssVar(font-size, regular);
+      cursor: pointer;
+      @include when(selected){
+        &::after{
+          position: absolute;
+          bottom: 2px;
+          left: getCssVar(spacing, base, tight);
+          width: calc(100% - 2 * getCssVar(spacing, base, tight));
+          height: 2px;
+          content: "";
+          background-color: getCssVar(color, primary);
+        }
+      }
+
+      &:hover{
+        color: getCssVar(color, primary);
+      }
+    }
+  }
+
+  .el-input__icon {
+    cursor: pointer;
+  }
+}
+
+@include b(control-searchbar-filter){
+  margin-right: getCssVar(spacing, extra-tight);
+  margin-left: getCssVar(spacing, base-tight);
+}
+
+@include b(control-searchbar-save){
+  margin-left: getCssVar(spacing, base-tight);
+}

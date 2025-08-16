@@ -1,0 +1,84 @@
+$trigger-width: 6px;
+
+@include b(split-wrapper) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @include when(no-select) {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+}
+
+@include b(split) {
+  @include m(horizontal) {
+    @include b(split-trigger-con) {
+      top: 50%;
+      width: 0;
+      height: 100%;
+    }
+
+    @include b(split-pane) {
+      @include m(right){
+        padding-left: $trigger-width;
+      }
+    }
+  }
+
+  @include m(vertical) {
+    @include b(split-trigger-con) {
+      left: 50%;
+      width: 100%;
+      height: 0;
+    }
+
+    @include b(split-pane) {
+      @include m(bottom){
+        padding-top: $trigger-width;
+      }
+    }    
+  }
+}
+
+@include b(split-pane) {
+  position: absolute;
+
+  @include m(left) {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  @include m(right) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  @include m(top) {
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  @include m(bottom) {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  @include m(moving) {
+    user-select: none;
+  }
+}
+
+@include b(split-trigger-con) {
+  position: absolute;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}

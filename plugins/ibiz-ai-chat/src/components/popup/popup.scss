@@ -1,0 +1,45 @@
+@include b(pop-trigger-container) {
+  font-size: 12px;
+}
+
+@include b(pop) {
+  gap: 4px;
+  padding: 4px;
+  display: flex;
+  min-width: 120px;
+  border-radius: 8px;
+  flex-direction: column;
+  background-color: getCssVar(color, bg, 3);
+  border: 1px solid getCssVar(color, border);
+
+  @include e(item) {
+    display: flex;
+    padding: 0 8px;
+    cursor: pointer;
+    line-height: 32px;
+    border-radius: 6px;
+    align-items: center;
+
+    &:hover {
+      background-color: getCssVar(color, primary, hover);
+    }
+
+    @include m(caption) {
+      min-width: 0;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-right: 8px;
+      fill: currentcolor;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}

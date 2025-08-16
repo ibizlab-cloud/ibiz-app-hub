@@ -1,0 +1,17 @@
+@include b(chat-messages) {
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  margin: 6px;
+  overflow: hidden auto;
+
+  // 设置滚动条样式
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  // 滚动条轨道
+  &::-webkit-scrollbar-thumb {
+    background-color: getCssVar(color, fill, 2);
+    border-radius: #{getCssVar('ai-chat', 'border-radius')};
+  }
+}

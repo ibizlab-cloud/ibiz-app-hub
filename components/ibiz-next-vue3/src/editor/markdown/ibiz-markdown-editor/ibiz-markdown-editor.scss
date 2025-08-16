@@ -1,0 +1,59 @@
+$markdown: (
+  'width': 100%,
+);
+
+
+@include b(markdown) {
+  @include b(markdown-cherry){
+    @include set-component-css-var('markdown', $markdown);
+
+    width: getCssVar('markdown', 'width');
+
+    .cherry{
+      width: 100%;
+    }
+  }
+
+  @include when(disabled){
+    .cherry{
+      min-height: auto;
+    }
+
+    .#{bem('markdown__fullscreen')} {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      z-index: 98;
+      font-size: getCssVar('font-size', 'regular');
+      line-height: 2.8;
+    }
+
+    .theme__dark .#{bem('markdown__fullscreen')} {
+      color: getCssVar(color, text, 0);
+
+      &:hover {
+        background-color: getCssVar(color, bg, 3);
+      }
+    }
+  }
+  
+  .cherry-preview--full {
+    border-left: none;
+  }
+
+  .theme__light,
+  .theme__dark {
+    color: getCssVar(form-item, text-color);
+  }
+
+  .cherry-markdown h1,
+  .cherry-markdown h2,
+  .cherry-markdown h3,
+  .cherry-markdown h4,
+  .cherry-markdown h5,
+  .cherry-markdown h6 {
+    a::before {
+      display: none;
+    }
+  }
+}

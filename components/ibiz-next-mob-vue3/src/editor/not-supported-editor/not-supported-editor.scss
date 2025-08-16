@@ -1,0 +1,4 @@
+@include b(not-supported-editor) {
+  font-size: getCssVar('font-size', 'regular');
+  color: getCssVar('color', 'danger');
+}

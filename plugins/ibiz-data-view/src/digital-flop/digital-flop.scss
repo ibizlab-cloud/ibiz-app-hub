@@ -1,0 +1,39 @@
+$digital-flop: (
+    'text-color': getCssVar(screen-dashboard, text-color),
+    'font-weight': 700,
+    'text-align': 'center',
+    'item-bg': getCssVar(screen-dashboard, primary-color),
+    'item-gap': 8px,
+    'item-text-align': 'center',
+    'item-height': 32px,
+    'item-width': 32px,
+    'item-border-radius': 4px,
+);
+
+@include b(digital-flop) {
+    @include set-component-css-var('digital-flop', $digital-flop);
+
+    display: flex;
+    column-gap: getCssVar('digital-flop', 'item-gap');
+    align-items: center;
+    justify-content: getCssVar('digital-flop', 'text-align');
+    width: 100%;
+    height: 100%;
+    @include e(item) {
+        flex: none;
+        width: getCssVar('digital-flop', 'item-width');
+        height: getCssVar('digital-flop', 'item-height');
+        font-size: getCssVar('digital-flop', 'font-size');
+        font-weight: getCssVar('digital-flop', 'font-weight');
+        line-height: getCssVar('digital-flop', 'item-height');
+        color: getCssVar('digital-flop', 'text-color');
+        text-align: getCssVar('digital-flop', 'item-text-align');
+        background-color: getCssVar('digital-flop', 'item-bg');
+        border-radius: getCssVar('digital-flop', 'item-border-radius');
+
+        @include when(symbol) {
+            width: 8px;
+            background: transparent;
+        }
+    }
+}

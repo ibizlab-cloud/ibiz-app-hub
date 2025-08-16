@@ -1,0 +1,132 @@
+$chat-thought-chain: (
+    font-size: 12px,
+    header-height: 32px,
+    color-2: var(--ibiz-ai-chat-color-2),
+    bg: var(--ibiz-ai-chat-hover-background-color),
+    bg-2: var(--ibiz-ai-chat-hover-background-color-2),
+    border-radius: var(--ibiz-ai-chat-border-radius),
+    hover-bg-color: var(--ibiz-ai-chat-hover-background-color),
+    border: var(--ibiz-ai-chat-hover-background-color),
+);
+
+@include b(chat-thought-chain) {
+    @include set-component-css-var('chat-thought-chain', $chat-thought-chain);
+
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    font-size: getCssVar(chat-thought-chain, font-size);
+    background-color: getCssVar(chat-thought-chain, bg);
+    border-radius: getCssVar(chat-thought-chain, border-radius);
+
+    @include e(item) {
+        display: flex;
+
+        @include when(collapsed) {
+            &:last-child {
+                .#{bem(chat-thought-chain, item-icon)} {
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+            .#{bem(chat-thought-chain, item-title)} {
+                .#{bem(chat-thought-chain, icon)} {
+                    transform: rotate(180deg);
+                }
+            }
+            .#{bem(chat-thought-chain, item-description)} {
+                height: 0;
+            }
+        }
+    }
+
+    .#{bem(chat-thought-chain, item-icon)} {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 18px;
+        padding-top: 8px;
+
+        span {
+            display: flex;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            margin-bottom: 8px;
+            font-size: 10px;
+            color: getCssVar(chat-thought-chain, color, 2);;
+            background: getCssVar(chat-thought-chain, bg, 2);
+            border-radius: 50%;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-bottom: 8px;
+        }
+
+        &::after {
+            width: 1px;
+            height: 100%;
+            content: "";
+            background: getCssVar(chat-thought-chain, border);
+            border-radius: 13px;
+            transition: .3s background cubic-bezier(.4,0,.2,1);
+        }
+    }
+
+    @include e(item-content) {
+        flex: auto;
+        padding-left: 4px;
+    }
+    @include e(item-title) {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: getCssVar(chat-thought-chain, header-height);
+        padding: 4px 4px 4px 6px;
+        cursor: pointer;
+        transition: .3s background-color;
+
+        .#{bem(chat-thought-chain, icon)} {
+            position: absolute;
+            right: 8px;
+            flex-shrink: 0;
+            font-size: 1em;
+            cursor: pointer;
+            transition: .3s transform;
+        }
+
+        &:hover {
+            background-color: getCssVar(chat-thought-chain, bg, 2);
+            border-radius: 8px;
+        }
+    }
+    @include e(item-description) {
+        height: 100%;
+        overflow: hidden;
+        color: var(--ibiz-color-text-2);
+        transition: height .3s cubic-bezier(.4,0,.2,1),opacity .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    // 单节点展示
+    @include when(single) {
+        .#{bem(chat-thought-chain, item-icon)} {
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
+
+@keyframes loading-animation {
+    75%,100% {
+        opacity: 0;
+        transform: scale(2)
+    }
+}

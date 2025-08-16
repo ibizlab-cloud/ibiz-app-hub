@@ -1,0 +1,39 @@
+$panel-component-view-content: (
+  'margin': 0,
+);
+$control: (
+  'overflow': hidden auto,
+);
+
+@include b(view) {
+  #{getCssVarName(control, overflow)}: hidden auto;
+}
+
+@include b(view-content) {
+  #{--van-back-top-size}: rem(44px);
+  @include set-component-css-var('panel-component-view-content', $panel-component-view-content);
+
+  height: 100%;
+  margin-top: getCssVar('panel-component-view-content', 'margin');
+  overflow: auto;
+  background-color: getCssVar(view, bg, color);
+
+  @include when(scroll) {
+    overflow-y: auto;
+    #{getCssVarName(control, overflow)}: unset unset;
+  }
+  @include when(embed) {
+    #{getCssVarName(control, overflow)}: hidden auto;
+  }
+  .#{bem(view)} {
+    #{getCssVarName(control, overflow)}: hidden auto;
+  }
+}
+
+@include b(view-content-refresh) {
+  height: 100%;
+
+  &.van-pull-refresh {
+    overflow: visible;
+  }
+}

@@ -1,0 +1,144 @@
+@include b(map-picker) {
+  font-size: getCssVar(form-item, font-size);
+  font-weight: getCssVar(form-item, regular);
+  
+  @include m(readonly) {
+    height: auto;
+    overflow: auto;
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar(form-item, readonly-color);
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+}
+
+@include b(map-picker-input) {
+  .el-input__suffix {
+    display: none;
+  }
+
+  .el-input__wrapper:hover {
+    .el-input__suffix {
+      display: inline-flex;
+    }
+  }
+}
+
+@include b(map-picker-dialog) {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+
+  --el-dialog-padding-primary: var(#{getCssVarName('spacing', 'base')});
+
+  .el-dialog__headerbtn {
+    top: calc(var(--el-dialog-padding-primary) - 2px);
+    right: calc(var(--el-dialog-padding-primary) / 2)
+  }
+
+  .el-dialog__header, .el-dialog__footer {
+    flex: 0 0 auto;
+    padding: var(--el-dialog-padding-primary);
+  }
+
+  .el-dialog__body {
+    flex: 1 1 0;
+    padding: var(--el-dialog-padding-primary);
+    border-top: 1px solid #{getCssVar(color, border)};
+    border-bottom: 1px solid #{getCssVar(color, border)};
+  }
+}
+
+
+@include b(map-picker-dialog-content) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@include b(map-picker-dialog-search-input) {
+  z-index: 999;
+  flex: 0 0 auto;
+  margin-bottom: getCssVar('spacing', 'tight');
+
+  .el-input__suffix {
+    display: none;
+  }
+
+  .el-input__wrapper:hover {
+    .el-input__suffix {
+      display: inline-flex;
+    }
+  }
+}
+
+@include b(map-picker-dialog-map-content) {
+  position: relative;
+  flex: 1 1 0;
+}
+
+@include b(map-picker-dialog-map-container) {
+  height: 100%;
+}
+
+@include b(map-picker-dialog-search-result-container) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block !important;
+  width: 280px;
+  max-height: 90%;
+  overflow-y: auto;
+  background-color: #fff;
+
+  .amap_lib_placeSearch_page {
+    display: flex;
+    overflow-x: auto;
+  }
+}
+
+@include b(map-picker-dialog-map-marker-text) {
+  position: absolute;
+  top: -24px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+  background-color: #3d93fd;
+  border-radius: 4px;
+  transform: translateX(calc(-50% - (25px / 2)));
+}
+
+@include b(form-item) {
+  @include b(map-picker) {
+    @include when(show-default) {
+      &:hover {
+        @include b(map-picker-form-default-content) {
+          display: none;
+        }
+
+        @include b(map-picker-input) {
+          display: inline-flex;
+        }
+      }
+
+      @include b(map-picker-input) {
+        display: none;
+        font-family: Arial, sans-serif;
+      }
+
+      @include b(map-picker-form-default-content) {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);
+        font-family: Arial, sans-serif;
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
+    }
+  }
+}

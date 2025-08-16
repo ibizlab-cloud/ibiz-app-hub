@@ -1,0 +1,233 @@
+$control-dataview: (
+  text-color: getCssVar(color, text, 0),
+  hover-bg-color: getCssVar(color, fill, 1),
+  active-bg-color: getCssVar(color, fill, 2),
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base) 0,
+  page-height: 50px,
+  item-bg-color: transparent,
+);
+
+$control-dataview-group-item-header: (
+  'bg-color': transparent,
+  'padding': getCssVar(spacing, base, tight),
+  'border-color': getCssVar('color', 'border'),
+);
+
+$control-dataview-group-item-caption: (
+  'text-color': getCssVar(color, text, 0),
+  'font-size': getCssVar('font-size', 'header-5'),
+  'font-weight': getCssVar(font-weight, bold),
+);
+
+$control-dataview-group-item-content: (
+  'bg-color': transparent,
+  'padding': getCssVar(spacing, tight),
+);
+
+@include b(control-dataview) {
+  @include set-component-css-var(control-dataview, $control-dataview);
+  @include flex(column, flex-start, stretch);
+
+  position: relative;
+  height: 100%;
+
+  @include e(nav-icon) {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    color: getCssVar(color, primary);
+    cursor: pointer;
+  }
+
+  // 内容区样式
+  @include e(content) {
+    flex-grow: 1;
+    height: 100%;
+    padding: getCssVar(control-dataview, padding);
+    overflow: auto;
+  }
+
+  // 分页样式
+  @include e(pagination) {
+    flex-shrink: 0;
+  }
+
+  @include e(load-more) {
+    width: calc(100% - getCssVar(spacing, base, tight));
+    text-align: center;
+
+    i{
+      font-size: getCssVar(font-size,header,3);
+      color: getCssVar(color-text-2);
+      cursor: pointer;
+
+      &:hover{
+        color: getCssVar(color,primary,light,hover);
+      }
+    }
+  }
+
+  @include e(collapse-expand-icon) {
+    width: calc(100% - getCssVar(spacing, base, tight));
+    text-align: center;
+
+    i{
+      font-size: getCssVar(font-size,header,3);
+      color: getCssVar(color-text-2);
+      cursor: pointer;
+
+      &:hover{
+        color: getCssVar(color,primary,light,hover);
+      }
+    }
+  }
+
+  @include e(layout-row) {
+    padding: getCssVar(spacing, tight);
+  }
+
+  @include e(layout-col) {
+    padding: 0 getCssVar(spacing, base, tight) getCssVar(spacing, base, tight) 0;
+  }
+
+  @include e(layout-flex) {
+    @include flex(row, null, null, wrap);
+
+    &>*{
+      margin:calc( getCssVar(spacing, base, tight) / 2 );
+    }
+
+    align-content: flex-start;
+    overflow: auto;
+  }
+
+  @include e(batchtoolbar) {
+    padding: 0 getCssVar(spacing, base);
+    margin: getCssVar(spacing, tight) getCssVar(spacing, super, tight);
+  }
+
+  @include e(quicktoolbar) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@include b(control-dataview-item) {
+  @include set-component-css-var(control-dataview, $control-dataview);
+
+  color: getCssVar(control-dataview, text-color);;
+  cursor: pointer;
+  background-color: getCssVar(control-dataview, item-bg-color);
+
+  &:hover {
+    background-color: getCssVar(control-dataview, hover-bg-color);
+  }
+
+  @include e(new) {
+    color: getCssVar(color, text, 3);
+    border: 2px dashed getCssVar(color, border);
+
+    .el-card__body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @include e(content) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    @include m(checkbox) {
+      flex-shrink: 0;
+      margin-right: getCssVar(spacing, tight) !important;
+    }
+  }
+
+  @include when(active) {
+    background-color: getCssVar(control-dataview, active-bg-color);
+  }
+}
+
+@include b(control-dataview-item-content) {
+  @include set-component-css-var(control-dataview, $control-dataview);
+
+  @include e(top) {
+    @include m(title) {
+      text-align: center;
+    }
+
+    @include m(description) {
+      min-width: 150px;
+      text-align: justify;
+      text-justify: newspaper;
+      word-break: break-all;
+    }
+  }
+
+  @include e(bottom) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: getCssVar('spacing', 'tight');
+    margin-top: getCssVar('spacing', 'tight');
+    border-top: 1px solid getCssVar('color', 'border');
+    @include m(actions) {
+      display: flex;
+      justify-content: center;
+      .#{bem(action-toolbar, item)} {
+        margin: 0;
+      }
+      .#{bem(action-toolbar, item, label)} {
+        &.is-has-caption {
+          margin: 0;
+        }
+      } 
+    }
+  }
+}
+
+@include b(control-dataview-group-content) {
+  @include set-component-css-var('control-dataview-group-item-header', $control-dataview-group-item-header);
+  @include set-component-css-var('control-dataview-group-item-caption', $control-dataview-group-item-caption);
+  @include set-component-css-var('control-dataview-group-item-content', $control-dataview-group-item-content);
+  
+  width: 100%;
+
+  @include e(item) {
+    .el-collapse-item__content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include m(empty) {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include when(collapse) {
+      .#{bem(control-dataview-group-content, item-content)} {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+  }
+  
+  @include e(item-header){
+    @include flex(row, space-between, center);
+
+    width: 100%;
+    padding: getCssVar('control-dataview-group-item-header', 'padding');
+    border-bottom: 1px solid getCssVar('control-dataview-group-item-header', 'border-color');
+  }
+
+  @include e(item-title) {
+    @include utils-ellipsis;
+
+    font-size: getCssVar('control-dataview-group-item-caption', 'font-size');
+    font-weight: getCssVar('control-dataview-group-item-caption', 'font-weight');
+    color: getCssVar('control-dataview-group-item-caption', 'text-color');
+  }
+}

@@ -1,0 +1,33 @@
+@include b('radio') {
+  height: 100%;
+  padding: getCssVar('spacing', 'tight') 0;
+
+  .van-radio--horizontal {
+    margin-right: 0;
+  }
+
+  .van-radio-group--horizontal {
+    gap: getCssVar('spacing', 'tight');
+  }
+
+  .van-radio-group {
+    height: 100%;
+  }
+
+  @include e('text') {
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+  }
+
+  @include m(readonly) {
+    color: getCssVar('form-item', 'readonly-color');
+  }
+
+  .van-radio-group--horizontal {
+    display: flex;
+    justify-content: getCssVar(form-item-container, editor-align);
+  }
+  &.#{bem('radio','','readonly')}{
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+}

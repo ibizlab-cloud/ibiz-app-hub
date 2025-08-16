@@ -1,0 +1,307 @@
+@include b(calendar-daily) {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  @include e(calendar-daily__head) {
+    width: 100%;
+    height: 58px;
+    min-height: 58px;
+    padding-bottom: 0;
+    display: flex;
+    position: relative;
+    z-index: 100;
+  }
+  @include e(allday-info) {
+    min-width: 90px;
+    height: 100%;
+    padding-left: 40px;
+    color: getCssVar(color, text, 3);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    @include m(work-items) {
+      width: 100%;
+      height: 100%;
+      padding-top: 5px;
+      overflow: hidden;
+    }
+    @include m(work-items-scroll) {
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    @include m(work-items-body) {
+      height: auto;
+      &:has(.#{bem('no-data')}) {
+        height: 100%;
+        .#{bem('no-data')} {
+          min-height: 100%;
+          min-width: 100%;
+          .el-empty__description {
+            margin: 0;
+          }
+        }
+      }
+    }
+    @include m(event-box) {
+      width: 100%;
+      height: 22px;
+      line-height: 22px;
+      padding: 0 8px;
+      margin-top: 4px;
+
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+    }
+    @include m(event-content) {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      border-radius: 4px;
+      background: getCssVar(color, tertiary, light, hover);
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      &.is-selected-event {
+        padding-right: 20px;
+      }
+
+    }
+    @include m(event-summary) {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    @include m(event-icon) {
+      margin-right: 6px;
+    }
+    @include m(event-name) {
+      margin-right: 6px;
+    }
+    @include m(time-range) {
+      margin-right: 6px;
+    }
+    @include m(check) {
+      color: getCssVar(color, primary);
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+  @include e(allday-resize-line) {
+    width: 100%;
+    height: 3px;
+    background-color: getCssVar(color, border);
+  }
+  @include e(resizable-handle) {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    bottom: -4px;
+    display: flex;
+    align-items: center;
+    cursor: row-resize;
+  }
+
+  @include e(scroll-area) {
+    flex: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  @include e(time-pane) {
+    height: auto;
+    width: calc(100% - 5px);
+    display: flex;
+    flex-basis: 0%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    position: relative;
+    @include m(time-labels) {
+      width: 90px;
+      min-width: 90px;
+      padding: 27px 0 27px 40px;
+      border-right: 1px solid getCssVar(color, border);
+      position: sticky;
+      left: 0;
+    }
+    @include m(time-label) {
+      margin-top: 38px;
+      height: 22px;
+      text-align: left;
+      &:nth-child(1){
+        height: 22px;
+        margin-top: 22px;
+      }
+    }
+    @include m(time-columns) {
+      position: relative;
+      flex: 1;
+      padding-bottom: 59px;
+    }
+    @include m(time-column) {
+      height: 60px;
+      border-top: 1px dashed getCssVar(color, border);
+      &:first-child {
+        border-top: none;
+      }
+    }
+    @include m(time-column-last) {
+      border-bottom: 1px dashed getCssVar(color, border);
+    }
+    @include m(event-timed-container) {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    @include m(container-scroll) {
+      position: relative;
+      top: 0;
+      overflow: auto;
+      height: 100%;
+      width: auto;
+      overflow-y: hidden;
+      overflow-x: auto;
+    }
+    @include m(event-box) {
+      position: absolute;
+      width: auto;
+      height: auto;
+      padding-left: 4px;
+    }
+    @include m(event-content) {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      min-height: 22px;
+      padding: 8px;
+      overflow: hidden;
+      line-height: 100%;
+      text-align: left;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      &.is-selected-event {
+        border: 1px solid getCssVar(color, primary);
+      }
+    }
+    @include m(event-summary) {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &>span {
+        margin-right: 4px;
+      }
+    }
+    @include m(current-time) {
+      width: calc(100% - 36px);
+      margin-left: 40px;
+      position: absolute;
+      top: 38px;
+      left: -3px;
+      height: 2px;
+      background-color: getCssVar(color, primary);
+      display: flex;
+      align-items: center;
+    }
+
+    @include m(current-time-label) {
+      width: 48px;
+      min-width: 48px;
+      max-width: 18px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      border: none;
+      border-radius: 4px;
+      background: getCssVar(color, primary);
+      color: getCssVar(color, primary, text);
+    }
+
+  }
+  // 面板项popper
+  @include e(event-popover) {
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 0;
+
+    &.el-popover.el-popper {
+      padding: 8px;
+    }
+
+    // 当配置了 showdetail 参数，只有配置了布局面板时才会显示气泡
+    &:has(.#{bem('control-calendar-item-default')}) {
+      display: none !important;
+    }
+
+    @include m(body) {
+      width: auto;
+      height: auto;
+      overflow: hidden;
+    }
+    @include m(scroll) {
+      width: auto;
+      min-width: 200px;
+      height: auto;
+      max-height: 80%;
+      overflow: auto;
+      pointer-events: none;
+      
+      .#{bem('control-calendar-item')} {
+        &:last-child {
+          margin-bottom: 0;
+        }
+        @include when(active) {
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+    }
+    @include m(close) {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: none;
+      cursor: pointer;
+
+      &:hover {
+        .el-icon {
+          background: getCssVar(color, primary);
+          border-radius: 50%;
+
+          svg {
+            fill: getCssVar(color, white);
+          }
+        }
+      }
+    }
+
+    .el-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      min-height: 24px;
+      font-size: 20px;
+
+      svg {
+        fill: var(--el-text-color-secondary);
+      }
+    }
+  }
+}

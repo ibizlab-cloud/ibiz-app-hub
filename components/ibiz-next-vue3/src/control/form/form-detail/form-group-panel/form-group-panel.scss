@@ -1,0 +1,137 @@
+$form-group: (
+  'bg-color': transparent,
+  'footer-padding': getCssVar(spacing, tight) getCssVar(spacing, base),
+  'show-more-color': getCssVar('color-primary'),
+  'footer-height': 35px,
+);
+
+$form-group-header: (
+  'bg-color': transparent,
+  'padding': getCssVar(spacing, base, tight) 0,
+  'margin': 0 getCssVar(spacing, base, tight),
+  'border-color': getCssVar('color', 'border'),
+  'height': 49px,
+);
+
+$form-group-caption: (
+  'text-color': getCssVar(color, text, 0),
+  'font-size': getCssVar('font-size', 'header-5'),
+  'font-weight': getCssVar(font-weight, bold),
+);
+
+$form-group-content: (
+  'bg-color': transparent,
+  'padding': getCssVar(spacing, tight),
+);
+
+@include b(form-group) {
+  @include set-component-css-var('form-group', $form-group);
+  @include set-component-css-var('form-group-header', $form-group-header);
+  @include set-component-css-var('form-group-caption', $form-group-caption);
+  @include set-component-css-var('form-group-content', $form-group-content);
+}
+
+@include b(form-group) {
+  height: 100%;
+  background-color: getCssVar('form-group', 'bg-color');
+  border-radius: getCssVar('border-radius', 'base');
+
+  @include e(caption) {
+    @include utils-ellipsis;
+
+    font-size: getCssVar('form-group-caption', 'font-size');
+    font-weight: getCssVar('form-group-caption', 'font-weight');
+    color: getCssVar('form-group-caption', 'text-color');
+
+    @include m('icon'){
+      padding-right: getCssVar(spacing,tight);
+    }
+  }
+
+  @include e(toolbar) {
+    text-align: right;
+  }
+}
+
+// 折叠相关样式
+@include b(form-group-collapse) {
+  > .#{bem(form-group-content)} {
+    display: block;
+  }
+
+  @include when(collapse) {
+    > .#{bem(form-group-content)} {
+      display: none;
+    }
+  }
+}
+
+@include b(form-group-header) {
+  @include flex;
+
+  justify-content: space-between;
+  height: getCssVar('form-group-header', 'height');
+  padding: getCssVar('form-group-header', 'padding');
+  margin: getCssVar('form-group-header', 'margin');
+  border-bottom: 1px solid getCssVar('form-group-header', 'border-color');
+
+  @include e(left) {
+    overflow: hidden;
+  }
+
+  @include e((left, right)) {
+    display: inline-block;
+  }
+
+  @include e(right) {
+    flex-shrink: 0;
+    max-width: 100%;
+    text-align: right;
+    @include flex(row, flex-end, center);
+  }
+
+  @include e(icon) {
+    cursor: pointer;
+  }
+}
+
+@include b(form-group-content) {
+  width: 100%;
+  height: 100%;
+  @include e(row){
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.#{bem('form-group', '', 'show-header')} {
+  > .#{bem('form-group-content')} {
+    height: calc(100% - getCssVar('form-group-header', 'height'));
+    padding: getCssVar('form-group-content', 'padding');
+    background-color: getCssVar('form-group-content', 'bg-color');
+  }
+}
+
+.#{bem('form-group', '', 'show-more')} {
+  > .#{bem('form-group-content')} {
+    height: calc(100% - getCssVar('form-group', 'footer-height'));
+  }
+}
+
+.#{bem('form-group', '', 'show-header')}.#{bem('form-group', '', 'show-more')} {
+  > .#{bem('form-group-content')} {
+    height: calc(100% - getCssVar('form-group-header', 'height') - getCssVar('form-group', 'footer-height'));
+  }
+}
+
+
+@include b(form-group-footer) {
+  height: getCssVar('form-group', 'footer-height');
+  padding: getCssVar('form-group', 'footer-padding');
+
+  @include e(show-more-button) {
+    display: inline-block;
+    color: getCssVar('form-group', 'show-more-color');
+    cursor: pointer;
+  }
+}

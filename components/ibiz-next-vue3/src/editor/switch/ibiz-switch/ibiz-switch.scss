@@ -1,0 +1,8 @@
+@include b(form-item){
+
+  @include b(switch) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

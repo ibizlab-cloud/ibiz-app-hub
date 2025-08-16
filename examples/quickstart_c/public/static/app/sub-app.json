@@ -1,0 +1,431 @@
+{
+  "getAllPSAppDEUIActionGroups": [
+    {
+      "codeName": "grid_column_actions_federation",
+      "name": "子应用C界面行为组融合（表格列）",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "actionLevel": 200,
+          "buttonStyle": "DEFAULT",
+          "caption": "子应用C追加界面行为",
+          "detailType": "DEUIACTION",
+          "name": "u97fed1b",
+          "getPSSysImage": {
+            "glyph": "xf062@FontAwesome",
+            "cssClass": "fa fa-arrow-up"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "子应用C追加界面行为",
+            "codeName": "open_child_appc_view",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_child_appc_view",
+            "name": "子应用C追加界面行为",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf062@FontAwesome",
+              "cssClass": "fa fa-arrow-up"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_child_appc_view",
+            "uIActionType": "DEUIACTION",
+            "id": "open_child_appc_view@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__grid_column_actions_federation"
+    }
+  ],
+  "getAllPSDEDRControls": [
+    {
+      "codeName": "data_relation7",
+      "controlType": "DRTAB",
+      "dataRelationTag": "DataRelation7",
+      "getEditItemCapPSLanguageRes": {
+        "lanResTag": "DE.LNAME.MASTER"
+      },
+      "editItemCaption": "主数据",
+      "name": "tabexppanel",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSControlHandler": {
+        "enableDEFieldPrivilege": false,
+        "id": "tabexppanel"
+      },
+      "getPSControlParam": {
+        "autoLoad": true,
+        "showBusyIndicator": true,
+        "id": "TABEXPPANEL"
+      },
+      "getPSDEDRTabPages": [
+        {
+          "caption": "子应用C分页3",
+          "name": "appc_item1",
+          "getPSAppView": {
+            "modelref": true,
+            "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view3.json",
+            "viewType": "DECUSTOMVIEW"
+          }
+        }
+      ],
+      "uniqueTag": "master_tab_ctrl_federation2__tabexppanel",
+      "modelid": "197da9fb61edc9c50cf730aef77496f0",
+      "modeltype": "PSDEDRTAB"
+    },
+    {
+      "codeName": "data_relation6",
+      "controlType": "DRTAB",
+      "dataRelationTag": "DataRelation6",
+      "getEditItemCapPSLanguageRes": {
+        "lanResTag": "DE.LNAME.MASTER"
+      },
+      "editItemCaption": "主数据",
+      "name": "tabexppanel",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSControlHandler": {
+        "enableDEFieldPrivilege": false,
+        "id": "tabexppanel"
+      },
+      "getPSControlParam": {
+        "autoLoad": true,
+        "showBusyIndicator": true,
+        "id": "TABEXPPANEL"
+      },
+      "getPSDEDRTabPages": [
+        {
+          "caption": "占位视图1（关系界面融合）",
+          "itemTag": "BEFORE:pitem1",
+          "name": "appc_item1",
+          "getPSAppView": {
+            "modelref": true,
+            "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view2.json",
+            "viewType": "DECUSTOMVIEW"
+          }
+        }
+      ],
+      "uniqueTag": "master_tab_ctrl_federation__tabexppanel",
+      "modelid": "90e2bec42e93fd62a00f76944f5c4a69",
+      "modeltype": "PSDEDRTAB"
+    }
+  ],
+  "getAllPSControls": [
+    {
+      "codeName": "tree_ctrl_federation_tree_view",
+      "controlType": "TREEVIEW",
+      "getCreatePSControlAction": {
+        "modelref": true,
+        "id": "create",
+        "actionName": "Create",
+        "actionType": "DEACTION",
+        "dataAccessAction": "CREATE",
+        "name": "create",
+        "getPSAppDEMethod": {
+          "modelref": true,
+          "id": "create"
+        },
+        "getPSAppDataEntity": {
+          "modelref": true,
+          "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+        }
+      },
+      "dynaModelFilePath": "PSSYSAPPS/web/PSAPPDATAENTITIES/master/PSTREEVIEWS/tree_ctrl_federation_tree_view.json",
+      "getFetchPSControlAction": {
+        "modelref": true,
+        "id": "fetch",
+        "actionType": "DEDATASET",
+        "name": "fetch",
+        "getPSAppDataEntity": {
+          "modelref": true,
+          "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+        }
+      },
+      "getGetPSControlAction": {
+        "modelref": true,
+        "id": "load",
+        "actionName": "Get",
+        "actionType": "DEACTION",
+        "dataAccessAction": "READ",
+        "name": "load",
+        "getPSAppDEMethod": {
+          "modelref": true,
+          "id": "get"
+        },
+        "getPSAppDataEntity": {
+          "modelref": true,
+          "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+        }
+      },
+      "hookEventNames": [
+        "SELECTIONCHANGE",
+        "LOAD"
+      ],
+      "logicName": "子应用C树部件融合示例_树视图",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSControlLogics": [
+        {
+          "eventNames": "SELECTIONCHANGE",
+          "logicTag": "treeexpbar_tree",
+          "logicType": "CUSTOM",
+          "name": "treeexpbar_selectionchange"
+        },
+        {
+          "eventNames": "LOAD",
+          "logicTag": "treeexpbar_tree",
+          "logicType": "CUSTOM",
+          "name": "treeexpbar_load"
+        }
+      ],
+      "getPSDETreeNodeRSs": [
+        {
+          "getChildPSDETreeNode": {
+            "modelref": true,
+            "id": "appc_node"
+          },
+          "name": "默认根节点（ROOT）-子应用C追加节点（appc_node）",
+          "getParentPSDETreeNode": {
+            "modelref": true,
+            "id": "ROOT"
+          },
+          "parentValueLevel": 1,
+          "searchMode": 3
+        }
+      ],
+      "getPSDETreeNodes": [
+        {
+          "counterMode": 0,
+          "name": "默认根节点",
+          "nodeType": "ROOT",
+          "text": "默认根节点",
+          "treeNodeType": "STATIC",
+          "hasPSDETreeNodeRSs": true,
+          "appendPNodeId": false,
+          "disableSelect": false,
+          "enableCheck": false,
+          "enableEditData": false,
+          "enableNewData": false,
+          "enableQuickCreate": false,
+          "enableQuickSearch": false,
+          "enableRemoveData": false,
+          "enableViewData": false,
+          "expandFirstOnly": false,
+          "expanded": false,
+          "rootNode": true,
+          "selectFirstOnly": false,
+          "selected": false,
+          "id": "ROOT"
+        },
+        {
+          "counterMode": 0,
+          "name": "子应用C追加节点",
+          "getNavPSAppView": {
+            "modelref": true,
+            "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view.json",
+            "viewType": "DECUSTOMVIEW"
+          },
+          "nodeType": "appc_node",
+          "text": "子应用C追加节点",
+          "treeNodeType": "STATIC",
+          "hasPSDETreeNodeRSs": false,
+          "appendPNodeId": false,
+          "disableSelect": false,
+          "enableCheck": false,
+          "enableEditData": false,
+          "enableNewData": false,
+          "enableQuickCreate": false,
+          "enableQuickSearch": false,
+          "enableRemoveData": false,
+          "enableViewData": false,
+          "expandFirstOnly": false,
+          "expanded": false,
+          "rootNode": false,
+          "selectFirstOnly": false,
+          "selected": false,
+          "id": "appc_node"
+        }
+      ],
+      "getRemovePSControlAction": {
+        "modelref": true,
+        "id": "remove",
+        "actionName": "Remove",
+        "actionType": "DEACTION",
+        "dataAccessAction": "DELETE",
+        "name": "remove",
+        "getPSAppDEMethod": {
+          "modelref": true,
+          "id": "remove"
+        },
+        "getPSAppDataEntity": {
+          "modelref": true,
+          "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+        }
+      },
+      "treeGridMode": 0,
+      "getUpdatePSControlAction": {
+        "modelref": true,
+        "id": "update",
+        "actionName": "Update",
+        "actionType": "DEACTION",
+        "dataAccessAction": "UPDATE",
+        "name": "update",
+        "getPSAppDEMethod": {
+          "modelref": true,
+          "id": "update"
+        },
+        "getPSAppDataEntity": {
+          "modelref": true,
+          "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+        }
+      },
+      "enableRootSelect": false,
+      "outputIconDefault": true,
+      "rootVisible": false,
+      "modelid": "a0e1aa654e6904bce5eabe8b7d5dcb41",
+      "modeltype": "PSDETREEVIEW"
+    }
+  ],
+  "dynamodeltag": null,
+  "modelStamp": null,
+  "appMode": "CLOUDHUBSUBAPP",
+  "caption": "quickstart_c",
+  "getPSAppMenuModel": {
+    "codeName": "hubsubapp",
+    "controlType": "APPMENU",
+    "dynaModelFilePath": "PSSYSAPPS/web/PSAPPMENUS/hubsubapp.json",
+    "getPSAppMenuItems": [
+      {
+        "accUserMode": 0,
+        "appMenuItemState": 1,
+        "caption": "多应用融合",
+        "itemType": "MENUITEM",
+        "name": "app_federation",
+        "getPSAppMenuItems": [
+          {
+            "accUserMode": 2,
+            "caption": "子应用C追加",
+            "itemType": "MENUITEM",
+            "name": "child_appc_add1",
+            "getPSAppFunc": {
+              "modelref": true,
+              "id": "child_appc"
+            },
+            "tooltip": "子应用C追加"
+          }
+        ],
+        "getPSSysImage": {
+          "glyph": "xf12e@FontAwesome",
+          "cssClass": "fa fa-puzzle-piece"
+        },
+        "tooltip": "多应用融合"
+      }
+    ],
+    "name": "hubsubapp",
+    "modelid": "3393f3693e8b1c10528b7c823a1952ae",
+    "modeltype": "PSAPPMENU"
+  },
+  "getAllPSAppMenuModels": [],
+  "getAllPSAppViews": [
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view2.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appc_view2",
+      "name": "MASTERchild_appc_view2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_ctrl_federation.json",
+      "viewType": "DETREEEXPVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "tree_ctrl_federation",
+      "name": "MASTERtree_ctrl_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_ctrl_federation2.json",
+      "viewType": "DETABEXPVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "tab_ctrl_federation2",
+      "name": "MASTERtab_ctrl_federation2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_actions_federation.json",
+      "viewType": "DECUSTOMVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "child_appc_actions_federation",
+      "name": "MASTERchild_appc_actions_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_ctrl_federation.json",
+      "viewType": "DETABEXPVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "tab_ctrl_federation",
+      "name": "MASTERtab_ctrl_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_appc.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/welcome_appc.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "welcome"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appc_view",
+      "name": "MASTERchild_appc_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appc_view3.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appc_view3",
+      "name": "MASTERchild_appc_view3"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPINDEXVIEWS/admin_appc.json",
+      "viewType": "APPINDEXVIEW",
+      "view": "admin_appc"
+    }
+  ]
+}

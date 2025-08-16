@@ -1,0 +1,128 @@
+$calendar-user: (
+    cell-min-height:60px,
+);
+@include b('calendar-user'){
+    @include set-component-css-var(calendar-user,$calendar-user);
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: getCssVar(spacing,base);
+    overflow: hidden;
+
+    @include e('cell'){
+        min-height: getCssVar(calendar-user, cell-min-height);
+        border-bottom: 1px solid getCssVar(color,tertiary);
+        border-left: 1px solid getCssVar(color,tertiary);
+
+        &:last-child{
+            border-right: 1px solid getCssVar(color,tertiary);
+        }
+    }
+    @include e('black'){
+        width: 100%;
+        height: 100%;
+    }
+
+    @include b('calendar-user-more'){
+        flex-shrink: 0;
+        padding-left: getCssVar(spacing, tight),;
+        overflow: hidden;
+        font-size: getCssVar(font-size, small);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        border-radius: getCssVar(spacing, extra-tight);
+
+        &:hover {
+            background-color: getCssVar(control-calendar, hover-bg-color);
+        }
+    }
+
+    @include b('calendar-user-header'){
+        flex-shrink: 0;
+
+        @include e('top'){
+            border-top: 1px solid getCssVar(color,tertiary);
+        }
+        @include e('time-item'){
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        @include e('week-day'){
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        @include e('week-item'){
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            flex-shrink: 0;
+            justify-content: center;
+            overflow: hidden;
+        }
+        @include e('time-text'){
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    @include b('calendar-user-content'){
+        position: relative;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;       
+        @include e('time-item'){
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        @include e('time-text'){
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+        }
+        @include e('week-item'){
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            flex-shrink: 0;
+            justify-content: center;
+            overflow: hidden;
+        }
+        @include e('wrapping'){
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+              }
+        }
+
+    }
+}
+@include b('calendar-user-scroll-bar'){
+    position: absolute;
+    top: getCssVar(calendar-user-scroll-bar,thumb-top);
+    right: 0;
+    z-index: 10;
+    width: 4px;
+    height: 100%;
+    border-radius: getCssVar(border-radius,extra-small);
+    @include e('thumb'){
+        width: 4px;
+        height: getCssVar(calendar-user-scroll-bar,thumb-height);
+        cursor: pointer;
+        background-color: lightgray;
+        border-radius: getCssVar(border-radius,extra-small);
+    }
+}

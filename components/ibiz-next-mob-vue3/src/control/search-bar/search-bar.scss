@@ -1,0 +1,34 @@
+$control-searchbar: (margin: getCssVar(spacing, tight),
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+  height:rem(36px),
+);
+
+@include b(control-searchbar-quick-search) {
+  width: 100%;
+}
+
+@include b(control-searchbar) {
+  @include set-component-css-var(control-searchbar, $control-searchbar);
+  display: flex;
+  align-items: center;
+
+  @include e(filter) {
+    flex: none;
+    border: none;
+    font-size: getCssVar(width-icon, large);
+  }
+
+  .van-search {
+    --van-search-background: #{getCssVar(color, bg, 1)};
+    --van-search-padding:#{getCssVar(control-searchbar, padding)};
+    --van-search-input-height:#{getCssVar(control-searchbar, height)};
+
+    .van-field__left-icon {
+      margin-right: getCssVar('spacing', 'tight');
+    }
+  }
+
+  .van-search__content {
+    border-radius: getCssVar(border-radius, small);
+  }
+}

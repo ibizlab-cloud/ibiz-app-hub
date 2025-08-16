@@ -1,0 +1,34 @@
+$checkbox-list: ('padding': getCssVar('spacing', 'tight') 0,
+  'gap':getCssVar('spacing', 'tight'),
+);
+
+@include b('checkbox-list') {
+  @include set-component-css-var('checkbox-list', $checkbox-list);
+
+  display: flex;
+  justify-content: getCssVar(form-item-container, editor-align);
+  height: 100%;
+  padding: getCssVar('checkbox-list', 'padding');
+
+
+  .van-checkbox-group {
+    height: 100%;
+  }
+
+  .van-checkbox--horizontal {
+    margin: 0;
+  }
+
+  .van-checkbox-group--horizontal {
+    gap: getCssVar('checkbox-list', 'gap');
+  }
+
+  @include e('text') {
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+  }
+
+  @include m(readonly) {
+    color: getCssVar('form-item', 'readonly-color');
+  }
+}

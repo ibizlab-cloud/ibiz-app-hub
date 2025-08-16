@@ -1,0 +1,40 @@
+$searchform-buttons: (
+  height: 40px
+);
+
+@include b(searchform-buttons) {
+  @include set-component-css-var('searchform-buttons', $searchform-buttons);
+
+  display: flex;
+  gap: getCssVar(spacing, tight);
+  align-items: center;
+  height: getCssVar(searchform-buttons, height);
+  margin: getCssVar(spacing, extra-tight) getCssVar(spacing, extra-tight) 0 getCssVar(spacing, tight);
+
+  .el-button+.el-button {
+    margin-left: 0;
+  }
+}
+
+
+@include b(searchform-buttons-filter-item){
+  position: relative;
+
+  @include e(text){
+    padding-right: getCssVar('spacing', 'extra-tight');
+  }
+
+  @include e(remove){
+    position: absolute;
+    top: getCssVar('spacing', 'base-tight');
+    right: 0;
+    display: none;
+    font-size: getCssVar('font-size', 'header-5');
+  }
+
+  &:hover{
+    @include e(remove){
+      display: block;
+    }
+  }
+}

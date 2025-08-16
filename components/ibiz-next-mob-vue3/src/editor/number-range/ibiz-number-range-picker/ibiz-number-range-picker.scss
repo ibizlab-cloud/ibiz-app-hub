@@ -1,0 +1,37 @@
+@include b(number-range-picker) {
+  width: 100%;
+
+  @include flex(row, center, center);
+
+  .van-field {
+    flex: 1;
+    font-size: getCssVar('form-item', 'font-size');
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .van-field__control {
+    text-align: center;
+
+  }
+
+  @include m(disabled) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'disabled-color')};
+
+    color: getCssVar('form-item', 'disabled-color');
+  }
+
+  @include m(readonly) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'readonly-color')};
+
+    color: getCssVar('form-item', 'disabled-color');
+  }
+
+  @include e('clear-icon'){
+    display: getCssVar(form-item-container,required-style);
+    font-size: getCssVar(font-size,header,4);
+    opacity: 0.3;
+  }
+}

@@ -1,0 +1,42 @@
+$style-1: (
+    'offsetY': 0,
+);
+
+@include b(custom-border) {
+  @include set-component-css-var(style-1, $style-1);
+  @include when(style-1) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include e(wrapper){
+      position: absolute;
+      width: 100%;
+      height: calc(100% - getCssVar(style-1,'offsetY'));
+    }
+    @include e(border-box) {
+    z-index: 100;
+    height: 0;
+    }
+    @include e(border) {
+      position: absolute;
+      display: block;
+    }
+    @include e(right-top) {
+      right: 0;
+      transform: rotateY(180deg);
+    }
+    @include e(left-bottom) {
+      bottom: 0;
+      transform: rotateX(180deg);
+    }
+    @include e(right-bottom) {
+      right: 0;
+      bottom: 0;
+      transform: rotateX(180deg) rotateY(180deg);
+    }
+    @include e(content) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

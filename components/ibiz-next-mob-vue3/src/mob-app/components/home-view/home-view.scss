@@ -1,0 +1,7 @@
+@include b(home-view) {
+    &.ibiz-view-appindexview {
+        .ibiz-view-content {
+            overflow-y: auto;
+        }
+    }
+}

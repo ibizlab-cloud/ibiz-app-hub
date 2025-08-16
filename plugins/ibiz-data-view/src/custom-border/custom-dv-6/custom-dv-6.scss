@@ -1,0 +1,31 @@
+$style-6: (
+    'offsetY': 0,
+);
+@include b('custom-border') {
+  @include set-component-css-var(style-6, $style-6);
+  @include when(style-6) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include e('de-reverse') {
+      transform: rotate(180deg);
+    }
+    @include e('svg-container') {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - getCssVar(style-6,'offsetY'));
+  
+      & > polyline {
+        fill: none;
+      }
+    }
+  
+    @include e('border-box-content') {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

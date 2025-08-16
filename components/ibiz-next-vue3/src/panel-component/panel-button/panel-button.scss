@@ -1,0 +1,40 @@
+$panel-button: (
+  icon-margin: getCssVar(spacing, extra-tight),
+  icon-max-width: getCssVar(width-icon, medium),
+  icon-max-height: getCssVar(width-icon, medium),
+);
+
+@include b(panel-button) {
+  @include set-component-css-var(panel-button, $panel-button);
+
+  width: 100%;
+  padding: getCssVar(spacing, tight);
+  overflow: hidden;
+
+  .el-button{
+    width: 100%;
+    
+    @include b(panel-button-content){
+      @include flex(row, flex-start, center);
+
+      img,i{
+        display: inline-block;
+        max-width: getCssVar(panel-button, icon-max-width);
+        max-height: getCssVar(panel-button, icon-max-height);
+      }
+
+      // 同时存在图标和文本时，给文本加左margin
+      .#{bem(icon)} + .#{bem(panel-button-content, '', caption)}{
+        margin-left: getCssVar(panel-button, icon-margin);
+      }
+    } 
+  }
+
+  @include when(loading){
+    .el-button{
+      .#{bem(icon)}{
+        display: none;
+      }
+    }
+  }  
+}

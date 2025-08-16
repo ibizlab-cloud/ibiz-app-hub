@@ -1,0 +1,12 @@
+/* stylelint-disable block-no-empty */
+@include b('content-container') {
+  width: 100%;
+  height: 100%;
+  padding: getCssVar(spacing, tight) getCssVar(spacing, tight) 0
+    getCssVar(spacing, tight);
+  border: none;
+
+  .ibiz-control-chart {
+    height: 100%;
+  }
+}

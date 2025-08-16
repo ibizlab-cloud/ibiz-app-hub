@@ -1,0 +1,14 @@
+@include b(raw){
+  line-height: getCssVar(form-item, line-height);
+  color:getCssVar(form-item, text-color);
+}
+
+
+@include b(form-item){
+
+  @include b(raw) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

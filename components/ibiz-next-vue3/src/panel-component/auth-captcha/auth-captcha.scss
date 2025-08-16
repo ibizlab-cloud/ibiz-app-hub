@@ -1,0 +1,36 @@
+@include b(auth-captcha) {
+  display: flex;
+  position: relative;
+  @include e('captcha') {
+    width: calc(100% - 120px);
+  }
+  @include e('image') {
+    flex-shrink: 0;
+    width: 120px;
+    height: 100%;
+    cursor: pointer;
+    @include m('hint') {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: getCssVar(color, text, 3);
+      background-color: getCssVar(color, fill, 0);
+    }
+  }
+  @include e('error') {
+    left: 0;
+    top: 100%;
+    line-height: 1;
+    font-size: 12px;
+    padding-top: 2px;
+    position: absolute;
+    color: getCssVar(color, danger);
+  }
+  @include when(error) {
+    .el-input__wrapper {
+      box-shadow: 0 0 0 1px getCssVar(color, danger) inset;
+    }
+  }
+}

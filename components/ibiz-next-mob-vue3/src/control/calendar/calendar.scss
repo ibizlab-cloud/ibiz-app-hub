@@ -1,0 +1,171 @@
+$control-calendar: (
+  text-color: getCssVar(color-text-0),
+  hover-bg-color: getCssVar(color, fill, 0),
+  active-bg-color: getCssVar(color, fill, 0),
+  border-color: getCssVar(color, primary, active),
+  font-size: getCssVar(font-size, small),
+  item-padding: getCssVar(spacing, tight),
+  border-radius: getCssVar(border-radius, small),
+  margin: getCssVar(spacing, extra-tight),
+  item-margin: getCssVar(spacing, tight) 0,
+);
+
+@include b(control-calendar) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+
+  --van-cell-right-icon-color: var(--van-gray-6);
+  --van-padding-md: #{getCssVar(spacing, tight)};
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .calendar_day {
+    padding: getCssVar('spacing', 'extra-tight') 0;
+  }
+
+  @include e(calendar-item) {
+    display: flex;
+    gap: getCssVar(spacing, tight);
+    align-items: center;
+    padding: getCssVar(control-calendar, item-padding);
+  }
+
+  @include e(icon) {
+    width: rem(10px);
+    height: rem(10px);
+    border-radius: 50%;
+  }
+
+  @include e(day) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(mark) {
+    @include flex(row);
+
+    position: absolute;
+    bottom: rem(-4px);
+    left: 0;
+    flex-grow: 1;
+    justify-content: space-around;
+    width: 100%;
+
+    @include m((item)) {
+      width: rem(4px);
+      height: rem(4px);
+      background-color: red;
+      border-radius: rem(50px);
+    }
+  }
+
+  @include b(control-calendar-item) {
+    @include set-component-css-var(control-calendar, $control-calendar);
+
+    // width: calc(100% - getCssVar(control-calendar, item-margin) * 2);
+    height: auto;
+
+    // 默认项样式 不渗透到布局面板
+    @include m(default) {
+      padding: getCssVar(control-calendar, item-padding);
+      overflow: hidden;
+      font-size: getCssVar(control-calendar, font-size);
+      line-height: 25px;
+      color: getCssVar(control-calendar, text-color);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+  }
+}
+
+@include b(control-calendar-content) {
+  width: 100%;
+}
+
+@include b(control-calendar-date-text) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+
+  padding: getCssVar(control-calendar, item-padding);
+  margin-top: 0;
+}
+
+@include b(control-calendar-day) {
+  height: fit-content;
+}
+
+@include b(control-calendar-content-header) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+
+  display: flex;
+  gap: getCssVar(control-calendar, item-padding);
+  align-items: center;
+}
+
+@include b(control-calendar-footer) {
+  flex-grow: 1;
+  min-height: 0;
+
+  .van-tabs {
+    height: 100%;
+  }
+
+  .van-tabs__content {
+    height: calc(100% - var(--van-tabs-line-height));
+    overflow-y: auto;
+  }
+
+  .van-tab__panel,
+  .van-list {
+    height: 100%;
+  }
+}
+
+@include b(control-calendar-title) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .van-field {
+    width: 50%;
+  }
+
+  input {
+    font-weight: 100;
+    text-align: inherit;
+    background-color: transparent;
+    border: rem(1px) getCssVar(color, border) solid;
+    box-shadow: none;
+  }
+  span {
+    top: 0;
+    left: 0;
+  }
+}
+
+@include b(control-calendar-header-toolbar) {
+  width: 100%;
+  display: flex;
+  @include e('select-day') {
+    padding: getCssVar(spacing, base) getCssVar(spacing, tight);
+    background-color: getCssVar(color, bg, 1);
+    border-radius: 2px;
+    font-weight: getCssVar(font-weight, bold);
+  }
+  @include e('switch-toolbar') {
+    flex: 1;
+    align-items: center;
+    display: flex;
+    justify-content: end;
+    color: getCssVar(color, primary);
+    gap: getCssVar(spacing, base);
+    padding-right: getCssVar(spacing, base);
+  }
+}

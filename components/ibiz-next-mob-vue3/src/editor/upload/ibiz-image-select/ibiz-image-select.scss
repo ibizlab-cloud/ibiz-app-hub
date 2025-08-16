@@ -1,0 +1,46 @@
+@include b('image-select') {
+  display: flex;
+  flex-direction: row;
+  justify-content: getCssVar(form-item-container, editor-align);
+  .van-uploader__preview {
+    .van-uploader__file-icon {
+      display: none;
+    }
+
+    .van-uploader__file-name {
+      display: none;
+    }
+  }
+
+  @include b(image-select-item-cover) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: .12rem;
+    line-height: initial;
+    color: #fff;
+    text-align: center;
+    background: transparent;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: .04rem;
+    }
+  }
+
+  .van-uploader__preview {
+    width: 100%;
+    height: 100%;
+  }
+
+  .van-uploader {
+    width: var(--van-uploader-size);
+    height: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+@include b(not-supported-editor) {
+  color: getCssVar('color', 'danger');
+}
+
+@include b(not-supported-editor-preview-content) {
+  height: var(--el-component-size);
+  color: var(--el-disabled-text-color);
+  background-color: var(--el-disabled-bg-color);
+  border-radius: var(--el-border-radius-base);
+  box-shadow: 0 0 0 1px var(--el-disabled-border-color) inset;
+}

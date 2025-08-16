@@ -1,0 +1,91 @@
+@include b(filter-tree) {
+  padding: getCssVar('spacing','base');
+
+  // 编辑器样式
+  @include e(editor){
+    display: inline-block;
+    width: 180px;
+    margin-right:getCssVar('spacing','tight');
+  }
+
+  // 属性下拉样式
+  @include e(field-select){
+    width: 185px;
+    margin-right: getCssVar('spacing','tight');
+  }
+
+  // 过滤模式下拉样式
+  @include e(mode-select){
+    width: 185px;
+    margin-right: getCssVar('spacing','tight');
+  }
+
+}
+
+
+@include b(filter-tree-group) {
+  padding: getCssVar('spacing','tight');
+  border: 1px solid getCssVar(color, border);
+
+  @include e(editor) {
+    width: 600px;
+    height: 270px;
+  }
+
+  @include e(actions){
+    padding-bottom: getCssVar('spacing','base');
+  }
+
+  @include e(logic-type){
+    width: 80px;
+    margin-left: getCssVar('spacing','tight');
+  }
+  @include e(list-item){
+    position: relative;
+    @include flex(row,flex-start, center);
+
+    padding-right: getCssVar('spacing','base');
+    padding-bottom: getCssVar('spacing','base');
+  }
+
+  @include e(list-item-left){
+    align-self: flex-start;
+    width: 32px;
+    margin:getCssVar('spacing','extra-tight') getCssVar('spacing','tight') getCssVar('spacing','none');
+    font-size: getCssVar('font-size','regular');
+    color: getCssVar(editor-default-text-color)
+  }
+
+  @include e(list-item-right){
+    position: absolute;
+    top: 8px;
+    right: 0;
+    color: getCssVar(color, danger);
+    cursor: pointer;
+
+    &:hover{
+      color: getCssVar(color, danger,hover)
+    }
+  }
+
+  // Exists和not exists样式
+  @include m(items){
+    > .#{bem(filter-tree-group, actions)}{
+      display: flex;
+      > .#{bem(filter-tree-item)}{
+        width: auto;
+      }
+    }
+  }
+}
+
+@include b(filter-tree-item){
+  @include flex(row,flex-start, center);
+
+  width: 574px;
+}
+
+@include b(filter-tree-footer) {
+  margin-top: getCssVar('spacing','tight');
+  text-align: right;
+}

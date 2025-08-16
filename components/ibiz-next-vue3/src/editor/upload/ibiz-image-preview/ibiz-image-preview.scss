@@ -1,0 +1,20 @@
+@include b('image-preview') {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  >.el-image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+@include b(form-item){
+
+  @include b(image-preview) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

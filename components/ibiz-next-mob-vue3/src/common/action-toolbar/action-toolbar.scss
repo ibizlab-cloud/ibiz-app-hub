@@ -1,0 +1,40 @@
+/* action-toolbar 界面行为组工具栏 start */
+$action-toolbar: ('item-margin': 0 0 0 rem(4px),
+  'separator-width': rem(2px),
+  'separator-color': getCssVar('color', 'border'),
+);
+
+/* action-toolbar 界面行为组工具栏 end */
+
+@include b('action-toolbar') {
+  @include set-component-css-var('action-toolbar', $action-toolbar);
+
+  @include e('item') {
+    &+& {
+      margin: getCssVar('action-toolbar', 'item-margin');
+    }
+  }
+
+  // 分隔符样式
+  @include e('separator') {
+    display: inline-block;
+    width: getCssVar('action-toolbar', 'separator-width');
+    vertical-align: middle;
+    background-color: getCssVar('action-toolbar', 'separator-color');
+
+    // 第一个按钮前面的分隔符隐藏
+    &:first-child {
+      display: none;
+    }
+  }
+
+  @include m('dropdown') {
+    @include e(caption) {
+      cursor: pointer;
+    }
+
+    @include e(caption-icon) {
+      vertical-align: bottom;
+    }
+  }
+}

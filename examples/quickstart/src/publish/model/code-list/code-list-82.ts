@@ -1,0 +1,83 @@
+export default {
+  codeListTag: 'CodeList82',
+  codeListType: 'STATIC',
+  codeName: 'CodeList82',
+  emptyText: '未定义',
+  codeItems: [
+    {
+      codeName: 'item_01',
+      text: '1月',
+      value: '01',
+      id: 'item_01',
+    },
+    {
+      codeName: 'item_02',
+      text: '2月',
+      value: '02',
+      id: 'item_02',
+    },
+    {
+      codeName: 'item_03',
+      text: '3月',
+      value: '03',
+      id: 'item_03',
+    },
+    {
+      codeName: 'item_04',
+      text: '4月',
+      value: '04',
+      id: 'item_04',
+    },
+    {
+      codeName: 'item_05',
+      text: '5月',
+      value: '05',
+      id: 'item_05',
+    },
+    {
+      codeName: 'item_06',
+      text: '6月',
+      value: '06',
+      id: 'item_06',
+    },
+    {
+      codeName: 'item_07',
+      text: '7月',
+      value: '07',
+      id: 'item_07',
+    },
+    {
+      codeName: 'item_08',
+      text: '8月',
+      value: '08',
+      id: 'item_08',
+    },
+    {
+      codeName: 'item_09',
+      text: '9月',
+      value: '09',
+      id: 'item_09',
+    },
+    {
+      codeName: 'item_10',
+      text: '10月',
+      value: '10',
+      id: 'item_10',
+    },
+    {
+      codeName: 'item_11',
+      text: '11月',
+      value: '11',
+      id: 'item_11',
+    },
+    {
+      codeName: 'item_12',
+      text: '12月',
+      value: '12',
+      id: 'item_12',
+    },
+  ],
+  enableCache: true,
+  name: '月份（1～12）',
+  id: 'web.codelist82',
+};

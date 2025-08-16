@@ -1,0 +1,61 @@
+/* stylelint-disable selector-class-pattern */
+.xg-root {
+  // 背景
+  --gantt-color-bg: var(--gantt-bg, #fff);
+  --gantt-color-bg-hover: var(--gantt-bg-hover, #f0f0f0aa);
+  --gantt-color-bg-active: var(--gantt-bg-active, #e0e0e0aa);
+  --gantt-color-bg-checkmark: var(--gantt-bg-checkmark, #fff);
+  --gantt-color-bg-toolbar-item-hover: var(--gantt-bg-toolbar-item-hover, #f0f0f0aa);
+
+  // 阴影
+  --gantt-color-shadow: var(--gantt-shadow, #00000026);
+  --gantt-color-shadow-toolbar-item: var(--gantt-shadow-toolbar-item, #0000000d);
+
+  // 边框
+  --gantt-color-border: var(--gantt-border, #e5e5e5);
+  --gantt-color-border-hover: var(--gantt-border-hover, #d5d5d5);
+  --gantt-color-border-dashed: var(--gantt-border-dashed, #ccc);
+  --gantt-color-border-toolbar-item: var(--gantt-border-toolbar-item, #eee);
+
+  // 文本
+  --gantt-color-text-0: var(--gantt-text-0, #fff);
+  --gantt-color-text-3: var(--gantt-text-3, #999);
+
+  // 主要颜色
+  --gantt-color-white: var(--gantt-white, #fff);
+  --gantt-color-black: var(--gantt-black, black);
+  --gantt-color-primary: var(--gantt-warning, #557da5);
+
+  // 警示色
+  --gantt-color-warning: var(--gantt-warning, #eca710);
+
+
+  // 暗色主题
+  &.xg-root__dark {
+    --gantt-color-bg: var(--gantt-bg, #303133);
+    --gantt-color-text-0: var(--gantt-text-0, #fff);
+  }
+
+  // 连线
+  .xg-mid-separate-line__dark {
+    --gantt-color-border: var(--gantt-border, #6e7074);
+    --gantt-color-border-hover: var(--gantt-border-hover, #87898d);
+  }
+}
+
+.xg-view-toolbar-switch-action {
+  // 文本
+  --gantt-color-text-switch-item: var(--gantt-text-switch-item, #555b61);
+  --gantt-color-bg-hover-switch-item: var(--gantt-bg-hover-switch-item, #f0f0f0aa);
+}
+
+// 头部滚动条颜色，防止白条
+.xg-root::before {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  width: 6px;
+  height: 80px;
+  content: "";
+  background: var(--header-bg-color);
+}

@@ -1,0 +1,24 @@
+@include b(stepper) {
+  display: flex;
+  flex-direction: row;
+  justify-content: getCssVar(form-item-container, editor-align);
+  .van-stepper {
+    .van-stepper__minus,
+    .van-stepper__plus {
+      background-color: getCssVar(color, bg, 1);
+    }
+
+    .van-stepper__input {
+      background-color: getCssVar(color, bg, 1);
+    }
+  }
+
+  @include m(disabled) {
+    color: getCssVar('form-item', 'disabled-color');
+  }
+
+  @include m(readonly) {
+    color: getCssVar('form-item', 'readonly-color');
+  }
+
+}

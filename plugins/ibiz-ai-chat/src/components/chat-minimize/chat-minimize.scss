@@ -1,0 +1,104 @@
+@include b(chat-minimize) {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  z-index: 99999;
+  cursor: pointer;
+  position: absolute;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  @include when(hidden) {
+    display: none;
+  }
+
+  @include when(show-halo) {
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('assets/gif/halo.gif');
+  }
+
+  @include e(content) {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: #{getCssVar('ai-chat', 'color')};
+    background-color: #{getCssVar('ai-chat', 'background-color')};
+
+    &:hover {
+      color: #{getCssVar('ai-chat', 'hover-color')};
+      background-color: #{getCssVar('ai-chat', 'hover-background-color')};
+    }
+
+    svg {
+      fill: currentcolor;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    @include when(show-border) {
+      border: 1px solid #{getCssVar('ai-chat', 'border-color')};
+    }
+
+    @include m(popover) {
+      left: 50%;
+      bottom: 90px;
+      padding: 8px;
+      display: block;
+      font-size: 12px;
+      border-radius: 8px;
+      position: absolute;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: #{getCssVar('ai-chat', 'background-color')};
+      color: #{getCssVar('ai-chat', 'color')};
+      border: 1px solid #{getCssVar('ai-chat', 'border-color')};
+
+      .typewriter {
+        direction: rtl;
+        overflow: hidden;
+        max-width: 200px;
+        width: fit-content;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        animation: typing 3s steps(40, end);
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #{getCssVar('ai-chat', 'color')};
+  }
+}

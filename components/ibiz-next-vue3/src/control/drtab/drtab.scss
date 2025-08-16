@@ -1,0 +1,229 @@
+$control-drtab: (
+  'active-color': getCssVar('color', 'primary'),
+  'hover-color': getCssVar('color', 'text', 0),
+  'hover-bg-color': transparent,
+);
+
+@include b(control-drtab) {
+  @include set-component-css-var('control-drtab', $control-drtab);
+  @include e(counter) {
+    margin-left: getCssVar(spacing, tight);
+  }
+
+  // 标签栏
+  .el-tabs {
+    .el-tabs__header {
+      margin: getCssVar(spacing, none);
+
+      .el-tabs__nav-wrap {
+        margin: getCssVar(spacing, none);
+
+        .el-tabs__nav {
+          .el-tabs__active-bar {
+            background-color: getCssVar('control-drtab', 'active-color');
+          }
+
+          .el-tabs__item {
+            font-size: getCssVar('font-size', 'regular');
+            color: getCssVar('color', 'text', 2);
+
+            &:hover {
+              color: getCssVar('control-drtab', 'hover-color');
+              background-color: getCssVar('control-drtab', 'hover-bg-color');
+            }
+
+            &.is-active {
+              color: getCssVar('control-drtab', 'active-color');
+            }
+
+            &.is-top {
+              &:last-child {
+                padding-right: getCssVar(spacing, none);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.el-tabs--top .el-tabs__nav-scroll,
+    &.el-tabs--bottom .el-tabs__nav-scroll {
+      padding: 0 getCssVar(spacing, base);
+    }
+  }
+
+  .el-tabs__item {
+    padding: 0 getCssVar(spacing, base);
+  }
+
+  .el-tabs__nav-prev,
+  .el-tabs__nav-next {
+    line-height: var(--el-tabs-header-height);
+  }
+}
+
+@include b(control-drtab-label) {
+  @include e(icon) {
+    margin-right: getCssVar(spacing, tight);
+  }
+}
+
+// 更多样式
+@include b(control-drtab-more) {
+  .el-tabs.el-tabs.el-tabs--top {
+    .el-tabs__header {
+      .el-tabs__nav-prev,
+      .el-tabs__nav-next {
+        display: none;
+      }
+    }
+
+    .el-tabs__nav-wrap.is-scrollable {
+      padding: getCssVar('spacing', 'none');
+    }
+  }
+}
+
+@include b(control-drtab-more-dropdown) {
+  height: 100%;
+
+  @include e(link) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: getCssVar('font-size', 'regular');
+    color: getCssVar('color', 'text', 2);
+
+    svg {
+      color: getCssVar('color', 'text', 2);
+      fill: getCssVar('color', 'text', 2);
+    }
+
+    &:hover {
+      color: getCssVar('color', 'text', 0);
+
+      svg {
+        color: getCssVar('color', 'text', 0);
+        fill: getCssVar('color', 'text', 0);
+      }
+    }
+
+    &::after {
+      position: absolute;
+      left: -16px;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      content: '';
+    }
+  }
+}
+
+@include b(control-drtab-more-dropdown-popper) {
+  width: 240px;
+
+  @include e(active) {
+    background-color: getCssVar('color', 'primary', active);
+  }
+
+  @include e(label) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    @include m(text) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @include m(counter) {
+      min-width: 20px;
+      margin-left: getCssVar('spacing', 'tight');
+    }
+  }
+
+  &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list {
+    .#{bem('control-drtab-more-dropdown-popper', 'active')}.el-dropdown-menu__item {
+      background-color: getCssVar('color', 'primary', active);
+    }
+  }
+}
+
+@include b(control-drtab-dropdown-list) {
+  .#{bem(badge)} {
+    width: getCssVar(width, icon-medium);
+    height: getCssVar(width, icon-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: getCssVar(font-size, small);
+  }
+  @include e(trigger) {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    font-size: getCssVar(font-size, header-5);
+
+    .caption {
+      position: relative;
+      padding: getCssVar(spacing, tight);
+      .#{bem(badge)} {
+        top: 0;
+        right: -6px;
+        position: absolute;
+      }
+    }
+  }
+
+  @include e(popper) {
+    max-width: 220px;
+    min-width: 150px;
+
+    @include m(content) {
+      max-height: 26vh;
+      overflow: auto;
+    }
+    @include m(item) {
+      display: flex;
+      align-items: center;
+
+      .caption {
+        padding-right: getCssVar(spacing, tight);
+        @include utils-ellipsis;
+      }
+
+      .#{bem(badge)} {
+        width: getCssVar(width, icon-medium);
+        height: getCssVar(width, icon-medium);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: getCssVar(font-size, small);
+        margin-right: getCssVar(spacing, tight);
+      }
+
+      ion-icon {
+        color: getCssVar(color, primary);
+        font-size: getCssVar(width, icon-medium);
+      }
+      @include when(active) {
+        background-color: getCssVar(color, fill-0) !important;
+      }
+    }
+    &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list {
+      background-color: transparent;
+
+      .el-dropdown-menu__item {
+        min-height: 38px;
+        color: getCssVar(color, text-0);
+        background-color: transparent;
+
+        &:hover {
+          background-color: getCssVar(color, fill-0);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+:root {
+  // 字号
+  #{getCssVarName('font-size', 'small')}: rem(12px);
+  #{getCssVarName('font-size', 'regular')}: rem(13px);
+  #{getCssVarName('font-size', 'header-6')}: rem(14px);
+  #{getCssVarName('font-size', 'header-5')}: rem(16px);
+  #{getCssVarName('font-size', 'header-4')}: rem(18px);
+  #{getCssVarName('font-size', 'header-3')}: rem(22px);
+  #{getCssVarName('font-size', 'header-2')}: rem(26px);
+  #{getCssVarName('font-size', 'header-1')}: rem(30px);
+
+  // 字重
+  #{getCssVarName('font-weight', 'light')}: 200;
+  #{getCssVarName('font-weight', 'regular')}: 400;
+  #{getCssVarName('font-weight', 'bold')}: 600;
+
+  // 圆角
+  #{getCssVarName('border-radius', 'extra-small')}: rem(2px);
+  #{getCssVarName('border-radius', 'small')}: rem(4px);
+  #{getCssVarName('border-radius', 'medium')}: rem(6px);
+  #{getCssVarName('border-radius', 'large')}: rem(12px);
+  #{getCssVarName('border-radius', 'circle')}: 50%;
+  #{getCssVarName('border-radius', 'full')}: rem(9999px);
+
+  // 阴影
+  #{getCssVarName('shadow', 'elevated')}:
+    0 0 rem(1px) rgb(0 0 0 / 30%),
+    0 rem(4px) rem(14px) rgb(0 0 0 / 10%);
+
+  // 高度
+  #{getCssVarName('height-control', 'small')}: rem(24px);
+  #{getCssVarName('height-control', 'default')}: rem(32px);
+  #{getCssVarName('height-control', 'large')}: rem(40px);
+
+  // 描边尺寸
+  #{getCssVarName('border-thickness')}: 0;
+  #{getCssVarName('border-thickness', 'control')}: rem(1px);
+  #{getCssVarName('border-thickness', 'control-focus')}: rem(1px);
+
+  // 图标尺寸
+  #{getCssVarName('width-icon', 'extra-small')}: rem(8px);
+  #{getCssVarName('width-icon', 'small')}: rem(12px);
+  #{getCssVarName('width-icon', 'medium')}: rem(16px);
+  #{getCssVarName('width-icon', 'large')}: rem(20px);
+  #{getCssVarName('width-icon', 'extra-large')}: rem(24px);
+
+  // 间距
+  #{getCssVarName('spacing', 'none')}: 0;
+  #{getCssVarName('spacing', 'super-tight')}: rem(2px);
+  #{getCssVarName('spacing', 'extra-tight')}: rem(4px);
+  #{getCssVarName('spacing', 'tight')}: rem(8px);
+  #{getCssVarName('spacing', 'base-tight')}: rem(12px);
+  #{getCssVarName('spacing', 'base')}: rem(16px);
+  #{getCssVarName('spacing', 'base-loose')}: rem(20px);
+  #{getCssVarName('spacing', 'loose')}: rem(24px);
+  #{getCssVarName('spacing', 'extra-loose')}: rem(32px);
+  #{getCssVarName('spacing', 'super-loose')}: rem(40px);
+
+  // 编辑器默认
+  #{getCssVarName(editor, default, placeholder-color)}: getCssVar(color, text, 2);
+  #{getCssVarName(editor, default, line-height)}: rem(32px);
+  #{getCssVarName(editor, default, text-size)}: getCssVar(font-size, regular);
+  #{getCssVarName(editor, default, text-color)}: getCssVar(color, text, 0);
+  #{getCssVarName(editor, default, bg-color)}: getCssVar(color, fill, 0);
+  #{getCssVarName(editor, default, border-color)}: transparent;
+
+  // 编辑器悬浮
+  #{getCssVarName(editor, hover, bg-color)}: getCssVar(color, fill, 1);
+  #{getCssVarName(editor, hover, border-color)}: transparent;
+
+  // 编辑器按下
+  #{getCssVarName(editor, active, bg-color)}: getCssVar(color, fill, 2);
+  #{getCssVarName(editor, active, border-color)}: getCssVar(editor, active, bg-color);
+
+  // 编辑器选中
+  #{getCssVarName(editor, focus, bg-color)}: getCssVar(color, fill, 0);
+  #{getCssVarName(editor, focus, border-color)}: getCssVar(color, focus, border);
+
+  // 编辑器禁用
+  #{getCssVarName(editor, disabled, text-color)}: getCssVar(color, disabled, text);
+  #{getCssVarName(editor, disabled, bg-color)}: getCssVar(color, disabled, fill);
+  #{getCssVarName(editor, disabled, border-color)}: getCssVar(color, disabled, border);
+
+  // 编辑器只读
+  #{getCssVarName(editor, readonly, text-color)}: getCssVar(editor, default, text-color);
+  #{getCssVarName(editor, readonly, bg-color)}: getCssVar(editor, default, bg-color);
+  #{getCssVarName(editor, readonly, border-color)}: getCssVar(editor, default, border-color);
+}

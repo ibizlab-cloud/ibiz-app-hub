@@ -1,0 +1,118 @@
+/* stylelint-disable CssSyntaxError */
+/* stylelint-disable selector-class-pattern */
+
+@include b(collapse-item) {
+  @include e(item-content) {
+    .el-collapse-item__arrow {
+      &.is-active {
+        transform: rotate(-90deg);
+      }
+    }
+
+    .el-collapse-item__wrap {
+      --el-transition-duration: 0s;
+      --el-transition-duration-fast: 0s;
+    }
+
+    .el-collapse-item__header {
+      height: 40px;
+      padding: 0 getCssVar(spacing, extra-tight);
+      line-height: 40px;
+    }
+  }
+
+  @include e(item-wrapper) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center flex-end;
+    align-items: center;
+    margin-right: 28px;
+  }
+
+  @include e(item) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(tooltip) {
+    .el-popper__arrow {
+      display: block;
+    }
+  }
+
+  @include e(item-title) {
+    font-size: 12px;
+    color: getCssVar(color, text, 0);
+    @include when('required') {
+      &::after {
+        position: relative;
+        top: 0;
+        margin-right: 4px;
+        margin-left: 4px;
+        color: getCssVar(color, danger);
+        content: '*';
+      }
+    }
+  }
+
+  @include e(item-div) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    > svg {
+      fill: getCssVar(color, bg, fill);
+    }
+
+    &:hover {
+      > svg {
+        fill: getCssVar(color, primary, light, active);
+      }
+    }
+  }
+
+  .el-collapse-item__content {
+    padding-bottom: 10px;
+  }
+
+  @include e(item-editMode) {
+    > .el-tooltip__trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      svg {
+        fill: getCssVar(color, primary, light, active);
+      }
+    }
+  }
+}
+
+@include b(collapse-item-editMode-popover) {
+  --el-popover-padding: #{getCssVar('spacing', 'tight')} 0;
+}
+
+@include b(collapse-item-editMode-popover-item) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'base-loose');
+  cursor: pointer;
+
+  &:hover {
+    background-color: getCssVar(color, fill, 1);
+  }
+
+  > svg {
+    fill: getCssVar(color, primary, light, active);
+  }
+}

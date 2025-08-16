@@ -1,0 +1,43 @@
+$form-mdctrl: (header-height: 32px);
+
+$form-mdctrl-header: (bg-color: getCssVar(color, bg, 1),
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+  border-color: getCssVar(color, border),
+);
+
+$form-mdctrl-caption: (text-color: getCssVar(color, text, 2),
+  font-size: getCssVar(font-size, header-6),
+  font-weight: getCssVar(font-weight, regular),
+  height: rem(32px),
+  line-height: rem(32px),
+);
+
+@include b(form-mdctrl) {
+  @include set-component-css-var(form-mdctrl, $form-mdctrl);
+  @include set-component-css-var(form-mdctrl-header, $form-mdctrl-header);
+  @include set-component-css-var(form-mdctrl-caption, $form-mdctrl-caption);
+
+  height: 100%;
+
+  // 分组标题
+  @include e(title) {
+    @include utils-ellipsis;
+
+    height: getCssVar(form-mdctrl-caption, height);
+    font-size: getCssVar(form-mdctrl-caption, font-size);
+    font-weight: getCssVar(form-mdctrl-caption, font-weight);
+    line-height: getCssVar(form-mdctrl-caption, line-height);
+    color: getCssVar(form-mdctrl-caption, text-color);
+  }
+
+  @include m(has-value) {
+    @include b(form-mdctrl-header) {
+      display: none;
+    }
+  }
+}
+
+@include b(form-mdctrl-header) {
+  display: flex;
+  padding: getCssVar(form-mdctrl-header, padding);
+}

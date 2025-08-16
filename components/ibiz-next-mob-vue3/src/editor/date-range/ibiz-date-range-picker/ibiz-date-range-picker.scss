@@ -1,0 +1,92 @@
+@include b(date-range-picker) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  @include e(content) {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    min-height: calc(var(--van-cell-line-height) + 2px); /* 计算输入框高度，2px为边框 */
+    white-space: nowrap;
+    @include when('start') {
+      .van-field {
+        input {
+          text-align: left;
+        }
+      }
+    }
+    @include when(end) {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      input {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .van-field {
+        input {
+          text-align: right;
+          &::placeholder {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+
+  // 主要用于占位
+  @include e(expand-hidden) {
+    opacity: 0;
+  }
+
+  @include e(input) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .van-field {
+    line-height: getCssVar(form-item, line-height);
+    &::after {
+      display: none;
+    }
+    .van-field__control--custom {
+      min-height: getCssVar(form-item, line-height);
+    }
+  }
+
+  input {
+    width: 100%;
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-color: getCssVar('form-item', 'border-color');
+    box-shadow: none;
+  }
+
+  @include flex(row, center, center);
+
+  @include m(disabled) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'disabled-color')};
+
+
+    input {
+      color: getCssVar('form-item', 'disabled-color');
+
+    }
+  }
+
+  @include m(readonly) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'readonly-color')};
+
+    input {
+      color: getCssVar('form-item', 'readonly-color');
+    }
+  }
+}

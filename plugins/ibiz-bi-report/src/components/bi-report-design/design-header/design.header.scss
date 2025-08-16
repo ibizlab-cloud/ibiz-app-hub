@@ -1,0 +1,54 @@
+/* stylelint-disable selector-class-pattern */
+@include b('design-header') {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @include e('caption') {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      position: relative;
+      top: 0;
+      margin-right: 4px;
+      margin-left: 4px;
+      color: getCssVar(color, danger);
+      content: '*';
+    }
+  }
+  @include e('actions') {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    @include m('close') {
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, primary, light, active);
+      }
+    }
+    @include m('save') {
+      .el-dropdown .el-dropdown__caret-button.el-button::before {
+        background-color: getCssVar(color, bg, 0);
+      }
+    }
+  }
+}
+
+@include b('design-header-report-caption') {
+  @include e('name') {
+    display: inline-block;
+    height: 24px;
+    padding: 0 10px;
+    margin: 0 10px;
+    line-height: 24px;
+    color: getCssVar(color, danger);
+    vertical-align: bottom;
+    background-color: #ffeaea;
+    border-radius: getCssVar(border, radius, small);
+  }
+  @include e('desc') {
+    margin-top: 10px;
+    color: getCssVar(color, text, 3);
+  }
+}

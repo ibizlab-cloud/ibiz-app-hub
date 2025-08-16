@@ -1,0 +1,29 @@
+@include b(coop-pos) {
+  width: 100%;
+
+  @include e(on-line-editing) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @include m(person) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin: getCssVar('spacing-super', 'tight');
+      font-size: getCssVar('font-size', 'small');
+      color: getCssVar('color', 'white');
+      cursor: pointer;
+      border-radius: getCssVar('border-radius', 'circle');
+    }
+  }
+
+  @include e(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}

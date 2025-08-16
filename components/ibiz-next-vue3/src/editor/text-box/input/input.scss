@@ -1,0 +1,159 @@
+$input: (
+  'min-height': getCssVar(editor, default, line-height),
+);
+
+@include b('input') {
+  width: 100%;
+  height: 100%;
+  font-size: getCssVar(form-item, font-size);
+  font-weight: getCssVar(form-item, regular);
+  @include set-component-css-var(input, $input);
+
+  @include e(ai-chat) {
+    @include flex(row, center, center);
+
+    position: absolute;
+    right: getCssVar('spacing', 'base-loose');
+    bottom: getCssVar('spacing', 'base-loose');
+    width: calc(getCssVar('width-icon', 'medium') + 2 * getCssVar('spacing', 'tight'));
+    height: calc(getCssVar('width-icon', 'medium') + 2 * getCssVar('spacing', 'tight'));
+    padding: getCssVar('spacing', 'tight');
+    font-size: getCssVar('width-icon', 'medium');
+    color: getCssVar(color, primary, text);
+    cursor: pointer;
+    background-color: getCssVar(color, primary);
+    border-radius: getCssVar(border, radius, circle);
+
+    &:hover {
+      color: getCssVar(color, primary, hover, text);
+      background-color: getCssVar(color, primary, hover);
+    }
+  }
+
+  .el-input .el-input__inner {
+    height: 100%;
+  }
+
+  .el-input .el-input__inner::placeholder {
+    color: getCssVar(form-item, placeholder-color);
+  }
+
+  .el-textarea .el-textarea__inner {
+    height: 100%;
+  }
+
+  .el-textarea .el-textarea__inner::placeholder {
+    color: getCssVar(form-item, placeholder-color);
+    @include overflow-wrap;
+  }
+
+  .el-input__count{
+    bottom: 0;
+  }
+
+  @include b(input-input) {
+    height: 100%;
+
+    .el-input__wrapper {
+      width: 100%;
+
+      // 避免自适应高度后，没配高度么有默认行高
+      min-height: getCssVar(input, min-height);
+    }
+  }
+
+  @include m(readonly) {
+    height: auto;
+    overflow: auto;
+    line-height: getCssVar(input, min-height);
+    color: getCssVar(form-item, readonly-color);
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  // 单位后缀样式
+  .el-input__suffix {
+    .#{bem(input,unit)} {
+      // font-size: getCssVar('form-item', 'font-size');
+      font-style: normal;
+    }
+  }
+
+  // 文本域最小高度32px,与输入框对齐,此处必须使用important
+  .el-textarea__inner {
+    min-height: 32px !important;
+  }
+}
+
+// 表单下的时间选择器默认显示，悬浮上去显示编辑器
+@include b(input-form-default-content) {
+  display: none;
+}
+
+@include b(form-item) {
+
+  @include b(input) {
+    @include when(show-default) {
+
+      @include when(textarea) {
+        padding: getCssVar(form-item, hover-edit-padding);
+        overflow: hidden;
+
+        @include b(input-form-default-content) {
+          display: block;
+        }
+
+        @include b(input-input) {
+          display: none;
+        }
+      }
+
+      // 悬浮显示编辑器
+      &:hover {
+        @include b(input-form-default-content) {
+          display: none;
+        }
+
+        @include b(input-input) {
+          display: inline-flex;
+        }
+      }
+
+      // 不悬浮时显示信息态
+      @include b(input-form-default-content) {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);
+        font-family: Arial, sans-serif;
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
+
+      @include b(input-input) {
+        display: none;
+        font-family: Arial, sans-serif;
+
+        &.el-textarea .el-textarea__inner{
+          word-wrap: break-word;
+          white-space: pre-wrap;
+        }
+      }
+
+      // 输入态
+      @include when(editable) {
+        @include b(input-form-default-content) {
+          display: none;
+        }
+
+        @include b(input-input) {
+          display: inline-flex;
+        }
+      }
+    }
+
+  }
+}

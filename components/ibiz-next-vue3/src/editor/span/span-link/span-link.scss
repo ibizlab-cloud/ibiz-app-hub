@@ -1,0 +1,26 @@
+@include b(span-link) {
+  line-height: getCssVar(height-control, default);
+  color: getCssVar(color, link);
+  cursor: pointer;
+
+  &:hover{
+    color: getCssVar(color, link-hover);
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+  }
+  @include m(readonly) {
+    color: getCssVar(form-item, readonly-color);
+  }
+}
+
+
+@include b(form-item){
+
+  @include b(span-link) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

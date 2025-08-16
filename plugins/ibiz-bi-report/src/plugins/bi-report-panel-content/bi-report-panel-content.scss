@@ -1,0 +1,93 @@
+/* stylelint-disable selector-class-pattern */
+@include b(bi-report-panel-content) {
+  height: 100%;
+  padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'base');
+
+  > .el-collapse {
+    border: none;
+
+    > .el-collapse-item:last-of-type {
+      &.is-active {
+        .el-collapse-item__wrap {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+@include b(bi-report-panel-content-filter) {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-width: 0;
+  padding: getCssVar('spacing', 'tight');
+  margin: 0 auto 0
+    calc(getCssVar('spacing', 'base') + getCssVar('spacing', 'super-tight'));
+  line-height: 1;
+  border-radius: getCssVar(border, radius, small);
+
+  &:hover {
+    color: getCssVar(color, primary);
+    background: getCssVar(color, primary, light, default);
+  }
+
+  @include e(icon) {
+    margin-right: getCssVar('spacing', 'tight');
+    font-size: getCssVar('font-size', 'header-6');
+    pointer-events: none;
+    fill: currentcolor;
+  }
+
+  @include e(text) {
+    pointer-events: none;
+  }
+
+  @include e(badge) {
+    min-width: getCssVar('spacing', 'base');
+    padding: 0 getCssVar('spacing', 'extra-tight');
+    margin-left: getCssVar('spacing', 'tight');
+    color: getCssVar(color, primary);
+    pointer-events: none;
+    background: getCssVar(color, primary, light, default);
+    border-radius: getCssVar('spacing', 'base');
+  }
+
+  @include when(active) {
+    color: getCssVar(color, primary);
+    background: getCssVar(color, primary, light, default);
+  }
+}
+
+@include b(bi-report-panel-content-item-header) {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: getCssVar('spacing', 'base-loose');
+  font-size: getCssVar('font-size', 'regular');
+  color: getCssVar(color, text, 1);
+
+  + .el-collapse-item__arrow {
+    font-size: getCssVar('font-size', 'header-6');
+    color: getCssVar(color, text, 3);
+
+    &.is-active {
+      transform: rotate(-90deg);
+    }
+  }
+
+  .el-checkbox__label {
+    color: getCssVar(color, text, 3);
+  }
+}
+
+@include b(bi-report-panel-content-chart) {
+  height: 400px;
+}
+
+@include b(bi-report-panel-content-grid) {
+  > .ibiz-content-container {
+    min-height: 72px;
+  }
+}

@@ -1,0 +1,25 @@
+@include b(custom-border) {
+  @include when(style-11) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include e(border-svg) {
+      @include m(container) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+  
+        & > polyline {
+          fill: none;
+          stroke-width: 1;
+        }
+      }
+    }
+    @include e(content) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

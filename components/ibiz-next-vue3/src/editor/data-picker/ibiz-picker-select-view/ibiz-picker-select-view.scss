@@ -1,0 +1,111 @@
+@include b(picker-select-view) {
+  width: 100%;
+
+  .el-dropdown {
+    width: 100%;
+  }
+
+  .el-select {
+    width: 100%;
+  }
+
+  @include e('arrow'){
+    display: flex;
+    transition: transform 0.3s;
+    transform: rotateZ(0);
+    transform-origin: center center;
+
+    >svg{
+     width: 14px;
+     height: 14px;
+    }
+
+    &.overturn{
+      transform: rotateZ(-180deg);
+    }
+  }
+
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar('form-item', 'readonly-color');
+  }
+}
+
+@include b(picker-select-view-popper){
+  &.el-popper.el-dropdown__popper {
+    overflow: auto;
+
+    .el-scrollbar .el-dropdown__list{
+      background: getCssVar(color, bg, 3);
+  
+      .el-dropdown-menu{
+        background: getCssVar(color, bg, 3);
+      }
+    }
+  }
+}
+
+// 表单下的编辑器默认显示，悬浮上去显示编辑器
+@include b(picker-select-view-form-default-content){
+  display: none;
+}
+
+@include b(form-item){
+
+  @include b(picker-select-view) {
+    @include when(show-default){
+      // 悬浮显示编辑器
+      &:hover{
+        @include b(picker-select-view-form-default-content){
+          display: none;
+        }     
+        @include b(picker-select-view-select){
+          display: block; 
+        }       
+      }    
+      
+      // 不悬浮时显示信息态
+      @include b(picker-select-view-form-default-content){      
+        display: flex;
+        align-items: center;
+        width: 100%;     
+        height: getCssVar(editor, default, line-height);
+        padding: getCssVar(form-item, hover-edit-padding);        
+        font-family: Arial, sans-serif;;      
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);
+        @include b(picker-select-view-content-item){
+          height: calc(getCssVar(editor, default, line-height) - getCssVar('spacing', 'tight'));
+          padding: 0 getCssVar('spacing', 'tight');
+          margin: 2px 6px 2px 0;
+          font-size: getCssVar(font-size, small);
+          line-height: calc(getCssVar(editor, default, line-height) - getCssVar('spacing', 'tight'));
+          color: getCssVar(editor, default, text-color);
+          background-color: getCssVar(color, fill-0);
+          border: 1px solid transparent;
+          border-radius: getCssVar(border-radius, small);
+        }
+      }
+      @include b(picker-select-view-select){
+        display: none;  
+      }
+      
+      // 输入态
+      @include when(editable){
+        @include b(picker-select-view-form-default-content){
+          display: none;
+        }     
+        @include b(picker-select-view-select){
+          display: block;    
+        }  
+      }
+    }
+
+  }
+}
+
+@include b(picker-select-view-select-popover){
+  display: none;
+}

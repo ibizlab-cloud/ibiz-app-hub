@@ -1,0 +1,30 @@
+$badge: (
+  bg-color: getCssVar(color, danger),
+);
+
+
+@include b(badge) {
+  display: inline-block;
+  width: getCssVar('width-icon', 'large');
+  height: getCssVar('width-icon', 'large');
+  line-height: getCssVar('width-icon', 'large');
+  color: getCssVar(color, danger, text);
+  background-color: getCssVar(badge, bg-color);
+  border-radius: getCssVar(border, radius, circle);
+
+  @include m(danger){
+    #{getCssVarName(badge, bg-color)}: getCssVar(color,danger);
+  }
+  @include m(success){
+    #{getCssVarName(badge, bg-color)}: getCssVar(color,success);
+  }
+  @include m(warning){
+    #{getCssVarName(badge, bg-color)}: getCssVar(color,warning);
+  }
+  @include m(info){
+    #{getCssVarName(badge, bg-color)}: getCssVar(color,info);
+  }
+  @include m(primary){
+    #{getCssVarName(badge, bg-color)}: getCssVar(color,primary);
+  }
+}

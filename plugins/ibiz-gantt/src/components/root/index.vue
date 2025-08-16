@@ -1,0 +1,318 @@
+<template>
+  <div
+    ref="rootRef"
+    :class="[
+      'xg-root',
+      { 'xg-root-dragging': mousedown, 'xg-root__dark': isDark },
+    ]"
+    :style="[
+      $styleBox.getBorder(),
+      { 'border-color': $styleBox.borderColor },
+      { '--primary-color': $styleBox.primaryColor },
+      { '--header-bg-color': $styleBox.headerStyle?.bgColor || $styleBox.primaryColor },
+    ]"
+  >
+    <!-- 左侧表格 -->
+    <sync-scroll-container
+      ref="tableRef"
+      vertical
+      class="xg-table-container"
+      :style="{ width: tableWidth + 'px' }"
+      hide-scroll
+      disable-horizontal
+      :group="containerId"
+    >
+      <!-- 表头 -->
+      <TableHeader />
+
+      <!-- 表内容 -->
+      <TableBody :gap="scrollGapSize" />
+    </sync-scroll-container>
+
+    <!-- 中分线 -->
+    <div
+      ref="midLineRef"
+      :class="[
+        'xg-mid-separate-line',
+        { 'xg-mid-separate-line__dark': isDark },
+      ]"
+      :style="{ height: $param.rootHeight + 'px' }"
+    />
+    <!-- 移动示意线 -->
+    <div
+      v-show="showLine"
+      class="xg-move-line"
+      :style="{ left: lineLeft + 'px' }"
+    />
+
+    <!-- 右侧甘特 -->
+    <sync-scroll-container
+      ref="ganttRef"
+      vertical
+      horizontal
+      class="xg-gantt-container"
+      :group="containerId"
+      :style="{ width: `calc(100% - ${tableWidth}px - 3px)` }"
+    >
+      <!-- 甘特头 -->
+      <GanttHeader />
+
+      <!-- 甘特内容 -->
+      <GanttBody />
+
+      <!-- 甘特拖动背景 -->
+      <GanttDragBackdrop />
+    </sync-scroll-container>
+
+    <!-- 视图工具栏 -->
+    <ViewToolbar v-if="props.showViewToolbar" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import SyncScrollContainer from '@/components/container/SyncScrollContainer.vue';
+import TableHeader from '@/components/container/TableHeader.vue';
+import TableBody from '@/components/container/TableBody.vue';
+import GanttHeader from '@/components/container/GanttHeader.vue';
+import ViewToolbar from '@/components/toolbar/ViewToolbar.vue';
+import GanttBody from '@/components/container/GanttBody.vue';
+import GanttDragBackdrop from '@/components/container/GanttDragBackdrop.vue';
+import useSlotsBox from '@/composables/useSlotsBox';
+import useTableWidth from '@/composables/useTableWidth';
+import { uuid } from '@/utils/common';
+import {
+  DefineComponent,
+  onMounted,
+  onUnmounted,
+  onUpdated,
+  reactive,
+  Ref,
+  ref,
+  toRefs,
+} from 'vue';
+import rootProps from './rootProps';
+import useData from '@/composables/useData';
+import useStyle from '@/composables/useStyle';
+import { useResizeObserver } from '@vueuse/core';
+import useParam from '@/composables/useParam';
+import useGanttHeader from '@/composables/useGanttHeader';
+import useDrag from '@/composables/useDrag';
+import useRoot from '@/composables/useRoot';
+import useLinks from '@/composables/useLinks';
+import Variables from '@/constants/vars';
+import useExport from '@/composables/useExport';
+import useElement from '@/composables/useElement';
+import { setLocale } from '@/utils/date';
+
+const containerId = uuid(10);
+const props = defineProps(rootProps);
+// 本地化
+setLocale(props.locale);
+
+// #region 挂载实例
+const { rootRef } = useRoot();
+// #endregion
+
+// #region 获取表格下方的滚动条 gap
+const tableRef = ref<DefineComponent | null>(null);
+const { ganttRef } = useElement();
+const scrollGapSize = ref(0);
+
+function getScrollGapSize() {
+  if (tableRef.value && ganttRef.value) {
+    scrollGapSize.value = Math.abs(
+      Math.min(
+        ganttRef.value.$el.offsetHeight,
+        ganttRef.value.$el.clientHeight,
+      ) - tableRef.value.$el.offsetHeight,
+    );
+  }
+}
+onMounted(getScrollGapSize);
+onUpdated(getScrollGapSize);
+// #endregion
+
+// #region 得到组件高度，并保存
+const { $param } = useParam();
+onMounted(() => {
+  $param.rootHeight = Math.max(
+    ganttRef.value!.$el.offsetHeight,
+    ganttRef.value!.$el.clientHeight,
+  );
+});
+// #endregion
+
+// #region 处理样式参数
+const { setStyles, $styleBox, isDark } = useStyle();
+setStyles(props);
+// #endregion
+
+// #region 处理插槽内容
+const { setSlots, $slotsBox } = useSlotsBox();
+
+setSlots(props.slots);
+// #endregion
+
+// #region 获取表格宽度
+const { tableWidth } = useTableWidth();
+// #endregion
+
+// #region 初始化各种数据
+const { data } = toRefs(props);
+
+const { initData } = useData();
+initData(data, props);
+
+const { initLinks } = useLinks();
+initLinks(props.links);
+// #endregion
+
+// #region 监听 gantt 尺寸变化，表头和宽度需要重新渲染
+const { setGanttHeaders } = useGanttHeader();
+const setWidth: any = () => {
+  setGanttHeaders();
+  $styleBox.rootWidth = rootRef.value?.offsetWidth || 0;
+};
+onMounted(() => useResizeObserver(ganttRef.value?.$el, setWidth));
+// #endregion
+
+// #region 加载示意线
+const { showLine, lineLeft, onResizeTableColumn, mousedown } = useDrag();
+
+const midLineRef = ref(null) as Ref<HTMLElement | null>;
+onResizeTableColumn(midLineRef, {
+  onEnd: x => {
+    $slotsBox.tableHeaders.leafs[
+      $slotsBox.tableHeaders.leafs.length - 1
+    ].width = Math.max(
+      $slotsBox.tableHeaders.leafs[$slotsBox.tableHeaders.leafs.length - 1]
+        .width + x,
+      Variables.size.minTableColumnWidth,
+    );
+  },
+
+  preMove: (x, clientX) => {
+    const tableRect = tableRef.value?.$el.getBoundingClientRect();
+    const ganttRect = ganttRef.value?.$el.getBoundingClientRect();
+
+    if (
+      $slotsBox.tableHeaders.leafs[$slotsBox.tableHeaders.leafs.length - 1]
+        .width +
+        x <
+      Variables.size.minTableColumnWidth
+    )
+      return false;
+
+    if (clientX < tableRect.left) {
+      return false;
+    }
+
+    if (clientX > ganttRect.right - 100) {
+      return false;
+    }
+
+    return true;
+  },
+});
+
+// #region 全屏
+const { handleFullscreenChange } = useExport();
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+onUnmounted(() => {
+  document.removeEventListener('fullscreenchange', handleFullscreenChange);
+});
+// #endregion
+
+// #endregion
+
+// #region 暴露方法
+const exports = useExport();
+defineExpose(exports);
+// #endregion
+</script>
+
+<style lang="scss">
+.xg-root {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--gantt-color-border);
+  text-align: left !important;
+  background-color: var(--gantt-color-bg);
+  transition:
+    background-color 0.1s,
+    color 0.1s,
+    border-color 0.1s;
+
+  .xg-table-container {
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+  }
+
+  .xg-mid-separate-line {
+    width: 3px;
+    height: 100%;
+    max-height: 100%;
+    display: inline-block;
+    position: relative;
+    background-color: var(--gantt-color-border);
+    transition:
+      background-color 0.1s,
+      box-shadow 0.1s;
+    cursor: col-resize;
+    z-index: 11;
+
+    &:hover {
+      background-color: var(--gantt-color-border-hover);
+      box-shadow: 0 0 10px var(--gantt-color-border-hover);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+    }
+  }
+
+  .xg-mid-separate-line__dark {
+    background-color: var(--gantt-color-border);
+
+    &:hover {
+      background-color: var(--gantt-color-border-hover);
+      box-shadow: 0 0 10px var(--gantt-color-border-hover);
+    }
+  }
+
+  .xg-move-line {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0px;
+    z-index: 100;
+    border-left: 1px dashed var(--gantt-color-border);
+  }
+
+  .xg-gantt-container {
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.xg-root__dark {
+  color: var(--gantt-color-text-0);
+  background-color: var(--gantt-color-bg);
+}
+
+.xg-root-dragging {
+  user-select: none;
+}
+</style>

@@ -1,0 +1,88 @@
+@include b(bi-report-drill-shell) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@include b(bi-report-drill-shell-header) {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  height: 56px;
+  padding: 0 getCssVar('spacing', 'extra-loose');
+  font-size: getCssVar('font-size', 'header-5');
+}
+
+@include b(bi-report-drill-shell-content) {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid getCssVar(color, border);
+}
+
+@include b(bi-report-drill-shell-content-left) {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 100%;
+  padding: 0 getCssVar('spacing', 'tight');
+  overflow: hidden;
+  border-right: 1px solid getCssVar(color, border);
+}
+
+@include b(bi-report-drill-shell-content-left-list) {
+  height: calc(100% - 50px);
+  padding: getCssVar('spacing', 'tight') 0;
+  overflow: auto;
+  border-bottom: 1px solid getCssVar(color, border);
+}
+
+@include b(bi-report-drill-shell-content-left-active-items) {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: getCssVar('spacing', 'tight');
+
+  @include e(text) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@include b(bi-report-drill-shell-item) {
+  padding: getCssVar('spacing', 'tight');
+  margin-bottom: getCssVar('spacing', 'tight');
+  cursor: pointer;
+  border-radius: getCssVar(border, radius, small);
+
+  &:hover {
+    background-color: getCssVar(color, fill, 0);
+  }
+
+  @include when(active) {
+    background-color: getCssVar(color, primary, light, default);
+  }
+
+  @include e(name) {
+    margin-bottom: getCssVar('spacing', 'extra-tight');
+    overflow: hidden;
+    font-size: getCssVar('font-size', 'header-6');
+    font-weight: getCssVar('font-weight', 'bold');
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(value) {
+    overflow: hidden;
+    font-weight: getCssVar('font-weight', 'light');
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@include b(bi-report-drill-shell-content-right) {
+  flex: 1 1 0;
+  height: 100%;
+  overflow: auto;
+}

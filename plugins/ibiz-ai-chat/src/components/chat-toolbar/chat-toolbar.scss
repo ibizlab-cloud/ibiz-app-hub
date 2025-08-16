@@ -1,0 +1,11 @@
+@include b(chat-toolbar) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .#{bem(chat-toolbar-item)} {
+    &:not(:first-child) {
+      margin-left: 6px;
+    }
+  }
+}

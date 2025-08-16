@@ -1,0 +1,159 @@
+$button-list: (
+  icon-margin: getCssVar(spacing, extra-tight),
+  icon-size: getCssVar(width-icon, medium),
+  popover-bg: getCssVar(color, bg-3),
+  popover-padding: getCssVar(spacing, tight) getCssVar(spacing, none),
+  popover-button-padding: getCssVar(spacing, tight)
+    getCssVar(spacing, base-loose),
+  popover-button-margin: getCssVar(spacing, none),
+  popover-button-size: getCssVar(height-control, large),
+  popover-button-font-size: getCssVar(font-size, regular),
+  gap: getCssVar(spacing, base, tight),
+);
+
+@include b(button-list) {
+  @include set-component-css-var(button-list, $button-list);
+  
+  @include e(content) {
+    display: flex;
+
+    .#{bem('button-list','dropdown')} {
+      width: auto;
+    }
+
+    .el-button + .el-dropdown {
+      margin-left: getCssVar(button-list, gap);
+    }
+  }
+
+  @include e(button-content) {
+    display: flex;
+    align-items: center;
+
+    @include m(icon) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: getCssVar(button-list, icon-size);
+      height: getCssVar(button-list, icon-size);
+      margin-right: getCssVar(button-list, icon-margin);
+      font-size: getCssVar(button-list, icon-size);
+    }
+  }
+
+  @include e(item) {
+    > span {
+      // 禁用点击事件，保证event.target是button元素  
+      pointer-events: none; 
+    }
+  }
+
+  @include e(dropdown) {
+    width: 100%;
+    height: 100%;
+    .#{bem(icon)} {
+      margin-right: 0;
+      & + .#{bem('button-list', 'button-content', 'caption')} {
+        margin-left: getCssVar(button-list, icon-margin);
+      }
+    }
+
+    .el-button-group {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      border-radius: getCssVar(border, radius-small);
+
+      .el-button {
+        &:first-child {
+          flex-grow: 1;
+        }
+
+        &:last-child {
+          flex-shrink: 0;
+        }
+      }
+    }
+    @include m(style2) {
+      .el-button {
+        --el-button-active-bg-color: transparent;
+        --el-button-bg-color: transparent;
+        --el-mask-color-extra-light: transparent;
+        --el-button-hover-bg-color: transparent;
+      }
+
+      .el-button-group {
+        .#{bem('button-list','item')} {
+          padding-right: 0;
+        }
+
+        .el-button {
+          color: getCssVar(color, text-2);
+        }
+
+        &:hover {
+          .el-button {
+            color: getCssVar(color, primary);
+          }
+        }
+      }
+    }
+  }
+
+  @include m(itemx) {
+    .#{bem('button-list','more-button')} {
+      width: 32px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  @include e(dropdown-popper) {
+    @include set-component-css-var(button-list, $button-list);
+
+    &.el-popper.el-dropdown__popper
+      .el-scrollbar
+      .el-dropdown__list
+      .el-dropdown-menu
+      .el-dropdown-menu__item {
+      padding: getCssVar(spacing, none);
+    }
+
+    .el-button {
+      --el-button-active-bg-color: transparent;
+      --el-button-hover-bg-color: transparent;
+      --el-button-bg-color: transparent;
+      --el-mask-color-extra-light: transparent;
+
+      display: block;
+      width: 100%;
+      padding: getCssVar(button-list, popover-button-padding);
+      margin: getCssVar(button-list, popover-button-margin);
+      font-size: getCssVar(button-list, popover-button-font-size);
+      text-align: left;
+      border-radius: 0;
+    }
+
+    @include m(style2) {
+      &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list {
+        background-color: transparent;
+
+        .el-dropdown-menu {
+          background-color: transparent;
+        }
+
+        .el-dropdown-menu__item {
+          background-color: transparent;
+
+          &:hover {
+            background-color: getCssVar(color, bg, 0);
+          }
+        }
+      }
+
+      .el-button {
+        color: getCssVar(color, text-2);
+      }
+    }
+  }
+}

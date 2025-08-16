@@ -1,0 +1,108 @@
+@include b(dropdown-list) {
+  height: 100%;
+
+
+  .van-field__control {
+    gap: getCssVar(spacing, tight);
+  }
+
+
+
+  .van-picker {
+    .van-picker__mask {
+      background-image: getCssVar(color, overlay, bg);
+    }
+  }
+
+  @include b(dropdown-list-toolbar) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: getCssVar(spacing, base-tight);
+
+    button {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+    }
+
+    @include e(confirm) {
+      color: getCssVar(color, primary);
+    }
+
+    @include e(cancel) {
+      color: getCssVar(color, text, 3);
+    }
+  }
+
+  @include b(dropdown-list-columns) {
+    min-height: 30vh;
+    max-height: 50vh;
+    overflow: auto;
+
+    .van-cell-group {
+      height: 100%;
+      overflow: auto;
+    }
+
+    .van-cell {
+      padding: getCssVar(spacing, base-tight);
+    }
+  }
+
+  input:disabled {
+    color: getCssVar(form-item, disabled-color);
+    background-color: getCssVar(form-item, disabled-bg-color);
+    border-color: getCssVar(form-item, disabled-border-color);
+    -webkit-text-fill-color: getCssVar(form-item, disabled-color);
+  }
+
+  @include m(disabled) {
+    opacity: .8;
+  }
+
+  @include m(readonly) {
+    color: getCssVar(form-item, readonly-color);
+    -webkit-text-fill-color: getCssVar(form-item, readonly-color);
+  }
+
+  .van-cell-group--inset {
+    margin: 0;
+  }
+
+  @include b(dropdown-list-select-item) {
+    display: flex;
+    gap: getCssVar(spacing, tight);
+    align-items: center;
+    justify-content: space-between;
+    padding: getCssVar(spacing, tight);
+    background-color: getCssVar(color, disabled, bg);
+    border-radius: getCssVar('border-radius', 'small');
+  }
+
+
+  .van-field__control--custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: getCssVar(form-item-container, editor-align);
+    flex-wrap: wrap;
+  }
+  &.#{bem('dropdown-list','','readonly')} {
+    display: flex;
+    flex-direction: row;
+    justify-content: getCssVar(form-item-container, editor-align);
+  }
+}
+
+@include b(dropdown-list) {
+  @include e(select) {
+    &::after {
+      display: none;
+    }
+  }
+
+  .van-cell__title,
+  .van-cell__value {
+    text-align: left;
+  }
+}

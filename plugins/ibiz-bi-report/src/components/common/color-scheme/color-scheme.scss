@@ -1,0 +1,134 @@
+/* stylelint-disable scss/operator-no-newline-after */
+/* stylelint-disable selector-class-pattern */
+@include b(color-scheme) {
+  width: 100%;
+}
+
+.el-select__wrapper{
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: left;
+  cursor: pointer;
+  background-color: var(--el-fill-color-blank);
+  border-radius: var(--el-border-radius-base);
+  box-shadow: 0 0 0 1px var(--el-border-color) inset;
+  transition: var(--el-transition-duration);
+}
+
+.el-select__selection {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.el-select__input-wrapper.is-hidden {
+  position: absolute;
+  opacity: 0;
+}
+
+.el-select__input-wrapper {
+  max-width: 100%;
+}
+
+.el-select__selected-item {
+  display: flex;
+  flex-wrap: wrap;
+  user-select: none;
+}
+@include b(color-scheme-header) {
+  margin-bottom: getCssVar('spacing', 'tight');
+  font-size: getCssVar('font-size', 'regular');
+  line-height: calc(
+    getCssVar('spacing', 'base-loose') + getCssVar('spacing', 'super-tight')
+  );
+}
+
+@include b(color-scheme-content) {
+  display: flex;
+  flex-direction: column;
+}
+
+@include b(color-scheme-picker) {
+  &:not(:last-child) {
+    margin-bottom: getCssVar('spacing', 'base');
+  }
+
+  .el-input__wrapper {
+    padding: calc(
+        getCssVar('spacing', 'extra-tight') +
+          getCssVar('spacing', 'super-tight')
+      )
+      getCssVar('spacing', 'base-tight');
+  }
+
+  .el-input__inner {
+    --el-input-inner-height: #{getCssVar('height-control', 'small')};
+  }
+}
+
+@include b(color-scheme-template-color-picker) {
+  .el-input__wrapper {
+    padding: calc(
+        getCssVar('spacing', 'extra-tight') +
+          getCssVar('spacing', 'super-tight')
+      )
+      getCssVar('spacing', 'base-tight');
+  }
+
+  .el-input__inner {
+    --el-input-inner-height: #{getCssVar('height-control', 'small')};
+  }
+
+  .el-select__prefix{
+    display: flex;
+  }
+  @include e(icon) {
+    display: block;
+    width: calc(
+      getCssVar('spacing', 'base-tight') + getCssVar('spacing', 'super-tight')
+    );
+    height: calc(
+      getCssVar('spacing', 'base-tight') + getCssVar('spacing', 'super-tight')
+    );
+    margin-right: getCssVar('spacing', 'tight');
+    border-radius: getCssVar(border, radius, extra, small);
+
+    &:last-of-type {
+      margin-right: getCssVar('spacing', 'none');
+    }
+  }
+}
+
+@include b(color-scheme-template-color-picker-option) {
+  display: flex;
+  align-items: center;
+}
+
+.el-popper.is-light {
+  @include b(color-scheme-popper) {
+    .el-select-dropdown__list {
+      margin: getCssVar('spacing', 'base-tight') getCssVar('spacing', 'none') !important;
+    }
+
+    .el-select-dropdown__item {
+      height: getCssVar('height-control', 'large');
+      padding: getCssVar('spacing', 'none') getCssVar('spacing', 'base-loose');
+      line-height: getCssVar('height-control', 'large');
+
+      &.selected {
+        background-color: getCssVar(color, primary, light, default);
+      }
+    }
+  }
+}

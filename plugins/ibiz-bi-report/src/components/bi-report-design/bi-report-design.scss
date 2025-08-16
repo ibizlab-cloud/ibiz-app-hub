@@ -1,0 +1,54 @@
+.ibiz-bi-report-design-sidebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 600px;
+  height: 100%;
+}
+
+.ibiz-bi-report-design-content {
+  width: calc(100% - 600px);
+  height: auto;
+}
+
+.ibiz-select-container {
+  position: absolute;
+}
+
+.ibiz-property-container {
+  margin-left: 300px;
+}
+
+@include b('bi-report-design-content') {
+  border: 1px solid var(--ibiz-color-border);
+  border-left: none;
+
+  .ibiz-content-container {
+    height: calc(100% - 48px);
+  }
+}
+
+@include b('bi-report-design-container') {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  @include e('header') {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 getCssVar('spacing', 'base');
+    border-bottom: 1px solid getCssVar(color, border);
+  }
+  @include e('design-area') {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 64px);
+    padding: getCssVar('spacing', 'base');
+  }
+}
+
+@include b('bi-report-design-white-loading') {
+  width: 100%;
+  height: 100%;
+}

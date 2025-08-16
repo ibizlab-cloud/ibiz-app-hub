@@ -1,0 +1,133 @@
+@include b('date-range-select') {
+  width: 100%;
+  @include e('date-unit') {
+    width: 100%;
+
+    @include m('label') {
+      font-size: getCssVar(font-size,regular);
+
+      &::after {
+        position: relative;
+        top: 0;
+        left: getCssVar(spacing, extra-tight);
+        color: getCssVar('color', 'danger');
+        content: '*';
+      }
+    }
+    @include m('editor-select') {
+      width: 100%;
+      margin-top: 12px;
+    }
+  }
+  @include e('date-range') {
+    width: 100%;
+    margin-top: 12px;
+    @include m('label') {
+      font-size: getCssVar(font-size,regular);
+
+      &::after {
+        position: relative;
+        top: 0;
+        left: getCssVar(spacing, extra-tight);
+        color: getCssVar('color', 'danger');
+        content: '*';
+      }
+    }
+    @include m('editor') {
+      display: inline-flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1px 11px;
+      margin-top: getCssVar(spacing, base-tight);
+      font-size: getCssVar(font-size, small);
+      line-height: 32px;
+      cursor: pointer;
+      background-image: none;
+      border-radius: getCssVar(border-radius, small);
+      box-shadow: 0 0 0 1px getCssVar('color', border) inset;
+      transition: all 0.2s;
+      transform: translate3d(0, 0, 0);
+
+      i {
+        color: getCssVar(color, tertiary-light-active);
+      }
+
+      &:hover {
+        box-shadow: 0 0 0 1px getCssVar('color', primary) inset;
+      }
+    }
+  }
+  @include e('date-type') {
+    padding: getCssVar(spacing, base-tight) 0;
+    @include m('item') {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 32px;
+      padding: 0 getCssVar(spacing, base-tight);
+      cursor: pointer;
+
+      &:hover {
+        background-color: getCssVar(color, fill, 1);
+      }
+    }
+    @include m('item-caption') {
+      flex: 1;
+    }
+    @include m('item-icon') {
+      margin-top: 2px;
+
+      i {
+        margin-left: getCssVar(spacing, base-tight);
+        font-size: getCssVar(font-size, header, 5);
+      }
+    }
+    @include m('editor') {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
+    }
+    @include m('quarter') {
+      z-index: -10;
+      visibility: visible;
+      opacity: 0;
+
+      .el-tooltip__trigger {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    @include m('year') {
+      z-index: -10;
+      visibility: visible;
+      opacity: 0;
+
+      .el-tooltip__trigger {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    @include m('week') {
+      z-index: -10;
+      visibility: visible;
+      opacity: 0;
+
+      .el-tooltip__trigger {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  @include e('select-value') {
+    height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

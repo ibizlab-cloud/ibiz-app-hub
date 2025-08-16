@@ -1,0 +1,33 @@
+$checkbox-list: (
+  group-row-number: 0,
+);
+@include b('checkbox-list') {
+  @include set-component-css-var(checkbox-list, $checkbox-list);
+  @include e('text') {
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+  }
+
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar(form-item, readonly-color);
+  }
+
+  @include when(grid-layout){
+    .el-checkbox-group{
+      display: grid;
+      grid-template-columns: repeat(getCssVar(checkbox-list, group-row-number), 1fr);
+    }
+  }
+}
+
+
+@include b(form-item){
+
+  @include b(checkbox-list) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

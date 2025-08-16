@@ -1,0 +1,345 @@
+/* control-toolbar 工具栏部件 start */
+$control-toolbar: (
+  item-color: getCssVar(color, primary, text),
+  item-bg-color: getCssVar(color, primary),
+  item-margin: 0 getCssVar(spacing, extra-tight),
+  item-padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+  item-disabled-button: rgba(var(#{getCssVarName(grey, 4)}), 0.5),
+  icon-max-width: getCssVar(width-icon, medium),
+  icon-max-height: getCssVar(width-icon, medium),
+  separator-color: getCssVar(color, fill, 2),
+  menu-height: 32px,
+  text-margin: 0 0 0 getCssVar(spacing, extra-tight),
+);
+
+/* control-toolbar 视图工具栏 end */
+
+/* control-toolbar-actions 行为组展开样式 start */
+$control-toolbar-actions: (
+  popover-button-padding: getCssVar(spacing, tight) getCssVar(spacing, base-loose),
+  dropdown-item-height: 36px,
+);
+
+/* control-toolbar-actions 行为组展开样式 end */
+
+// 工具栏项样式
+@mixin toolbar-item-style {
+  font-size: getCssVar(font-size, regular);
+
+  .#{bem(toolbar-item-icon)}{
+    @include flex(row, center, center); 
+
+    width: getCssVar(control-toolbar, icon-max-width);
+    height: getCssVar(control-toolbar, icon-max-height);
+
+    .#{bem(icon)}{
+      @include flex(row, center, center);
+
+      width: 100%;
+      height: 100%;
+    }
+
+    i{
+      font-size: getCssVar(font-size, regular);      
+    }
+
+    img{
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+
+    & + .#{bem(toolbar-item-text)}{
+      margin: getCssVar(control-toolbar, text-margin);
+    }
+  }
+  .#{bem(toolbar-item-counter)} {
+    margin-left: getCssVar('spacing', 'super-tight');
+  }
+}
+
+@include b(control-toolbar) {
+  @include set-component-css-var(control-toolbar, $control-toolbar);
+
+  display: flex;
+  align-items: center;
+
+  @include e(item) {
+    display: flex;
+    align-items: center;
+    margin: getCssVar(control-toolbar, item-margin);
+    overflow: hidden;
+
+    .el-button {
+      @include flex(row, center, center);
+
+      padding: getCssVar(control-toolbar, item-padding);
+
+      &.is-disabled{
+        background-color:getCssVar(control-toolbar, item-disabled-button);
+      }
+
+      > span {
+        @include flex(row, center, center);        
+
+        pointer-events: none; // 禁用点击事件，保证event.target是button元素        
+        @include toolbar-item-style;
+      }
+    }
+
+    @include when(loading){
+      .el-button{
+        .#{bem(icon)}{
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include e(item-separator) {
+    @include no-repeat;
+
+    color: getCssVar(control-toolbar, separator-color);
+  }
+
+
+  @include e(menu){
+    &.el-menu{
+      height: getCssVar(control-toolbar, menu-height);
+      margin: getCssVar(control-toolbar, item-margin);
+      border: none;
+    } 
+
+    .el-sub-menu.is-disabled .el-sub-menu__title {
+      opacity: 1;
+    }
+    .#{bem(control-toolbar-submenu)}{
+      .el-sub-menu__title{
+        @include flex(row, center, center);
+
+        padding: 0;    
+        font-size: getCssVar(font-size, regular);
+        color: getCssVar(control-toolbar, item-color);                
+        background-color: getCssVar(control-toolbar, item-bg-color);
+        border-bottom: none;
+        border-radius: getCssVar(border-radius, small);
+        
+        .el-sub-menu__icon-arrow{
+          display: none;
+        }
+        
+        .el-button {
+          @include flex(row, center, center);
+
+          > span {
+            @include flex(row, center, center);        
+            
+            @include toolbar-item-style;
+          }
+        }
+        
+        >span{      
+          @include flex(row, center, center);
+
+          line-height: 1;
+        }
+
+        &:hover{
+          color: getCssVar(color, primary, hover, text);
+          background-color: getCssVar(color, primary, hover);       
+        }
+      }
+
+      &.is-active{
+        .el-sub-menu__title{
+          color: getCssVar(color, primary, text);    
+        }
+      }
+    }
+  }
+}
+
+@include b(control-toolbar-submenu-popper){
+  @include set-component-css-var(control-toolbar, $control-toolbar);                  
+
+  color: getCssVar(color, primary, text);
+  background-color: getCssVar(color, primary);    
+  
+  .el-menu{
+    .el-sub-menu.is-disabled .el-sub-menu__title {
+      opacity: 1;
+    }
+    .#{bem(control-toolbar-submenu)}{
+      .el-sub-menu__title{
+        padding: 0 10px;    
+        font-size: getCssVar(font-size, regular);
+        color: getCssVar(color, primary, text);                  
+        background-color: getCssVar(color, primary);
+        
+        &:hover{
+          color: getCssVar(color, primary, hover, text);
+          background-color: getCssVar(color, primary, hover);       
+        }
+      }
+
+      &.is-active{
+        .el-sub-menu__title{
+          color: getCssVar(color, primary, text);    
+        }
+      }
+    }    
+    
+    .#{bem(control-toolbar-submenu-rawitem)}{
+      color: getCssVar(color, primary, text);               
+    }
+
+    .#{bem(control-toolbar-submenu__groupdetails)}{
+      .el-sub-menu__title{
+        .el-menu-item{
+          padding: 0;
+        }
+      }
+    }
+    
+    .el-menu-item{
+      @include toolbar-item-style;   
+
+      color: getCssVar(color, primary, text);
+       
+  
+      &.is-active{
+        color: getCssVar(color, primary, text);    
+      }
+
+      &:hover{
+        color: getCssVar(color, primary, hover, text);
+        background-color: getCssVar(color, primary, hover);          
+      }
+
+      .el-button {
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0;
+
+        --el-button-active-bg-color: transparent;
+        --el-button-hover-bg-color: transparent;
+        --el-button-bg-color: transparent;
+        --el-mask-color-extra-light: transparent;
+      }
+    }
+  }
+
+}
+
+// 行为组展开样式
+@include b(control-toolbar-actions) {
+  display: flex;
+  margin: getCssVar(control-toolbar, item-margin);
+  white-space: normal;
+  visibility: visible;
+
+  @include e('extract-mode-itemx') {
+    .el-button-group {
+      display: flex;
+      white-space: normal;
+
+      &>.el-button {
+        padding: getCssVar('spacing', 'none');
+      }
+
+      &>.el-button:nth-child(2):focus-visible {
+        outline: none;
+        outline-offset: 0;
+      }
+    }
+  }
+
+  @include e('item-deuiaction') {
+    display: flex;
+    align-items: center;
+    margin: getCssVar(control-toolbar, item-margin);
+    overflow: hidden;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .el-button {
+    @include flex(row, center, center);
+
+    padding: getCssVar(control-toolbar, item-padding);
+    pointer-events: auto;
+
+    &.is-disabled{
+      background-color:getCssVar(control-toolbar, item-disabled-button);
+    }
+
+    > span {
+      @include flex(row, center, center);        
+
+      pointer-events: none; // 禁用点击事件，保证event.target是button元素        
+      @include toolbar-item-style;
+    }
+  }
+}
+
+@include b(control-toolbar-actions-dropdown-popper) {
+  --el-popover-padding:#{getCssVar('spacing', 'none')};
+
+  min-width: 200px;
+
+  @include set-component-css-var(control-toolbar-actions, $control-toolbar-actions);
+
+  @include e('dropdown-item') {
+    height: getCssVar(control-toolbar-actions, dropdown-item-height);
+  }
+
+  @include when(disabled) {
+    display: none;
+  }
+
+  &.el-popper.el-dropdown__popper {
+    .el-scrollbar {
+      .el-dropdown__list {
+        .el-dropdown-menu__item {
+          padding: getCssVar('spacing', 'none');
+
+          &.is-disabled {
+            background-color: transparent;
+            opacity: 0.25;
+          }
+        }
+      }
+    }
+  }
+
+  .el-button {
+    --el-button-active-bg-color: transparent;
+    --el-button-hover-bg-color: transparent;
+    --el-button-bg-color: transparent;
+    --el-mask-color-extra-light: transparent;
+
+    display: block;
+    width: 100%;
+    padding: getCssVar(control-toolbar-actions, popover-button-padding);
+    margin: getCssVar('spacing', 'none');
+    color: getCssVar(color, primary, text);
+    text-align: left;
+    background-color: transparent;
+    border-radius: 0;
+
+    &:hover {
+      color: getCssVar(color, primary, text);
+      background-color: transparent;
+    }
+
+    &>span {
+      @include toolbar-item-style;
+    }
+  }
+}

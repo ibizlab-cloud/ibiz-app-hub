@@ -1,0 +1,66 @@
+/* stylelint-disable selector-class-pattern */
+$screen-dashboard: (
+    'text-color': var(--ibiz-color-primary-text),
+    'bg-color': transparent,
+    'primary-color': #144082,
+    'primary-active-color': #559dff,
+    'primary-text-color': #409df1,
+    'light-text-color': transparent,
+    'border-color': #18a9d9,
+    'border-radius': 0,
+    'custom-dv-bg': transparent,
+);
+@include b(screen-dashboard) {
+    @include set-component-css-var('screen-dashboard', $screen-dashboard);
+
+    #{getCssVarName(color, text, 0)}: getCssVar(screen-dashboard, text-color);
+    #{getCssVarName(color, text, 1)}: getCssVar(screen-dashboard, text-color);
+    #{getCssVarName(color, text, 2)}: getCssVar(screen-dashboard, text-color);
+    #{getCssVarName(color, text, 3)}: getCssVar(screen-dashboard, text-color);
+    #{getCssVarName(editor, default, text, color)}: getCssVar(screen-dashboard, text-color);
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .ibiz-control-dashboard {
+        z-index: 9;
+
+        >div {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .ibiz-portlet-layout__caption-text {
+        color: getCssVar('screen-dashboard', 'text-color');
+    }
+
+    .ibiz-portlet-layout {
+        --ibiz-portlet-layout-header-bg-color: getCssVar('screen-dashboard', 'bg-color');
+        --ibiz-portlet-layout-content-bg-color: getCssVar('screen-dashboard', 'bg-color');
+    }
+
+    .ibiz-view {
+        --ibiz-view-bg-color: getCssVar('screen-dashboard', 'bg-color');
+    }
+
+    .#{bem(no-data)}{
+        display: none;
+    }
+
+    .el-empty.is-no-data {
+        display: none;
+    }
+
+    .ibiz-control-grid {
+        --ibiz-control-grid-row-bg-color: getCssVar('screen-dashboard', 'bg-color');
+        --ibiz-control-grid-row-bg-color-2: getCssVar('screen-dashboard', 'bg-color');
+        --ibiz-control-grid-row-hover-color: getCssVar('screen-dashboard', 'bg-color');
+        --ibiz-control-grid-header-bg-color: getCssVar('screen-dashboard', 'bg-color');
+
+        .el-table {
+            --el-table-header-bg-color: getCssVar('screen-dashboard', 'bg-color');
+            --el-table-current-row-bg-color: getCssVar('screen-dashboard', 'bg-color');
+        }
+    }
+}

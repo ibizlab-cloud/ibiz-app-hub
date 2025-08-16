@@ -1,0 +1,145 @@
+$nav-tabs: (
+  'padding': getCssVar('spacing', 'base-loose'),
+  'left-width': calc(100% - 60px),
+  'right-width': 60px,
+  'right-height': 30px,
+);
+
+$nav-tabs-item: (
+  'height': 40px,
+  'padding': 0 getCssVar('spacing', 'base-loose'),
+  'margin': 0 getCssVar('spacing', 'base') 0 0,
+  'font-size': getCssVar('font-size', 'regular'),
+  'font-weight': getCssVar('font-weight', 'regular'),
+  'border': 1px solid getCssVar('color', 'border'),
+  'border-radius': getCssVar('border-radius', 'medium'),
+  'bg-color': transparent,
+  'color': getCssVar('color', 'text', 0),
+  'hover-color': getCssVar('color', 'primary', 'hover'),
+  'active-color': getCssVar('color', 'primary'),
+);
+
+@include b(nav-tabs) {
+  @include set-component-css-var('nav-tabs', $nav-tabs);
+  @include set-component-css-var('nav-tabs-item', $nav-tabs-item);
+  @include flex(row, flex-start, center);
+
+  position: relative;
+  padding: getCssVar('nav-tabs', 'padding');
+
+  @include e(left) {
+    display: flex;
+    align-items: center;
+    width: getCssVar('nav-tabs', 'left-width');
+      
+    @include m('caption'){
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @include m('content') {
+      display: flex;
+      align-items: center;
+      max-width: 300px;
+
+      &>img.#{bem('icon')} {
+        max-width: getCssVar('width-icon', 'medium');
+      }
+    }
+
+    @include m('icon') {
+      display: flex;
+      align-items: center;
+      &+.#{bem('nav-tabs', 'left', 'caption')} {
+        flex: 1;
+        margin-left: getCssVar(spacing, extra-tight);
+      }
+    }
+    
+    .el-tabs {
+      width: 100%;
+
+      --el-tabs-header-height: getCssVar('nav-tabs-item', 'height');
+
+      .el-tabs__nav {
+        border: none;
+
+        .el-tabs__item {
+          display: flex;
+          align-items: center;
+          height: getCssVar('nav-tabs-item', 'height');
+          padding: getCssVar('nav-tabs-item', 'padding');
+          margin: getCssVar('nav-tabs-item', 'margin');
+          overflow: hidden;
+          font-size: getCssVar('nav-tabs-item', 'font-size');
+          font-weight: getCssVar('nav-tabs-item', 'font-weight');
+          color: getCssVar('nav-tabs-item', 'color');
+          vertical-align: middle;
+          background-color: getCssVar('nav-tabs-item', 'bg-color');
+          border: getCssVar('nav-tabs-item', 'border');
+          border-radius: getCssVar('nav-tabs-item', 'border-radius');
+          box-shadow: 0 1px 2px 0 getCssVar('color', 'border');
+          opacity: 1;
+
+          &:hover {
+            padding: getCssVar('nav-tabs-item', 'padding');
+            color: getCssVar('nav-tabs-item', 'hover-color');
+            box-shadow: 0 1px 4px 0 rgb(0 0 0 / 25%);
+
+            .is-icon-close {
+              color: getCssVar('nav-tabs-item', 'hover-color');
+            }
+
+            svg {
+              fill: getCssVar('nav-tabs-item', 'hover-color');
+            }
+          }
+
+          &.is-active {
+            padding: getCssVar('nav-tabs-item', 'padding');
+            color: getCssVar('color', 'white');
+            background-color: getCssVar('nav-tabs-item', 'active-color');
+            box-shadow: none;
+
+            .is-icon-close {
+              color: getCssVar('color', 'white');
+            }
+            
+            svg {
+              fill: getCssVar('color', 'white');
+            }
+          }
+
+          &.is-closable {
+            padding: getCssVar('nav-tabs-item', 'padding');
+
+            &.hover {
+              padding: getCssVar('nav-tabs-item', 'padding');
+            }
+          }
+
+          .is-icon-close {
+            position: relative;
+            top: 1px;
+          }
+        }
+      }
+
+      .el-tabs__header {
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+
+    }
+
+  }
+
+  @include e(right) {
+    width: getCssVar('nav-tabs', 'right-width');
+
+    .el-dropdown button{
+      height: getCssVar('nav-tabs', 'right-height');
+    }
+  }
+}

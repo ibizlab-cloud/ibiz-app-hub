@@ -1,0 +1,30 @@
+@include b(chat-input-material-item) {
+    position: relative;
+    width: 200px;
+    height: 60px;
+    padding: 8px;
+    color: #{getCssVar('ai-chat', 'color')};
+    background-color: #{getCssVar('ai-chat', 'background-color')};
+    border: 1px solid #{getCssVar('ai-chat', 'border-color')};
+    border-radius: #{getCssVar('ai-chat', 'border-radius')};
+
+    &:hover {
+        color: #{getCssVar('ai-chat', 'hover-color')};
+        cursor: pointer;
+        background-color: #{getCssVar('ai-chat', 'hover-background-color')};
+        @include b(chat-input-material-item__icon) {
+            opacity: 1;
+        }
+    }
+
+    @include when(disabled) {
+        pointer-events: none;
+    }
+}
+
+@include b(chat-input-material-item__icon) {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    opacity: 0;
+}

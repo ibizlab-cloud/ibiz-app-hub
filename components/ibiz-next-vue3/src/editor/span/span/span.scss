@@ -1,0 +1,32 @@
+@include b('span') {
+  display: inline-block;
+  font-size: getCssVar(form-item,font-size);;
+  line-height: getCssVar(form-item, line-height);
+  color: getCssVar(form-item, text-color);
+  white-space: pre-line;
+  vertical-align: bottom;
+
+  @include m(readonly) {
+    color: getCssVar(form-item, readonly-color);
+  }
+
+  @include e(code-list){
+    height: 100%;
+  }
+
+  @include when(is-ellipsis) {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@include b(form-item){
+
+  @include b(span) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

@@ -1,0 +1,69 @@
+$switch-tristate: (
+  'leftbg': getCssVar(color,danger),
+  'rightbg': getCssVar(color,primary),
+  'centerbg': getCssVar(color,fill,1)
+);
+
+@include b('switch-tristate'){
+    @include set-component-css-var('switch-tristate', $switch-tristate);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    @include e('switch-wrapper'){
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 20px;
+        cursor: pointer;
+        border-radius: 10px;
+
+        &::after{
+            position: absolute;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            content: '';
+            background-color: getCssVar(color,white);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        @include when('left'){
+            background-color: getCssVar(switch-tristate,leftbg);
+
+            &::after{
+                left: 2px;
+            }
+        }
+        @include when('right'){
+            background-color: getCssVar(switch-tristate,rightbg);
+
+            &::after{
+                left: 26px;
+            }
+        }
+        @include when('center'){
+            background-color: getCssVar(switch-tristate,centerbg);
+
+            &::after{
+                left: 14px;                  
+            }
+        }
+        @include when('disabled'){
+            cursor: not-allowed;
+            
+            &::before{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width:100%;
+                height: 100%;
+                content: '';
+                background-color: getCssVar(color,bg,4);
+                opacity: 0.3;
+            }
+        }
+    }
+}

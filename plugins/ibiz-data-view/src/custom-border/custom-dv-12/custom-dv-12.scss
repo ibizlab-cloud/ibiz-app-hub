@@ -1,0 +1,34 @@
+$style-12: (
+    'offsetY': 0,
+);
+
+@include b('custom-border') {
+  @include set-component-css-var(style-12, $style-12);
+
+  @include when(style-12) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include e('de-reverse') {
+      transform: rotate(180deg);
+    }
+    @include e('svg-container') {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - getCssVar(style-12,'offsetY'));
+
+  
+      & > polyline {
+        fill: none;
+      }
+    }
+  
+    @include e('content') {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

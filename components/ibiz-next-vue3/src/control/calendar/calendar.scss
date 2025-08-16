@@ -1,0 +1,251 @@
+$control-calendar: (
+  text-color: getCssVar(color-text-0),
+  hover-bg-color: getCssVar(color, fill, 0),
+  active-bg-color: getCssVar(color, fill, 0),
+  border-color: getCssVar(color, primary, active),
+  font-size: getCssVar(font-size, small),
+  item-padding: getCssVar(spacing, tight),
+  border-radius: getCssVar(border-radius, small),
+  margin: getCssVar(spacing, extra-tight),
+);
+
+$control-calendar-item: (
+  color: none,
+);
+
+@include b(control-calendar) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @include e(nav-icon) {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    color: getCssVar(color, primary);
+    cursor: pointer;
+  }
+
+  @include e(calendar-item) {
+    display: flex;
+    align-items: center;
+    padding: getCssVar(control-calendar, item-padding);
+  }
+
+  @include e(icon) {
+    width: getCssVar('width-icon', 'small');
+    height: getCssVar('width-icon', 'small');
+    margin-right: getCssVar(spacing, base-tight);
+    border-radius: getCssVar('border', 'radius', 'circle');
+  }
+}
+
+@include b(control-calendar-content) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .el-calendar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .el-calendar__header {
+    flex-wrap: nowrap;
+  }
+
+  .el-calendar-table,
+  .el-calendar-table .el-calendar-day {
+    width: 100%;
+    height: 100%;
+    min-height: 90px;
+    cursor: pointer;
+  }
+
+  .el-calendar-table {
+    flex: 1;
+    width: fit-content;
+  }
+
+  .el-calendar-table .el-calendar-day:hover {
+    cursor: pointer;
+    background-color: var(--el-calendar-selected-bg-color);
+  }
+
+  .el-calendar__body {
+    display: flex;
+    flex: 1;
+    padding: 0;
+    overflow: auto;
+  }
+
+  @include when(show-date-range) {
+    .el-calendar-day {
+      padding: getCssVar(spacing, tight) 0;
+    }
+    .#{bem('control-calendar-item')} {
+      width: calc(100% + 1px);
+      min-height: 34px;
+      border-radius: 0;
+
+      &.is-begin-time {
+        width: 100%;
+        margin-left: getCssVar(spacing, super-tight);
+        border-radius: getCssVar(spacing, extra-tight) 0 0
+          getCssVar(spacing, extra-tight);
+
+        &.is-end-time {
+          width: calc(100% - getCssVar(spacing, super-tight) * 2);
+          border-radius: getCssVar(spacing, extra-tight);
+        }
+      }
+
+      &.is-end-time {
+        width: calc(100% - getCssVar(spacing, super-tight));
+        border-radius: 0 getCssVar(spacing, extra-tight) getCssVar(spacing, extra-tight) 0;
+      }
+
+      &.is-active {
+        border-right: none;
+        border-left: none;
+
+        &.is-begin-time {
+          border-left: solid 0.5px var(#{getCssVarName(control-calendar,item-active-border-color)}, #{getCssVar(control-calendar, border-color)});
+        }
+
+        &.is-end-time {
+          border-right: solid 0.5px var(#{getCssVarName(control-calendar,item-active-border-color)}, #{getCssVar(control-calendar, border-color)});
+        }
+      }
+
+      &.is-hidden {
+        position: relative;
+        z-index: -1;
+        opacity: 0;
+      }
+
+      &.is-no-end-time,
+      &.is-no-begin-time {
+        width: calc(100% - getCssVar(spacing, super-tight) * 2);
+        margin-left: getCssVar(spacing, super-tight);
+        border-radius: getCssVar(spacing, extra-tight);
+      }
+    }
+  }
+}
+
+@include b(control-calendar-more) {
+  width: 100%;
+  font-size: getCssVar(font-size, small);
+  border-radius: getCssVar(spacing, extra-tight);
+
+  &:hover {
+    background-color: getCssVar(control-calendar, hover-bg-color);
+  }
+}
+
+@include b(control-calendar-item) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+  @include set-component-css-var(control-calendar-item, $control-calendar-item);
+
+  #{getCssVarName(color, text, 2)}: getCssVar(control-calendar-item, color);
+  #{getCssVarName(editor, default, text, color)}: getCssVar(control-calendar-item, color);
+  height: 100%;
+  padding: getCssVar(control-calendar, item-padding);
+  margin-bottom: getCssVar(control-calendar, margin);
+  overflow: hidden;
+  font-size: getCssVar(control-calendar, font-size);
+  color: getCssVar(control-calendar, text-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  border: solid 0.5px transparent;
+  border-radius: getCssVar(control-calendar, border-radius);
+
+  &:hover {
+    background-color: getCssVar(control-calendar, hover-bg-color);
+  }
+
+  @include when(active) {
+    background-color: getCssVar(control-calendar, active-bg-color);
+    border: solid 0.5px var(#{getCssVarName(control-calendar,item-active-border-color)}, #{getCssVar(control-calendar, border-color)});
+  }
+}
+
+@include b(control-calendar-date-text) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+
+  padding-bottom: getCssVar(control-calendar, item-padding);
+  margin: 0;
+  text-align: center;
+}
+
+@include b(control-calendar-day) {
+  height: fit-content;
+}
+
+@include b(control-calendar-content-title) {
+  line-height: getCssVar(editor, default, line-height);
+  white-space: nowrap;
+}
+
+@include b(control-calendar-content-header) {
+  @include set-component-css-var(control-calendar, $control-calendar);
+
+  display: flex;
+  align-items: center;
+
+  & > * + * {
+    margin-left: getCssVar(control-calendar, item-padding);
+  }
+
+  .el-button-group {
+    display: flex;
+  }
+}
+
+@include b(control-calendar-legend) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  @include e('item') {
+      display: flex;
+      align-items: center;
+      padding: 0 getCssVar('spacing', 'tight');
+      line-height: 1em;
+      cursor: pointer;
+
+      @include m('tip') {
+        display: inline-block;
+        width: 1.5em;
+        height: 0.9em;
+        margin-right: getCssVar('spacing', 'extra-tight');
+        border-radius: getCssVar(border, radius, extra, small);
+      }
+
+      @include m('text') {
+        display: inline-block;
+        width: auto;
+        max-width: 100px;
+        overflow: hidden;
+        text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+  }
+}
+
+@include b(control-calendar-timeline-content) {
+  // 适配父容器有高度时未出滚动条
+  height: 100%;
+  overflow: auto;
+
+  .el-timeline {
+    padding-left: 0;
+  }
+}

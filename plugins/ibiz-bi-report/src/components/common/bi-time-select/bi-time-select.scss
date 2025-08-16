@@ -1,0 +1,29 @@
+/* stylelint-disable selector-class-pattern */
+@include b('bi-time-select') {
+  width: 100%;
+  padding: getCssVar(spacing, base-loose) getCssVar(spacing, loose);
+  @include e('header') {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @include m('close') {
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, primary);
+      }
+    }
+  }
+  @include e('content') {
+    padding: getCssVar(spacing, loose) 0;
+  }
+  @include e('footer') {
+    display: flex;
+    justify-content: end;
+    margin-top: getCssVar(spacing, base-tight);
+  }
+}
+
+@include b('bi-time-select-date-range-select') {
+  padding: 0 !important;
+}

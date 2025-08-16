@@ -1,0 +1,31 @@
+// 左右移动
+@keyframes scroll-left-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+  
+// 上下移动
+@keyframes scroll-top {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@include b('carousel-list-content'){
+    height: 100%;
+    overflow: auto;
+    @include when('allow-roll'){
+        &:hover{
+            animation-play-state: paused!important;
+        }
+    }
+}

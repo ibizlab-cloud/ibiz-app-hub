@@ -1,0 +1,56 @@
+$control-search-form: ('bg-color': transparent,
+  'margin': rem(16px) 0 0 rem(24px),
+);
+
+$control-search-form-buttons: ('padding': rem(16px) rem(16px) rem(16px),
+  'btn-margin': 0 0 0 rem(10px),
+  'search-btn-bg-color': getCssVar('color', 'primary'),
+  'search-btn-color': getCssVar(color, bg, 1),
+);
+
+@include b(control-searchform-buttons) {
+  @include set-component-css-var('control-search-form-buttons',
+    $control-search-form-buttons);
+  @include flex(row, flex-end, center);
+
+  padding: getCssVar('control-search-form-buttons', 'padding');
+
+  @include e(search) {
+    height: rem(30px);
+    color: getCssVar('control-search-form-buttons', 'search-btn-color');
+    background-color: getCssVar('control-search-form-buttons',
+        'search-btn-bg-color'
+      );
+
+    &:hover {
+      color: getCssVar('control-search-form-buttons', 'search-btn-color');
+      background-color: getCssVar('control-search-form-buttons',
+          'search-btn-bg-color'
+        );
+    }
+  }
+
+  @include e(reset) {
+    height: rem(30px);
+    margin: getCssVar('control-search-form-buttons', 'btn-margin');
+  }
+}
+
+@include b(control-searchform) {
+  @include set-component-css-var('control-search-form', $control-search-form);
+
+  margin: getCssVar('control-search-form-buttons', 'margin');
+  background-color: getCssVar('control-search-form-buttons', 'bg-color');
+
+  .#{bem(form-page-item)} {
+    padding-top: calc(getCssVar('padding') / 2);
+  }
+
+  .#{bem(form-page-item-child)} {
+    margin-bottom: 0;
+  }
+
+  .#{bem(form-item-container)} {
+    padding-bottom: calc(getCssVar('padding', 'right') / 2);
+  }
+}

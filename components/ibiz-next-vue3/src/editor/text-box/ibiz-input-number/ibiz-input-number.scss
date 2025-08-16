@@ -1,0 +1,124 @@
+@include b(input-number) {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  // 常规样式
+  .el-input .el-input__inner {
+    font-size: getCssVar(form-item, font-size);
+    color: getCssVar(form-item, text-color);
+    text-align: left;
+    border-color: getCssVar(form-item, border-color);
+  }
+
+  .el-input-number.is-without-controls .el-input__wrapper {
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+
+  .el-input .el-input__inner::placeholder {
+    color: getCssVar(form-item, placeholder-color);
+  }
+
+  // 禁用样式
+  .el-input.is-disabled .el-input__inner {
+    color: getCssVar(form-item, disabled-color);
+    border-color: getCssVar(form-item, disabled-border-color);
+  }
+
+  .el-input.is-disabled .el-input__wrapper {
+    background-color: getCssVar(form-item, disabled-bg-color);
+  }
+
+  @include b(input-number-input){
+    flex-grow: 1;
+    width: auto;
+    height: getCssVar(editor, default, line-height);
+  }
+
+  // 只读模式显示
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar(form-item, readonly-color);
+
+    @include overflow-wrap;
+  }
+
+  // 单位后缀样式
+  .#{bem(input-number,unit)} {
+    flex: 0 0 auto;
+    margin-left: getCssVar('spacing', 'tight');
+    font-size: getCssVar(form-item, font-size);
+    font-style: normal;
+  }
+}
+
+// 表单下的时间选择器默认显示，悬浮上去显示编辑器
+@include b(input-number-form-default-content){
+  display: none;
+}
+
+@include b(form-item){
+
+  @include b(input-number) {
+    @include when(show-default){
+      // 悬浮显示编辑器
+      &:hover{
+
+        @include e('unit'){
+          display: block;
+        }
+
+        @include b(input-number-form-default-content){
+          display: none;
+        }     
+        @include b(input-number-input){
+          display: block;    
+
+          .el-input-number__decrease,
+          .el-input-number__increase{
+            top: getCssVar('spacing', 'super-tight');
+          }
+        }
+        
+      }    
+      
+ 
+      // 不悬浮时显示信息态
+      @include b(input-number-form-default-content){      
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);        
+        font-family: Arial, sans-serif;;      
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);      
+      }
+      @include b(input-number-input){
+        display: none;  
+      }
+
+      .#{bem('input-number','unit')}{
+        display: none;
+      }
+       
+      
+      // 输入态
+      @include when(editable){
+        .#{bem('input-number','unit')}{
+          display: block;
+        }
+
+        @include b(input-number-form-default-content){
+          display: none;
+        }     
+        @include b(input-number-input){
+          display: block;    
+        }  
+      }
+    }
+
+  }
+}

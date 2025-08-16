@@ -1,0 +1,7 @@
+@include b(portal-view) {
+    display: flex;
+    flex-direction: column;
+}
+.#{bem(portal-view)}.#{bem(view)} {
+    #{getCssVarName(view, bg, color)}: getCssVar(color, bg, 0);
+}

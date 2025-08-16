@@ -1,0 +1,11 @@
+@include b(mob-async-action) {
+  position: relative;
+  height: 100%;
+
+  @include e(title){
+    width: 100%;
+    padding: rem(8px) 0;
+    font-size: rem(20px);
+    text-align: center;
+  }
+}

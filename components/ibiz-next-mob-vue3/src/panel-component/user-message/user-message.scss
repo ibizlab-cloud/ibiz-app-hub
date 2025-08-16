@@ -1,0 +1,56 @@
+@include b(user-message) {
+  position: relative;
+  height: 100%;
+    @include e(content) {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: auto;
+    }
+    @include e(item) {
+        padding: 0.875rem;
+
+        &::after {
+            position: relative;
+            bottom: -0.875rem;
+            left: 1rem;
+            display: block;
+            width: calc(100% - 2rem);
+            height: rem(1px);
+            content: '';
+            background-color: getCssVar(color, border);
+        }
+    }
+    @include e(load-more) {
+        @include flex(row, center, center);
+
+        height: rem(40px);
+        flex: none;
+        color: getCssVar(color, link);
+        cursor: pointer;
+    }
+    @include e(nodata) {
+      height: 100%;
+      @include flex(row, center, center);
+    }
+    @include e(icons-read) {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 9;
+      height: rem(40px);
+      padding: 0 rem(12px);
+    }
+    .van-tabs {
+      height: 100%;
+      .van-tabs__content {
+        height: calc(100% - var(--van-tabs-line-height));
+        >div {
+          height: 100%;
+        }
+      }
+    }
+    .van-tabs__wrap {
+      padding-right: rem(40px);
+    }
+}

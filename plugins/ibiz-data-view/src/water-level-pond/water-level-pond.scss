@@ -1,0 +1,19 @@
+@include b(water-level-pond) {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+
+    @include e(value) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 24px;
+        color: getCssVar(screen-dashboard, text-color);
+        transform: translate(-50%, -50%);;
+    }
+}

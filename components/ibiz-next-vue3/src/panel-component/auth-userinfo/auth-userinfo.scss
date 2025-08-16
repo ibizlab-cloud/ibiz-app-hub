@@ -1,0 +1,95 @@
+$user-info: (
+  'padding': 0 getCssVar(spacing, loose),
+  'color': getCssVar('color', 'text', 0),
+  'font-size': getCssVar(font-size, header-5),
+  'height': 44px,
+);
+
+@include b(user-info) {
+  @include set-component-css-var('user-info', $user-info);
+
+  @include flex(row, flex-start, center);
+
+  width: 100%;
+  height: 100%;
+
+  .el-dropdown {
+    width: 100%;
+    height: getCssVar(user-info, height);
+    padding: getCssVar(user-info, padding);
+    cursor: pointer;
+  }
+
+  @include when(left){
+    @include e(down){
+      display: none;
+    }
+  }
+  @include when(top){
+    @include e(down){
+      margin-left: 12px;
+      font-size: getCssVar(user-info, font-size);
+    }
+    @include b(user-info-avatar){
+      max-width: 32px;
+      max-height: 32px;
+      margin-right: getCssVar(spacing, base);
+    }
+  }
+
+  @include when(collapse){
+    .el-dropdown{
+      padding: 0 getCssVar(spacing, base-tight);
+    }
+    @include b(user-info-avatar) {
+      max-width: 32px;
+      max-height: 32px;
+      margin: 0;
+    }
+  }
+}
+
+@include b(user-info-avatar) {
+  width: getCssVar(user-info, height);
+  height: getCssVar(user-info, height);
+  margin-right: 10px;
+}
+
+@include b(user-info-info) {
+  width: 100%;
+  @include flex(row, space-between, center);
+
+  color: getCssVar(user-info, color);
+  @include when('collapse') {
+    justify-content: center;
+  }
+}
+
+@include b(user-info-name) {
+  @include e(user-name){
+    @include utils-ellipsis;
+
+    max-width: 130px;
+    font-size: getCssVar(user-info, font-size);
+    line-height: 1.3;
+  }
+  @include e(person-name){
+    @include utils-ellipsis;
+
+    max-width: 130px;
+    margin-top: 4px;
+    font-size: getCssVar(font-size, small);
+    line-height: 1.2;
+  }
+  @include when('collapse') {
+    display: none;
+  }
+}
+
+@include b(user-info-label) {
+  @include flex(row, flex-start, center);
+
+  font-size: getCssVar(user-info, font-size);
+  color: getCssVar(user-info, color);
+  outline: none;
+}

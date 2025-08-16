@@ -1,0 +1,8 @@
+@include b(internal-message-json) {
+  @include flex(column);
+
+  @include e(content){
+    flex-grow: 1;
+  }
+
+}

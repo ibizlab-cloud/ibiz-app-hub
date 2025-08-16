@@ -1,0 +1,16 @@
+@include b(stepper) {
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar('form-item', 'readonly-color');
+  }
+}
+
+@include b(form-item){
+
+  @include b(stepper) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

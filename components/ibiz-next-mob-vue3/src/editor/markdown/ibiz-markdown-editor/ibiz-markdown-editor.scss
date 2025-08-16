@@ -1,0 +1,107 @@
+$markdown: (
+  'width': 100%,
+);
+
+
+@include b(markdown) {
+  @include b(markdown-cherry) {
+    @include set-component-css-var('markdown', $markdown);
+
+    width: getCssVar('markdown', 'width');
+
+    .cherry {
+      width: 100%;
+    }
+
+    @include when('hidden'){
+      display: hidden;
+    }
+  }
+
+  @include b(markdown-image-popup){
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  @include b(markdown-dialog) {
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+
+    .van-dialog__content {
+      flex-grow: 1;
+      height: calc(100% - #{rem(48px)});
+    }
+  }
+
+  @include when(disabled) {
+    .cherry {
+      min-height: auto;
+    }
+  }
+
+  .van-field__value {
+    max-width: 100%;
+  }
+
+  .cherry-preview--full {
+    border-left: none;
+  }
+
+  .theme__light,
+  .theme__dark {
+    color: getCssVar(form-item, text-color);
+  }
+
+  .cherry-markdown h1,
+  .cherry-markdown h2,
+  .cherry-markdown h3,
+  .cherry-markdown h4,
+  .cherry-markdown h5,
+  .cherry-markdown h6 {
+    a::before {
+      display: none;
+    }
+  }
+
+  .cherry-toolbar {
+    overflow-x: auto;
+  }
+
+  .cherry *::-webkit-scrollbar {
+    width: rem(7px);
+    height: rem(3px);
+    background: rgb(0 0 0 / 0%);
+  }
+
+  .cherry-markdown a {
+    display: block;
+  }
+
+  .cherry-markdown img {
+    max-width: 100%;
+  }
+
+  @include m(disabled) {
+    color: getCssVar('form-item', 'disabled-color');
+
+    .cherry {
+      color: getCssVar('form-item', 'disabled-color');
+
+    }
+  }
+
+  @include m(readonly) {
+    --van-field-input-text-color: #{getCssVar('form-item', 'readonly-color')};
+
+    .cherry {
+      color: getCssVar('form-item', 'readonly-color');
+    }
+  }
+}

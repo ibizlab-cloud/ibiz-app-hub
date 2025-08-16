@@ -1,0 +1,106 @@
+@include b(quill) {
+    .van-action-sheet {
+        --van-action-sheet-max-height: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    .van-action-sheet__content {
+        display: flex;
+        flex-direction: column;
+    }
+    @include e(popup) {
+        --van-action-sheet-max-height: 100%;
+        --van-popup-round-radius: 0;
+        height: 100%;
+        .van-action-sheet__content {
+            display: flex;
+            flex-direction: column;
+        }
+        .ql-toolbar.ql-snow {
+            .ql-header.ql-picker {
+                width: rem(60px);
+            }
+            & + .ql-container.ql-snow {
+                flex: auto;
+                height: 0;
+            }
+        }
+    }
+    @include e(header) {
+        flex: none;
+    }
+    @include e(content) {
+        flex: auto;
+        display: flex;
+        height: 0;
+        flex-direction: column;
+    }
+    @include e(footer) {
+        flex: none;
+        padding: 10px;
+        display: flex;
+        .van-button {
+            width: 100%;
+        }
+        .van-button + .van-button {
+            margin-left: getCssVar(spacing, tight);
+        }
+    }
+    .ql-toolbar.ql-snow {
+        text-align: left;
+    }
+    // quill多语言特殊处理，后续补充多语言
+    @include m(zh-cn) {
+        .ql-snow {
+            .ql-picker.ql-size {
+                .ql-picker-label::before,
+                .ql-picker-item::before {
+                    content: '默认'
+                }
+                .ql-picker-label[data-value=small]::before,
+                .ql-picker-item[data-value=small]::before {
+                    content: '小'
+                }
+                .ql-picker-label[data-value=large]::before,
+                .ql-picker-item[data-value=large]::before {
+                    content: '大'
+                }
+                .ql-picker-label[data-value=huge]::before,
+                .ql-picker-item[data-value=huge]::before {
+                    content: '超大'
+                }
+            }
+            .ql-picker.ql-header {
+                .ql-picker-label::before,
+                .ql-picker-item::before {
+                    content: '正文'
+                }
+                .ql-picker-label[data-value="1"]::before,
+                .ql-picker-item[data-value="1"]::before {
+                    content: 'H 1';
+                }
+                .ql-picker-label[data-value="2"]::before,
+                .ql-picker-item[data-value="2"]::before {
+                    content: 'H 2';
+                }
+                .ql-picker-label[data-value="3"]::before,
+                .ql-picker-item[data-value="3"]::before {
+                    content: 'H 3';
+                }
+                .ql-picker-label[data-value="4"]::before,
+                .ql-picker-item[data-value="4"]::before {
+                    content: 'H 4';
+                }
+                .ql-picker-label[data-value="5"]::before,
+                .ql-picker-item[data-value="5"]::before {
+                    content: 'H 5';
+                }
+                .ql-picker-label[data-value="6"]::before,
+                .ql-picker-item[data-value="6"]::before {
+                    content: 'H 6';
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,140 @@
+$filter-tree: (
+  header-height: rem(42px),
+  font-size: getCssVar(font-size, header, 5),
+  font-weight: getCssVar(font-weight, bold),
+  line-height: 1.625rem,
+  icon-size: getCssVar(width-icon, extra-large),
+);
+
+@include b(filter-tree) {
+  @include set-component-css-var('filter-tree', $filter-tree);
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  @include e(header) {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    height: getCssVar(filter-tree, header-height);
+    font-size: getCssVar(filter-tree, font-size);
+    font-weight: getCssVar(filter-tree, font-weight);
+    line-height: getCssVar(filter-tree, line-height);
+    padding: 0 var(--van-popup-close-icon-margin);
+  }
+  @include e(title) {
+    width: 100%;
+    text-align: center;
+  }
+  @include e(toolbar) {
+    flex: none;
+    display: flex;
+    align-items: center;
+    ion-icon {
+      font-size: getCssVar(filter-tree, icon-size);
+    }
+  }
+  @include e(content) {
+    height: 100%;
+    flex: auto;
+    padding-right: getCssVar(spacing, base);
+    padding-left: calc(getCssVar(spacing, base) + getCssVar(spacing, super, loose));
+  }
+  @include e(footer) {
+    flex: none;
+    padding: getCssVar(spacing, base);
+    display: flex;
+    justify-content: space-between;
+    .van-button {
+      width: 48%;
+    }
+  }
+  @include e(popup) {
+  }
+  @include e(popup-content) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: getCssVar(spacing, base);
+  }
+  @include e(popup-caption) {
+    height: getCssVar(filter-tree, header-height);
+    font-size: getCssVar(filter-tree, font-size);
+    font-weight: getCssVar(filter-tree, font-weight);
+    line-height: getCssVar(filter-tree, line-height);
+    text-align: center;
+  }
+  @include e(editor) {
+    padding: getCssVar(spacing, base);
+    display: flex;
+    justify-content: space-between;
+    #{getCssVarName(form-item-container, editor-align)}: right;
+  }
+  @include e(group) {
+    position: relative;
+  }
+  @include e(type) {
+    position: absolute;
+    top: getCssVar(spacing, base);
+    left: rem(-40px);
+    @include when (readonly) {
+      color: getCssVar(color, disabled, text);
+    }
+    .van-dropdown-menu__bar {
+      box-shadow: none;
+      background-color: transparent;
+      height: auto;
+    }
+    .van-dropdown-menu__title {
+      padding-left: 0;
+    }
+    .van-dropdown-item__content {
+      width: 80px;
+      left: getCssVar(spacing, base);
+      border: 1px solid getCssVar(color, border);
+      border-radius: getCssVar(border-radius, medium);
+      .van-dropdown-item__option {
+        padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+      }
+    }
+  }
+  @include e(item) {
+    display: flex;
+    padding: getCssVar(spacing, base) 0;
+    flex-direction: column;
+    line-height: getCssVar(font-size, header, 2);
+    border-bottom: 1px solid getCssVar(color, border);
+  }
+  @include e(field) {
+    padding-right: getCssVar(spacing, base);
+  }
+  @include e(condop) {
+    flex: auto;
+  }
+  @include e(value) {
+    padding-right: getCssVar(spacing, base);
+  }
+  @include e(item-header) {
+    display: flex;
+  }
+  @include e(item-footer) {
+    display: flex;
+    gap: getCssVar(spacing, super, loose);
+    .van-button {
+      width: 100%;
+    }
+  }
+}
+
+@include b(filter-field-select) {
+  padding: rem(16px);
+  .van-field__control {
+    text-align: right;
+  }
+}
+@include b(filter-mode-select) {
+  padding: rem(16px);
+  .van-field__control {
+    text-align: right;
+  }
+}

@@ -1,0 +1,100 @@
+$editor-slider: (
+  trigger-width: rem(6px),
+  text-width: rem(38px),
+  pie-bg: getCssVar(color, warning),
+  pie-percent-bg: getCssVar(color, primary, light, active),
+);
+
+@include b('slider') {
+  @include set-component-css-var(editor-slider, $editor-slider);
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @include e(text) {
+    .el-slider__button,
+    .el-slider__button-wrapper {
+      width: getCssVar('editor-slider', 'trigger-width');
+      height: getCssVar('height-control', 'default');
+      border: none;
+      opacity: 0;
+    }
+
+    .el-slider__bar {
+      border-radius: getCssVar('border-radius', 'small');
+    }
+
+    .el-slider__runway.is-disabled .el-slider__bar {
+      background-color: getCssVar(color, primary);
+    }
+    @include m(val) {
+      min-width: getCssVar('editor-slider', 'text-width');;
+      margin-left: getCssVar(spacing, tight);
+    }
+  }
+
+  @include e('circle') {
+    @include m('text') {
+      font-size: getCssVar('font-size', 'regular');
+    }
+
+    .el-progress {
+      --el-fill-color-light: var(--ibiz-color-fill-0);
+
+      width: 100%;
+
+      .el-progress-circle {
+        svg>path:nth-child(2) {
+          stroke: getCssVar(color, primary);
+        }
+      }
+    }
+  }
+  @include e('pie'){
+    justify-content: center;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(.5turn); }
+  }
+   
+  @keyframes bg {
+    50% { background: getCssVar('editor-slider', 'pie-percent-bg'); }
+  }
+
+  @include e('pie-content'){
+    min-width: 30px;
+    min-height: 30px;
+    background:  getCssVar('editor-slider', 'pie-bg');
+    background-image:linear-gradient(to right, transparent 50%, getCssVar('editor-slider', 'pie-percent-bg') 0);
+    border-radius: 50%;
+    @include when(hundred-percent){
+      background: getCssVar('editor-slider', 'pie-percent-bg');
+    }
+
+    &::before {
+      display: block;
+      height: 100%;
+      margin-left: 50%;
+      content: '';
+      background-color: inherit;
+      border-radius: 0 100% 100% 0 / 50%;
+      transform-origin: left;
+      animation: spin 50s linear infinite,
+        bg 100s step-end infinite;
+      animation-play-state: paused;
+      animation-delay: inherit;
+    }
+  }
+}
+
+
+
+@include b(form-item){
+
+  @include b(slider) {
+    @include when(show-default){
+      padding: getCssVar(form-item, hover-edit-padding);
+    }
+  }
+}

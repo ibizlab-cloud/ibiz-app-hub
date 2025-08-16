@@ -1,0 +1,70 @@
+:root {
+  color: getCssVar(color, text, 0);
+  background-color: getCssVar(color, bg, 0);
+
+  --van-primary-color: #{getCssVar(color, primary)};
+  --van-success-color: #{getCssVar(color, success)};
+  --van-danger-color: #{getCssVar(color, danger)};
+  --van-warning-color: #{getCssVar(color, warning)};
+  --van-text-color: #{getCssVar(color, text, 0)};
+  --van-text-color-2: #{getCssVar(color, text, 1)};
+  --van-text-color-3: #{getCssVar(color, text, 2)};
+  --van-background: #{getCssVar(color, bg, 1)};
+  --van-background-2: #{getCssVar(color, bg, 2)};
+  --van-background-3: #{getCssVar(color, bg, 3)};
+  --van-border-color: #{getCssVar(color, border)};
+  --van-search-content-background: #{getCssVar(color, tertiary, light, hover)};
+  --van-cell-right-icon-color: inherit;
+  --van-tabs-line-height: #{getCssVar('height-control', 'large')};
+  --van-button-normal-padding: 0 #{getCssVar('spacing', 'tight')};
+  --van-button-normal-font-size:#{getCssVar('font-size', 'regular')};
+  --van-grid-item-content-background: transparent;
+  --van-grid-item-content-padding: #{getCssVar('spacing', 'tight')};
+  --van-tabs-bottom-bar-color: #{getCssVar(color, text, 0)};
+  --van-uploader-size: #{rem(50px)};
+  --van-uploader-icon-size: #{rem(18px)};
+  --van-cell-horizontal-padding: 0;
+  --van-dialog-background: #{getCssVar(color, bg, 0)};
+  --van-font-size-sm:#{getCssVar('font-size', 'small')};
+  --van-font-size-md:#{getCssVar('font-size', 'header-6')};
+  --van-line-height-md:#{getCssVar('font-size', 'header-3')};
+  --van-field-input-disabled-text-color:#{getCssVar(color, disabled, text)};
+  --van-padding-base:#{getCssVar('spacing', 'extra-tight')};
+  --van-padding-xs:#{getCssVar('spacing', 'tight')};
+  --van-padding-sm:#{getCssVar('spacing', 'base-tight')};
+  --van-padding-md: #{rem(14px)};
+  --van-padding-lg:#{getCssVar('spacing', 'base')};
+  --van-radius-sm: #{getCssVar('border-radius', 'extra-small')};
+  --van-radius-md:#{getCssVar('border-radius', 'small')};
+  --van-radius-lg: #{rem(8px)};
+  --van-radius-max: #{getCssVar('border-radius', 'full')};
+
+  // vant 写死了宽度 需适配rem
+  --van-search-padding: #{rem(10px)} #{getCssVar('spacing', 'base-tight')};
+  --van-search-input-height: #{rem(34px)};
+  --van-button-small-height: #{rem(32px)};
+  --van-tabbar-height: #{rem(50px)};
+  --van-uploader-delete-icon-size:#{getCssVar('font-size', 'header-6')};
+}
+
+.van-cell {
+  padding: 0;
+}
+
+.van-popover--light .van-popover__action:active {
+  color: getCssVar(color, bg, 0);
+}
+
+.van-field__control,
+.van-cell__value {
+  text-align: inherit;
+}
+
+.van-field__right-icon {
+  display: flex;
+}
+
+// 搜索框只有左侧有padding 以下样式适配右侧padding
+.van-search__content {
+  padding-right: var(--van-padding-sm);
+}

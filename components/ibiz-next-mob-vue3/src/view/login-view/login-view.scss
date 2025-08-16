@@ -1,0 +1,91 @@
+@mixin login-view-form-item-style {
+  @include flex(row, flex-start, center);
+
+  ion-icon {
+    margin-right: 5%;
+  }
+
+  .van-field {
+    position: relative;
+    padding: 0;
+    overflow: visible;
+
+    .van-field__error-message {
+      position: absolute;
+      top: rem(20px);
+    }
+  }
+
+  input {
+    color: #fff;
+    background: #373447;
+    border: none;
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 rem(1000px) #373447 inset;
+      -webkit-text-fill-color: #fff;
+    }
+  }
+
+  .van-field__control::placeholder {
+    color: #fff;
+    background: #373447;
+  }
+
+  height: 40%;
+  font-size: rem(14px);
+  border-bottom: rem(1px) solid #565366;
+}
+
+@include b(login-view) {
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background: #373447;
+
+  @include b(login-view-logo) {
+    height: 40%;
+    @include flex(column, center, center);
+
+    @include b(login-view-logo-img) {
+      margin-top: 15%;
+    }
+
+    @include b(login-view-title) {
+      margin-top: 5%;
+      font-size: rem(16px);
+    }
+  }
+
+  @include b(login-view-form) {
+    height: 20%;
+    padding: 0 10%;
+
+    @include b(login-view-user) {
+      @include login-view-form-item-style;
+    }
+
+    @include b(login-view-password) {
+      @include login-view-form-item-style;
+    }
+  }
+
+  @include b(login-view-btns) {
+    height: 40%;
+    padding: 0 10%;
+
+    @include b(login-view-login-btn) {
+      width: 100%;
+      margin: 0;
+      font-size: rem(15px);
+      color: #fff;
+      background: #312e3f;
+      border: none;
+      border-radius: 0;
+
+      &:hover {
+        background: #4a4658;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+$control-treeview: ('text-color': getCssVar('color', 'text'),
+  'hover-bg-color': getCssVar('color', 'primary'),
+  'active-bg-color': getCssVar('color', 'primary'),
+  'padding': rem(10px),
+  'bg-color': getCssVar('color', 'bg', 2),
+);
+
+$control-treeview-node: (
+  icon-height: getCssVar(spacing, base),
+  icon-width: getCssVar(spacing, base),
+  icon-margin-right: getCssVar(spacing, tight),
+);
+
+$control-treeview-crumb: (
+  icon-top: rem(3px),
+);
+
+@mixin icon{
+  display: inline-flex;
+  align-items: center;
+  width: getCssVar(control-treeview-node, icon-width);
+  height: getCssVar(control-treeview-node, icon-height);
+  margin-right: getCssVar(control-treeview-node, icon-margin-right);
+
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@include b(control-treeview) {
+  @include set-component-css-var('control-treeview', $control-treeview);
+  @include set-component-css-var(control-treeview-node, $control-treeview-node);
+
+  height: 100%;
+  padding: 0 getCssVar('control-treeview', 'padding');
+  background: getCssVar('control-treeview', 'bg-color');
+}
+
+@include b(control-treeview-content) {
+  @include set-component-css-var('control-treeview', $control-treeview);
+
+  height: 100%;
+
+  // 树节点
+  .vs-tree-node {
+    position: relative;
+    padding: getCssVar('control-treeview', 'padding');
+
+    .vs-tree-inner {
+      display: flex;
+      align-items: center;
+    }
+
+    .vs-icon-parent,
+    .vs-icon-leaf {
+      width: auto;
+      margin-right: 0;
+    }
+
+    .#{bem(icon)} {
+      @include icon;
+    }
+  }
+
+  .tree-button {
+    color: getCssVar('color', 'primary');
+  }
+}
+
+// 面包屑导航
+@include b(control-treeview-header) {
+  @include set-component-css-var(control-treeview-node, $control-treeview-node);
+  @include set-component-css-var('control-treeview-crumb', $control-treeview-crumb);
+  @include e('crumb') {
+    display: inline-flex;
+    align-items: center;
+    height: getCssVar('height-control', 'small');
+    .#{bem(icon)} {
+      @include icon;
+
+      margin-right: getCssVar('spacing', 'extra-tight');
+    }
+
+    &>span {
+      &:has(svg),
+      &:has(img) {
+        position: relative;
+        .#{bem(icon)}{
+          position: absolute;
+          top: getCssVar(control-treeview-crumb, icon-top);
+        }
+
+        &::after {
+          display: inline-block;
+          width: getCssVar(control-treeview-node, icon-width);
+          margin-right: getCssVar('spacing', 'extra-tight');
+          content: '\e710';
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  @include when('no-root') {
+    &>span:has(.#{bem('control-treeview-header__crumb')}.is-root) {
+      display: none;
+    }
+  }
+}

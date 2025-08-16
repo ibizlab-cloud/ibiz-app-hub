@@ -1,0 +1,73 @@
+$pagination: (
+  text-color: getCssVar(color, text, 2),
+  height: 50px,
+  padding: 0 getCssVar(spacing, base-tight),
+);
+
+@include b(pagination) {
+  @include set-component-css-var(pagination, $pagination);
+  @include flex(row, flex-end);
+
+  height: getCssVar(pagination, height);
+  padding: getCssVar(pagination, padding);
+
+  .el-pagination{   
+    overflow: auto;
+    font-size: getCssVar(font-size, regular);
+    font-weight: getCssVar(font-weight, regular);
+    color: getCssVar(pagination,text-color);
+    
+    @include b(pagination-btn){
+      margin-right: getCssVar(spacing, tight);
+
+      .el-button {
+        color: getCssVar(pagination,text-color);
+        border: 1px solid getCssVar(color, border);
+
+        ion-icon {
+          width: getCssVar(width-icon, medium);
+          height: getCssVar(width-icon, medium);
+        }
+      }
+    }
+
+    .btn-prev,.btn-next{
+      border: 1px solid getCssVar(color, border);
+    }
+
+    .el-pager li{
+      color: getCssVar(pagination,text-color);
+      border: 1px solid getCssVar(color, border);
+
+      &.is-active {
+        color: getCssVar(color, primary, text);
+        background-color: getCssVar(color, primary);
+      }
+    }
+
+    .el-pagination__sizes{
+      margin-left: getCssVar(spacing, tight);
+      border: 1px solid getCssVar(color, border);
+
+      .el-select .el-input__wrapper{
+        background-color: transparent;
+      }
+
+      .el-input__inner{
+        color: getCssVar(pagination,text-color);
+      }
+    }
+
+    .el-pagination__jump{
+      color: getCssVar(pagination,text-color);
+
+      .el-pagination__editor{
+        border: 1px solid getCssVar(color, border);
+
+        .el-input__wrapper{
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

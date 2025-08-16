@@ -1,0 +1,191 @@
+export default {
+  enableSearch: true,
+  loadDefault: true,
+  deviewCodeName: 'Chart_Radar',
+  deviewId: 'c7da85392db15e03d420b15ca3dd5cce',
+  accUserMode: 3,
+  capLanguageRes: {
+    lanResTag: 'DE.LNAME.MASTER',
+  },
+  caption: '图表_雷达图',
+  codeName: 'master_chart_radar',
+  appDataEntityId: 'web.master',
+  appViewEngines: [
+    {
+      engineCat: 'VIEW',
+      engineType: 'ChartView',
+      id: 'engine',
+    },
+  ],
+  appViewMsgGroupId: 'chart_radar',
+  controls: [
+    {
+      searchButtonStyle: 'DEFAULT',
+      deformPages: [
+        {
+          layout: {
+            columnCount: 24,
+            layout: 'TABLE_24COL',
+          },
+          caption: '常规条件',
+          codeName: 'formpage1',
+          detailStyle: 'DEFAULT',
+          detailType: 'FORMPAGE',
+          id: 'formpage1',
+        },
+      ],
+      layout: {
+        columnCount: 24,
+        layout: 'TABLE_24COL',
+      },
+      tabHeaderPos: 'TOP',
+      noTabHeader: true,
+      autoLoad: true,
+      showBusyIndicator: true,
+      codeName: 'chart_radar_search_form',
+      controlType: 'SEARCHFORM',
+      logicName: '图表_雷达图_搜索表单',
+      appDataEntityId: 'web.master',
+      controlParam: {
+        id: 'searchform',
+      },
+      modelId: '9117d70599007f006dc1e0e9658000f0',
+      modelType: 'PSDEFORM_SEARCHFORM',
+      name: 'searchform',
+      id: 'web.master.chart_radar_search_form',
+    },
+    {
+      coordinateSystem: 'RADAR',
+      chartCoordinateSystems: [
+        {
+          chartRadar: {
+            chartCoordinateSystemId: '0',
+            type: 'radar',
+            name: '[radar_0]雷达坐标系[0]',
+            id: '0',
+          },
+          echartsType: 'radar',
+          type: 'RADAR',
+          name: '[radar_0]雷达坐标系[0]',
+          id: '0',
+        },
+      ],
+      dechartDataGrid: {
+        id: '0',
+      },
+      dechartLegend: {
+        legendPos: 'BOTTOM',
+        id: '0',
+      },
+      dechartSerieses: [
+        {
+          caption: '数据1',
+          catalogField: 'TYPE',
+          echartsType: 'radar',
+          chartCoordinateSystemId: '0',
+          chartDataSetId: '0',
+          seriesLayoutBy: 'column',
+          seriesType: 'radar',
+          valueField: 'QUANTITY',
+          enableChartDataSet: true,
+          id: 'radar_0',
+        },
+      ],
+      dechartTitle: {
+        title: '雷达图',
+        id: '0',
+      },
+      chartDataSetGroups: [
+        {
+          appDEDataSetId: 'fetch_default',
+          appDataEntityId: 'web.master',
+          name: 'DEFAULT',
+          id: '0',
+        },
+      ],
+      chartDataSets: [
+        {
+          chartDataSetFields: [
+            {
+              groupField: true,
+              name: 'TYPE',
+              id: '0',
+            },
+            {
+              index: 1,
+              name: 'QUANTITY',
+              id: '1',
+            },
+          ],
+          name: 'radar_0-DEFAULT',
+          id: '0',
+        },
+      ],
+      chartRadars: [
+        {
+          chartCoordinateSystemId: '0',
+          type: 'radar',
+          name: '[radar_0]雷达坐标系[0]',
+          id: '0',
+        },
+      ],
+      navViewPos: 'NONE',
+      fetchControlAction: {
+        appDEMethodId: 'fetch_default',
+        appDataEntityId: 'web.master',
+        id: 'fetch',
+      },
+      readOnly: true,
+      autoLoad: true,
+      showBusyIndicator: true,
+      codeName: 'chart_radar_chart',
+      controlType: 'CHART',
+      height: 300,
+      logicName: 'Chart11',
+      appDataEntityId: 'web.master',
+      controlParam: {
+        id: 'chart',
+      },
+      modelId: 'e5175fcd4167fad920e913ce533140df',
+      modelType: 'PSDECHART',
+      userParam: {
+        'EC.color':
+          '["#5470c6","#91cc75","#fac858","#ee6666","#73c0de","#3ba272","#fc8452","#9a60b4","#ea7ccc","#5470c6","#91cc75"]',
+      },
+      name: 'chart',
+      id: 'web.master.chart_radar_chart',
+    },
+    {
+      capLanguageRes: {
+        lanResTag: 'DE.LNAME.MASTER',
+      },
+      caption: '图表_雷达图',
+      codeName: 'chart_radar_captionbar',
+      controlType: 'CAPTIONBAR',
+      appDataEntityId: 'web.master',
+      controlParam: {},
+      name: 'captionbar',
+      id: 'chart_radar_captionbar',
+    },
+  ],
+  viewLayoutPanel: {
+    layoutBodyOnly: true,
+    useDefaultLayout: true,
+    layoutPanel: true,
+    codeName: 'layoutpanel',
+    controlStyle: 'APPDECHARTVIEW',
+    controlType: 'VIEWLAYOUTPANEL',
+    appDataEntityId: 'web.master',
+    controlParam: {},
+    id: 'layoutpanel',
+  },
+  title: '图表_雷达图',
+  viewStyle: 'DEFAULT',
+  viewType: 'DECHARTVIEW',
+  enableDP: true,
+  showCaptionBar: false,
+  modelId: '5ec2887cd2437e8c474478904b2bb3a7',
+  modelType: 'PSAPPDEVIEW',
+  name: 'MASTERChart_Radar',
+  id: 'web.master_chart_radar',
+};

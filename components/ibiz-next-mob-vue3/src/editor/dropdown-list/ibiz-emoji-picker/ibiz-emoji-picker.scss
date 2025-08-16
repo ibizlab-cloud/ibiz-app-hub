@@ -1,0 +1,48 @@
+@include b('emoji-picker') {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: getCssVar('height-control', 'default');
+
+  @include e('button-content') {
+    display: flex;
+    align-items: center;
+    line-height: getCssVar('font-size', 'header-4');
+
+    @include m('icon') {
+      margin-right: getCssVar('spacing', 'extra-tight');
+      fill: getCssVar(color, primary, text);
+    }
+    @include m('icon-clear') {
+      margin-left: getCssVar('spacing', 'extra-tight');
+      font-size: getCssVar('font-size', 'header-3');
+      fill: getCssVar('color', 'text', 3);
+    }
+  }
+
+  @include e('button') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @include m('readonly') {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+  @include m('disabled') {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .#{bem('emoji-picker','button')} {
+    display: flex;
+    flex-direction: row;
+    justify-content: getCssVar(form-item-container, editor-align);
+  }
+}

@@ -1,0 +1,49 @@
+@include b(quill-preview) {
+    position: relative;
+    @include e(edit) {
+        position: absolute;
+        top: rem(12px);
+        right: rem(15px);
+        font-size: getCssVar(font-size, header-4);
+    }
+
+    .ql-editor {
+        padding-right: rem(40px);
+    }
+    @include m(readonly) {
+        .ql-editor {
+            padding-right: rem(15px);
+        }
+    }
+    @include m(disabled) {
+        .ql-editor {
+            padding-right: rem(15px);
+        }
+    }
+    @include e(image-popup) {
+        background-color: transparent;
+        overflow: visible;
+    }
+
+    .ql-editor.ql-blank {
+        padding: 0;
+        &::before {
+            font-style: normal;
+            color: getCssVar('form-item', 'placeholder-color');
+            left: 0;
+        }
+    }
+    @include m('show-collapse'){
+        @include when('collapse'){            
+            height: var(--default-height);
+            .ql-editor{
+                overflow: hidden;
+            }
+        }
+    }
+}
+@include b('quill-preview-collapse-btn'){
+    color: getCssVar(color,primary);
+    display: flex;
+    align-items: center;
+}

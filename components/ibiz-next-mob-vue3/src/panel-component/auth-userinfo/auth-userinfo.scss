@@ -1,0 +1,46 @@
+$user-info: (color: getCssVar(color, text, 0),
+  img-size:rem(50px),
+  img-radius:rem(8px),
+  bg-color: transparent,
+  padding:getCssVar(spacing, tight),
+);
+
+@include b(user-info) {
+  @include set-component-css-var(user-info, $user-info);
+
+  display: flex;
+  gap: getCssVar(user-info, padding);
+  align-items: center;
+  padding: getCssVar(user-info, padding);
+  color: getCssVar(user-info, color);
+  background-color: getCssVar(user-info, bg-color);
+
+  @include e(username) {
+    font-size: rem(14px);
+    font-weight: 600;
+  }
+
+  @include e(org) {
+    font-size: rem(12px);
+    color: getCssVar(color, text, 3);
+  }
+
+
+  .van-image {
+    width: getCssVar(user-info, img-size);
+    height: getCssVar(user-info, img-size);
+    overflow: hidden;
+    border-radius: getCssVar(user-info, img-radius);
+
+    .van-image__loading {
+      font-size: rem(25px);
+    }
+  }
+
+  @include b(user-info-center) {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: getCssVar(user-info, padding);
+  }
+}

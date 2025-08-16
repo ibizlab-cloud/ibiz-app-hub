@@ -1,0 +1,34 @@
+@include b(grid-column-header) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include e(caption) {
+    display: flex;
+    gap: getCssVar(spacing, extra-tight);
+    align-items: center;
+  }
+
+  @include e(filter) {
+    @include m(icon) {
+      height: 23px;
+      visibility: visible;
+      color: getCssVar(color, text, 3);
+      margin-left: getCssVar(spacing, extra, tight);
+      @include when(active) {
+        color: getCssVar(color, primary);
+      }
+    }
+  }
+
+  @include e(popover) {
+    @include m(editor) {
+      padding-bottom: getCssVar(spacing, tight);
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+    @include m(bottom) {
+      display: flex;
+      align-items: center;
+      float: right;
+    }
+  }
+}

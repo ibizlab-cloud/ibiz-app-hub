@@ -1,0 +1,64 @@
+$quick-search-select: (
+  'item-text-color':  getCssVar(color, text, 2),
+  'item-bg-color': getCssVar(color, bg, 1),
+  'item-hover-text-color': getCssVar(color, text, 0),
+  'item-hover-bg-color': getCssVar(color, fill, 0),
+  'item-selected-text-color': getCssVar(color, primary),
+  'item-selected-bg-color': getCssVar(color, bg, 1),
+);
+
+@include b(quick-search-select) {
+  width: 40px;
+  height: 100%;
+  color: getCssVar(color, primary, text);
+  cursor: pointer;
+  background-color: getCssVar(color, primary);
+  border-top-left-radius: var(--el-input-border-radius);
+  border-bottom-left-radius: var(--el-input-border-radius);
+  
+  &:hover{
+    background-color: getCssVar(color, primary, hover);
+  }
+    
+  @include e(icon){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+@include b(quick-search-select-popover) {
+  @include set-component-css-var('quick-search-select', $quick-search-select);
+
+  &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list{
+    background-color: getCssVar('color', 'bg', 1);
+
+    .el-dropdown-menu{
+      background-color: getCssVar('color', 'bg', 1);
+    }
+  }
+
+  &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list .el-dropdown-menu__item{
+    color: getCssVar('quick-search-select','item-text-color');
+    background-color: getCssVar('quick-search-select','item-bg-color');
+
+    &:hover{
+      color: getCssVar('quick-search-select','item-hover-text-color');
+      background-color:getCssVar('quick-search-select','item-hover-bg-color');
+    }
+  }
+
+
+  @include e(item){
+    
+    @include m(selected){
+      font-weight: bold;
+      #{getCssVarName('quick-search-select','item-text-color')}: getCssVar('quick-search-select','item-selected-text-color');
+      #{getCssVarName('quick-search-select','item-bg-color')}: getCssVar('quick-search-select','item-selected-bg-color');
+    }
+  }
+
+}

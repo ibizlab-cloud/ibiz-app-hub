@@ -1,0 +1,31 @@
+$form-page: ('font-size': getCssVar('font-size', 'regular'),
+  'header-border-color': getCssVar(color, border),
+  'text-color': getCssVar(color, text, 2),
+  'bg-color': transparent,
+  'hover-text-color': getCssVar(color, text, 0),
+  'hover-bg-color': transparent,
+  'active-text-color': getCssVar(color, text, 0),
+  'active-bg-color': transparent,
+  'active-border-color': getCssVar(color, primary),
+  header-margin:0,
+);
+
+@include b(form-page-header) {
+  @include set-component-css-var('form-page', $form-page);
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .van-tabs__wrap {
+    margin: getCssVar('form-page', 'header-margin');
+    border-radius: getCssVar('border-radius', 'small');
+  }
+
+  .van-tabs__content {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    margin-top: getCssVar(spacing, tight);
+  }
+}

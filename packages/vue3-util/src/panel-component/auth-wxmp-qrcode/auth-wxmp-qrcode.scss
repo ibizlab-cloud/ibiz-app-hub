@@ -1,0 +1,38 @@
+@include b(auth-wxmp-qrcode) {
+  width: 100%;
+  height: 100%;
+  @include e(content) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  @include e(qrcode) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @include e(caption) {
+    font-size: getCssVar(font-size, small);
+    text-align: center;
+  }
+  @include e(mask) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: getCssVar(color, primary);
+    background-color: rgb(255 255 255 / 90%);
+    @include m(icon) {
+      font-size: getCssVar(font-size, header-1);
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, primary, hover);
+      }
+    }
+  }
+}

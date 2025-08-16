@@ -1,0 +1,42 @@
+@include b('date-picker') {
+  input {
+    width: 100%;
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+    text-align: inherit;
+    background-color: transparent;
+    border: none;
+    border-color: getCssVar('form-item', 'border-color');
+    box-shadow: none;
+  }
+
+  input::placeholder {
+    color: getCssVar('form-item', 'placeholder-color');
+    -webkit-text-fill-color: getCssVar('form-item', 'placeholder-color');
+  }
+
+  input[disabled] {
+    color: getCssVar('form-item', 'disabled-color');
+    background-color: getCssVar('form-item', 'disabled-bg-color');
+    border-color: getCssVar('form-item', 'disabled-border-color');
+  }
+
+  @include m(readonly) {
+    color: getCssVar('form-item', 'readonly-color');
+  }
+
+  input {
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+  &.#{bem('date-picker','','readonly')}{
+    text-align: getCssVar(form-item-container, editor-align);
+  }
+}
+
+.rolldate-container .rolldate-mask.rolldate-mask {
+  z-index: 9998;
+}
+
+.rolldate-container .rolldate-panel.rolldate-panel {
+  z-index: 9999;
+}

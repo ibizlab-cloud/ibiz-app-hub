@@ -1,0 +1,189 @@
+$control-list: (
+  text-color: getCssVar(color-text-0),
+  load-more-color: getCssVar(color-text-2),
+  hover-bg-color: getCssVar(color, fill, 1),
+  active-bg-color: getCssVar(color, fill, 2),
+  font-weight: getCssVar(font-weight, regular),
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base, tight),
+  item-bg-color: unset,
+);
+
+$control-list-group-style2: (
+  color: getCssVar(color, disabled, text),
+);
+
+@include b(control-list-item) {
+  flex-grow: 1;
+  min-height: getCssVar(control-list, item-height);
+  padding: getCssVar(control-list, padding);
+  font-weight: getCssVar(control-list, font-weight);
+  color: getCssVar(control-list, text-color);
+  cursor: pointer;
+  background-color: getCssVar(control-list, item-bg-color);
+  
+  @include e(right) {
+    padding: 0 getCssVar(spacing, extra,tight);
+    @include m(actions) {
+      display: flex;
+      justify-content: center;
+      .#{bem(action-toolbar, item)} {
+        margin: 0;
+      }
+      .#{bem(action-toolbar, item, label)} {
+        &.is-has-caption {
+          margin: 0;
+        }
+      } 
+    }
+  }
+
+  &:has(.#{bem(control-list-item__right)}) {
+    display: flex;
+    justify-content: space-between;
+
+    .#{bem(control-list-item__caption)} {
+      flex: 1;
+    }
+  }
+}
+
+@include b(control-list) {
+  @include set-component-css-var(control-list, $control-list);
+  @include flex(column, flex-start, stretch);
+
+  position: relative;
+  height: 100%;
+
+  @include e(nav-icon) {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    color: getCssVar(color, primary);
+    cursor: pointer;
+  }
+
+  // 加载更多样式
+  @include e(load-more) {
+    text-align: center;
+
+    i {
+      font-size: getCssVar(font-size, header, 3);
+      color: getCssVar(control-list, load-more-color);
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, primary, light, hover);
+      }
+    }
+  }
+
+  @include e(collapse-expand-icon) {
+    width: calc(100% - getCssVar(spacing, base, tight));
+    text-align: center;
+
+    i {
+      font-size: getCssVar(font-size, header, 3);
+      color: getCssVar(color-text-2);
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, primary, light, hover);
+      }
+    }
+  }
+
+  @include e(load-more-button) {
+    padding: getCssVar(control-list, padding);
+    text-align: center;
+  }
+
+  @include e(quicktoolbar) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @include b(control-list-content) {
+    flex-grow: 1;
+  }
+  
+  @include e(batchtoolbar) {
+    margin: getCssVar(spacing, tight) 0;
+  }
+}
+
+@include b(control-list-content) {
+  @include when(show-underLine) {
+    .#{bem(control-list-scroll-item)} {
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+  }
+  .#{bem(row-detail)}:last-of-type .#{bem(control-list-scroll-item)} {
+    border-bottom: none;
+  }
+}
+
+@include b(control-list-scroll) {
+  height: 100%;
+  overflow: auto;
+}
+
+@include b(control-list-group-content) {
+  @include e(item-header) {
+    @include flex(row, space-between, center);
+
+    width: 100%;
+  }
+}
+
+@include b(control-list-scroll-item) {
+  display: flex;
+  align-items: center;
+
+  @include e(checkbox) {
+    flex-shrink: 0;
+    margin-left: getCssVar(spacing, tight);
+  }
+
+  @include e(icon) {
+    flex-shrink: 0;
+    margin-left: getCssVar(spacing, tight);
+    color: getCssVar(color, text-2);
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: getCssVar(control-list, hover-bg-color);
+  }
+
+  @include when(active) {
+    background-color: getCssVar(control-list, active-bg-color);
+  }
+}
+
+@include b('control-list-group-style2') {
+  @include set-component-css-var(control-list-group-style2, $control-list-group-style2);
+
+  @include e('header') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    @include m('title') {
+      padding: 0 getCssVar('spacing', 'tight');
+      font-size: getCssVar('font-size', 'regular');
+      color: getCssVar(control-list-group-style2, color);
+    }
+    
+    &::before,
+    &::after {
+      display: block;
+      flex: 1;
+      height: 1px;
+      margin-top: 1px;
+      content: '';
+      border-top: 1px getCssVar(color, border) solid;
+      transform: translateY(-50%);
+    }
+  }
+}

@@ -1,0 +1,52 @@
+$chat-suggestions: (
+    bg: var(--ibiz-ai-chat-background-color),
+    hover-bg-color: var(--ibiz-ai-chat-hover-background-color),
+    border: var(--ibiz-ai-chat-border-color),
+);
+
+@include b(chat-suggestions) {
+    @include set-component-css-var('chat-suggestions', $chat-suggestions);
+
+    display: flex;
+    flex-direction: column;
+    gap: getCssVar(spacing, base, tight);
+    width: 100%;
+
+    @include e(item) {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        justify-content: space-between;
+        min-width: 200px;
+        height: 32px;
+        padding: 0 12px;
+        overflow: hidden;
+        line-height: 32px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        background-color: getCssVar(chat-suggestions, bg);
+        border: 1px solid getCssVar(chat-suggestions, border);
+        border-radius: 12px;
+        transition: .3s background-color;
+
+        &:hover {
+            background-color: getCssVar(chat-suggestions, hover-bg-color);
+        }
+
+        @include when(action) {
+            color: getCssVar(ai-chat, color, 2);
+            background-color: getCssVar(ai-chat, background, color, 2);
+
+            &:hover {
+                background-color: getCssVar(ai-chat, hover, background, color, 2);
+            }
+        }
+
+        .#{bem(chat-suggestions, item-icon)} {
+            margin-left: 12px;
+            font-size: 18px;
+        }
+    }
+
+}

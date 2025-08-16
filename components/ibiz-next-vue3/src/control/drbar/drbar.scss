@@ -1,0 +1,36 @@
+$control-drbar-item: (
+  'height': 40px,
+);
+@include b(control-drbar) {
+  height: 100%;
+
+  --el-menu-base-level-padding: #{getCssVar('spacing', 'base')};
+  @include set-component-css-var('control-drbar-item', $control-drbar-item);
+
+  // 横向不要底边线
+  .el-menu--horizontal.el-menu{
+    border-bottom: none;
+  }
+
+  .el-menu-item{
+    justify-content: space-between;
+    height: getCssVar('control-drbar-item', 'height');
+    padding: 0 getCssVar('spacing', 'base');
+    margin: 0 getCssVar('spacing', 'base');
+    line-height: unset;
+  }
+
+  // 水平模式时，下拉菜单高度与 item 高度一致
+  .el-menu--horizontal .el-sub-menu {
+    height: getCssVar('control-drbar-item', 'height');
+
+    .el-sub-menu__title {
+      line-height: getCssVar('control-drbar-item', 'height');
+    }
+  }
+
+  @include e(menu) {
+    height: 100%;
+    overflow: hidden auto;
+  }
+}

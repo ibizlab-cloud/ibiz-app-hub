@@ -1,0 +1,16 @@
+@include b('preset-view-back') {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: getCssVar('panel-component-view-header', 'back-width');
+    height: getCssVar('panel-component-view-header', 'back-height');
+    padding: getCssVar('panel-component-view-header', 'back-padding');
+    font-size: getCssVar('panel-component-view-header', 'back-font-size');
+}
+
+// 预制返回预留空间时的样式
+@include b(view-header-precut-back) {
+    @include b('control-toolbar-left') {
+        padding-left: getCssVar('panel-component-view-header', 'back-width');
+    }
+}

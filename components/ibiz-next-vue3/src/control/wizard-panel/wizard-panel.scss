@@ -1,0 +1,46 @@
+/* 向导 start */
+
+$control-wizard-panel: (
+  'header-height': 60px,
+  'footer-height': 40px,
+  'step-icon-width': 22px,
+);
+
+/* 向导 end */
+@include b(control-wizardpanel) {
+  @include set-component-css-var('control-wizard-panel', $control-wizard-panel);
+
+  height: 100%;
+
+  // 防止权重不够
+  .#{bem(control-wizardpanel, form)} {
+    height: calc(100% - getCssVar('control-wizard-panel', 'footer-height'));
+    overflow: auto;
+  }
+
+  @include when(header) {
+    @include e(form) {
+      height: calc(100% - getCssVar('control-wizard-panel', 'footer-height') - getCssVar('control-wizard-panel', 'header-height'));
+    }
+  }
+}
+
+@include b(control-wizardpanel-header) {
+  height: getCssVar('control-wizard-panel', 'header-height');
+
+  @include m('step-icon') {
+    font-size: getCssVar('control-wizard-panel', 'step-icon-width');
+  }
+
+  .el-step__icon {
+    --el-bg-color: #{getCssVar(color, bg, 1)};
+  }
+}
+
+
+@include b(control-wizardpanel-footer) {
+  @include flex(row, flex-end, center);
+
+  height: getCssVar('control-wizard-panel', 'footer-height');
+  padding-right: getCssVar('padding');
+}

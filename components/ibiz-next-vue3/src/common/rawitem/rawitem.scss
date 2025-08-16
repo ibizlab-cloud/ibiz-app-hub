@@ -1,0 +1,15 @@
+@include b(rawitem) {
+  width: 100%;
+  height: 100%;
+  font-size: getCssVar(font-size, regular);
+  color: getCssVar(editor, default, text-color);
+
+  @include b(icon){
+    width: 100%;
+    height: 100%;
+  }
+
+  .el-alert {
+    margin: getCssVar(spacing, extra, tight) 0;
+  }
+}

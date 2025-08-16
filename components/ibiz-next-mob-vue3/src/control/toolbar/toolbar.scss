@@ -1,0 +1,129 @@
+$control-toolbar: (
+  'item-margin': 0 rem(4px),
+  'icon-margin': 0 rem(5px) 0 0,
+  'icon-max-width': rem(16px),
+  'icon-max-height': rem(16px),
+  'icon-font-size': rem(20px),
+  'toolbar-bottom-padding': getCssVar('spacing', 'base-tight'),
+);
+$control-toolbar-embed: (
+  'item-height': rem(21px),
+  'item-line-height': rem(21px),
+  'bg-color': transparent,
+);
+$control-toolbar-popover: (
+  'icon-font-size': rem(14px),
+);
+
+@include b('control-toolbar') {
+  @include set-component-css-var('control-toolbar', $control-toolbar);
+
+  display: flex;
+  height: 100%;
+
+  @include e('item') {
+    display: flex;
+    align-items: center;
+    margin: getCssVar('control-toolbar', 'item-margin');
+  }
+
+  @include e('item-left') {
+    margin-left: 0;
+
+    .van-button {
+      border: none;
+
+      ion-icon {
+        font-size: getCssVar('control-toolbar', 'icon-font-size');
+      }
+
+      .van-button__text {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  @include e('item-right') {
+    margin-right: 0;
+
+    .van-button {
+      border: none;
+
+      ion-icon {
+        font-size: getCssVar('control-toolbar', 'icon-font-size');
+      }
+
+      .van-button__text {
+        display: flex;
+        align-items: center;
+        gap: getCssVar(spacing, extra, tight);
+      }
+    }
+  }
+
+  @include e('popover') {
+    --ibiz-color-bg-0: #{var(--van-popover-light-text-color)};
+
+    .van-popover__action--disabled:active,
+    .van-popover__action--disabled {
+      color: getCssVar(color, disabled-text) !important;
+      background-color: getCssVar(color, disabled-bg);
+    }
+  }
+
+  @include e('popover-item') {
+    @include set-component-css-var(
+      'control-toolbar-popover',
+      $control-toolbar-popover
+    );
+    display: flex;
+    align-items: center;
+    gap: getCssVar(spacing, extra, tight);
+    .ibiz-icon {
+      width: getCssVar('control-toolbar-popover', 'icon-font-size');
+      height: getCssVar('control-toolbar-popover', 'icon-font-size');
+      display: flex;
+      align-items: center;
+      * {
+        width: getCssVar('control-toolbar-popover', 'icon-font-size');
+        height: getCssVar('control-toolbar-popover', 'icon-font-size');
+      }
+    }
+  }
+
+  @include e('item-separator') {
+    @include no-repeat;
+  }
+
+  @include b('control-toolbar-mobnavrightmenu') {
+    @include e('item') {
+      margin-right: 0;
+    }
+  }
+}
+
+@include b('control-toolbar-right') {
+  justify-content: flex-end;
+}
+
+@include b('control-toolbar-bottom') {
+  display: flex;
+  padding: getCssVar('control-toolbar', 'toolbar-bottom-padding');
+
+  .#{bem(control-toolbar, item)} {
+    flex: 1;
+
+    --van-button-default-height: #{rem(40px)};
+
+    button {
+      width: 100%;
+    }
+
+    .van-button__text {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+}

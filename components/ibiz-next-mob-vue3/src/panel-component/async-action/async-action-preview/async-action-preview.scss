@@ -1,0 +1,102 @@
+$async-action-preview: ();
+
+@include b(async-action-preview) {
+  @include set-component-css-var('async-action-preview', $async-action-preview);
+
+  height: 100%;
+  @include flex(column);
+
+  padding: getCssVar(spacing, tight);
+
+  @include e(title) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    overflow: hidden;
+    font-size: getCssVar('font-size', 'header-5');
+    font-weight: getCssVar('font-weight', 'bold');
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+  }
+
+  .van-field__label,
+  .van-field__value {
+    font-size: rem(12px);
+    font-weight: getCssVar('font-weight', 'bold');
+  }
+
+  .van-field {
+    background: var(--van-dialog-background);
+  }
+
+  @include e(button) {
+    width: rem(20px);
+    height: rem(20px);
+    margin-left: rem(6px);
+  }
+}
+
+@include b(async-action-preview-toolbar){
+  @include flex(row, center, center);
+}
+
+@include b(async-action-preview-header) {
+  @include flex(row, flex-end, center);
+
+  position: relative;
+  height: rem(32px);
+  border-bottom: 1px solid getCssVar(color, border);
+}
+
+@include b(async-action-preview-time) {
+  padding: getCssVar(spacing, tight) 0;
+}
+
+@include b(async-action-preview-count) {
+  height: rem(48px);
+  padding: getCssVar(spacing, tight) 0;
+  @include flex(row, space-between, center);
+
+  .van-field__label {
+    margin: 0;
+  }
+}
+
+@include b(async-action-preview-detail) {
+  flex-grow: 1;
+  overflow: auto;
+  border-top: 1px solid getCssVar(color, border);
+}
+
+@include b(async-action-preview-detail-item) {
+  @include flex(row, space-between, center);
+
+  height: rem(72px);
+  padding: getCssVar('spacing', 'base-tight') getCssVar(spacing, base);
+  border-bottom: 1px solid getCssVar(color, border);
+
+  @include e(index) {
+    width: getCssVar('height-control', 'large');
+    height: getCssVar('height-control', 'large');
+    margin-right: getCssVar('spacing', 'base');
+    font-size: getCssVar('font-size', 'header-4');
+    line-height: getCssVar('height-control', 'large');
+    color: getCssVar(color, primary, text);
+    text-align: center;
+    background-color: getCssVar(color, primary);
+    border-radius: 0;
+  }
+
+  @include e(error) {
+    flex-grow: 1;
+    height: 100%;
+    text-align: left;
+    @include flex(column, space-between, flex-start);
+  }
+
+  @include e(error-reason) {
+    color: getCssVar(color, text, 1);
+  }
+}

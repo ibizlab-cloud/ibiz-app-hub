@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "es",
+    "declarationDir": "es",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/components.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "test",
+    "src/**/__tests__/**",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.tsx"
+  ]
+}

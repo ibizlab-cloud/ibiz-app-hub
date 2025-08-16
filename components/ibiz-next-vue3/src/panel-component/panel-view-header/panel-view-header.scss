@@ -1,0 +1,18 @@
+@include b(panel-view-header) {
+  width: auto;
+  height: 64px;
+  border-bottom: 1px solid getCssVar(color, border);
+
+  .#{bem(row)} {
+    height: 100%;
+  }
+
+  .#{bem(panel-container, '', view_header_right)} {
+    padding: 0 getCssVar('spacing', 'base');
+  }
+
+  // 视图头存在边框，分页栏边框隐藏
+  .el-tabs__nav-wrap::after {
+    display: none;
+  }
+}

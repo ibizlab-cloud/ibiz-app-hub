@@ -1,0 +1,94 @@
+$portlet-layout: (
+  'bg-color': transparent,
+  'header-height': 50px,
+  'header-padding':  calc(getCssVar(spacing, base-tight) + 2px) getCssVar(spacing, base),
+  'header-margin':  getCssVar(spacing, none),
+  'header-bg-color': getCssVar(color, bg, 1),
+  'header-border-bottom': getCssVar('border'),
+  'caption-max-width': 300px,
+  'caption-font-weight': getCssVar('font-weight', 'regular'),
+  'caption-font-size': getCssVar('font-size', 'header-5'),
+  'caption-color': getCssVar('text-color', 'primary'),
+  'content-bg-color': getCssVar(color, bg, 1),
+  'content-padding': getCssVar(spacing, none),
+  'content-margin':  getCssVar(spacing, none),
+  'padding': getCssVar(spacing, tight)
+);
+
+@include b(portlet-layout) {
+  @include set-component-css-var('portlet-layout', $portlet-layout);
+
+  width: 100%;
+  height: 100%;
+  padding: getCssVar('portlet-layout', 'padding');
+  background-color: getCssVar('portlet-layout','bg-color');
+
+  // 标题样式
+  @include e(caption){
+    max-width: getCssVar('portlet-layout','caption-max-width');
+    height: 100%;
+    padding: getCssVar(spacing, none) getCssVar(spacing, none) getCssVar(spacing, none) getCssVar(spacing, base);
+    @include e(caption-text){
+      font-size: getCssVar('portlet-layout','caption-font-size');
+      font-weight: getCssVar('portlet-layout','caption-font-weight');
+      line-height: getCssVar('portlet-layout','caption-font-size');
+      color: getCssVar('portlet-layout','caption-color');
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 4px;
+      height: getCssVar('width-icon','large');
+      content: '';
+      background-color: getCssVar('color', 'primary');
+      border-radius: getCssVar(border, radius, extra, small);
+      transform: translateY(-50%);
+    }
+
+    @include when(link) {
+      cursor: pointer;
+
+      &:hover {
+        color: getCssVar(color, link);
+      }
+    }
+  }
+
+  // 无头部时的样式
+  @include when(no-header) {
+    >.#{bem(portlet-layout-content)}{
+      height: 100%;
+    }
+  }
+
+  // 高亮
+  @include when(hight-light) {
+    box-shadow: 0 0 0 calc(getCssVar('portlet-layout', 'padding') - 2px) getCssVar(color, bg, 1) inset, inset 0 0 0 getCssVar('portlet-layout', 'padding') getCssVar(color, warning, light, active);
+  }
+}
+
+// 头部样式
+@include b(portlet-layout-header) {
+  @include flex(row, space-between);
+
+  @include e(left){
+    position: relative;
+  }
+
+  height: getCssVar('portlet-layout','header-height');
+  padding: getCssVar('portlet-layout','header-padding');
+  margin: getCssVar('portlet-layout','header-margin');
+  background-color: getCssVar('portlet-layout','header-bg-color');
+  border-bottom:  getCssVar('portlet-layout','header-border-bottom');
+}
+
+// 内容区样式
+@include b(portlet-layout-content) {
+  height: calc(100% - getCssVar('portlet-layout','header-height'));
+  padding: getCssVar('portlet-layout','content-padding');
+  margin: getCssVar('portlet-layout','content-margin');
+  overflow-y: scroll;
+  background-color: getCssVar('portlet-layout','content-bg-color');
+}

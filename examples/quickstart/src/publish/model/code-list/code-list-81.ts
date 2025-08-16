@@ -1,0 +1,77 @@
+export default {
+  codeListTag: 'CodeList81',
+  codeListType: 'STATIC',
+  codeName: 'CodeList81',
+  emptyText: '未定义',
+  codeItems: [
+    {
+      codeName: 'item_2010',
+      text: '2010年',
+      value: '2010',
+      id: 'item_2010',
+    },
+    {
+      codeName: 'item_2011',
+      text: '2011年',
+      value: '2011',
+      id: 'item_2011',
+    },
+    {
+      codeName: 'item_2012',
+      text: '2012年',
+      value: '2012',
+      id: 'item_2012',
+    },
+    {
+      codeName: 'item_2013',
+      text: '2013年',
+      value: '2013',
+      id: 'item_2013',
+    },
+    {
+      codeName: 'item_2014',
+      text: '2014年',
+      value: '2014',
+      id: 'item_2014',
+    },
+    {
+      codeName: 'item_2015',
+      text: '2015年',
+      value: '2015',
+      id: 'item_2015',
+    },
+    {
+      codeName: 'item_2016',
+      text: '2016年',
+      value: '2016',
+      id: 'item_2016',
+    },
+    {
+      codeName: 'item_2017',
+      text: '2017年',
+      value: '2017',
+      id: 'item_2017',
+    },
+    {
+      codeName: 'item_2018',
+      text: '2018年',
+      value: '2018',
+      id: 'item_2018',
+    },
+    {
+      codeName: 'item_2019',
+      text: '2019年',
+      value: '2019',
+      id: 'item_2019',
+    },
+    {
+      codeName: 'item_2020',
+      text: '2020年',
+      value: '2020',
+      id: 'item_2020',
+    },
+  ],
+  enableCache: true,
+  name: '年份（2010～2020）',
+  id: 'web.codelist81',
+};

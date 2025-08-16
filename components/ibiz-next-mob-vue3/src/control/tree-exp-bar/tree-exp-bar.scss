@@ -1,0 +1,8 @@
+@include b('control-treeexpbar'){
+    .vs-tree-inner{
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+     } 
+}

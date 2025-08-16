@@ -1,0 +1,124 @@
+$mdctrl-container-header: (bg-color: transparent,
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+  border-color: getCssVar(color, border),
+);
+
+$mdctrl-container-caption: (text-color: getCssVar(color, text, 2),
+  font-size: getCssVar(font-size, header-6),
+  font-weight: getCssVar(font-weight, regular),
+  height: rem(20px),
+  line-height: rem(20px),
+);
+$mdctrl-container-button: (text-color: getCssVar(color, info),
+  font-size: getCssVar(font-size, header-6),
+  font-weight: getCssVar(font-weight, regular),
+);
+
+
+@include b(mdctrl-container) {
+  @include set-component-css-var('mdctrl-container-header', $mdctrl-container-header);
+  @include set-component-css-var('mdctrl-container-caption', $mdctrl-container-caption);
+  @include set-component-css-var('mdctrl-container-button', $mdctrl-container-button);
+
+  display: flex;
+  flex-direction: column;
+
+  @include e(btn) {
+    width: auto;
+    padding: 0;
+    margin-left: 10px;
+    font-size: getCssVar('mdctrl-container-button', 'font-size');
+    color: getCssVar('mdctrl-container-button', 'text-color');
+    background-color: transparent;
+    border: none;
+
+    &:active {
+      background-color: transparent;
+
+      // 清除激活样式
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@include b(mdctrl-container-item) {
+  overflow: hidden;
+
+  @include e(form) {
+    flex-grow: 1;
+  }
+
+  @include b(mdctrl-container-item-header) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: getCssVar('mdctrl-container-header', 'padding');
+    background-color: getCssVar('mdctrl-container-header', 'bg-color');
+
+    @include e(caption) {
+      flex-grow: 1;
+      height: getCssVar('mdctrl-container-caption', 'height');
+      font-size: getCssVar('mdctrl-container-caption', 'font-size');
+      font-weight: getCssVar('mdctrl-container-caption', 'font-weight');
+      line-height: getCssVar('mdctrl-container-caption', 'line-height');
+      color: getCssVar('mdctrl-container-caption', 'text-color');
+      @include utils-ellipsis;
+    }
+
+    @include e(action) {
+      --van-button-small-height: #{rem(20px)};
+
+      display: flex;
+      flex-grow: 1;
+      flex-shrink: 0;
+      justify-content: flex-end;
+      height: rem(20px);
+      line-height: rem(20px);
+      text-align: right;
+    }
+  }
+
+  @include b(mdctrl-container-item-content) {
+    background-color: getCssVar(color, bg, 1);
+  }
+
+  @include b(form-page-item) {
+    --ibiz-form-page-item-gap: 0;
+  }
+
+}
+
+
+@include b(mdctrl-container-no-data) {
+  width: 100%;
+  @include flex(row, flex-end)
+}
+
+@include b(mdctrl-container-footer) {
+  color: red;
+
+  .#{bem('mdctrl-container', 'btn')} {
+    width: 100%;
+    padding: 0;
+    margin-left: 0;
+    font-size: getCssVar(font-size, header-5);
+    color: getCssVar('mdctrl-container-button', 'text-color');
+    background-color: getCssVar(color, bg, 1);
+    border: none;
+
+    &:active {
+      background-color: transparent;
+
+      // 清除激活样式
+      &::before {
+        opacity: .1;
+      }
+    }
+
+    .van-icon {
+      margin-right: getCssVar(spacing, extra-tight);
+    }
+  }
+}

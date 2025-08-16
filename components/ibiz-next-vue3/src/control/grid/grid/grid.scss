@@ -1,0 +1,498 @@
+/* stylelint-disable no-descending-specificity */
+$control-grid: (
+  text-color: getCssVar(color, text, 0),
+  bg-color: transparent,
+  padding: getCssVar('spacing', 'none'),
+  cell-padding: getCssVar(spacing, tight),
+  selection-padding: getCssVar(spacing, base-loose),
+  row-edit-bg-color: getCssVar(color, fill, 2),
+  row-bg-color: getCssVar(color, bg, 1),
+  row-bg-color-2: getCssVar(color, bg, 0),
+  row-hover-color: rgba(#{getCssVar(grey, 1)}, 1),
+  row-select-color: getCssVar(color, primary, light, default),
+  row-expand-icon-margin: getCssVar('spacing', 'none')
+    getCssVar('spacing', 'none') getCssVar('spacing', 'none')
+    getCssVar(spacing, tight),
+  now-header-height: auto,
+  scrollbar-width: 4px,
+  scrollbar-bg-color: #{getCssVar(color, fill, 2)},
+  scrollbar-bg-hover-opacity: 0.5,
+  scrollbar-bg-hover-color: #{getCssVar(color, fill, 2)},
+);
+$control-grid-header: (
+  text-color: getCssVar(color, text, 2),
+  cell-padding: calc(getCssVar('spacing', 'base', 'tight') / 2)
+  getCssVar('spacing', 'base', 'tight'),
+  height: auto,
+  min-height: 54px,
+  bg-color: rgba(#{getCssVar(grey, 1)}, 1),
+  font-size: getCssVar(font-size, regular),
+  font-weight: getCssVar(font-weight, regular),
+);
+
+$control-grid-content: (
+  text-color: getCssVar(control-grid, text-color),
+  row-height: 48px,
+);
+
+$control-grid-page: (
+  text-color: getCssVar(color, text, 2),
+  height: 50px,
+  padding: getCssVar('spacing', 'none') getCssVar(spacing, base-tight),
+);
+
+$control-grid-footer: (
+  text-color: getCssVar(color, text, 2),
+  bg-color: rgba(#{getCssVar(grey, 1)}, 1),
+  font-size: getCssVar(font-size, regular),
+  font-weight: getCssVar(font-weight, bold),
+);
+
+@include b(control-grid) {
+  @include set-component-css-var(control-grid, $control-grid);
+  @include set-component-css-var(control-grid-header, $control-grid-header);
+  @include set-component-css-var(control-grid-content, $control-grid-content);
+  @include set-component-css-var(control-grid-page, $control-grid-page);
+  @include set-component-css-var(control-grid-footer, $control-grid-footer);
+
+  position: relative;
+
+  // element-plus 组件压制
+  .el-table {
+    --el-table-header-bg-color: #{getCssVar(control-grid, header, bg-color)};
+    --el-table-current-row-bg-color: #{getCssVar(
+        control-grid,
+        row,
+        select-color
+      )};
+    --el-table-border-color: transparent;
+  }
+
+  .el-table__body-wrapper
+    tr
+    td.el-table-fixed-column--left.is-first-column::before,
+  .el-table__body-wrapper
+    tr
+    td.el-table-fixed-column--left.is-last-column::before,
+  .el-table__body-wrapper
+    tr
+    td.el-table-fixed-column--right.is-first-column::before,
+  .el-table__body-wrapper
+    tr
+    td.el-table-fixed-column--right.is-last-column::before {
+    bottom: 0;
+  }
+
+  &.is-empty {
+    .el-scrollbar {
+      .el-scrollbar__view {
+        height: 100%;
+      }
+    }
+
+    .el-table__empty-text {
+      display: inline-block;
+      height: 100%;
+    }
+  }
+
+  .el-table--border {
+    .el-table__cell {
+      border-right: none;
+    }
+  }
+
+  .el-table-fixed-column--right,
+  .el-table-fixed-column--left {
+    --el-bg-color: transparent;
+  }
+
+  // 分组头
+  .el-table thead.is-group th.el-table__cell {
+    background: getCssVar(control-grid, header, bg-color);
+  }
+
+  width: 100%;
+  height: 100%;
+  padding: getCssVar(control-grid, padding);
+  background-color: getCssVar(control-grid, bg-color);
+
+  // 支持分页时高度调整
+  @include when(enable-page) {
+    @include e(table) {
+      height: calc(100% - getCssVar(control-grid, page-height));
+    }
+  }
+
+  // 分组的时候取消树表格的缩进
+  @include when(enable-group) {
+    .el-table__indent {
+      display: none;
+    }
+  }
+
+  @include when(dynamic-grid) {
+    .el-table__empty-block {
+      height: calc(100% - 48px) !important;
+      min-height: 248px;
+    }
+  }
+
+  @include e(add) {
+    width: calc(100% - getCssVar(spacing, extra-tight));
+    margin: getCssVar(spacing, tight) getCssVar(spacing, extra-tight);
+    color: getCssVar(color, primary);
+    background-color: transparent;
+    border: 1px dashed getCssVar(color, border);
+
+    ion-icon {
+      margin-right: getCssVar(spacing, extra-tight);
+    }
+
+    &:focus {
+      color: getCssVar(color, primary, hover);
+      background-color: transparent;
+      border: 1px dashed getCssVar(color, primary, hover);
+    }
+
+    &:hover {
+      color: getCssVar(color, primary, hover);
+      background-color: transparent;
+      border: 1px dashed getCssVar(color, primary, hover);
+    }
+  }
+  
+  @include e(table) {
+    width: 100%;
+    height: 100%;
+
+    // 排序图标居中
+    .caret-wrapper {
+      justify-content: center;
+
+      & > * + * {
+        margin-top: getCssVar('spacing', 'super-tight');
+      }
+    }
+
+    .sort-caret {
+      --el-text-color-placeholder: #{getCssVarName(
+          control-grid,
+          header,
+          text-color
+        )};
+
+      position: initial;
+      opacity: 0.6;
+    }
+
+    // 清除element单元格的padding
+    &.el-table .el-table__cell {
+      padding: getCssVar('spacing', 'none');
+    }
+
+    // 行和列的背景色
+    &.el-table .el-table__body-wrapper tr {
+      // 普通行列背景色
+      td {
+        background: getCssVar(control-grid, row-bg-color);
+      }
+
+      // 偶数行列的背景色
+      &:nth-child(2n) {
+        td {
+          background-color: getCssVar(control-grid, row-bg-color-2);
+        }
+      }
+
+      // 悬浮行列激活色
+      &:hover td {
+        background-color: getCssVar(control-grid, row-hover-color);
+      }
+
+      // 激活行列背景色
+      &.current-row td {
+        background-color: var(--el-table-current-row-bg-color);
+      }
+
+      // 编辑行背景色
+      &.editing-row td {
+        &.uagridcolumn {
+          background-color: getCssVar(control-grid, row-hover-color);
+        }
+
+        &:not(.uagridcolumn) {
+          background-color: getCssVar(control-grid, row-edit-bg-color);
+        }
+
+        .el-input__wrapper, .el-textarea__inner, .el-date-editor {
+          --el-input-bg-color: #{getCssVar(color, white)};
+        }
+      }
+    }
+
+    // 表格列头样式
+    .el-table__header-wrapper {
+      .cell {
+        height: getCssVar(control-grid, header, height);
+        min-height: getCssVar(control-grid, header, min-height);
+        padding: getCssVar(control-grid, header, cell-padding);
+        font-size: getCssVar(control-grid, header, font-size);
+        font-weight: getCssVar(control-grid, header, font-weight);
+        color: getCssVar(control-grid, header, text-color);
+        @include overflow-wrap;
+      }
+
+      .el-table-column--selection .cell {
+        padding: getCssVar(control-grid, selection-padding);
+      }
+
+      // 修复表头换行排序图标错位问题
+      .el-table__cell {
+        .cell {
+          display: flex;
+          align-items: center;
+          justify-content: getCssVar('grid-column', 'justify-content');
+        }
+      }
+
+      .el-table-fixed-column--right,
+      .el-table-fixed-column--left {
+        .cell {
+          @include flex(row, getCssVar('grid-column', 'justify-content'), center);
+        }
+      }
+    }
+
+    // 表格body样式
+    .el-table__body-wrapper {
+      color: getCssVar(control-grid, content, text-color);
+      #{getCssVarName(color, text, 0)}: getCssVar(
+        control-grid,
+        content,
+        text-color
+      );
+      #{getCssVarName(color, text, 1)}: getCssVar(
+        control-grid,
+        content,
+        text-color
+      );
+      #{getCssVarName(color, text, 2)}: getCssVar(
+        control-grid,
+        content,
+        text-color
+      );
+      #{getCssVarName(color, text, 3)}: getCssVar(
+        control-grid,
+        content,
+        text-color
+      );
+      border-bottom: 0.1px solid getCssVar(color, border);
+
+      // 设置最小行高，内容多了换行要把行高撑开。
+      // 谷歌行高样式
+      .el-table__row {
+        height: getCssVar(control-grid, content, row-height);
+        cursor: pointer;
+
+        > td {
+          height: 0;
+          padding: getCssVar('spacing', 'none');
+        }
+
+        .el-table__expand-icon {
+          margin: getCssVar(control-grid, row-expand-icon-margin);
+        }
+      }
+
+      // 火狐行高兼容性处理
+      @-moz-document url-prefix() {
+        .el-table__row > td {
+          height: 100%;
+        }
+      }
+
+      // 单元格通用样式
+      .cell {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: getCssVar('spacing', 'none');
+      }
+
+      .el-table-column--selection .cell {
+        padding: getCssVar(control-grid, selection-padding);
+      }
+    }
+
+    // 表格列对齐样式
+    .el-table__cell.is-center {
+      #{getCssVarName('grid-column', 'text-align')}: center;
+      #{getCssVarName('grid-column', 'justify-content')}: center;
+    }
+
+    .el-table__cell.is-left {
+      #{getCssVarName('grid-column', 'text-align')}: left;
+      #{getCssVarName('grid-column', 'justify-content')}: flex-start;
+    }
+
+    .el-table__cell.is-right {
+      #{getCssVarName('grid-column', 'text-align')}: right;
+      #{getCssVarName('grid-column', 'justify-content')}: flex-end;
+    }
+
+    // 行编辑popover定位需要
+    .el-scrollbar__wrap {
+      position: relative;
+    }
+
+    // 底部聚合样式
+    .el-table__footer-wrapper {
+      tfoot td.el-table__cell {
+        font-size: getCssVar(control-grid, footer, font-size);
+        font-weight: getCssVar(control-grid, footer, font-weight);
+        color: getCssVar(control-grid, footer, text-color);
+        background-color: getCssVar(control-grid, footer, bg-color);
+
+        &:first-child {
+          > div {
+            display: inline;
+            vertical-align: 4px;
+          }
+        }
+      }
+    }
+
+    // 排序样式
+    .enable-order {
+      position: relative;
+      padding-left: getCssVar('spacing', 'base-tight');
+      transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1);
+
+      .#{bem(control-grid__drag-icon)} {
+        padding: getCssVar('spacing', 'none') !important;
+
+        .cell {
+          display: none;
+        }
+      }
+
+      // 图标显示
+      &:hover {
+        .#{bem(control-grid__drag-icon)} {
+          .cell {
+            display: flex;
+          }
+        }
+      }
+    }
+
+    .el-scrollbar__bar.is-horizontal {
+      height: getCssVar(control-grid, scrollbar-width);
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      width: getCssVar(control-grid, scrollbar-width);
+    }
+
+    .el-scrollbar__thumb {
+      background-color: getCssVar(control-grid, scrollbar-bg-color);
+
+      &:hover {
+        background-color: getCssVar(control-grid, scrollbar-bg-hover-color);
+        opacity: getCssVar(control-grid, scrollbar-bg-hover-opacity);
+      }
+    }
+  }
+
+  @include e(load-more-button) {
+    padding: getCssVar(control-grid, header, cell-padding);
+    text-align: center;
+  }
+
+  // 去除底部border
+  .el-table td.el-table__cell,
+  .el-table th.el-table__cell.is-leaf {
+    border-bottom: none;
+  }
+
+  @include b(pagination) {
+    #{getCssVarName(pagination, height)}: getCssVar(control-grid, page-height);
+    #{getCssVarName(pagination, text-color)}: getCssVar(
+      control-grid,
+      text-color
+    );
+    #{getCssVarName(pagination, padding)}: getCssVar(
+      control-grid,
+      page-padding
+    );
+  }
+
+  @include when(single-select) {
+    // 表格列头样式
+    .el-table__header-wrapper {
+      .el-table__header thead > tr th:nth-child(1) {
+        padding-left: getCssVar(spacing, tight);
+      }
+    }
+
+    // 表格body样式
+    .el-table__body-wrapper {
+      .el-table__body tbody > tr td:nth-child(1) {
+        padding-left: getCssVar(spacing, tight);
+      }
+    }
+  }
+
+  // 支持定制
+  @include when(enable-customized) {
+    .el-table__header-wrapper {
+      .el-table__header thead>tr:first-child th:last-child {
+        padding-right: getCssVar(spacing, base-loose);
+      }
+    }
+    @include b(control-grid-setting-box){
+      @include flex(row, flex-start, center);
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      height: getCssVar(control-grid, now-header-height);
+      padding-right: getCssVar(spacing, extra-tight);
+      background-color: getCssVar(control-grid, header, bg-color);
+    }
+  }
+}
+
+@include b(control-grid-quick-toolbar) {
+  justify-content: center;
+}
+
+@include b(control-grid-batch-toolbar) {
+  position: absolute;
+  top: 0;
+  left: 54px;
+  z-index: 99;
+  display: none;
+  width: calc(100% - 54px);
+  height: getCssVar(control-grid, now-header-height);
+  font-size: getCssVar(font-size, regular);
+  font-weight: getCssVar(font-weight, regular);
+  background-color: getCssVar(control-grid, header, bg-color);
+
+  @include when(show) {
+    @include flex(row, flex-start, center);
+  }
+
+  @include b(control-grid-batch-toolbar-separator) {
+    padding: 0 getCssVar(spacing, base-tight);
+  }
+  @include b(control-grid-batch-toolbar-content) {
+    height: 100%;
+    @include flex(row, flex-start, center);
+  }
+  @include b(control-grid-batch-toolbar-text) {
+    flex: none; 
+  }
+}

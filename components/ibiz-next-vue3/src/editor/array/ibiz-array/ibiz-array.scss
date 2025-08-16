@@ -1,0 +1,14 @@
+@include b(array) {
+  height: 100%;
+  line-height: getCssVar(editor, default, line-height);  
+
+  ion-icon {
+    cursor: pointer;
+  }
+}
+
+@include b(array-tooltip) {
+  .el-link {
+    --el-link-text-color: inherit;
+  }
+}

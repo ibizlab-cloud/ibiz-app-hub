@@ -1,0 +1,48 @@
+$repeater-grid: (
+);
+
+
+@include b(repeater-grid){
+  @include set-component-css-var('repeater-grid', $repeater-grid);
+
+  position: relative;
+  width: 100%;
+  #{getCssVarName('grid-column', 'justify-content')}: center;
+
+  @include e(add-btn){
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .el-table__row:hover {
+    .#{bem(repeater-grid-index, text)}{
+      &:last-child{
+        display: none;
+      }
+    }
+    .#{bem(repeater-grid-index, remove)}{
+      display: inline;
+    }
+  }
+
+  .#{bem('repeater-grid-index', 'remove')}{
+    &.el-button.el-button--danger{
+      --el-button-text-color: #{getCssVar(color, danger)};
+    }
+  }
+
+}
+
+
+@include b(repeater-grid-index){
+  .cell{
+    padding: getCssVar(spacing,extra-tight);
+  }
+
+  @include e(remove){
+    display: none;
+  }
+
+}

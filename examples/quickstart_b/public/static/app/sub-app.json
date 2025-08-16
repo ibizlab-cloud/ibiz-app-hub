@@ -1,0 +1,281 @@
+{
+  "getAllPSAppDEUIActionGroups": [
+    {
+      "codeName": "toolbar_actions_federation",
+      "name": "子应用B界面行为组融合（工具栏）",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "buttonStyle": "DEFAULT",
+          "caption": "子应用B追加界面行为",
+          "detailType": "DEUIACTION",
+          "name": "u353552e",
+          "getPSSysImage": {
+            "glyph": "xf062@FontAwesome",
+            "cssClass": "fa fa-arrow-up"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "子应用B追加界面行为",
+            "codeName": "open_child_appb_view",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_child_appb_view",
+            "name": "子应用B追加界面行为",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf062@FontAwesome",
+              "cssClass": "fa fa-arrow-up"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_child_appb_view",
+            "uIActionType": "DEUIACTION",
+            "id": "open_child_appb_view@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__toolbar_actions_federation"
+    }
+  ],
+  "getAllPSDEDRControls": [
+    {
+      "codeName": "data_relation7",
+      "controlType": "DRTAB",
+      "dataRelationTag": "DataRelation7",
+      "getEditItemCapPSLanguageRes": {
+        "lanResTag": "DE.LNAME.MASTER"
+      },
+      "editItemCaption": "主数据",
+      "name": "tabexppanel",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSControlHandler": {
+        "enableDEFieldPrivilege": false,
+        "id": "tabexppanel"
+      },
+      "getPSControlParam": {
+        "autoLoad": true,
+        "showBusyIndicator": true,
+        "id": "TABEXPPANEL"
+      },
+      "getPSDEDRTabPages": [
+        {
+          "caption": "子应用B分页2",
+          "name": "appb_item1",
+          "getPSAppView": {
+            "modelref": true,
+            "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view5.json",
+            "viewType": "DECUSTOMVIEW"
+          }
+        },
+        {
+          "caption": "子应用B分页1同标识替换",
+          "name": "pitem1",
+          "getPSAppView": {
+            "modelref": true,
+            "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view4.json",
+            "viewType": "DECUSTOMVIEW"
+          }
+        }
+      ],
+      "uniqueTag": "master_tab_ctrl_federation2__tabexppanel",
+      "modelid": "310f28f93076511968fe213dcda8ea81",
+      "modeltype": "PSDEDRTAB"
+    },
+    {
+      "codeName": "data_relation6",
+      "controlType": "DRTAB",
+      "dataRelationTag": "DataRelation6",
+      "getEditItemCapPSLanguageRes": {
+        "lanResTag": "DE.LNAME.MASTER"
+      },
+      "editItemCaption": "主数据",
+      "name": "tabexppanel",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSControlHandler": {
+        "enableDEFieldPrivilege": false,
+        "id": "tabexppanel"
+      },
+      "getPSControlParam": {
+        "autoLoad": true,
+        "showBusyIndicator": true,
+        "id": "TABEXPPANEL"
+      },
+      "getPSDEDRTabPages": [
+        {
+          "caption": "子应用B关系界面1",
+          "itemTag": "BEFORE:pitem1",
+          "name": "appb_item1",
+          "getPSAppView": {
+            "modelref": true,
+            "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view3.json",
+            "viewType": "DECUSTOMVIEW"
+          }
+        }
+      ],
+      "uniqueTag": "master_tab_ctrl_federation1__tabexppanel",
+      "hideEditItem": true,
+      "modelid": "356ea638580000f90283d1cc4241bdc0",
+      "modeltype": "PSDEDRTAB"
+    }
+  ],
+  "getAllPSControls": [],
+  "dynamodeltag": null,
+  "modelStamp": null,
+  "appMode": "CLOUDHUBSUBAPP",
+  "caption": "quickstart_b",
+  "getPSAppMenuModel": {
+    "codeName": "hubsubapp",
+    "controlType": "APPMENU",
+    "dynaModelFilePath": "PSSYSAPPS/web/PSAPPMENUS/hubsubapp.json",
+    "getPSAppMenuItems": [
+      {
+        "accUserMode": 0,
+        "appMenuItemState": 1,
+        "caption": "多应用融合",
+        "itemType": "MENUITEM",
+        "name": "app_federation",
+        "getPSAppMenuItems": [
+          {
+            "accUserMode": 2,
+            "caption": "子应用B同标识替换",
+            "itemType": "MENUITEM",
+            "name": "menuitem142",
+            "getPSAppFunc": {
+              "modelref": true,
+              "id": "child_appb"
+            },
+            "tooltip": "子应用B同标识替换"
+          },
+          {
+            "accUserMode": 2,
+            "caption": "子应用B追加",
+            "itemType": "MENUITEM",
+            "name": "child_appb_add1",
+            "getPSAppFunc": {
+              "modelref": true,
+              "id": "child_appb_add1"
+            },
+            "tooltip": "子应用B追加"
+          }
+        ],
+        "getPSSysImage": {
+          "glyph": "xf12e@FontAwesome",
+          "cssClass": "fa fa-puzzle-piece"
+        },
+        "tooltip": "多应用融合"
+      }
+    ],
+    "name": "hubsubapp",
+    "modelid": "cc48794d13bb90162a2307f8d097aa13",
+    "modeltype": "PSAPPMENU"
+  },
+  "getAllPSAppMenuModels": [],
+  "getAllPSAppViews": [
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_actions_federation.json",
+      "viewType": "DECUSTOMVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "child_appb_actions_federation",
+      "name": "MASTERchild_appb_actions_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view3.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appb_view3",
+      "name": "MASTERchild_appb_view3"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view5.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appb_view5",
+      "name": "MASTERchild_appb_view5"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_ctrl_federation2.json",
+      "viewType": "DETABEXPVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "tab_ctrl_federation2",
+      "name": "MASTERtab_ctrl_federation2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_appb.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appb_view",
+      "name": "MASTERchild_appb_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/welcome_appb.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "welcome"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view2.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appb_view2",
+      "name": "MASTERchild_appb_view2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_child_appb_view4.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "child_appb_view4",
+      "name": "MASTERchild_appb_view4"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_ctrl_federation1.json",
+      "viewType": "DETABEXPVIEW",
+      "priority": 100,
+      "resource": "master",
+      "view": "tab_ctrl_federation1",
+      "name": "MASTERtab_ctrl_federation1"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPINDEXVIEWS/admin_appb.json",
+      "viewType": "APPINDEXVIEW",
+      "view": "admin_appb"
+    }
+  ]
+}

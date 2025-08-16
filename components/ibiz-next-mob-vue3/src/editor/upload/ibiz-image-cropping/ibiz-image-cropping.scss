@@ -1,0 +1,92 @@
+@include b('image-upload-cropping') {
+  .van-uploader__preview {
+    .van-uploader__file-icon {
+      display: none;
+    }
+
+    .van-uploader__file-name {
+      display: none;
+    }
+  }
+  @include e(crop-popup){
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+  }
+  @include b(image-upload-cropping-item-cover) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: rem(12px);
+    line-height: initial;
+    color: #fff;
+    text-align: center;
+    background: transparent;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: rem(4px);
+    }
+  }
+
+  .van-uploader {
+    display: flex;
+    flex-direction: row;
+    justify-content: getCssVar(form-item-container, editor-align);
+  }
+}
+
+.van-uploader__preview-delete--shadow {
+  top: rem(-5px);
+  right: rem(-5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--van-uploader-delete-icon-size);
+  height: var(--van-uploader-delete-icon-size);
+  text-align: center;
+  background: var(--van-uploader-delete-background);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.van-uploader__preview-delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: var(--van-uploader-delete-icon-size);
+  color: var(--van-uploader-delete-color);
+  transform: scale(0.7) translate(0%, -10%);
+}
+
+.van-uploader__upload {
+  background: transparent;
+  border: getCssVar(color, border) rem(1px) solid;
+  border-radius: rem(4px);
+}
+
+.van-uploader__upload--readonly {
+  display: none;
+}
+
+@include b(panel-field) {
+  @include b(panel-field-content) {
+    height: 100%;
+
+    // 特殊适配
+    .van-uploader {
+      width: 100%;
+      height: 100%;
+    }
+
+    .van-uploader__wrapper {
+      height: 100%;
+    }
+  }
+}

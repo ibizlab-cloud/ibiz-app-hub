@@ -1,0 +1,12 @@
+/* stylelint-disable-next-line selector-max-id */
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-color: getCssVar(color, bg, 0);
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}

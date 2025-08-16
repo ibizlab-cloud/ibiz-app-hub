@@ -1,0 +1,48 @@
+/* stylelint-disable selector-class-pattern */
+// 左右移动
+@keyframes scroll-left-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+  
+// 上下移动
+@keyframes scroll-top {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@include b('carousel-grid-content'){
+    &:hover{
+        animation-play-state: paused!important;
+    }
+}
+
+@include b(control-grid) {
+    @include e('table'){
+        @include when('allow-roll'){
+            .el-scrollbar__bar.is-vertical{
+                display: none;
+            }
+
+            tbody{
+                flex: none;
+                height: auto;
+                animation: scroll-top var(--speed) linear infinite;
+
+                &:hover{
+                    animation-play-state: paused!important;
+                }
+            }
+        }
+    }
+}

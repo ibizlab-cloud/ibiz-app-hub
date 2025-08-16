@@ -1,0 +1,14 @@
+@include b(panel-exp-header) {
+  width: auto;
+  height: 64px;
+  padding: 0 getCssVar(spacing, base);
+  border-bottom: 1px solid getCssVar(color, border);
+
+  .#{bem(row)} {
+    height: 100%;
+  }
+
+  .#{bem(panel-container, '', view_header_right)} {
+    padding: 0 getCssVar('spacing', 'base');
+  }
+}

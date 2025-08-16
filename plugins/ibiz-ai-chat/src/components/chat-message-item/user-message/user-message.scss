@@ -1,0 +1,116 @@
+@include b(user-message-question) {
+  padding: 6px 10px;
+
+  @include e(content) {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: end;
+    max-width: 100%;
+    font-size: 14px;
+    text-align: left;
+    word-break: break-word;
+    user-select: text;
+    transition: all 0.3s ease;
+    @include m('body') {
+      width: fit-content;
+      padding: 10px 16px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--color-fg-default);
+      word-wrap: break-word;
+      background: #e7f8ff;
+      background-color: getCssVar('ai-chat', 'background-color-light');
+      border-radius: #{getCssVar('ai-chat', 'border-radius')};
+      border-radius: getCssVar('ai-chat', 'border-radius');
+      text-size-adjust: 100%;
+
+      &::before {
+        display: table;
+        content: '';
+      }
+
+      &::after {
+        display: table;
+        clear: both;
+        content: '';
+      }
+    }
+
+    @include m('material') {
+      display: flex;
+      flex-flow: row-reverse wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .cherry {
+      min-height: 0;
+      border-radius: #{getCssVar('ai-chat', 'border-radius')};
+      box-shadow: none;
+
+      *::-webkit-scrollbar {
+        width: getCssVar('ai-chat', 'scroll-bar-width');
+        height: getCssVar('ai-chat', 'scroll-bar-height');
+      }
+
+      *::-webkit-scrollbar-thumb {
+        background-color: getCssVar(color, fill, 2);
+        border-radius: getCssVar('ai-chat', 'scroll-bar-radius');
+      }
+
+      *::-webkit-scrollbar-thumb:hover {
+        background-color: getCssVar(color, fill, 2);
+      }
+    }
+
+    .cherry-markdown p {
+      margin: 0;
+    }
+
+    .cherry-markdown pre {
+      background-color: getCssVar(ai-chat, background, color);
+    }
+
+    .cherry-markdown pre {
+      background-color: getCssVar(ai-chat, background, color);
+    }
+
+    .cherry-previewer {
+      padding: 0;
+      color: getCssVar(ai-chat, color);
+      background-color: getCssVar('ai-chat', 'background-color-light');
+      border: 0;
+
+      figure {
+        max-width: 1200px;
+
+        > svg {
+          width: 100%;
+          min-height: 100px;
+        }
+      }
+    }
+
+    .anchor {
+      display: none !important;
+    }
+  }
+
+  @include e('user-header') {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 32px;
+    margin-bottom: 8px;
+  }
+
+  @include e('user') {
+    padding: 6px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+}

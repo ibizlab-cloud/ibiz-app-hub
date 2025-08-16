@@ -1,0 +1,66 @@
+@include b('single-picker') {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: getCssVar(spacing, base);
+  margin-top: getCssVar(spacing, base);
+  @include e('container') {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: left;
+    width: 100%;
+    padding: getCssVar(spacing, base);
+    margin-top: getCssVar(spacing, base);
+    text-align: left;
+    background-color: getCssVar(color, fill, 3);
+    @include when('show-input') {
+      border-bottom: 1px solid getCssVar(color, primary);
+      @include e('input') {
+        opacity: 1;
+      }
+      @include e('label') {
+        opacity: 1;
+        left: getCssVar(spacing, base);
+        top: 0%;
+        margin-top: getCssVar(spacing, base);
+        font-size: getCssVar(font-size, small);
+        color: getCssVar(color, primary);
+        transform: unset;
+      }
+    }
+    @include when('error'){
+        border-bottom: 1px solid getCssVar(color, danger);
+        @include e('label') {
+            color: getCssVar(color, danger);
+        }
+    }
+  }
+
+  @include e('label') {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    left: 50%;
+    font-size: getCssVar(font-size, header, 4);
+    color: getCssVar(color, tertiary);
+    transition: all linear 0.1s;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+  @include e('input') {
+    margin-top: getCssVar(spacing, base);
+    background-color: getCssVar(color, fill, 3);
+    opacity: 0;
+  }
+  @include e('error') {
+    position: absolute;
+    top: calc(100% + getCssVar(spacing, tight));
+    font-size: getCssVar(font-size, small);
+    color: getCssVar(color, danger);
+    white-space: pre-line;
+  }
+}

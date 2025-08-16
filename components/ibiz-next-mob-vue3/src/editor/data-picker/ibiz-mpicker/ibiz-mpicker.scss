@@ -1,0 +1,66 @@
+/* mpicker 地址栏 */
+@include b(mpicker) {
+  .van-field {
+    font-size: getCssVar(form-item, font-size);
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .van-field__right-icon {
+    button {
+      color: var(--van-field-right-icon-color);
+      border: none;
+    }
+  }
+
+  .van-field__control--custom {
+    flex-wrap: wrap;
+  }
+
+  .van-field__control {
+    gap: getCssVar(spacing, tight);
+  }
+
+  input:disabled {
+    color: getCssVar(form-item, disabled-color);
+    background-color: getCssVar(form-item, disabled-bg-color);
+    border-color: getCssVar(form-item, disabled-border-color);
+    -webkit-text-fill-color: getCssVar(form-item, disabled-color);
+  }
+
+  @include e('pickup-search-icon'){
+    font-size: getCssVar(font-size,header,5);
+    display: flex;
+  }
+
+  @include m(disabled) {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  @include m(readonly) {
+    color: getCssVar(form-item, readonly-color);
+    -webkit-text-fill-color: getCssVar(form-item, readonly-color);
+  }
+
+  @include b(mpicker-select-item) {
+    display: flex;
+    gap: getCssVar(spacing, tight);
+    align-items: center;
+    justify-content: space-between;
+    padding: getCssVar(spacing, tight);
+    background-color: getCssVar(color, disabled, bg);
+    border-radius: getCssVar('border-radius', 'small');
+  }
+
+  .van-field__control--custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: getCssVar(form-item-container, editor-align);
+  }
+  &.#{bem('mpicker','','readonly')}{
+      text-align: getCssVar(form-item-container, editor-align);
+  }
+}

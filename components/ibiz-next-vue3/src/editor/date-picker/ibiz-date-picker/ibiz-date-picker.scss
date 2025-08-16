@@ -1,0 +1,81 @@
+@include b('date-picker') {
+  .el-date-editor {
+    width: 100%;
+  }
+
+  input {
+    font-size: getCssVar('form-item', 'font-size');
+    color: getCssVar('form-item', 'text-color');
+    border-color: getCssVar('form-item', 'border-color');
+  }
+
+  input::placeholder {
+    color: getCssVar('form-item', 'placeholder-color');
+  }
+
+  input[disabled] {
+    color: getCssVar('form-item', 'disabled-color');
+    border-color: getCssVar('form-item', 'disabled-border-color');
+  }
+
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar(form-item, readonly-color);
+  }
+
+  // 时间选择编辑器都不要输入框前面的图标（原因:模型默认给了宽度）
+  .el-input__wrapper {
+    .el-input__prefix {
+      display: none;
+    }
+  }
+}
+
+// 表单下的时间选择器默认显示，悬浮上去显示编辑器
+@include b(date-picker-form-default-content){
+  display: none;
+}
+
+@include b(form-item){
+
+  @include b(date-picker) {
+    @include when(show-default){
+      // 悬浮显示编辑器
+      &:hover{
+        @include b(date-picker-form-default-content){
+          display: none;
+        }     
+        @include b(date-picker-input){
+          display: block;    
+        }       
+      }    
+      
+      // 不悬浮时显示信息态
+      @include b(date-picker-form-default-content){      
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);        
+        font-family: Arial, sans-serif;;      
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);      
+      }
+      @include b(date-picker-input){
+        display: none;  
+      }
+      
+      // 输入态
+      @include when(editable){
+        @include b(date-picker-form-default-content){
+          display: none;
+        }     
+        @include b(date-picker-input){
+          display: block;    
+        }  
+      }
+    }
+
+  }
+}

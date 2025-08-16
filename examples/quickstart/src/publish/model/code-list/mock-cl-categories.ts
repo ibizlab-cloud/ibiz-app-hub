@@ -1,0 +1,16 @@
+export default {
+  codeListTag: 'mock__cl_categories',
+  codeListType: 'DYNAMIC',
+  codeName: 'mock__cl_categories',
+  emptyText: '未定义',
+  minorSortDir: 'ASC',
+  minorSortAppDEFieldId: 'sort',
+  appDEDataSetId: 'fetch_default',
+  appDataEntityId: 'web.category',
+  pvalueAppDEFieldId: 'parent_id',
+  textAppDEFieldId: 'name',
+  valueAppDEFieldId: 'id',
+  enableCache: true,
+  name: '分类',
+  id: 'web.mock__cl_categories',
+};

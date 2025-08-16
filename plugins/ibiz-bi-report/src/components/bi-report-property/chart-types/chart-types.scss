@@ -1,0 +1,31 @@
+@include b('chart-types'){
+  display: flex;
+  flex-wrap: wrap;
+  @include e('item'){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-right:getCssVar('spacing', 'extra-tight');
+    margin-bottom:getCssVar('spacing', 'tight');
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 4px;
+
+    &:hover{
+      border: 1px solid getCssVar('color', 'primary',light,hover);
+    }
+    @include when('selected'){
+      background-color: getCssVar(color, primary,light, default);
+      border: 1px solid getCssVar('color', 'primary',light,active);
+    }
+  }
+  @include e('tooltip'){
+    /* stylelint-disable-next-line selector-class-pattern */
+    .el-popper__arrow{
+      display: block;
+    }
+  }
+}

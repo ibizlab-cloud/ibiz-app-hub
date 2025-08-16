@@ -1,0 +1,46 @@
+/* stylelint-disable selector-class-pattern */
+@include b('bi-filter-item') {
+  padding: getCssVar('spacing', 'base') getCssVar('spacing', 'extra-loose');
+  @include e('header') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    line-height: 32px;
+    @include m('icon') {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  @include e('content') {
+    > div {
+      padding: getCssVar('spacing', 'tight') 0;
+
+      > div {
+        width: 100%;
+      }
+    }
+    @include m('editor'){
+      .ibiz-date-range-select__date-range{
+        margin: 0;
+      }
+
+      .ibiz-date-range-select__date-range--label{
+        display: none;
+      }
+
+      .ibiz-date-range-select__date-range--editor{
+        margin: 0;
+      }
+    }
+  }
+  @include e('footer') {
+    display: flex;
+    justify-content: end;
+  }
+}

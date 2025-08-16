@@ -1,0 +1,91 @@
+@include b(input-ip) {
+  @include flex;
+
+  flex-wrap: nowrap;
+  height: 100%;
+  font-size: getCssVar(form-item, font-size);
+  line-height: getCssVar(form-item, line-height);
+  color: getCssVar(form-item, text-color);
+
+  .el-input .el-input__wrapper {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .el-input.is-disabled .el-input__wrapper {
+    background-color: transparent;
+  }
+
+  &:hover:not(.#{bem('input-ip', '', 'disabled')}) {
+    @include b(input-ip-content) {
+      box-shadow: 0 0 0 1px getCssVar(editor, hover, border-color) inset;
+    }
+  }
+
+  @include m(disabled) {
+    @include b(input-ip-content) {
+      color: var(--el-disabled-text-color);
+      cursor: not-allowed;
+      background-color: var(--el-disabled-bg-color);
+      box-shadow: 0 0 0 1px var(--el-disabled-border-color) inset;
+    }
+  }
+
+  @include m(readonly) {
+    color: getCssVar(form-item, readonly-color);
+  }
+
+  @include when(focus) {
+    @include b(input-ip-content) {
+      box-shadow: 0 0 0 1px getCssVar(color, primary) inset;
+    }
+  }
+}
+
+@include b(input-ip-content) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: getCssVar(editor, default, text-color);
+  border-radius: getCssVar(border, radius, small);
+  box-shadow: 0 0 0 1px getCssVar(editor, default, border-color) inset;
+}
+
+
+@include b(form-item){
+
+  @include b(input-ip) {
+    @include when(show-default){
+      @include b(input-ip-form-default-content) {
+        display: block;
+        padding: getCssVar(form-item, hover-edit-padding);
+      }
+
+      @include b(input-ip-content) {
+        display: none;
+      }
+
+      &:hover {
+        @include b(input-ip-form-default-content) {
+          display: none;
+        }
+  
+        @include b(input-ip-content) {
+          display: flex;
+        }
+      }
+
+      @include when(focus) {
+        @include b(input-ip-form-default-content) {
+          display: none;
+        }
+  
+        @include b(input-ip-content) {
+          display: flex;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3836 @@
+{
+  "getAllPSAppDEUIActionGroups": [
+    {
+      "codeName": "Usr0103721999",
+      "name": "附件表格操作列",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/attachment.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "actionLevel": 250,
+          "detailType": "DEUIACTION",
+          "name": "u3f91aed",
+          "getPSSysImage": {
+            "glyph": "xf019@FontAwesome",
+            "cssClass": "fa fa-download"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEDATA",
+            "caption": "下载",
+            "codeName": "download",
+            "frontProcessType": "OTHER",
+            "fullCodeName": "attachment_download",
+            "name": "附件下载",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/attachment.json"
+            },
+            "getPSNavigateParams": [
+              {
+                "key": "fileid",
+                "name": "fileid",
+                "value": "file_id",
+                "rawValue": false
+              },
+              {
+                "key": "filename",
+                "name": "filename",
+                "value": "name",
+                "rawValue": false
+              }
+            ],
+            "getPSSysImage": {
+              "glyph": "xf019@FontAwesome",
+              "cssClass": "fa fa-download"
+            },
+            "getPSSysPFPlugin": {
+              "pluginType": "DEUIACTION",
+              "pluginCode": "FILE_DOWNLOAD",
+              "runtimeObject": true
+            },
+            "tooltip": "下载当前附件",
+            "uIActionMode": "FRONT",
+            "uIActionTag": "download",
+            "uIActionType": "DEUIACTION",
+            "id": "download@attachment"
+          },
+          "tooltip": "下载当前附件",
+          "addSeparator": false,
+          "showCaption": false,
+          "showIcon": true
+        },
+        {
+          "caption": "删除",
+          "detailType": "DEUIACTION",
+          "name": "u9f7d084",
+          "getPSSysImage": {
+            "glyph": "xf014@FontAwesome",
+            "cssClass": "fa fa-trash-o"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "caption": "删除",
+            "codeName": "delete",
+            "frontProcessType": "OTHER",
+            "fullCodeName": "attachment_delete",
+            "name": "附件删除",
+            "getPSAppDEUILogic": {
+              "modelref": true,
+              "id": "remove_attachment"
+            },
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/attachment.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf014@FontAwesome",
+              "cssClass": "fa fa-trash-o"
+            },
+            "tooltip": "删除",
+            "uIActionMode": "FRONT",
+            "uIActionTag": "delete",
+            "uIActionType": "DEUIACTION",
+            "uILogicAttachMode": "REPLACE",
+            "id": "delete@attachment"
+          },
+          "tooltip": "删除",
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "attachment__Usr0103721999"
+    },
+    {
+      "codeName": "Usr1204311237",
+      "name": "卸载界面行为组",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "caption": "卸载",
+          "detailType": "DEUIACTION",
+          "name": "u01c1392",
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "caption": "卸载",
+            "codeName": "Uninstall",
+            "fullCodeName": "PSCorePrdFunc_Uninstall",
+            "name": "禁用",
+            "getPSAppDEMethod": {
+              "modelref": true,
+              "id": "uninstall"
+            },
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+            },
+            "getPSNavigateContexts": [
+              {
+                "key": "PSCOREPRDFUNC",
+                "name": "PSCOREPRDFUNC",
+                "value": "pscoreprdfuncid",
+                "rawValue": false
+              }
+            ],
+            "getPSNavigateParams": [
+              {
+                "key": "n_pscoreprdid_eq",
+                "name": "n_pscoreprdid_eq",
+                "value": "srfv2systemid",
+                "rawValue": false
+              }
+            ],
+            "refreshMode": 1,
+            "successMsg": "卸载成功！",
+            "timeout": 60000,
+            "uIActionMode": "BACKEND",
+            "uIActionTag": "Uninstall",
+            "uIActionType": "DEUIACTION",
+            "enableConfirm": true,
+            "reloadData": true,
+            "id": "Uninstall@PSCorePrdFunc"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": false
+        },
+        {
+          "caption": "安装特定版本",
+          "detailType": "DEUIACTION",
+          "name": "u82d5972",
+          "getPSUIAction": {
+            "actionTarget": "SINGLEDATA",
+            "caption": "安装特定版本",
+            "codeName": "install_specific_ver_test",
+            "frontProcessType": "OTHER",
+            "fullCodeName": "PSCorePrdFunc_install_specific_ver_test",
+            "name": "安装特定版本_提示开发中",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+            },
+            "scriptCode": "util.message.info(\"功能正在开发中\");",
+            "uIActionMode": "FRONT",
+            "uIActionTag": "install_specific_ver_test",
+            "uIActionType": "DEUIACTION",
+            "id": "install_specific_ver_test@PSCorePrdFunc"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "PSCorePrdFunc__Usr1204311237"
+    },
+    {
+      "codeName": "Aa191c5fc4defabcf44",
+      "name": "表格操作列",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/region.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "caption": "查看",
+          "detailType": "DEUIACTION",
+          "name": "u988f5c7",
+          "getPSSysImage": {
+            "glyph": "xf15c@FontAwesome",
+            "cssClass": "fa fa-file-text"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "caption": "查看",
+            "codeName": "view",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_info_view.json",
+              "viewType": "DEEDITVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "region_view",
+            "name": "查看",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/region.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf15c@FontAwesome",
+              "cssClass": "fa fa-file-text"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "view",
+            "uIActionType": "DEUIACTION",
+            "id": "view@region"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "caption": "编辑",
+          "detailType": "DEUIACTION",
+          "name": "ubfba42f",
+          "getPSSysImage": {
+            "glyph": "xf044@FontAwesome",
+            "cssClass": "fa fa-edit"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "caption": "编辑",
+            "codeName": "edit",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view.json",
+              "viewType": "DEEDITVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "region_edit",
+            "name": "编辑",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/region.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf044@FontAwesome",
+              "cssClass": "fa fa-edit"
+            },
+            "refreshMode": 1,
+            "uIActionMode": "FRONT",
+            "uIActionTag": "edit",
+            "uIActionType": "DEUIACTION",
+            "reloadData": true,
+            "id": "edit@region"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "caption": "删除",
+          "detailType": "DEUIACTION",
+          "name": "u662706e",
+          "getPSSysImage": {
+            "glyph": "xf1f8@FontAwesome",
+            "cssClass": "fa fa-trash"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "caption": "删除",
+            "codeName": "remove",
+            "confirmMsg": "是否要删除当前数据",
+            "fullCodeName": "region_remove",
+            "name": "删除",
+            "getPSAppDEMethod": {
+              "modelref": true,
+              "id": "remove"
+            },
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/region.json"
+            },
+            "refreshMode": 1,
+            "successMsg": "删除成功",
+            "timeout": 60000,
+            "uIActionMode": "BACKEND",
+            "uIActionTag": "remove",
+            "uIActionType": "DEUIACTION",
+            "enableConfirm": true,
+            "reloadData": true,
+            "id": "remove@region"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "region__Aa191c5fc4defabcf44"
+    },
+    {
+      "codeName": "A23a502ec6f556cf9b4",
+      "name": "按钮组",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "caption": "打开关于",
+          "detailType": "DEUIACTION",
+          "name": "ubc28a2e",
+          "getPSSysImage": {
+            "glyph": "xf05a@FontAwesome",
+            "cssClass": "fa fa-info-circle"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "打开关于",
+            "codeName": "open_about",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_about",
+            "name": "打开关于",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf05a@FontAwesome",
+              "cssClass": "fa fa-info-circle"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_about",
+            "uIActionType": "DEUIACTION",
+            "id": "open_about@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "caption": "打开文档",
+          "detailType": "DEUIACTION",
+          "name": "u16b8690",
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "打开文档",
+            "codeName": "open_document",
+            "frontProcessType": "OPENHTMLPAGE",
+            "fullCodeName": "master_open_document",
+            "htmlPageUrl": "https://open.ibizlab.cn/apphub/zh/",
+            "name": "打开文档",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_document",
+            "uIActionType": "DEUIACTION",
+            "id": "open_document@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "caption": "打开弹窗",
+          "detailType": "DEUIACTION",
+          "name": "u423b10f",
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "打开弹窗",
+            "codeName": "open_dialog",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/welcome.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_dialog",
+            "name": "打开弹窗",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_dialog",
+            "uIActionType": "DEUIACTION",
+            "id": "open_dialog@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__A23a502ec6f556cf9b4"
+    },
+    {
+      "codeName": "A33d9492128a8fc0fad",
+      "name": "列界面行为组",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "actionLevel": 200,
+          "caption": "查看详情",
+          "detailType": "DEUIACTION",
+          "name": "u154f1f9",
+          "getPSSysImage": {
+            "glyph": "xf06e@FontAwesome",
+            "cssClass": "fa fa-eye"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "caption": "查看详情",
+            "codeName": "open_info",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_info.json",
+              "viewType": "DEEDITVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_info",
+            "name": "查看详情",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf06e@FontAwesome",
+              "cssClass": "fa fa-eye"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_info",
+            "uIActionType": "DEUIACTION",
+            "id": "open_info@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "caption": "打开弹窗",
+          "detailType": "DEUIACTION",
+          "name": "u3304070",
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "打开弹窗",
+            "codeName": "open_dialog",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/welcome.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_dialog",
+            "name": "打开弹窗",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_dialog",
+            "uIActionType": "DEUIACTION",
+            "id": "open_dialog@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__A33d9492128a8fc0fad"
+    },
+    {
+      "codeName": "A4c776e9ce23813f542",
+      "name": "操作列界面行为组",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "caption": "打开弹窗",
+          "detailType": "DEUIACTION",
+          "name": "u8d3d528",
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "打开弹窗",
+            "codeName": "open_dialog",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/welcome.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_dialog",
+            "name": "打开弹窗",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_dialog",
+            "uIActionType": "DEUIACTION",
+            "id": "open_dialog@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__A4c776e9ce23813f542"
+    },
+    {
+      "codeName": "Ac5c6ca354b8a3b6605",
+      "name": "界面行为样式及图标",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "buttonStyle": "INVERSE",
+          "caption": "打开视图",
+          "detailType": "DEUIACTION",
+          "name": "u3661b94",
+          "getPSSysImage": {
+            "glyph": "xf0eb@FontAwesome",
+            "cssClass": "fa fa-lightbulb-o"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "buttonStyle": "INVERSE",
+            "caption": "打开视图",
+            "codeName": "open_view6",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_view6",
+            "memo": "反向按钮样式",
+            "name": "打开视图",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf0eb@FontAwesome",
+              "cssClass": "fa fa-lightbulb-o"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_view6",
+            "uIActionType": "DEUIACTION",
+            "id": "open_view6@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "buttonStyle": "DANGER",
+          "caption": "打开视图",
+          "detailType": "DEUIACTION",
+          "name": "uf4d2990",
+          "getPSSysImage": {
+            "glyph": "xf12a@FontAwesome",
+            "cssClass": "fa fa-exclamation"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "buttonStyle": "DANGER",
+            "caption": "打开视图",
+            "codeName": "open_view5",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_view5",
+            "memo": "危险按钮样式",
+            "name": "打开视图",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf12a@FontAwesome",
+              "cssClass": "fa fa-exclamation"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_view5",
+            "uIActionType": "DEUIACTION",
+            "id": "open_view5@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "buttonStyle": "WARNING",
+          "caption": "打开视图",
+          "detailType": "DEUIACTION",
+          "name": "u20b0cfe",
+          "getPSSysImage": {
+            "glyph": "xf1d9@FontAwesome",
+            "cssClass": "fa fa-send-o"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "buttonStyle": "WARNING",
+            "caption": "打开视图",
+            "codeName": "open_view4",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_view4",
+            "memo": "警告按钮样式",
+            "name": "打开视图",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf1d9@FontAwesome",
+              "cssClass": "fa fa-send-o"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_view4",
+            "uIActionType": "DEUIACTION",
+            "id": "open_view4@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "buttonStyle": "INFO",
+          "caption": "打开视图",
+          "detailType": "DEUIACTION",
+          "name": "uab86613",
+          "getPSSysImage": {
+            "glyph": "xf1b2@FontAwesome",
+            "cssClass": "fa fa-cube"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "buttonStyle": "INFO",
+            "caption": "打开视图",
+            "codeName": "open_view2",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_view2",
+            "memo": "信息按钮样式",
+            "name": "打开视图",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf1b2@FontAwesome",
+              "cssClass": "fa fa-cube"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_view2",
+            "uIActionType": "DEUIACTION",
+            "id": "open_view2@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "buttonStyle": "SUCCESS",
+          "caption": "打开视图",
+          "detailType": "DEUIACTION",
+          "name": "u09de2c3",
+          "getPSSysImage": {
+            "cssClass": "cloudy"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "buttonStyle": "SUCCESS",
+            "caption": "打开视图",
+            "codeName": "open_view3",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_view3",
+            "memo": "成功按钮样式",
+            "name": "打开视图",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "cssClass": "cloudy"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_view3",
+            "uIActionType": "DEUIACTION",
+            "id": "open_view3@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "buttonStyle": "PRIMARY",
+          "caption": "打开视图",
+          "detailType": "DEUIACTION",
+          "name": "u0ebc904",
+          "getPSSysImage": {
+            "glyph": "xf1a0@FontAwesome",
+            "cssClass": "fa fa-google"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "buttonStyle": "PRIMARY",
+            "caption": "打开视图",
+            "codeName": "open_view1",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+              "viewType": "DECUSTOMVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "master_open_view1",
+            "memo": "主要按钮样式",
+            "name": "打开视图",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf1a0@FontAwesome",
+              "cssClass": "fa fa-google"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_view1",
+            "uIActionType": "DEUIACTION",
+            "id": "open_view1@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__Ac5c6ca354b8a3b6605"
+    },
+    {
+      "codeName": "Usr0102014691",
+      "name": "新建附件",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "caption": "添加附件",
+          "detailType": "DEUIACTION",
+          "name": "ucd4510f",
+          "getPSSysImage": {
+            "glyph": "xf067@FontAwesome",
+            "cssClass": "fa fa-plus"
+          },
+          "getPSUIAction": {
+            "actionTarget": "NONE",
+            "caption": "添加附件",
+            "codeName": "add_attachments",
+            "frontProcessType": "OTHER",
+            "fullCodeName": "master_add_attachments",
+            "name": "添加附件",
+            "getPSAppDEUILogic": {
+              "modelref": true,
+              "id": "add_attachment"
+            },
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+            },
+            "getPSSysImage": {
+              "glyph": "xf067@FontAwesome",
+              "cssClass": "fa fa-plus"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "add_attachments",
+            "uIActionType": "DEUIACTION",
+            "uILogicAttachMode": "REPLACE",
+            "id": "add_attachments@master"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__Usr0102014691"
+    },
+    {
+      "codeName": "grid_column_actions_federation",
+      "name": "界面行为组融合（表格列）",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "getCapPSLanguageRes": {
+            "lanResTag": "TBB.TEXT.*.EDIT"
+          },
+          "caption": "编辑",
+          "detailType": "DEUIACTION",
+          "name": "ua85db25",
+          "getPSSysImage": {
+            "glyph": "xf044@FontAwesome",
+            "cssClass": "fa fa-edit"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "getCapPSLanguageRes": {
+              "lanResTag": "TBB.TEXT.*.EDIT"
+            },
+            "caption": "编辑",
+            "codeName": "Edit",
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "Edit",
+            "name": "表格界面_编辑操作",
+            "getPSSysImage": {
+              "glyph": "xf044@FontAwesome",
+              "cssClass": "fa fa-edit"
+            },
+            "predefinedType": "GRIDVIEW_EDITACTION",
+            "timeout": 60000,
+            "getTooltipPSLanguageRes": {
+              "lanResTag": "TBB.TOOLTIP.*.EDIT"
+            },
+            "uIActionMode": "SYS",
+            "uIActionTag": "Edit",
+            "uIActionType": "DEUIACTION"
+          },
+          "getTooltipPSLanguageRes": {
+            "lanResTag": "TBB.TOOLTIP.*.EDIT"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "getCapPSLanguageRes": {
+            "lanResTag": "TBB.TEXT.*.VIEW"
+          },
+          "caption": "查看",
+          "detailType": "DEUIACTION",
+          "name": "ubaea67f",
+          "getPSSysImage": {
+            "glyph": "xf044@FontAwesome",
+            "cssClass": "fa fa-edit"
+          },
+          "getPSUIAction": {
+            "actionTarget": "SINGLEKEY",
+            "getCapPSLanguageRes": {
+              "lanResTag": "TBB.TEXT.*.VIEW"
+            },
+            "caption": "查看",
+            "codeName": "View",
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "View",
+            "name": "表格界面_查看操作",
+            "getPSSysImage": {
+              "glyph": "xf044@FontAwesome",
+              "cssClass": "fa fa-edit"
+            },
+            "predefinedType": "GRIDVIEW_VIEWACTION",
+            "timeout": 60000,
+            "getTooltipPSLanguageRes": {
+              "lanResTag": "TBB.TOOLTIP.*.VIEW"
+            },
+            "uIActionMode": "SYS",
+            "uIActionTag": "View",
+            "uIActionType": "DEUIACTION"
+          },
+          "getTooltipPSLanguageRes": {
+            "lanResTag": "TBB.TOOLTIP.*.VIEW"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "master__grid_column_actions_federation"
+    },
+    {
+      "codeName": "toolbar_actions_federation",
+      "name": "界面行为组融合（工具栏）",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/master.json"
+      },
+      "uniqueTag": "master__toolbar_actions_federation"
+    },
+    {
+      "codeName": "Afba74a3d35ec9738fc",
+      "name": "分类维护操作列",
+      "getPSAppDataEntity": {
+        "modelref": true,
+        "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/category.json"
+      },
+      "getPSUIActionGroupDetails": [
+        {
+          "caption": "表单设计",
+          "detailType": "DEUIACTION",
+          "name": "u89ecba4",
+          "getPSUIAction": {
+            "actionTarget": "SINGLEDATA",
+            "caption": "表单设计",
+            "codeName": "open_edit_form_design_view",
+            "getFrontPSAppView": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDEVIEWS/psdeformdesign_modal.json",
+              "viewType": "DESUBAPPREFVIEW"
+            },
+            "frontProcessType": "WIZARD",
+            "fullCodeName": "category_open_edit_form_design_view",
+            "name": "表单设计",
+            "getPSAppDataEntity": {
+              "modelref": true,
+              "path": "PSSYSAPPS/web/PSAPPDATAENTITIES/category.json"
+            },
+            "uIActionMode": "FRONT",
+            "uIActionTag": "open_edit_form_design_view",
+            "uIActionType": "DEUIACTION",
+            "id": "open_edit_form_design_view@category"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        },
+        {
+          "getCapPSLanguageRes": {
+            "lanResTag": "TBB.TEXT.*.REMOVE"
+          },
+          "caption": "删除",
+          "detailType": "DEUIACTION",
+          "name": "uf9b31a0",
+          "getPSSysImage": {
+            "glyph": "xf00d@FontAwesome",
+            "cssClass": "fa fa-remove"
+          },
+          "getPSUIAction": {
+            "actionTarget": "MULTIKEY",
+            "getCapPSLanguageRes": {
+              "lanResTag": "TBB.TEXT.*.REMOVE"
+            },
+            "caption": "删除",
+            "codeName": "Remove",
+            "fullCodeName": "Remove",
+            "name": "表格界面_删除操作",
+            "getPSSysImage": {
+              "glyph": "xf00d@FontAwesome",
+              "cssClass": "fa fa-remove"
+            },
+            "predefinedType": "GRIDVIEW_REMOVEACTION",
+            "timeout": 60000,
+            "getTooltipPSLanguageRes": {
+              "lanResTag": "TBB.TOOLTIP.*.REMOVE"
+            },
+            "uIActionMode": "SYS",
+            "uIActionTag": "Remove",
+            "uIActionType": "DEUIACTION"
+          },
+          "getTooltipPSLanguageRes": {
+            "lanResTag": "TBB.TOOLTIP.*.REMOVE"
+          },
+          "addSeparator": false,
+          "showCaption": true,
+          "showIcon": true
+        }
+      ],
+      "uniqueTag": "category__Afba74a3d35ec9738fc"
+    }
+  ],
+  "getAllPSDEDRControls": [],
+  "getAllPSControls": [],
+  "getAllPSAppPFPluginRefs": [
+    {
+      "name": "HTML（评论）",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "COMMENT",
+        "runtimeObject": true
+      },
+      "pluginCode": "COMMENT",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "IBizHtmlComment",
+      "rTObjectRepo": "@ibiz-template-plm/html-comment@0.0.3-alpha.165",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "cron表达式编辑器",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "CronEditor",
+        "runtimeObject": true
+      },
+      "pluginCode": "CronEditor",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "IBizCronEditor",
+      "rTObjectRepo": "@ibiz-template-plugins/cron-editor@0.0.1-dev.4",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "人员信息",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "PERSONNEL_INFO",
+        "runtimeObject": true
+      },
+      "pluginCode": "PERSONNEL_INFO",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "IBizPersonalInfo",
+      "rTObjectRepo": "@ibiz-template-plm/personal-info@0.0.3-dev.119",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "人员选择",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "PERSON_SELECT",
+        "runtimeObject": true
+      },
+      "pluginCode": "PERSON_SELECT",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "IBizPersonelSelect",
+      "rTObjectRepo": "@ibiz-template-plm/person-select@0.0.3-alpha.224",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "列表树",
+      "getPSSysPFPlugin": {
+        "pluginType": "TREE_RENDER",
+        "pluginCode": "LIST_TREE",
+        "runtimeObject": true
+      },
+      "pluginCode": "LIST_TREE",
+      "pluginType": "TREE_RENDER",
+      "rTObjectName": "IBizListTreeControl",
+      "rTObjectRepo": "@ibiz-template-plm/list-tree@0.0.3-dev.198",
+      "refMode": "CONTROL",
+      "refTag": "TREEVIEW",
+      "runtimeObject": true
+    },
+    {
+      "name": "实体行为插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "DEMETHOD",
+        "pluginCode": "R9DeActionPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9DeActionPluginId",
+      "pluginType": "DEMETHOD",
+      "rTObjectName": "R9DeActionPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/de-action@0.0.1",
+      "refMode": "DEMETHOD",
+      "refTag": "DEACTION",
+      "runtimeObject": true
+    },
+    {
+      "name": "工具栏项插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "TOOLBAR_ITEM",
+        "pluginCode": "R9ToolbarItemPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9ToolbarItemPluginId",
+      "pluginType": "TOOLBAR_ITEM",
+      "rTObjectName": "R9ToolbarItemPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/toolbar-item@0.0.1",
+      "refMode": "CONTROLITEM",
+      "refTag": "TOOLBAR",
+      "refTag2": "DEUIACTION",
+      "runtimeObject": true
+    },
+    {
+      "name": "文件下载",
+      "getPSSysPFPlugin": {
+        "pluginType": "DEUIACTION",
+        "pluginCode": "FILE_DOWNLOAD",
+        "runtimeObject": true
+      },
+      "pluginCode": "FILE_DOWNLOAD",
+      "pluginType": "DEUIACTION",
+      "rTObjectName": "registerFileDownloadProvider",
+      "rTObjectRepo": "@ibiz-template-plugin/file-download@0.0.3-alpha.107",
+      "refMode": "UIACTION",
+      "refTag": "FRONT",
+      "runtimeObject": true
+    },
+    {
+      "name": "界面行为插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "DEUIACTION",
+        "pluginCode": "R9ActionPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9ActionPluginId",
+      "pluginType": "DEUIACTION",
+      "rTObjectName": "R9ActionPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/ui-action@0.0.1",
+      "refMode": "UIACTION",
+      "refTag": "FRONT",
+      "runtimeObject": true
+    },
+    {
+      "name": "界面逻辑节点插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "UILOGICNODE",
+        "pluginCode": "R9UILogicPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9UILogicPluginId",
+      "pluginType": "UILOGICNODE",
+      "rTObjectName": "R9UILogicPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/ui-logic-node@0.0.1",
+      "refMode": "DEUIPFPLUGIN",
+      "runtimeObject": true
+    },
+    {
+      "name": "直接内容（活动）",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "RAW_ACTIVITY",
+        "runtimeObject": true
+      },
+      "pluginCode": "RAW_ACTIVITY",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "IBizRawActivity",
+      "rTObjectRepo": "@ibiz-template-plm/raw-activity@0.0.3-dev.1",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "编辑器插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "R9EditorPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9EditorPluginId",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "R9EditorPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/editor@0.0.1",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "自填列表项插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "AC_ITEM",
+        "pluginCode": "R9AcItemPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9AcItemPluginId",
+      "pluginType": "AC_ITEM",
+      "rTObjectName": "R9AcItemPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/ac-item@0.0.1",
+      "refMode": "DEACMODE",
+      "runtimeObject": true
+    },
+    {
+      "name": "自定义部件插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "CUSTOM",
+        "pluginCode": "R9ControlPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9ControlPluginId",
+      "pluginType": "CUSTOM",
+      "rTObjectName": "R9ControlPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/control@0.0.1",
+      "refMode": "CONTROL",
+      "refTag": "FORM",
+      "runtimeObject": true
+    },
+    {
+      "name": "表单成员插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "FORM_USERCONTROL",
+        "pluginCode": "R9FormDetailPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9FormDetailPluginId",
+      "pluginType": "FORM_USERCONTROL",
+      "rTObjectName": "R9FormDetailPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/form-user-control@0.0.1",
+      "refMode": "CONTROLITEM",
+      "refTag": "FORM",
+      "refTag2": "FORMITEM",
+      "runtimeObject": true
+    },
+    {
+      "name": "表格列插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "GRID_COLRENDER",
+        "pluginCode": "R9GridColumnPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9GridColumnPluginId",
+      "pluginType": "GRID_COLRENDER",
+      "rTObjectName": "R9GridColumnPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/grid-column@0.0.1",
+      "refMode": "CONTROLITEM",
+      "refTag": "GRID",
+      "refTag2": "DEFGRIDCOLUMN",
+      "runtimeObject": true
+    },
+    {
+      "name": "视图插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "VIEW_CUSTOM",
+        "pluginCode": "R9ViewPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9ViewPluginId",
+      "pluginType": "VIEW_CUSTOM",
+      "rTObjectName": "R9ViewPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/view@0.0.1",
+      "refMode": "APPVIEW",
+      "refTag": "DEEDITVIEW",
+      "runtimeObject": true
+    },
+    {
+      "name": "计数器插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "APPCOUNTER",
+        "pluginCode": "R9CounterPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9CounterPluginId",
+      "pluginType": "APPCOUNTER",
+      "rTObjectName": "R9CounterPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/counter@0.0.1",
+      "refMode": "UICOUNTER",
+      "runtimeObject": true
+    },
+    {
+      "name": "评论列表项",
+      "getPSSysPFPlugin": {
+        "pluginType": "EDITOR_CUSTOMSTYLE",
+        "pluginCode": "COMMENT_ITEM",
+        "runtimeObject": true
+      },
+      "pluginCode": "COMMENT_ITEM",
+      "pluginType": "EDITOR_CUSTOMSTYLE",
+      "rTObjectName": "IBizCommentItemRawItem",
+      "rTObjectRepo": "@ibiz-template-plm/comment-item@0.0.3-alpha.209",
+      "refMode": "EDITORSTYPE",
+      "runtimeObject": true
+    },
+    {
+      "name": "透视表",
+      "getPSSysPFPlugin": {
+        "pluginType": "CUSTOM",
+        "pluginCode": "PIVOTTABLE",
+        "runtimeObject": true
+      },
+      "pluginCode": "PIVOTTABLE",
+      "pluginType": "CUSTOM",
+      "rTObjectName": "IBizPivotTable",
+      "rTObjectRepo": "@ibiz-template-plugin/pivottable@1.1.0",
+      "refMode": "CONTROL",
+      "refTag": "GRID",
+      "runtimeObject": true
+    },
+    {
+      "name": "门户部件插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "PORTLET_CUSTOM",
+        "pluginCode": "R9PortletPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9PortletPluginId",
+      "pluginType": "PORTLET_CUSTOM",
+      "rTObjectName": "R9PortletPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/portlet@0.0.1",
+      "refMode": "CONTROL",
+      "refTag": "PORTLET",
+      "runtimeObject": true
+    },
+    {
+      "name": "附件表格",
+      "getPSSysPFPlugin": {
+        "pluginType": "GRID_RENDER",
+        "pluginCode": "ATTACHMENT_GRID",
+        "runtimeObject": true
+      },
+      "pluginCode": "ATTACHMENT_GRID",
+      "pluginType": "GRID_RENDER",
+      "rTObjectName": "IBizAttachmentGridControl",
+      "rTObjectRepo": "@ibiz-template-plm/attachment-grid@0.0.3-dev.48",
+      "refMode": "CONTROL",
+      "refTag": "GRID",
+      "runtimeObject": true
+    },
+    {
+      "name": "面板项插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "CUSTOM",
+        "pluginCode": "R9PanelItemPluginId",
+        "runtimeObject": true
+      },
+      "pluginCode": "R9PanelItemPluginId",
+      "pluginType": "CUSTOM",
+      "rTObjectName": "R9PanelItemPlugin",
+      "rTObjectRepo": "@ibiz-plugin-template/panel-item@0.0.1",
+      "refMode": "CONTROLITEM",
+      "refTag": "VIEWLAYOUTPANEL",
+      "refTag2": "RAWITEM",
+      "runtimeObject": true
+    },
+    {
+      "name": "首页视图插件",
+      "getPSSysPFPlugin": {
+        "pluginType": "VIEW_CUSTOM",
+        "pluginCode": "DESIGN_INDEX_VIEW",
+        "runtimeObject": true
+      },
+      "pluginCode": "DESIGN_INDEX_VIEW",
+      "pluginType": "VIEW_CUSTOM",
+      "rTObjectName": "iBizIndexView",
+      "rTObjectRepo": "@ibiz-template-plugin/layout-design@0.0.3-alpha.104",
+      "refMode": "APPVIEW",
+      "refTag": "APPINDEXVIEW",
+      "runtimeObject": true
+    }
+  ],
+  "dynamodeltag": null,
+  "modelStamp": null,
+  "appMode": "CLOUDHUBAPP",
+  "caption": "quickstart",
+  "getAllPSAppMenuModels": [],
+  "getAllPSAppViews": [
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPINDEXVIEWS/top_menu.json",
+      "viewType": "APPINDEXVIEW",
+      "view": "top_menu"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_view.json",
+      "viewType": "DELISTVIEW",
+      "resource": "master",
+      "view": "list_view",
+      "name": "MASTERlist_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_logic_plugin.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "logic_plugin",
+      "name": "MASTERlogic_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_date_range.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_date_range",
+      "name": "MASTEReditor_date_range"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchform_advanced.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "searchform_advanced",
+      "name": "MASTERsearchform_advanced"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_toolbar_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "toolbar_base",
+      "name": "MASTERtoolbar_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_theme_plugin.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "theme_plugin",
+      "name": "MASTERtheme_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_spanlink.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_spanlink",
+      "name": "MASTEReditor_spanlink"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "panel_base",
+      "name": "MASTERpanel_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about3.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about3",
+      "name": "aboutabout3"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_dr.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "counter_dr",
+      "name": "MASTERcounter_dr"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_exp_grid.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "counter_exp_grid",
+      "name": "MASTERcounter_exp_grid"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "card_base",
+      "name": "MASTERcard_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_map.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_map",
+      "name": "MASTERChart_map"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about2.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about2",
+      "name": "aboutabout2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_viewparam.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "viewparam",
+      "name": "MASTERviewparam"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_medit_view9.json",
+      "viewType": "DEMEDITVIEW9",
+      "resource": "region",
+      "view": "medit_view9",
+      "name": "REGIONmedit_view9"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_plugin.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "ui_plugin",
+      "name": "MASTERui_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_exp_view.json",
+      "viewType": "DECALENDAREXPVIEW",
+      "resource": "master",
+      "view": "calendar_exp_view",
+      "name": "MASTERcalendar_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_markdown.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_markdown",
+      "name": "MASTEReditor_markdown"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_logic.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_logic",
+      "name": "MASTERform_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_card_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "region",
+      "view": "card_nav",
+      "name": "REGIONcard_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_ctrl_federation.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "tab_ctrl_federation",
+      "name": "MASTERtab_ctrl_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_cssandicon.json",
+      "viewType": "DELISTVIEW",
+      "resource": "master",
+      "view": "list_cssandicon",
+      "name": "MASTERlist_cssandicon"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_plugin",
+      "name": "MASTEReditor_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_view_message.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "view_message",
+      "name": "MASTERview_message"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "Chart_base",
+      "name": "MASTERChart_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_input.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_input",
+      "name": "MASTEReditor_input"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "edit_view",
+      "name": "MASTERedit_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about8.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about8",
+      "name": "aboutabout8"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_dropdown_list.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_dropdown_list",
+      "name": "MASTEReditor_dropdown_list"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_layout",
+      "name": "MASTERcalendar_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_switch.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_switch",
+      "name": "MASTEReditor_switch"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_panellogic.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "list_panellogic",
+      "name": "MASTERlist_panellogic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/ps_core_prd_func_tree_exp_view.json",
+      "viewType": "DETREEEXPVIEW",
+      "resource": "PSCorePrdFunc",
+      "view": "TreeExpView",
+      "name": "PSCorePrdFuncTreeExpView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_picker_embed_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "data_picker_embed_view",
+      "name": "MASTERdata_picker_embed_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_option_view.json",
+      "viewType": "DEOPTVIEW",
+      "resource": "master",
+      "view": "OptionView",
+      "name": "MASTEROptionView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_mctrl.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_mctrl",
+      "name": "MASTERform_mctrl"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_grid_nav.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "region",
+      "view": "grid_nav",
+      "name": "REGIONgrid_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_contextmenu.json",
+      "viewType": "DETREEVIEW",
+      "resource": "master",
+      "view": "Tree_contextmenu",
+      "name": "MASTERTree_contextmenu"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/detail_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "detail",
+      "view": "EditView",
+      "name": "DETAILEditView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "panel",
+      "name": "MASTERpanel"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_m_pickup_view.json",
+      "viewType": "DEMPICKUPVIEW",
+      "resource": "master",
+      "view": "MPickupView",
+      "name": "MASTERMPickupView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_detail_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "region",
+      "view": "detail_grid_view",
+      "name": "REGIONdetail_grid_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_action_logic.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "ui_action_logic",
+      "name": "MASTERui_aciton_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_view.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "master",
+      "view": "data_view",
+      "name": "MASTERdata_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/detail_edit_view9.json",
+      "viewType": "DEEDITVIEW9",
+      "resource": "detail",
+      "view": "edit_view9",
+      "name": "DETAILedit_view9"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_hover.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_hover",
+      "name": "MASTERform_hover"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_view",
+      "name": "MASTERgrid_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_de_action_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "de_action_plugin",
+      "name": "MASTERde_action_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_upload_image_preview.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "upload_image_preview",
+      "name": "MASTERupload_image_preview"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_kanban_view.json",
+      "viewType": "DEKANBANVIEW",
+      "resource": "master",
+      "view": "kanban_view",
+      "name": "MASTERkanban_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "region",
+      "view": "EditView",
+      "name": "REGIONEditView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_value_display.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_value_display",
+      "name": "MASTERgrid_value_display"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_action.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "ui_action",
+      "name": "MASTERui_action"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "wizard",
+      "name": "MASTERwizard"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_exp_view.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "tab_exp_view",
+      "name": "MASTERtab_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about9.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about9",
+      "name": "aboutabout9"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_picker_link.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "data_picker_link",
+      "name": "MASTERdata_picker_link"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_dropdown_emoji.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "dropdown_emoji",
+      "name": "MASTERdropdown_emoji"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_report_view.json",
+      "viewType": "DEREPORTVIEW",
+      "resource": "master",
+      "view": "report_view",
+      "name": "MASTERreport_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_drag.json",
+      "viewType": "DETREEVIEW",
+      "resource": "master",
+      "view": "Tree_drag",
+      "name": "MASTERTree_drag"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_candlestick.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_candlestick",
+      "name": "MASTERChart_candlestick"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_instrument.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_instrument",
+      "name": "MASTERChart_instrument"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_toolbar.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "toolbar",
+      "name": "MASTERtoolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchbar.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "searchbar",
+      "name": "MASTERsearchbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_date_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_date_picker",
+      "name": "MASTEReditor_date_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_view_open_mode.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "view_open_mode",
+      "name": "MASTERview_open_mode"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_logic.json",
+      "viewType": "DELISTVIEW",
+      "resource": "master",
+      "view": "list_logic",
+      "name": "MASTERlist_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_date_range_select.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_date_range_select",
+      "name": "MASTEReditor_date_range_select"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_data_picker_link.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_data_picker_link",
+      "name": "MASTERgrid_data_picker_link"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "counter_plugin",
+      "name": "MASTERcounter_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_picker_select_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "data_picker_select_view",
+      "name": "MASTERdata_picker_select_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_view_read.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_view_read",
+      "name": "MASTERgrid_view_read"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "calendar",
+      "name": "MASTERcalendar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_base",
+      "name": "MASTERcalendar_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_pickup_grid_view.json",
+      "viewType": "DEPICKUPGRIDVIEW",
+      "resource": "master",
+      "view": "PickupGridView",
+      "name": "MASTERPickupGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_kanban_style.json",
+      "viewType": "DEKANBANVIEW",
+      "resource": "master",
+      "view": "kanban_style",
+      "name": "MASTERkanban_style"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_toolbar_style.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "toolbar_style",
+      "name": "MASTERtoolbar_style"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_exp_form.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "counter_exp_form",
+      "name": "MASTERcounter_exp_form"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/category_option_view.json",
+      "viewType": "DEOPTVIEW",
+      "resource": "category",
+      "view": "option_view",
+      "name": "CATEGORYoption_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_edit.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_edit",
+      "name": "MASTERgrid_edit"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "list_layout",
+      "name": "MASTERlist_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchform_auto.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "searchform_auto",
+      "name": "MASTERsearchform_auto"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_html.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_html",
+      "name": "MASTEReditor_html"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchcond_edit.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "searchcond_edit",
+      "name": "MASTERsearchcond_edit"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_pivottable.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "pivottable",
+      "name": "MASTERpivottable"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard_logic.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "wizard_logic",
+      "name": "MASTERwizard_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_raw.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_raw",
+      "name": "MASTEReditor_raw"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ac_item_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "ac_item_plugin",
+      "name": "MASTERac_item_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/detail_medit_view9.json",
+      "viewType": "DEMEDITVIEW9",
+      "resource": "detail",
+      "view": "medit_view9",
+      "name": "DETAILmedit_view9"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "card_nav",
+      "name": "MASTERcard_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "list_base",
+      "name": "MASTERlist_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_view.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "chart_view",
+      "name": "MASTERchart_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_open_mode.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "open_mode",
+      "name": "MASTERopen_mode"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard_view.json",
+      "viewType": "DEWIZARDVIEW",
+      "resource": "master",
+      "view": "wizard_view",
+      "name": "MASTERwizard_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_slider.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_slider",
+      "name": "MASTEReditor_slider"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/ps_core_prd_func_redirect_view.json",
+      "viewType": "DEREDIRECTVIEW",
+      "resource": "PSCorePrdFunc",
+      "view": "RedirectView",
+      "name": "PSCorePrdFuncRedirectView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_format.json",
+      "viewType": "DELISTVIEW",
+      "resource": "master",
+      "view": "list_format",
+      "name": "MASTERlist_format"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_bar.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_bar",
+      "name": "MASTERChart_bar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_input_number.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_input_number",
+      "name": "MASTEReditor_input_number"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_autocomplete.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "autocomplete",
+      "name": "MASTERautocomplete"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_ui_action.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "counter_ui_action",
+      "name": "MASTERcounter_ui_action"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map_built_in_nav.json",
+      "viewType": "DEMAPVIEW",
+      "resource": "master",
+      "view": "map_built_in_nav",
+      "name": "MASTERmap_built_in_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_search.json",
+      "viewType": "DETREEVIEW",
+      "resource": "master",
+      "view": "Tree_search",
+      "name": "MASTERTree_search"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_actions_federation.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "actions_federation",
+      "name": "MASTERactions_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_kanbanview.json",
+      "viewType": "DEKANBANVIEW",
+      "resource": "master",
+      "view": "card_kanbanview",
+      "name": "MASTERcard_kanbanview"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_layout_view.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "layout_view",
+      "name": "MASTERlayout_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_array.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_array",
+      "name": "MASTEReditor_array"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_panellogic.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "card_panellogic",
+      "name": "MASTERcard_panellogic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_view_message_kind.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "view_message_kind",
+      "name": "MASTERview_message_kind"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_filter.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_filter",
+      "name": "MASTERgrid_filter"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_exp_view2.json",
+      "viewType": "DECHARTEXPVIEW",
+      "resource": "master",
+      "view": "chart_exp_view2",
+      "name": "MASTERchart_exp_view2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_css.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_css",
+      "name": "MASTERgrid_css"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_cssandicon.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "panel_cssandicon",
+      "name": "MASTERpanel_cssandicon"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "tree_picker",
+      "name": "MASTERtree_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "chart",
+      "name": "MASTERchart"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_nav.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "tab_nav",
+      "name": "MASTERtab_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_span.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_span",
+      "name": "MASTERgrid_span"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_runtime_components.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "Runtime_Components",
+      "name": "MASTERRuntime_Components"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_cssandicon.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "master",
+      "view": "card_cssandicon",
+      "name": "MASTERcard_cssandicon"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_rate.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_rate",
+      "name": "MASTEReditor_rate"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_logic.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_logic",
+      "name": "MASTERcalendar_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/ps_core_prd_func_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "PSCorePrdFunc",
+      "view": "EditView",
+      "name": "PSCorePrdFuncEditView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_crud.json",
+      "viewType": "DETREEGRIDVIEW",
+      "resource": "region",
+      "view": "crud",
+      "name": "REGIONcrud"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_action_base.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "ui_action_base",
+      "name": "MASTERui_action_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_gantt_view.json",
+      "viewType": "DEGANTTVIEW",
+      "resource": "master",
+      "view": "GanttView",
+      "name": "MASTERGanttView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_logic_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "logic_base",
+      "name": "MASTERlogic_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_tree.json",
+      "viewType": "DETREEVIEW",
+      "resource": "master",
+      "view": "counter_tree",
+      "name": "MASTERcounter_tree"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_defiupdate.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_defiupdate",
+      "name": "MASTERform_defiupdate"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_modal_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "ModalEditView",
+      "name": "MASTERModalEditView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_grid_exp_view.json",
+      "viewType": "DEGRIDEXPVIEW",
+      "resource": "region",
+      "view": "grid_exp_view",
+      "name": "REGIONgrid_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_pie.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_pie",
+      "name": "MASTERChart_pie"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view2.json",
+      "viewType": "DEEDITVIEW2",
+      "resource": "region",
+      "view": "edit_view2",
+      "name": "REGIONedit_view2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_logic.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "panel_logic",
+      "name": "MASTERpanel_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_m_pickup_view.json",
+      "viewType": "DEMPICKUPVIEW",
+      "resource": "region",
+      "view": "MPickupView",
+      "name": "REGIONMPickupView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_radar.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_Radar",
+      "name": "MASTERChart_Radar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_view_message_close_mode.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "view_message_close_mode",
+      "name": "MASTERview_message_close_mode"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/ps_core_prd_func_installed_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "PSCorePrdFunc",
+      "view": "InstalledGridView",
+      "name": "PSCorePrdFuncInstalledGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "panel_layout",
+      "name": "MASTERpanel_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_grid_ex_view.json",
+      "viewType": "DETREEGRIDEXVIEW",
+      "resource": "master",
+      "view": "tree_grid_ex_view",
+      "name": "MASTERtree_grid_ex_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_exp_view.json",
+      "viewType": "DECHARTEXPVIEW",
+      "resource": "master",
+      "view": "chart_exp_view",
+      "name": "MASTERchart_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_doing_custom_view.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "doing_custom_view",
+      "name": "MASTERdoing_custom_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_built_in_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "grid_built_in_nav",
+      "name": "MASTERgrid_built_in_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_batchtoolbar.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "master",
+      "view": "card_batchtoolbar",
+      "name": "MASTERcard_batchtoolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_transfer_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "data_transfer_picker",
+      "name": "MASTERdata_transfer_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchform_btncss.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "searchform_btncss",
+      "name": "MASTERsearchform_btncss"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map_user.json",
+      "viewType": "DEMAPVIEW",
+      "resource": "master",
+      "view": "map_user",
+      "name": "MASTERmap_user"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_form_group.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "counter_form_group",
+      "name": "MASTERcounter_form_group"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter_tab_exp.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "counter_tab_exp",
+      "name": "MASTERcounter_tab_exp"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_span.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_span",
+      "name": "MASTEReditor_span"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "grid",
+      "name": "MASTERgrid"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_action_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "action_plugin",
+      "name": "MASTERaction_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_treeview.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "treeview",
+      "name": "MASTERtreeview"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_autocomplete.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_autocomplete",
+      "name": "MASTEReditor_autocomplete"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "region",
+      "view": "GridView",
+      "name": "REGIONGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_toolbar_item_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "toolbar_item_plugin",
+      "name": "MASTERR9ToolbarItemPluginId"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_multiple_sequences.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "chart_multiple_sequences",
+      "name": "MASTERchart_multiple_sequences"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view_tab_exp.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "region",
+      "view": "edit_view_tab_exp",
+      "name": "REGIONedit_view_tab_exp"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_group.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "grid_group",
+      "name": "MASTERgrid_group"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_data_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_data_picker",
+      "name": "MASTEReditor_data_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about6.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about6",
+      "name": "aboutabout6"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_upload_image_cropping.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "upload_image_cropping",
+      "name": "MASTERupload_image_cropping"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/comment_list_view.json",
+      "viewType": "DELISTVIEW",
+      "resource": "comment",
+      "view": "list_view",
+      "name": "commentlist_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map_view.json",
+      "viewType": "DEMAPVIEW",
+      "resource": "master",
+      "view": "map_view",
+      "name": "MASTERmap_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_treeview_cssandicon.json",
+      "viewType": "DETREEVIEW",
+      "resource": "master",
+      "view": "treeview_cssandicon",
+      "name": "MASTERtreeview_cssandicon"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_comment_display.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "comment_display",
+      "name": "MASTERcomment_display"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_edit_view2.json",
+      "viewType": "DEEDITVIEW2",
+      "resource": "master",
+      "view": "edit_view2",
+      "name": "MASTERedit_view2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_sedit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "region",
+      "view": "sedit_view",
+      "name": "REGIONsedit_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_check_box.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_check_box",
+      "name": "MASTEReditor_check_box"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_edit_view4.json",
+      "viewType": "DEEDITVIEW4",
+      "resource": "master",
+      "view": "edit_view4",
+      "name": "MASTERedit_view4"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_group.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "card_group",
+      "name": "MASTERcard_group"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_portlet_plugin.json",
+      "viewType": "DEPORTALVIEW",
+      "resource": "master",
+      "view": "portlet_plugin",
+      "name": "MASTERportlet_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_radio_list.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_radio_list",
+      "name": "MASTEReditor_radio_list"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_event_and_call.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_event_and_call",
+      "name": "MASTERgrid_event_and_call"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_action_cssandicon.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "ui_action_cssandicon",
+      "name": "MASTERui_action_cssandicon"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "data",
+      "name": "MASTERdata"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_edit_view3.json",
+      "viewType": "DEEDITVIEW3",
+      "resource": "master",
+      "view": "edit_view3",
+      "name": "MASTERedit_view3"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about1.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about1",
+      "name": "aboutabout1"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_toolbar_group.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "toolbar_group",
+      "name": "MASTERtoolbar_group"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_picker_dropdown.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "data_picker_dropdown",
+      "name": "MASTERdata_picker_dropdown"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view9.json",
+      "viewType": "DEEDITVIEW9",
+      "resource": "region",
+      "view": "edit_view9",
+      "name": "REGIONedit_view9"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_groupbar.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_groupbar",
+      "name": "MASTERChart_groupbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "layout",
+      "name": "MASTERlayout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about5.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about5",
+      "name": "aboutabout5"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "region",
+      "view": "view",
+      "name": "REGIONview"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_c_search_form.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "c_search_form",
+      "name": "MASTERc_search_form"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_logic.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_logic",
+      "name": "MASTERgrid_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard_view_logic.json",
+      "viewType": "DEWIZARDVIEW",
+      "resource": "master",
+      "view": "WizardView_logic",
+      "name": "MASTERWizardView_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map_base.json",
+      "viewType": "DEMAPVIEW",
+      "resource": "master",
+      "view": "map_base",
+      "name": "MASTERmap_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_tree_grid_view.json",
+      "viewType": "DETREEGRIDVIEW",
+      "resource": "region",
+      "view": "TreeGridView",
+      "name": "REGIONTreeGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_action_column.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_action_column",
+      "name": "MASTERgrid_action_column"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_info_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "info_view",
+      "name": "MASTERinfo_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_aggregation.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_aggregation",
+      "name": "MASTERgrid_aggregation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_toolbar.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_toolbar",
+      "name": "MASTERgrid_toolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_funnel_plot.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_funnelPlot",
+      "name": "MASTERChart_funnelPlot"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/detail_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "detail",
+      "view": "GridView",
+      "name": "DETAILGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_style_icon.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_style_icon",
+      "name": "MASTERcalendar_style_icon"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_async_activity.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "async_activity",
+      "name": "MASTERasync_activity"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_pickup_grid_view.json",
+      "viewType": "DEPICKUPGRIDVIEW",
+      "resource": "region",
+      "view": "PickupGridView",
+      "name": "REGIONPickupGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view3.json",
+      "viewType": "DEEDITVIEW3",
+      "resource": "region",
+      "view": "edit_view3",
+      "name": "REGIONedit_view3"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "EditView",
+      "name": "MASTEREditView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_info.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_info",
+      "name": "MASTERform_info"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_scatter.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_scatter",
+      "name": "MASTERChart_scatter"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard_style.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "wizard_style",
+      "name": "MASTERwizard_style"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_layout.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_layout",
+      "name": "MASTERform_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_upload_file_upload.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "upload_file_upload",
+      "name": "MASTERupload_file_upload"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchbar_base.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "searchbar_base",
+      "name": "MASTERsearchbar_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_mpicker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "data_mpicker",
+      "name": "MASTERdata_mpicker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_edit_view4.json",
+      "viewType": "DEEDITVIEW4",
+      "resource": "region",
+      "view": "edit_view4",
+      "name": "REGIONedit_view4"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_pickup_view.json",
+      "viewType": "DEPICKUPVIEW",
+      "resource": "region",
+      "view": "PickupView",
+      "name": "REGIONPickupView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard_view_style.json",
+      "viewType": "DEWIZARDVIEW",
+      "resource": "master",
+      "view": "WizardView_style",
+      "name": "MASTERWizardView_style"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "grid_base",
+      "name": "MASTERgrid_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_annular.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_annular",
+      "name": "MASTERChart_annular"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_base.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "Tree_base",
+      "name": "MASTERTree_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_treeview_navparams.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "treeview_navparams",
+      "name": "MASTERtreeview_navparams"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_control_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "control_plugin",
+      "name": "MASTERcontrol_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchform_filter.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "searchform_filter",
+      "name": "MASTERsearchform_filter"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "map_picker",
+      "name": "MASTERmap_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_cascader.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_cascader",
+      "name": "MASTEReditor_cascader"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_batchtoolbar.json",
+      "viewType": "DELISTVIEW",
+      "resource": "master",
+      "view": "list_batchtoolbar",
+      "name": "MASTERlist_batchtoolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_logic_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "ui_logic_plugin",
+      "name": "MASTERui_logic_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_data_view_exp_view.json",
+      "viewType": "DEDATAVIEWEXPVIEW",
+      "resource": "master",
+      "view": "data_view_exp_view",
+      "name": "MASTERdata_view_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_searchform_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "searchform_layout",
+      "name": "MASTERsearchform_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_item_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "panel_item_plugin",
+      "name": "MASTERpanel_item_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_dashboard.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "dashboard",
+      "name": "MASTERdashboard"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_search_form.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "search_form",
+      "name": "MASTERsearch_form"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_html_view.json",
+      "viewType": "DEHTMLVIEW",
+      "resource": "master",
+      "view": "html_view",
+      "name": "MASTERhtml_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/activity_history_list_view.json",
+      "viewType": "DELISTVIEW",
+      "priority": 10,
+      "resource": "activity",
+      "view": "history_list_view",
+      "name": "activityhistory_list_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_datasource.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "Tree_datasource",
+      "name": "MASTERTree_datasource"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/welcome.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "welcome"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_view_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "view_plugin",
+      "name": "MASTERview_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_search_view.json",
+      "viewType": "DETABSEARCHVIEW",
+      "resource": "master",
+      "view": "tab_search_view",
+      "name": "MASTERtab_search_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_claendar_group.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "claendar_group",
+      "name": "MASTERclaendar_group"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_list_exp_view.json",
+      "viewType": "DELISTEXPVIEW",
+      "resource": "region",
+      "view": "list_exp_view",
+      "name": "REGIONlist_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_kanban_base.json",
+      "viewType": "DEKANBANVIEW",
+      "resource": "master",
+      "view": "kanban_base",
+      "name": "MASTERkanban_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_logic.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "master",
+      "view": "card_logic",
+      "name": "MASTERcard_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "map",
+      "name": "MASTERmap"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_stepper.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_stepper",
+      "name": "MASTEReditor_stepper"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_multiple_data.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_multiple_data",
+      "name": "MASTERcalendar_multiple_data"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_format.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "master",
+      "view": "card_format",
+      "name": "MASTERcard_format"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "card_layout",
+      "name": "MASTERcard_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_group.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "list_group",
+      "name": "MASTERlist_group"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_exp.json",
+      "viewType": "DETREEEXPVIEW",
+      "resource": "master",
+      "view": "tree_exp",
+      "name": "MASTERtree_exp"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_nav",
+      "name": "MASTERcalendar_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_gantt_exp_view.json",
+      "viewType": "DEGANTTEXPVIEW",
+      "resource": "master",
+      "view": "gantt_exp_view",
+      "name": "MASTERgantt_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_view_message_position.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "region",
+      "view": "view_message_position",
+      "name": "REGIONview_message_position"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_menu.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "menu",
+      "name": "MASTERmenu"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/category_category_mgr.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "category",
+      "view": "category_mgr",
+      "name": "CATEGORYcategory_mgr"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPPORTALVIEWS/portlet_plugin.json",
+      "viewType": "APPPORTALVIEW",
+      "view": "portlet_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_view_message_position.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "view_message_position",
+      "name": "MASTERview_message_position"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_event.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "panel_event",
+      "name": "MASTERpanel_event"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/ps_core_prd_func_market_application_view.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "PSCorePrdFunc",
+      "view": "MarketApplicationView",
+      "name": "PSCorePrdFuncMarketApplicationView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_quicktoolbar.json",
+      "viewType": "DELISTVIEW",
+      "resource": "master",
+      "view": "list_quicktoolbar",
+      "name": "MASTERlist_quicktoolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_code.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_code",
+      "name": "MASTEReditor_code"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_data_view_exp_view.json",
+      "viewType": "DEDATAVIEWEXPVIEW",
+      "resource": "region",
+      "view": "data_view_exp_view",
+      "name": "REGIONdata_view_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_tab_view.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "region",
+      "view": "tab_view",
+      "name": "REGIONtab_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_redirect_view.json",
+      "viewType": "DEREDIRECTVIEW",
+      "resource": "master",
+      "view": "RedirectView",
+      "name": "MASTERRedirectView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_base.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_base",
+      "name": "MASTERform_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_map_exp_view.json",
+      "viewType": "DEMAPEXPVIEW",
+      "resource": "master",
+      "view": "map_exp_view",
+      "name": "MASTERmap_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_input_ip.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_input_ip",
+      "name": "MASTEReditor_input_ip"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_kanban_layout.json",
+      "viewType": "DEKANBANVIEW",
+      "resource": "master",
+      "view": "kanban_layout",
+      "name": "MASTERkanban_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_pickup_view.json",
+      "viewType": "DEPICKUPVIEW",
+      "resource": "master",
+      "view": "PickupView",
+      "name": "MASTERPickupView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_panel_format.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "panel_format",
+      "name": "MASTERpanel_format"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "list_nav",
+      "name": "MASTERlist_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_exp_view.json",
+      "viewType": "DETREEEXPVIEW",
+      "resource": "master",
+      "view": "tree_exp_view",
+      "name": "MASTERtree_exp_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about7.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about7",
+      "name": "aboutabout7"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_depickup_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "depickup_view",
+      "name": "MASTERdepickup_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_logic.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "ui_logic",
+      "name": "MASTERui_logic"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_card_quicktoolbar.json",
+      "viewType": "DEDATAVIEW",
+      "resource": "master",
+      "view": "card_quicktoolbar",
+      "name": "MASTERcard_quicktoolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_color_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "color_picker",
+      "name": "MASTERcolor_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_column_plugin.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "grid_column_plugin",
+      "name": "MASTERgrid_column_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_sedit_view9.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "region",
+      "view": "sedit_view9",
+      "name": "REGIONsedit_view9"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_sort.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "grid_sort",
+      "name": "MASTERgrid_sort"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_ui_action_parameter.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "ui_action_parameter",
+      "name": "MASTERui_action_parameter"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_info_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "region",
+      "view": "info_view",
+      "name": "REGIONinfo_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/about_about4.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "about",
+      "view": "about4",
+      "name": "aboutabout4"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_detail_plugin.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_detail_plugin",
+      "name": "MASTERform_detail_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_upload_image_upload.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "upload_image_upload",
+      "name": "MASTERupload_image_upload"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_layout.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "grid_layout",
+      "name": "MASTERgrid_layout"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_number_range_picker.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "number_range_picker",
+      "name": "MASTERnumber_range_picker"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_check_box_list.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_check_box_list",
+      "name": "MASTEReditor_check_box_list"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "form",
+      "name": "MASTERform"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_stacked_column.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_stackedColumn",
+      "name": "MASTERChart_stackedColumn"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_list.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "list",
+      "name": "MASTERlist"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_global_plugin.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "global_plugin",
+      "name": "MASTERglobal_plugin"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/region_redirect_view.json",
+      "viewType": "DEREDIRECTVIEW",
+      "resource": "region",
+      "view": "RedirectView",
+      "name": "REGIONRedirectView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_editor_list_box.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "editor_list_box",
+      "name": "MASTEReditor_list_box"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_value_display.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_value_display",
+      "name": "MASTERform_value_display"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tree_ctrl_federation.json",
+      "viewType": "DETREEEXPVIEW",
+      "resource": "master",
+      "view": "tree_ctrl_federation",
+      "name": "MASTERtree_ctrl_federation"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_tab_ctrl_federation2.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "tab_ctrl_federation2",
+      "name": "MASTERtab_ctrl_federation2"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_built_in_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "form_built_in_nav",
+      "name": "MASTERform_built_in_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_line.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_line",
+      "name": "MASTERChart_line"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/category_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "category",
+      "view": "GridView",
+      "name": "CATEGORYGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_view.json",
+      "viewType": "DECALENDARVIEW",
+      "resource": "master",
+      "view": "calendar_view",
+      "name": "MASTERcalendar_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_form_css.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "form_css",
+      "name": "MASTERform_css"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_activity_display.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "activity_display",
+      "name": "MASTERactivity_display"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_virtualized_list.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "virtualized_list",
+      "name": "MASTERvirtualized_list"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_treeview_nav.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "treeview_nav",
+      "name": "MASTERtreeview_nav"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_grid_view.json",
+      "viewType": "DEGRIDVIEW",
+      "resource": "master",
+      "view": "GridView",
+      "name": "MASTERGridView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_all_editors_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "master",
+      "view": "all_editors_view",
+      "name": "MASTERall_editors_view"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPINDEXVIEWS/admin_index.json",
+      "viewType": "APPINDEXVIEW",
+      "view": "admin_index"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/category_edit_view.json",
+      "viewType": "DEEDITVIEW",
+      "resource": "category",
+      "view": "EditView",
+      "name": "CATEGORYEditView"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_calendar_toolbar.json",
+      "viewType": "DECUSTOMVIEW",
+      "resource": "master",
+      "view": "calendar_toolbar",
+      "name": "MASTERcalendar_toolbar"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_chart_regional.json",
+      "viewType": "DECHARTVIEW",
+      "resource": "master",
+      "view": "Chart_regional",
+      "name": "MASTERChart_regional"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_wizard_base.json",
+      "viewType": "DEWIZARDVIEW",
+      "resource": "master",
+      "view": "Wizard_base",
+      "name": "MASTERWizard_base"
+    },
+    {
+      "modelref": true,
+      "path": "PSSYSAPPS/web/PSAPPDEVIEWS/master_counter.json",
+      "viewType": "DETABEXPVIEW",
+      "resource": "master",
+      "view": "counter",
+      "name": "MASTERcounter"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+@mixin button-list-icon-style {
+  .#{bem(icon)} {
+    @include flex(row, center, center);
+
+    width: getCssVar(width-icon, medium);
+    height: getCssVar(width-icon, medium);
+    font-size: getCssVar(width-icon, medium);
+  }
+}
+
+@include b(button-list) {
+  width: 100%;
+  height: 100%;
+
+  .van-button {
+    border: none;
+    .van-button__text {
+      display: flex;
+      align-items: center;
+      gap: getCssVar(spacing, extra, tight);
+      @include button-list-icon-style;
+    }
+  }
+
+  @include e(content) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: getCssVar(spacing, extra, tight);
+  }
+
+  @include e(popover) {
+    --ibiz-color-bg-0: #{var(--van-popover-light-text-color)};
+
+    .van-popover__action--disabled:active,
+    .van-popover__action--disabled {
+      color: getCssVar(color, disabled-text) !important;
+      background-color: getCssVar(color, disabled-bg);
+    }
+
+    @include m(item) {
+      display: flex;
+      align-items: center;
+      gap: getCssVar(spacing, extra, tight);
+      @include button-list-icon-style;
+    }
+
+    @include m(caption) {
+      display: flex;
+      line-height: 100%;
+      align-items: center;
+      gap: getCssVar(spacing, extra, tight);
+    }
+  }
+}

@@ -1,0 +1,134 @@
+$form-group: (
+  bg-color: getCssVar(color, bg, 1),
+  footer-padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+  show-more-color: getCssVar(color-primary),
+  padding: getCssVar(spacing-extra-tight),
+);
+
+$form-group-header: (
+  bg-color: getCssVar(color, bg, 1),
+  padding: getCssVar(spacing, base) getCssVar(spacing, base) getCssVar(spacing, tight),
+  border-color: getCssVar(color, border),
+);
+
+$form-group-caption: (
+  text-color: getCssVar(color, text, 2),
+  font-size: getCssVar(font-size, header-6),
+  font-weight: getCssVar(font-weight, regular),
+);
+
+$form-group-content: (
+  bg-color: getCssVar(color, bg, 1),
+  padding: getCssVar(spacing, tight),
+  margin: 0,
+);
+
+@include b(form-group) {
+  @include set-component-css-var('form-group', $form-group);
+  @include set-component-css-var('form-group-header', $form-group-header);
+  @include set-component-css-var('form-group-caption', $form-group-caption);
+  @include set-component-css-var('form-group-content', $form-group-content);
+}
+
+// 分组基础样式
+@include b(form-group) {
+  overflow: hidden;
+  background-color: getCssVar('form-group', 'bg-color');
+
+  // 分组标题
+  @include e(caption) {
+    @include utils-ellipsis;
+
+    font-size: getCssVar('form-group-caption', 'font-size');
+    font-weight: getCssVar('form-group-caption', 'font-weight');
+    color: getCssVar('form-group-caption', 'text-color');
+  }
+
+  // 工具栏
+  @include e(toolbar) {
+    text-align: right;
+  }
+
+  @include m(style2) {
+    background-color: getCssVar(color, bg, 0);
+    padding: getCssVar('form-group', 'padding');
+    >.#{bem(form-group-header)} {
+      border-radius: getCssVar('border-radius', 'large') getCssVar('border-radius', 'large') 0 0;
+    }
+    .#{bem(form-group, content)} {
+      padding: getCssVar('border-radius', 'large') 0;
+      border-radius: getCssVar('border-radius', 'large');
+      background-color: getCssVar('form-group-content', 'bg-color');
+    }
+    >.#{bem(form-group-header)} + .#{bem(form-group, content)} {
+      padding-top: 0;
+      border-radius: 0 0 getCssVar('border-radius', 'large') getCssVar('border-radius', 'large');
+    }
+  }
+}
+
+// 清除分组下form-item的弧度
+@include b(form-group) {
+  @include b(form-item-container) {
+    border-radius: 0;
+  }
+}
+
+// 折叠相关样式
+@include b(form-group-collapse) {
+  >.#{bem(form-group-content)} {
+    display: block;
+  }
+
+  @include when(collapse) {
+    >.#{bem(form-group-content)} {
+      display: none;
+    }
+  }
+}
+
+// 分组头部
+@include b(form-group-header) {
+  @include flex;
+
+  align-items: center;
+  padding: getCssVar('form-group-header', 'padding');
+  background-color: getCssVar('form-group-header', 'bg-color');
+
+  @include e((left, right)) {
+    display: inline-block;
+    width: 50%;
+  }
+
+  @include e(right) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+
+    .van-button {
+      height: 100%;
+      color: getCssVar(color, link);
+      background: transparent;
+      border: none;
+    }
+  }
+}
+
+.#{bem('form-group', '', 'show-header')} {
+  >.#{bem('form-group, content')} {
+    margin-bottom: getCssVar('form-group-content', 'margin');
+    background-color: getCssVar('form-group-content', 'bg-color');
+  }
+}
+
+// 分组底部
+@include b(form-group-footer) {
+  padding: getCssVar('form-group', 'footer-padding');
+
+  @include e(show-more-button) {
+    display: inline-block;
+    color: getCssVar('form-group', 'show-more-color');
+  }
+
+}

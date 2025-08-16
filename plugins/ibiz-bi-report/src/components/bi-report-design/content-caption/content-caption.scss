@@ -1,0 +1,51 @@
+/* stylelint-disable selector-class-pattern */
+@include b('bi-content-caption') {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 46px;
+  padding-right: 20px;
+  border-bottom: 1px solid getCssVar(color, border);
+  @include e('caption') {
+    padding-left: getCssVar('spacing', 'base-loose');
+
+    &:hover {
+      .#{bem('bi-content-caption','label')} {
+        display: none;
+      }
+      .#{bem('bi-content-caption','input')} {
+        display: block;
+      }
+    }
+    @include when('focus') {
+      .#{bem('bi-content-caption','label')} {
+        display: none;
+      }
+      .#{bem('bi-content-caption','input')} {
+        display: block;
+      }
+    }
+  }
+  @include e('label') {
+    svg {
+      margin-left: getCssVar('spacing', 'base-tight');
+      vertical-align: middle;
+    }
+  }
+  @include e('input') {
+    display: none;
+    width: 320px;
+
+    .el-input__wrapper {
+      width: 100%;
+    }
+  }
+  @include e('data-total') {
+    font-size: getCssVar('font-size', 'regular');
+    color: getCssVar(color, text, 3);
+  }
+  @include e('size') {
+    margin: 0 getCssVar('spacing', 'extra-tight');
+    color: getCssVar(color, text, 0);
+  }
+}

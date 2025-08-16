@@ -1,0 +1,141 @@
+/* stylelint-disable selector-class-pattern */
+@include b(bi-filter) {
+  min-height: 150px;
+
+  @include e(pql-editor) {
+    min-height: 200px;
+  }
+}
+
+@include b(bi-filter-header) {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 getCssVar('spacing', 'extra-loose');
+}
+
+@include b(bi-filter-header-tab) {
+  margin-right: getCssVar('spacing', 'base-tight');
+  margin-left: auto;
+
+  .el-tabs {
+    --el-tabs-header-height: #{getCssVar('height-control', 'default')};
+
+    display: flex;
+    align-items: center;
+  }
+
+  .el-tabs__nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: getCssVar(color, fill, 0);
+    border: none !important;
+
+    &::after {
+      position: absolute;
+      left: getCssVar('spacing', 'super-tight');
+      z-index: -1;
+      width: calc(50% - getCssVar('spacing', 'extra-tight'));
+      height: calc(100% - getCssVar('spacing', 'extra-tight'));
+      content: '';
+      background-color: getCssVar(color, bg, 1);
+      border-radius: getCssVar(border, radius, small);
+      transition: all 0.5s ease;
+    }
+  }
+
+  .el-tabs__header {
+    margin: 0;
+  }
+
+  .el-tabs--card > .el-tabs__header,
+  .el-tabs--card > .el-tabs__header .el-tabs__item {
+    border: none;
+  }
+
+  .el-tabs--card > .el-tabs__header .el-tabs__item {
+    font-size: getCssVar('font-size', 'small');
+    color: getCssVar(color, text, 1);
+  }
+
+  @include m('pql') {
+    .el-tabs__nav {
+      &::after {
+        right: getCssVar('spacing', 'super-tight');
+        left: calc(50% + getCssVar('spacing', 'super-tight'));
+      }
+    }
+  }
+}
+
+@include b(bi-filter-header-btn) {
+  display: flex;
+  align-items: center;
+  padding: getCssVar('spacing', 'tight');
+  margin-right: calc(0 - getCssVar('spacing', 'tight'));
+  cursor: pointer;
+  border-radius: getCssVar(border, radius, small);
+
+  > svg {
+    fill: currentcolor;
+  }
+
+  &:hover {
+    color: getCssVar(color, primary);
+    background-color: getCssVar(color, primary, light, default);
+  }
+}
+
+@include b(bi-filter-content) {
+  padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'extra-loose') 0;
+}
+
+@include b(bi-filter-footer) {
+  display: flex;
+  align-items: center;
+  padding: getCssVar('spacing', 'base') getCssVar('spacing', 'extra-loose');
+
+  @include e(reset-btn) {
+    display: flex;
+    align-items: center;
+    color: getCssVar(color, primary);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include e(cancel-btn) {
+    margin-left: auto;
+  }
+
+  @include e(confirm-btn) {
+    margin-left: getCssVar('spacing', 'tight');
+  }
+}
+
+@include b(pql-editor-suggestion-item) {
+  @include b(bi-filter-item) {
+    @include e(icon) {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      margin-right: getCssVar('spacing', 'tight');
+      font-size: getCssVar('font-size', 'header-6');
+      color: getCssVar(color, link, hover);
+    }
+
+    @include e(text) {
+      flex: 1 1 0;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
