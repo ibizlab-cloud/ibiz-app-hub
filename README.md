@@ -133,7 +133,7 @@ $ npm run demo:preview
 ## 🌱 案例展示
 ### 📈 iBizPLM：产品全生命周期管理系统
 覆盖从需求、设计、开发、测试到交付全过程，对标 PingCode、ONES 的精品开源 PLM 解决方案。 🚀 [https://plm.ibizlab.cn](https://plm.ibizlab.cn)
-![img](examples/images/plm.gif)
+![img](examples/images/plm.gif) 
 
 ### 👥 iBizCRM：客户关系管理系统
 借鉴了zoho的优秀理念，提供强大又灵活的客户关系管理能力。支持本地部署，数据安全可控。 🚀 [https://crm.ibizlab.cn](https://crm.ibizlab.cn)

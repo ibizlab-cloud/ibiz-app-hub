@@ -1,0 +1,1 @@
+lerna exec --scope "{@ibiz-template/core,@ibiz-template/model-helper,@ibiz-template/runtime,@ibiz-template/theme,@ibiz-template/vue3-util,@ibiz-template/web-theme,@ibiz-template/vue3-components}" "pnpm link --global"
