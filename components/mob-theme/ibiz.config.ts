@@ -22,10 +22,7 @@ export default defineConfig({
     },
   ],
   theme: {
-    prefix: `@import "${path.resolve(
-      cwd,
-      'node_modules/@ibiz-template/theme/style/global.scss',
-    )}";`,
+    prefix: `@import "@ibiz-template/theme/style/global.scss";`,
     output: ['es', 'lib'],
   },
   external: [],

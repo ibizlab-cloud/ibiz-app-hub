@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "watch": "tsc --watch",
-    "build": "npm run lint && node scripts/build.js && npm run build:rollup && tsc --build",
+    "build": "node scripts/build.js && npm run build:rollup && tsc --build",
     "build:rollup": "rollup -c",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'",
